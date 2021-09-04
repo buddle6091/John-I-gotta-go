@@ -1,6 +1,6 @@
 <template>
-<div class="background_B">
-  <div class="modal">
+<div class="background_B" v-if="openModal == true">
+  <div class="white">
    <h4> 가는날 / 오는날 </h4>>
    <p> 상세페이지 </p>
    
@@ -31,9 +31,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   data(){
     
     return{    
-      openModal : true
-   
-     
+      openModal : false
+    
     }
     
   }
@@ -53,15 +52,14 @@ div {
 }
 .background_B{
   
-  width: 10%;
-  height: 10%;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.5);
   position: fixed;
   padding: 20px;
 }
-.modal{
-  width: 340px;
-  height: 300px;
+.white{
+  width: 100%;
   background: white;
   border-radius: 8px;
   padding: 20px;

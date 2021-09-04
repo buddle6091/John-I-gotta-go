@@ -1,7 +1,9 @@
 <template>
-     
-<div class ="ticketBox" @click="array_air.unfold =! array_air.unfold" :class = "{ goHeight : unfold}" >  <!--ticket`s base--> <!--토글 부여-->
-                  <!--insert handle action-->
+<div v-for="(array_air,i) in ticket" v-bind:key="i">
+<div class ="ticketBox" @click="array_air.unfold =! array_air.unfold"
+:style="{ height: array_air.unfold ? `300px` : `100px`,
+         transition : array_air.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
+               <!--insert handle action-->
                       <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
                      <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
@@ -15,37 +17,35 @@
        Incheon International Airport</div>
        </div>
   <div id="flightDetail">
+    
       <div id="animContainer" style="left: -20px">
         <div id="animation">
         <div id="circle"> </div>
-        <div id="circle"> </div>
+        <div id="circle"> </div>  
         <div id="circle"> </div>
         </div>   
       </div>
       <div id="animContainer" style="left:30px">
         <div id="animation">
         <div id="circle"> </div>
-        <div id="circle"> </div>
+        <div id="circle"> </div>                              
         <div id="circle"> </div>
         </div>   
       </div>
-      
       <img src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_in"/>
   </div>
   <div id="flightDetail">
-    <div id="detailLabel" :style="color=black">
-      Arrivals</div>
+    <div id="detailLabel">
+      Arrivals </div>
     CJU
      <div id="detailLabel">
        Jeju International Airport</div>
        </div>
  </div>
  
-
-  <transition name = "unfold_anim" :duration="{enter : 100, leave : 100000}">
-  
-   <div id="first" v-if="array_air.unfold">
+  <div id="first" :style="{transform: array_air.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
+  transition: array_air.unfold ? '0.4s' : '1s'}">
      
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
@@ -86,7 +86,7 @@
                 <div id="detailLabel">0h 50 min</div>
               </div>
               <div id="detail">
-                13<div id="detailLabel">Gate</div>
+                Gate<div id="detailLabel">Gate</div>
               </div>
             </div>
             <div id="firstBehindRow">
@@ -98,12 +98,10 @@
                 Seat
                 <div id="detailLabel">14C</div>
               </div>
-              
             </div>
-          </div>
-
-
-<div id="second" v-if="array_air.unfold">
+          </div> 
+<div id="second" :style="{transform: array_air.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
+ transition: array_air.unfold ? '0.8s' : '0.8s'  }">
     <div id="secondTop"/>
              <div id="secondBehind">
               <div id="secondBehindDisplay">
@@ -119,61 +117,57 @@
                   id="barCode"
                   src="https://github.com/pizza3/asset/blob/master/barcode.png?raw=true"
                 />
-              </div>
-           
-               <div id="third" v-if="array_air.unfold">
+              </div> 
+            
+               <div id="third"  :style="{ transform: array_air.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
+        transition: array_air.unfold ? '1s' : '0.4s' }">
                 <div id="thirdTop"/>
                  <div id="secondBehindBottom">
                   <button
-                    id="button">
+                    id="button1">
                     Go to website
                   </button>
                 </div>
               </div> 
             </div>
-     </div>   
+          </div> 
          </div>
-      </div></transition>
- </div> 
+      </div>  
+      </div>
+      </div>
 
- </template>
+</template>
 
 <script>
 import data from './data.js'; 
-import Modal from './modal.vue';
- 
+
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
-
+   emit: [
+       'array_air.unfold =! array_air.unfold'
+    ],   
+ 
   props : {
-  
-  },
-  name: 'ticketBox',
+ 
+  },    
+  name: 'TicketBox',
 
   methods: {  
-
-  
-
-     unfolding: function(i)
-    {
-      this.unfold = !this.unfold;
-      console.log(i.target);
-     },
-
-     modaling: function()
-     {
-       this.openModal = !this.openModal;
-     }
-  
+    
     
   },
 
+  mounted() { 
+
+  },
+
   components: {
-    Modal : Modal
+   // Modal : Modal
 
   },
 
   computed: {
+    
 
   },
   
@@ -183,19 +177,18 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       openModal : true,
       ticket : data,   // from data.js
       
-      clickNum : 0,
-      unfold: true,    //처음에는 fold 되어있는 상태이니 초기값은 false
+      unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
     
+
       Departure : 'Incheon',
       Arrival : 'Jeju',
-      DepartureDate : 'September 17th',
+      DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
-       
-      goHeight : 'transform:translateY(300px)',
-       Airplane_in :{ height:'37px',
+      Airplane_in :{ height:'37px',
                       marginTop:'14px',
                       marginLeft:'8px',
                       marginRight:'10px',
+                      position:'absolute',
                       },            
        Airplane_out :{
                       height:'27px',
@@ -211,246 +204,39 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   }
   
 }
-
-
 </script>
 
- <style>
- /*펼치기*/
-.unfold_anim-leave-active{
-transform: rotate3d(1, 0, 0, -180deg);  /* 펼치기 */
-
-}
-
-.unfold_anim-enter-active{
-transform: rotate3d(1, 0, 0, -180deg);  /* 접기 */
-transition-delay: 0s;
-}
-
-.unfolding2-leave-active, .unfolding2-leave-from{
-
-transform: rotate3d(1, 0, 0, -810deg);
-transition-delay: 0.3s;
-}
-
-.unfolding2-enter-from{
-transform: rotate3d(1, 1, 1, 0deg);
-transition-delay: 1s;
-}
-
-.unfolding3-leave-active{
-
-transform: rotate3d(1, 0, 0, -180deg);
-transition-delay: 0s;
-}
-
-.unfolding3-enter-active{
-transform: rotate3d(1, 0, 0, -180deg);
-transition-delay: 0.2s;
-}
-/*접기*/
-
-
-* {
-  margin: 0;
-  padding: 0; 
-  box-sizing: border-box;
-  perspective: 700px;
-  font-family: arial, 'Times New Roman', Times, serif;
-
-  
-
-}
-
-#base {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background : #ededed;
-}
-
-#back {
-
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 4px;
-    top: 20px;
-}
-
-.ModalFrame 
-{
-  width: 400px;
-  height: 200px;
-}
-
-.App{
-  font-family: sans-serif;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #fff;
-  box-shadow: 0px 0px 41px -7px rgba(0, 0, 0, 0.15);
-  width: 400px;
-  height: auto;
-	background: #f3f3f3;
-
-}
-
-.flight_Info {
-    text-align: start;
-    margin-left: 40px;
-    margin-top: 30px;
-} 
-
-
-#header{
-  color: rgb(34, 34, 34);
-  font-weight: bold;
-  font-size: 20px;
-  width: 340px;
-  height: 46px;
-  text-align: center;
-  margin-top: 30px;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-}
-
-#departure_flight{
-  color: #141414;
-  font-weight: bold;
-  font-size: 28px;
-  letter-spacing: 1px;
-  display: flex;
-  margin-top: 10px;
-  margin-left: 40px;
-  cursor: grab;
-}
-
-#oneway{
-  font-size: 12px;
-  font-weight: 100px;
-  background: lightsteelblue;
-  border: 2px solid black;
-  position: relative;
-  border-radius: 10px;
-  color: black;
-  margin-left: 10px;
-  margin-top: 5px;
-  border-radius: 10px;
-}
-
-.departure{
-    width: 50px;
-    height: 30px;
-    z-index: auto;
-    left: 10px;
-    top: 70px;
-    font-size: larger;
-    font-family:'Times New Roman', Times;
-    color:#ffff00
-}
-
-#hyphen_oneway
-{
-    width: 10px;
-    height: 5px;
-    z-index: auto;
-    left: 65px;
-    top: 70px;
-    font-size: larger;
-    font-family:'Times New Roman', Times;
-}
-
-#hyphen_roundtrip
-{
-    width: 10px;
-    height: 5px;
-    z-index: auto;
-    left: 65px;
-    top: 70px;
-    font-size: larger;
-    font-family:'Times New Roman', Times;
-}
-
-
-.arrival{
-    width: 50px;
-    height: 30px;
-    z-index: auto;
-    left: 80px;
-    top: 70px;
-    font-size: larger;
-    font-family:'Times New Roman', Times;
-}
-
-.showDepartureDate{
-    width: 5000px;
-    height: 30px;
-    z-index: auto;
-    margin-top: 5px;
-    margin-left: 70px;
-    font-size: smaller;
-}
-
-#showArrivalDate {
-    width: 50px;
-    height: 30px;
-    z-index: auto;
-}
-
-#showPeople{
-    width: 30px;
-    height: 30px;
-    z-index: auto;
-}
-
-#BoardingPassContainer{
-    position: relative;
-    width: 400px;
-    height: 100px;
-    margin: 10px;
-}
-
+ <style lang="scss" scoped>
+@import './components/scss/main.scss';
+ 
 .ticketBox{
     width: 340px;
     height: 100px;
     position: relative;
-    /*background: white;*/
-  /* backface-visibility: hidden;*/
+    backface-visibility: hidden;
     border-radius: 8px;
     box-shadow: 0px 0px 3px 0px rgba(132, 132, 132, 0.1);
     transform-origin: bottom;
     margin: 20px;
-    cursor: grab;
+    cursor: grab;  
 }
 
  #timeContainer {
     display: flex;
     padding-top: 14px;
   }
-
                         
-#dateContainer{            /*첫페이지-출발지의 시간, 날짜*/
-
+#dateContainer{           /*첫페이지-출발지의 시간, 날짜*/
   color: rgb(121, 115, 115);
   font-size: 9px;
-  padding-top: 11px;
-   
-  
+  padding-top: 11px; 
 }
-
 
 #detailtime{
   font-weight: bold;
   color:#000000;
-  font-size: 16px;
- 
+  font-size: 16px; 
 }
-
-
 
   #first {
     width: 340px;
@@ -460,10 +246,8 @@ transition-delay: 0.2s;
     color: #000;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transition: 0.6s;
     border-radius: 8px;
-    display: flex;
-  
+    display: flex;  
   }
 
   #firstTop {
@@ -505,17 +289,15 @@ transition-delay: 0.2s;
 #detailLabel{
   color: lightslategrey;
   font-size: 9px;
-
 }
-
 
 #animContainer{
   padding-left: 0px;
   position: absolute;
   width: 30px;
-  height: 35px;
-  top: 30px;
-  margin-left: 10px;
+  height: 45px;
+  top: 45px;
+  margin-left: 140px;
   overflow: hidden;
 }
 
@@ -533,15 +315,6 @@ transition-delay: 0.2s;
   
     from {
       transform: translateX(0px);
-    }
-  }
-
-  @keyframes folding_ {
-    to{
-
-    }
-    from{
-      
     }
   }
 
@@ -615,10 +388,9 @@ transition-delay: 0.2s;
     height: 50px;
     position: absolute;
     background: rgb(231, 231, 231);
-    backface-visibility: visible;
+    backface-visibility: hidden;
     border-radius: 8px;
   }
- 
   
   #secondBehind {
     width: 340px;
@@ -649,7 +421,7 @@ transition-delay: 0.2s;
   
   #secondBehindBottom {
     width: 340px;
-    height: 100px;
+    height: 50px;
     position: absolute;
     background: #fff;
     transform-origin: center;
@@ -659,21 +431,28 @@ transition-delay: 0.2s;
     border-radius: 8px;
     box-shadow: 0px 11px 25px -1px rgba(0, 0, 0, 0.17);
   }
+
+  #thirdTop {
+  width: 340px;
+  height: 50px;
+  position: absolute;
+  background: rgb(190, 190, 190);
+  backface-visibility: hidden;
+  border-radius: 8px;
+}
   
   #third {
     width: 340px;
-    height: 100px;
+    height: 50px;
     position: absolute;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transition: 1s;
     border-radius: 8px;
   }
-
     
-  #button {
+  #button1 {
     color: #2d2d2d;
-    font-size: 19px;
+    font-size: 10px;
     font-weight: bold;
     padding: 4px 124px;
     border: 1px solid #2d2d2d;
@@ -702,4 +481,5 @@ transition-delay: 0.2s;
     width: 98px;
     height: 30px;
   }
+  
  </style>
