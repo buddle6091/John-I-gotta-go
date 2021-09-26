@@ -38,13 +38,20 @@
   cursor: pointer;
 }
 
-@mixin button-active(
-  $negative-shadow-convex: 0 0 0 #00000000
-) {
+@mixin button-active($negative-shadow-convex: 0 0 0 #00000000) 
+{
   background: $primary-liner;
   box-shadow: $negative-shadow-convex,
     $negative-shadow-convex, $shadow-primary-concave;
 }
+
+@mixin button-click($negative-shadow-convex: 0 0 0 #00000000 ) 
+{
+  background: $primary-liner;
+  box-shadow: $negative-shadow-convex,
+    $negative-shadow-convex, $shadow-primary-concave;
+}
+
 @mixin button-active-danger(
   $negative-shadow-convex: 0 0 0 #00000000
 ) {

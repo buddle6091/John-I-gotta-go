@@ -4,29 +4,23 @@
     type="button"
     :class="classes"
     :style="style"
-    @click="btnActive = !btnActive"
-  >
-    {{ label }}
+    @click="btnActive">
+
+    <slot> {{ }} </slot>
   </button>
 </template>
 
 <script>
-
 export default {
-  name: 'Button_new',
+  name: 'Button',
   props: {
     initState: {
       type: Boolean,
       default: false
     },
-    label: {
-      type: String,
-      required: true,
-      default: 'Button'
-    },
     size: {
       type: String,
-      default: 'small',
+      default: 'medium',
       validator: function (value) {
         return (
           ['small', 'medium', 'large'].indexOf(value) !== -1
@@ -35,16 +29,16 @@ export default {
     },
     layout: {
       type: String,
-      default: 'flexible',
+      default: 'fill',
       validater: function (value) {
         return (
-          ['flexible', 'fill', 'half'].indexOf(value) !== -1
+          ['flexible', 'fill', 'half', 'Increase', 'Decrease'].indexOf(value) !== -1
         );
       }
     },
     color: {
       type: String,
-      default: 'base',
+      default: 'primary',
       varidater: function () {
         return ['base', 'primary'];
       }
@@ -54,13 +48,24 @@ export default {
       default: false
     }
   },
-
+  btnActive: { 
+    type: Boolean, 
+    default: false
+  },
+ 
   data() {
-    return { btnActive: false };
+    return { 
+      btnActive: false,
+    };
+    
   },
 
   mounted: function () {
     this.btnActive = this.initState;
+  },
+
+  methods: {
+   
   },
 
   computed: {
@@ -84,36 +89,72 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/main.scss';
+@import '../../../scss/main.scss';
 
 .button {
   position: relative;
+  transition: $transition-box-shadow;
   border-radius: $radius-button;
   font-weight: medium;
   vertical-align: middle;
-  transition: $transition-box-shadow;
-  @include button-cursor;
   @include button-inactive;
+  @include button-cursor;
+  /*click button event*/
+  &:active{
+    color: white;
+    @include button-active;
+    &:hover {
+      @include button-active;
+    }
+    &::after {
+      color: white;
+      @include void-text-liner;
+    }
+  }
   &:hover {
     @include button-hover;
+  
+  }
+  &--Increase{
+    
+      width: 2em;
+      height: 2.7rem;
+      display: inline;
+      justify-content: center;
+      align-items: center;
+      border: {
+       radius: 0px 15px 0px 0px;
+       top: none;
+       right: none;   
+         }   
+  } 
+   &--Decrease{
+      width: 2em;
+      height: 2.7rem;
+      display: inline;
+      border: {
+       radius: 0px 0px 15px 0px;
+       top: none;
+       right: none;   
+         }        
   }
   &--small {
-    padding: 0 1.6rem;
-    font-size: 1.2rem;
-    height: 2.8rem;
-    line-height: 2.8rem;
+    padding: 0px 16px;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
   }
   &--medium {
-    padding: 0 3rem;
-    height: 4rem;
-    font-size: 1.4rem;
-    line-height: 4rem;
+    padding: 0 30px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
   }
   &--large {
-    padding: 0 3.6rem;
-    height: 4.6rem;
-    font-size: 1.4rem;
-    line-height: 4.6rem;
+    padding: 0 36px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 46px;
   }
   &--base {
     background: $base;
@@ -127,9 +168,11 @@ export default {
     @include flexible;
   }
   &--fill {
+   
     display: block;
     width: 100%;
     max-width: 400px;
+    color: #ffffff;
   }
   &--half {
     width: 35%;
@@ -145,8 +188,9 @@ export default {
       @include iconlayout;
     }
   }
-  &--active {
-    color: $white;
+  /*press button event*/
+  &--active {       
+    color: white;
     @include button-active;
     &:hover {
       @include button-active;

@@ -1,32 +1,46 @@
 <template>
   <div class="singlline-text-field">
-    <label for="text-box" :class="label">Label</label>
+    <label for="text-box" :class="label"> {{ text }} </label>
     <div :class="classes">
       <input
         class="singlline-text-field__text"
         id="text-box"
-        type="text"
-        placeholder="e.g."
-      />
+        :type="{ varidater }"
+        :placeholder="place"
+      /> 
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
+//import Vue from 'vue';
 
 export default {
+  name: 'search',
   props: {
+    text: {
+      type: String,
+      default: ''
+    },
+    place:{
+      type:String,
+      default: ''
+    },
     labelstate: {
       type: Boolean,
       default: true
     },
     type: {
       type: String,
-      default: 'form',
-      varidater: function (value) {
+      default: 'search',
+      varidater() {
         return ['form', 'search', 'memo'];
       }
+    },
+    placeholder: {
+      type: String,
+      default: 'local',
+    
     }
   },
   computed: {
@@ -47,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/main.scss';
+@import '../../../scss/main.scss';
 form {
   width: 100%;
 }
@@ -55,7 +69,7 @@ form {
 .singlline-text-field {
   @include fixed;
   &__label {
-    font-size: 1.4rem;
+    font-size: 14px;
     color: $text-main;
     line-height: $single-line;
     margin-bottom: $spacing-2;
@@ -73,34 +87,34 @@ form {
     color: $text-main;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 $spacing-4;
+    padding: 0 $spacing-2;
     background: $base;
     box-shadow: $shadow-concave;
-    font-size: 1.4rem;
+    font-size: 14px;
     border-radius: $radius-2;
     &--form {
-      height: 4rem;
+      height: 40px;
     }
     &--search {
-      height: 3.6rem;
+      height: 36px;
       &::before {
         margin: 0 $spacing-1 0 0;
         font-family: 'Material Icons';
         content: 'search';
         color: $button-gray;
-        font-size: 2.2rem;
+        font-size: 22px;
         line-height: 100%;
         @include iconlayout;
       }
     }
   }
   &__text {
-    color: $text-main;
+    color: #333131;
     box-sizing: border-box;
     background: $base;
-    font-size: 1.4rem;
+    font-size: 14px;
     line-height: $single-line;
-    height: 2rem;
+    height: 20px;
   }
 }
 ::placeholder {

@@ -1,19 +1,19 @@
 <template>
   <div id="icon-button" class="container">
     <span class="container__icon material-icons">
-      {{ icon }}</span
-    >
+      {{ icon }}</span>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
+//import Vue from 'vue';
 
 export default {
+  name: "icon",
   props: {
     icon: {
       type: String,
-      default: 'schedule',
+      default: 'person',
       validator: function (value) {
         return (
           [
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/main.scss';
+@import '../../../scss/main.scss';
 
 .container {
   width: 4rem;

@@ -123,10 +123,7 @@
         transition: array_air.unfold ? '1s' : '0.4s' }">
                 <div id="thirdTop"/>
                  <div id="secondBehindBottom">
-                  <button
-                    id="button1">
-                    Go to website
-                  </button>
+              
                 </div>
               </div> 
             </div>
@@ -138,8 +135,8 @@
 
 </template>
 
-<script>
-import data from './data.js'; 
+<script lang = "ts">
+import data from './data'; 
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
@@ -185,7 +182,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       Airplane_in :{ height:'37px',
-                      marginTop:'14px',
+                      marginTop:'23px',
                       marginLeft:'8px',
                       marginRight:'10px',
                       position:'absolute',
@@ -196,9 +193,6 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
                       marginLeft:'10px',
                       marginRight:'16px',
                       },  
-
- 
-     
     }
     
   }
@@ -229,7 +223,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 #dateContainer{           /*첫페이지-출발지의 시간, 날짜*/
   color: rgb(121, 115, 115);
   font-size: 9px;
-  padding-top: 11px; 
+  padding-top: 10px; 
 }
 
 #detailtime{
@@ -272,7 +266,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 18px 23px;
+    padding: 12px 23px;
     flex-wrap: wrap;
     backface-visibility: hidden;
     box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.17);
@@ -296,7 +290,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   position: absolute;
   width: 30px;
   height: 45px;
-  top: 45px;
+  top: 48px;
   margin-left: 140px;
   overflow: hidden;
 }
@@ -345,7 +339,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     position: absolute;
     background: #fff;
     border-radius: 8px;
-    padding: 12px 23px;
+    padding: 6px 23px;
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 11px 25px -1px rgba(0, 0, 0, 0.17);
@@ -423,7 +417,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     width: 340px;
     height: 50px;
     position: absolute;
-    background: #fff;
+    background: white;
     transform-origin: center;
     transform: rotate3d(1, 0, 0, -180deg);
     backface-visibility: hidden;
@@ -449,18 +443,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     transform-style: preserve-3d;
     border-radius: 8px;
   }
-    
-  #button1 {
-    color: #2d2d2d;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 4px 124px;
-    border: 1px solid #2d2d2d;
-    background: #fff;
-    border-radius: 4px;
-    margin-top: 9px;
-  }
-  
+
   #price {
     color: #2d2d2d;
     font-weight: bold;

@@ -6,48 +6,50 @@
         v-model="isSelected"
         type="radio"
         name="toggle"
-        value="A"
+        value="One Way"
       />
       <label for="left" class="toggle-button__label--left"
-        >A</label
+        >One Way</label
       >
       <input
         id="right"
         v-model="isSelected"
         type="radio"
         name="toggle"
-        value="B"
+        value="Round Trip"
       />
       <label for="right" class="toggle-button__label--right"
-        >B
+        >Round Trip
       </label>
       <span :class="sliderClasses">{{ isSelected }}</span>
     </div>
 
     <ul class="contents">
-      <li v-if="isSelected === 'A'">
-        Content A
+      <li v-if="isSelected === 'One Way'">
+        selected : One Way
       </li>
-      <li v-else-if="isSelected === 'B'">
-        Content B
+      <li v-else-if="isSelected === 'Round Trip'">
+        selected : Round Trip
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
+//import Vue from 'vue';
 
 export default {
+ 
+  name: 'ToggleButton',
   data() {
-    return { isSelected: 'A', radioItems: ['A', 'B'] };
+    return { isSelected: 'One Way', radioItems: ['One Way', 'Round Trip'] };
   },
   computed: {
     sliderClasses() {
       return {
         'toggle-button__slider': true,
         [`toggle-button__slider--right`]:
-          this.isSelected === 'B'
+          this.isSelected === 'Round Trip'
       };
     }
   }
@@ -55,62 +57,62 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/main.scss';
-.contents {
-  display: none;
+@import '../../../scss/main.scss';
+.contents {     
+  display: none;   // Hide origin UI
 }
 
 input {
-  display: none;
+  display: none;   // Hide origin
 }
 
 .toggle-button {
   box-sizing: border-box;
-  width: 12rem;
-  height: 2.8rem;
+  width: 120px; // 1rem = 16px
+  height: 28px; 
   position: relative;
   display: flex;
-  padding: 0.1rem;
+  padding: 1px;
   border-radius: $radius-button;
   background-color: $base;
   box-shadow: $shadow-concave, $shadow-convex;
-  font-weight: medium;
+  font-size : 1px;
   border: solid 0.1rem $base;
-  align-items: cener;
+  align-items: center;
   @include button-cursor;
   &__label,
   %label {
     display: inline-block;
     position: absolute;
-    width: 6rem;
-    height: 2.4rem;
+    width: 60px;
+    height: 24px;
     text-align: center;
-    line-height: 2.4rem;
+    line-height: 24px;
     color: $unselected;
     &--left {
       @extend %label;
-      left: 0.2rem;
+      left: 2px;
     }
     &--right {
       @extend %label;
-      right: 0.2rem;
+      right: 2px;
     }
   }
   &__slider {
     position: absolute;
-    left: 0.1rem;
+    left: 1px;
     text-align: center;
-    line-height: 2.4rem;
-    width: 6rem;
-    height: 2.4rem;
-    font-size: 1.2rem;
+    line-height: 24px;
+    width: 60px;
+    height: 24px;
+    font-size: 10px;
     border-radius: $radius-button;
     background: $primary-liner;
     box-shadow: $shadow-drop;
     color: $white;
     transition: $transition-transform;
     &--right {
-      transform: translateX(5.6rem);
+      transform: translateX(56px);
     }
   }
 }
