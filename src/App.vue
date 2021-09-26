@@ -6,7 +6,7 @@
 </div>
 
 <div class="selectContainer">  
-   <ToggleButton :style="{marginLeft:'180px'}"/>
+  <ToggleButton :style="{marginLeft:'180px'}"/>
   <Search text="Departure" place="Incheon" @input="handler"/>  <!--search Departure-->
   <Search text="Destination" place="To"/>     <!--search Destination-->
 
