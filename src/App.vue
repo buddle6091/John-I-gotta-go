@@ -1,3 +1,5 @@
+<!--App.vue-->
+
 <template>
 
 <div class="App">
