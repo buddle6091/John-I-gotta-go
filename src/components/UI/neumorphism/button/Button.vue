@@ -32,7 +32,7 @@ export default {
       default: 'fill',
       validater: function (value) {
         return (
-          ['flexible', 'fill', 'half', 'Increase', 'Decrease'].indexOf(value) !== -1
+          ['flexible', 'fill', 'half', 'Increase', 'Decrease', 'reverse'].indexOf(value) !== -1
         );
       }
     },
@@ -137,6 +137,20 @@ export default {
        top: none;
        right: none;   
          }        
+  }
+  &--reverse{
+    width: 10px;
+    height: 10px;
+    margin: {
+   }
+    padding: {
+      right: 5px;
+      left: 10px;
+    }
+    display: inline;
+    position: relative;
+    
+    //flex-direction: column;
   }
   &--small {
     padding: 0px 16px;

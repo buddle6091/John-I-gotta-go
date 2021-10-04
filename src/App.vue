@@ -6,17 +6,29 @@
 </div>
 
 <div class="selectContainer">  
-  <ToggleButton :style="{marginLeft:'180px'}"/>
-  <Search text="Departure" place="Incheon" @input="handler"/>  <!--search Departure-->
-  <Search text="Destination" place="To"/>     <!--search Destination-->
+  <ToggleButton :style="{marginLeft:'70%'}"/>
+  <div class="flightContainer">
+   <span><h1>ICN</h1>
+    Incheon International Airport</span> 
+  <div>  
+ <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
+ <Button layout='reverse' color='base'>
+   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+   <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+   </svg>
+   </Button> </div>
+   <span><h1>CJU</h1>
+    Jeju Airport</span>
+    </div>
+<!--search Departure-->
+  <!--search Destination-->
 
-
-
- <Search :style="{width:'36%', position:'absolute', justifyContent:'spaceAround'}" 
+<div class="dateContainer">
+ <Search class="searchDate" 
  type='form' text="Depart Date" place="Select date" />
- <Search :style="{width:'36%', position:'relative', marginLeft:'168px'}" 
+ <Search class="searchDate" 
  type='form' text="Return Date" place="Select date"/>
-
+</div>
 Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-people-fill" viewBox="0 0 16 16">
   <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -26,25 +38,28 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
  <div class="passengers"> 
   <div class="passengersAdult">
     <div class="detailPass">
-      <input type="radio" name="passenger" v-model="picked" value="adult" checked> Adult x {{ picked }}
-   <h2>12+ years old</h2>
+      <input type="radio" id="passenger1" name="passenger" value="adult" checked> 
+        <label for="passenger1">Adult x {{ person }}</label>
+         <h2>12+ years old</h2>
    </div>
   </div>
   <div class="passengersKids">
     <div class="detailPass">
-      <input type="radio" name="passenger" v-model="picked" value="kid"> kid x {{ picked }}
+      <input type="radio" id="passenger2" name="passenger" value="kid"> 
+       <label for="passenger2">kid x {{ person }}</label>
    <h2>under 12</h2>
    </div>
   </div>
   <div class="passengersBaby">
     <div class="detailPass">
-      <input type="radio" name="passenger" v-model="picked" value="baby"> <h1> baby x {{ picked }} </h1>
+      <input type="radio" id="passenger3" name="passenger" value="baby"> 
+      <label for="passenger3">baby x {{ person }}</label> 
    <h2>less than 24 months</h2>
    </div>
   </div>
   <div class="BtnContainer">
   <Button layout='Increase' color='base' @click="btnIncrease"> 
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"  fill="currentColor" class="bi bi-person-plus-fill">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-person-plus-fill">
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg> </Button>
@@ -56,7 +71,7 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
     </Button>
  </div> 
 </div>      
-  Class 
+  Class     
   <div class="classContainer">
    
     <div class="economy">
@@ -91,13 +106,10 @@ import TicketBox from './ticketBox.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
 import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
+import { ref } from 'vue'
 
 export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
-
-   emit: [
-      
-    ],   
- 
+  
   props: {
   
   },
@@ -115,39 +127,41 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
     
     return{
       ticket: data,   // from data.js,
+      person : 0,
+      selectClass : '',
       btnActive: false,
-      picked: "",
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
       Departure : 'Incheon',
       Arrival : 'Jeju',
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
-      Airplane_in :{ height:'37px',
-                      marginTop:'14px',
-                      marginLeft:'8px',
-                      marginRight:'10px',
-                      },            
-       Airplane_out :{
-                      height:'27px',
-                      marginTop:'24px',
-                      marginLeft:'10px',
-                      marginRight:'16px',
-                      },      
-    }   
+      airplane_img : 
+      { width: '30px', height: '30px', margin: 'auto'
+      },
+      
+    }
   },
 
-  methods: {   
-    selectPerson(event){
-     console.log(event.target.value);
+setup(){
+
+  let person = ref(0)
+  function btnIncrease(){
+     person.value += 1
+  }
+  return {
+    btnIncrease,
+  }
+},
+  methods: {  
+    
+    a : () =>{
+      this.person++;
     },
-    btnIncrease(){
-     this.person++;
-    },
+    
+  
     btnDecrease(){
      this.person--;
     }
-
-
   },
 
   watch: {
@@ -158,17 +172,7 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
 
   },
 
-  computed: {  // methods -> computed (caching - save result) 
-/*
-  countPerson() {
-    get(){
-    return this. ~~~~
-    }
-    set(){
-
-    }
-  }
-*/
+  computed: { 
 
   }
 
@@ -177,27 +181,16 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
  
 <style lang="scss" scoped>
 @import './components/scss/main.scss';
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
-
-.selectContainer {
-  border: 1px solid $base;
-  left : 7px;
-  width: 95%;
-  height: auto;
-  box-sizing: border-box;
-  background: $base-liner;
-  border-radius: $radius-3;
-  box-shadow: $shadow-base;
-  padding: $spacing-4 $spacing-6;
-  cursor: pointer;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
   margin: 0;
   padding: 0; 
   box-sizing: border-box;
-  perspective: 700px;
- 
+  perspective: 700px; 
+}
+html{
+  font-size: 16px;
 }
 
 #base {
@@ -222,46 +215,73 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
 #header{
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.8);
-  font-family: 'Dancing script', sans-serif;
-  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   width: 387px;
   height: 46px;
   text-align: justify;
   word-spacing: 2px;
   letter-spacing: 3px;
-  display: block;
-  z-index: 20px;
-}
-
-
-#oneway{
-  font-size: 12px;
-  font-weight: 100px;
-  background: lightsteelblue;
-  border: 2px solid black;
   position: relative;
-  border-radius: 10px;
-  color: black;
-  margin-left: 10px;
-  margin-top: 5px;
-  border-radius: 10px;
+  display: flex;
+  z-index: 5;
 }
 
-
-.showDepartureDate{
-    width: 5000px;
-    height: 30px;
-    z-index: auto;
-    margin-top: 5px;
-    margin-left: 70px;
-    font-size: smaller;
+.selectContainer {
+  border: 1px solid $base;
+  margin: {
+    left: 1em;
+    right: 1em;
+  };
+  width: 90%;
+  max-width: 1035px;
+  height: auto;
+  box-sizing: border-box;
+  background: $base-liner;
+  border-radius: $radius-3;
+  box-shadow: $shadow-base;
+  padding: $spacing-4 $spacing-6;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  cursor: pointer;
 }
 
-#showArrivalDate {
-    width: 50px;
-    height: 30px;
-    z-index: auto;
+.flightContainer{
+  display: flex;
+  //flex-wrap: wrap;
+  justify-content: center;
+  margin: {
+    top: 10px;
+    } 
+  span{
+    color: #757575;
+    font: {
+      size: 10px;
+    }
+    padding: {
+      left: 40px;
+      right: 40px;}
+ 
+    h1{
+      color: #000000;
+      font: {
+        size: 38px;}
+        }
+      text-align: center; 
+  }
+}
+
+.dateContainer{
+  display: flex;
+  //flex-wrap: wrap;
+  justify-content: center;
+
+  .searchDate{
+    margin: 16px;
+  }
 }
 
 .cardContainer{
@@ -275,7 +295,10 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
   border-radius: 15px;
   box-shadow: $shadow-drop;
   background: $base;
-  vertical-align: middle;
+  justify-content: center;
+}
+input[type="radio"]{
+  display : none;
 }
 .passengers{
   @extend .block;
@@ -315,7 +338,7 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
   position: relative;
   display: flex;
   justify-content: space-between;
-}
+}  
 
 .BtnContainer{
   display: flex;
