@@ -113,18 +113,19 @@ export default {
   }
   &:hover {
     @include button-hover;
-  
   }
-  &--Increase{
-    
+  &--Increase{    
       width: 2em;
       height: 2.7rem;
       display: inline;
       justify-content: center;
       align-items: center;
+      border: 0.1rem solid #cfcfcf;
       border: {
        radius: 0px 15px 0px 0px;
        top: none;
+       left: none;
+       bottom: 1px;
        right: none;   
          }   
   } 
@@ -132,21 +133,19 @@ export default {
       width: 2em;
       height: 2.7rem;
       display: inline;
+      border: 0.1rem solid #cfcfcf;
       border: {
        radius: 0px 0px 15px 0px;
-       top: none;
-       right: none;   
+       right: none; 
+       bottom: none;
+       left: none;  
          }        
   }
   &--reverse{
     width: 10px;
     height: 10px;
-    margin: {
-   }
-    padding: {
-      right: 5px;
-      left: 10px;
-    }
+    left: -10px;
+    margin: auto; 
     display: inline;
     position: relative;
     

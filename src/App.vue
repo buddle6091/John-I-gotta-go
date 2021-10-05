@@ -6,16 +6,34 @@
 <div id="header" style="padding-top:7px">John, I gotta go🛫 </div>
 <div class="base">
 </div>
+<div class="selectContainer" @click="openModal = true"> 
+    <div class="flightContainer">
+   <span><h1>ICN</h1>
+    Incheon International Airport</span> 
+  <div>  
+ <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
+ </div>
+   <span><h1>CJU</h1>
+    Jeju Airport</span>
+    </div>
+    <span>Depart Date</span>
+    <span>Return Date</span>
+    <span>Passengers</span>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+</svg>
+  </div>
 
-<div class="selectContainer">  
+<div class="selectContainer" v-if="openModal == true">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
   <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
  <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
- <Button layout='reverse' color='base'>
-   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+ <Button layout='reverse' color='base' :style="{top: '10px'}">
+   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-arrow-left-right" viewBox="1 0 16 16">
    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
    </svg>
    </Button> </div>
@@ -65,7 +83,7 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg> </Button>
-  <Button layout='Decrease' color='base' @click="btnDecrease" style="top:1px"> 
+  <Button layout='Decrease' color='base' @click="btnDecrease" > 
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -131,6 +149,7 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
       ticket: data,   // from data.js,
       person : 0,
       selectClass : '',
+      openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
       Departure : 'Incheon',
@@ -138,8 +157,7 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       airplane_img : 
-      { width: '30px', height: '30px', margin: 'auto'
-      },
+      { width: '30px', height: '30px', marginTop: '20px', marginLeft: '10px'},
       
     }
   },
@@ -155,17 +173,13 @@ setup(){
   }
 },
   methods: {  
-    
-    a : () =>{
-      this.person++;
+    activeModal(){
+      this.openModal == true;
     },
-    
-  
     btnDecrease(){
      this.person--;
     }
   },
-
   watch: {
     
   },
@@ -312,15 +326,18 @@ input[type="radio"]{
   justify-content: space-between;
 }
 .detailPass{
+ 
+  justify-content: center;
+  text-align: right;
      h2{
         color: $text-main;
         font: {
         size: 0.2em;
       }    
-      display: flex;  
       margin: {
         top: 20px;
       }
+      
     }
 }
 .selectLine{     
