@@ -19,7 +19,6 @@
     <span>Depart Date</span>
     <span>Return Date</span>
     <span>Passengers</span>
-    
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
 </svg>
@@ -32,8 +31,8 @@
     Incheon International Airport</span> 
   <div>  
  <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
- <Button layout='reverse' color='base' :style="{top: '10px'}">
-   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-arrow-left-right" viewBox="1 0 16 16">
+ <Button layout='reverse' color='base' :style="{top: '10px', display: 'inline'}">
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-right" :style="{position:'absolute', display: 'flex',}">
    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
    </svg>
    </Button> </div>
@@ -49,7 +48,7 @@
  <Search class="searchDate" 
  type='form' text="Return Date" place="Select date"/>
 </div>
-Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
+Passengers <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
 <!--   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-people-fill" viewBox="0 0 16 16">
   <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
   <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
@@ -58,23 +57,29 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
  <div class="passengers"> 
   <div class="passengersAdult">
     <div class="detailPass">
+      <label>
       <input type="radio" id="passenger1" name="passenger" value="adult" checked> 
-        <label for="passenger1">Adult x {{ person }}</label>
-         <h2>12+ years old</h2>
+        <div>Adult &times; <span> 1 </span>
+         <h2>12+ years old</h2></div>
+      </label>
    </div>
   </div>
   <div class="passengersKids">
     <div class="detailPass">
+      <label>
       <input type="radio" id="passenger2" name="passenger" value="kid"> 
-       <label for="passenger2">kid x {{ person }}</label>
-   <h2>under 12</h2>
+        <div>kid &times; <span> 0 </span>
+        <h2>under 12 </h2></div>
+      </label>
    </div>
   </div>
   <div class="passengersBaby">
     <div class="detailPass">
+      <label>
       <input type="radio" id="passenger3" name="passenger" value="baby"> 
-      <label for="passenger3">baby x {{ person }}</label> 
-   <h2>less than 24 months</h2>
+       <div>baby &times; <span> 0 </span>
+       <h2>less than 24 months</h2></div>
+      </label> 
    </div>
   </div>
   <div class="BtnContainer">
@@ -102,7 +107,6 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
       <input type="radio" name="class" value="business" v-model="selectClass"> business </div>
     <div class="firstClass">
       <input type="radio" name="class" value="first" v-model="selectClass"> First </div>
- <span> your class = "{{ selectClass }}" </span> 
   </div>
 
 
@@ -120,7 +124,7 @@ Passengers <Icon icon='person' :style="{width:'0px', height: '0px'}"/>
 
 <script>
 import data from './data'; 
-import Button from './components/UI/neumorphism/button/Button.vue'
+import Button from './components/UI/neumorphism/button/Button.vue';
 //import Modal from './modal.vue';
 import TicketBox from './ticketBox.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
@@ -313,9 +317,16 @@ html{
   background: $base;
   justify-content: center;
 }
+
 input[type="radio"]{
-  display : none;
+ display: none;
+
+  &:checked ~ div{
+    background-color: rgba($primary, 0.1);
+    transition: background-color .4s ease;
+   }
 }
+
 
 .passengers{
   @extend .block;
@@ -337,7 +348,10 @@ input[type="radio"]{
         size: 0.2em;
       }    
       margin: {
-        top: 20px;
+        top: 6px;
+      }
+      padding: {
+        bottom: 6px;
       }
       
     }
@@ -356,9 +370,13 @@ input[type="radio"]{
 .passengersAdult, .passengersKids, .passengersBaby{
   @extend .selectLine;
   border-radius: 15px 0px 0px 15px;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
+  > div{
+      //position: absolute;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      margin-top: 14px;
+  }
 }  
 
 .BtnContainer{
