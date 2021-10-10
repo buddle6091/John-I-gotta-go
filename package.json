@@ -17,6 +17,7 @@
     "bootstrap-icons": "^1.5.0",
     "core-js": "^3.6.5",
     "css": "^3.0.0",
+    "material-components-web": "^13.0.0",
     "npm": "^7.20.6",
     "sass": "^1.38.2",
     "scss": "^0.2.4",

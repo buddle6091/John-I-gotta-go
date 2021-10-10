@@ -3,7 +3,7 @@
 <template>
 
 <div class="App">
-<div id="header" style="padding-top:7px">John, I gotta go🛫 </div>
+<header>John, I gotta go🛫</header>
 <div class="base">
 </div>
 <div class="selectContainer" @click="openModal = true"> 
@@ -11,7 +11,7 @@
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
+ <img src=".\assets\icon\airplane2.png" :style="airplane_img"/>
  </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
@@ -30,11 +30,12 @@
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img alt="dd" src=".\assets\airplane2.png" :style="airplane_img"/>
+ <img alt="dd" src=".\assets\icon\airplane2.png" :style="airplane_img"/>
  <Button layout='reverse' color='base' :style="{top: '10px', display: 'inline'}">
-   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-right" :style="{position:'absolute', display: 'flex',}">
+   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-right" :style="{position:'absolute', display: 'flex',}">
    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
-   </svg>
+   </svg> -->
+   <div class="material-icons" :style="{margin: '0px auto'}">compare_arrows</div>
    </Button> </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
@@ -48,41 +49,33 @@
  <Search class="searchDate" 
  type='form' text="Return Date" place="Select date"/>
 </div>
-Passengers <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
-<!--   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-people-fill" viewBox="0 0 16 16">
-  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-  <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-  <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-</svg> -->
- <div class="passengers"> 
-  <div class="passengersAdult">
-    <div class="detailPass">
-      <label>
-      <input type="radio" id="passenger1" name="passenger" value="adult" checked> 
-        <div>Adult &times; <span> 1 </span>
+<Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
+
+<span class="material-icons" style="font-size: 40px;">people</span>
+ <ul class="passengers"> 
+  <li class="passengersAdult">
+   <label>
+    <input type="radio" id="passenger1" name="passenger" value="adult" checked>
+        <div>Adult 
+          &times; <span> 1 </span>
          <h2>12+ years old</h2></div>
       </label>
-   </div>
-  </div>
-  <div class="passengersKids">
-    <div class="detailPass">
+  </li>
+  <li class="passengersKids">
       <label>
       <input type="radio" id="passenger2" name="passenger" value="kid"> 
-        <div>kid &times; <span> 0 </span>
-        <h2>under 12 </h2></div>
+        kid &times; <span> 0 </span>
+        <h2>under 12 </h2>
       </label>
-   </div>
-  </div>
-  <div class="passengersBaby">
-    <div class="detailPass">
+  </li>
+  <li class="passengersBaby">
       <label>
       <input type="radio" id="passenger3" name="passenger" value="baby"> 
        <div>baby &times; <span> 0 </span>
        <h2>less than 24 months</h2></div>
       </label> 
-   </div>
-  </div>
-  <div class="BtnContainer">
+  </li>
+  <li class="BtnContainer">
   <Button layout='Increase' color='base' @click="btnIncrease"> 
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-person-plus-fill">
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -94,9 +87,8 @@ Passengers <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 </svg>
     </Button>
- </div> 
-</div>      
-  Class     
+ </li> 
+</ul>       
   <div class="classContainer">
    
     <div class="economy">
@@ -232,7 +224,7 @@ html{
     margin-top: 30px;
 } 
 
-#header{
+header{
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.8);
   font-family: 'Roboto', sans-serif;
@@ -318,6 +310,7 @@ html{
   justify-content: center;
 }
 
+/* Design radio button */
 input[type="radio"]{
  display: none;
 
@@ -335,15 +328,16 @@ input[type="radio"]{
   height: 5rem;
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.detailPass{
+  //flex-direction: row;
+  //justify-content: space-between;
+ li{
   justify-content: center;
   display: inline;
   text-align: center;
-     h2{
-        color: $text-main;
+ 
+  }  
+  h2{
+      color: $text-main;
         font: {
         size: 0.2em;
       }    
@@ -353,11 +347,9 @@ input[type="radio"]{
       padding: {
         bottom: 6px;
       }
-      
     }
 }
 .selectLine{     
-  width: 28%;
   height: 100%;
   border: 0.1rem dashed #a8a8a8;
   border: {
@@ -367,17 +359,22 @@ input[type="radio"]{
   }
   background: $base;
 }
-.passengersAdult, .passengersKids, .passengersBaby{
+.passengersAdult{
+  width: 30%;
   @extend .selectLine;
   border-radius: 15px 0px 0px 15px;
-  > div{
-      //position: absolute;
-      display: flex;
-      justify-content:center;
-      align-items: center;
-      margin-top: 14px;
-  }
+  position: relative;
+  
+  label{
+     margin: 10px;
+   }
 }  
+
+.passengersKids, .passengersBaby{
+  width: 30%;
+  @extend .passengersAdult;
+  border-radius: 0 0 0 0;
+}
 
 .BtnContainer{
   display: flex;
