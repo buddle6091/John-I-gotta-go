@@ -3,39 +3,33 @@
 <template>
 
 <div class="App">
-<header>John, I gotta go🛫</header>
-<div class="base">
-</div>
+<header><span>John, I gotta go🛫</span></header>
 <div class="selectContainer" @click="openModal = true"> 
-    <div class="flightContainer">
+  <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img src=".\assets\icon\airplane2.png" :style="airplane_img"/>
+ <img src=".\assets\icon\airplane2.png" :style="airplane_img_inactive"/>
  </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
     </div>
-    <span>Depart Date</span>
-    <span>Return Date</span>
-    <span>Passengers</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-</svg>
+    <div class="shortInfo">
+    <span>10.19</span>~ <span>10.22</span>
+    <span>3 people</span>
+    <span>economy</span>
+</div>
   </div>
 
-<div class="selectContainer" v-if="openModal == true">  
+<div class="selectContainer">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
   <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img alt="dd" src=".\assets\icon\airplane2.png" :style="airplane_img"/>
+ <img src=".\assets\icon\airplane2.png" :style="airplane_img_active"/>
  <Button layout='reverse' color='base' :style="{top: '10px', display: 'inline'}">
-   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-right" :style="{position:'absolute', display: 'flex',}">
-   <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
-   </svg> -->
-   <div class="material-icons" :style="{margin: '0px auto'}">compare_arrows</div>
+   <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
    </Button> </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
@@ -43,7 +37,8 @@
 <!--search Departure-->
   <!--search Destination-->
 
-<div class="dateContainer">
+<div class="set">
+  <i class="material-icons"> calendar_today </i>
  <Search class="searchDate" 
  type='form' text="Depart Date" place="Select date" />
  <Search class="searchDate" 
@@ -51,7 +46,9 @@
 </div>
 <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
 
-<span class="material-icons" style="font-size: 40px;">people</span>
+<!-- passengers -->
+<div class="set">
+ <i class="material-icons">people</i>
  <ul class="passengers"> 
   <li class="passengersAdult">
    <label>
@@ -89,27 +86,31 @@
     </Button>
  </li> 
 </ul>       
-  <div class="classContainer">
-   
-    <div class="economy">
-      <input type="radio" name="class" value="economy" v-model="selectClass" checked="checked">Economy </div>
-    <div class="preEconomy">
-      <input type="radio" name="class" value="premium economy" v-model="selectClass"> Premium Economy </div>
-    <div class="business">
-      <input type="radio" name="class" value="business" v-model="selectClass"> business </div>
-    <div class="firstClass">
-      <input type="radio" name="class" value="first" v-model="selectClass"> First </div>
-  </div>
+</div>
 
+<!--class-->
+<div class="set">
+  <i class="material-icons">airline_seat_recline_extra</i>
+  <ul class="classContainer">
+    <li class="economy">
+      <input type="radio" name="class" value="economy" v-model="selectClass" checked="checked">Economy </li>
+    <li class="preEconomy">
+      <input type="radio" name="class" value="premium economy" v-model="selectClass"> Premium Economy </li>
+    <li class="business">
+      <input type="radio" name="class" value="business" v-model="selectClass"> business </li>
+    <li class="firstClass">
+      <input type="radio" name="class" value="first" v-model="selectClass"> First </li>
+  </ul>
+</div>
 
 <Button> Search </Button>
 
 </div>   
 
-<div class="cardContainer" :style="{marginTop:'30px'}">
+<div class="container">
   <TicketBox/>
 </div>
- </div>
+</div>
 
 
 </template>
@@ -152,7 +153,9 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
       Arrival : 'Jeju',
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
-      airplane_img : 
+      airplane_img_inactive : 
+      { width: '30px', height: '30px', marginTop: '20px', marginLeft: '20px', marginRight: '20px'},
+      airplane_img_active : 
       { width: '30px', height: '30px', marginTop: '20px', marginLeft: '10px'},
       
     }
@@ -205,21 +208,13 @@ html{
   font-size: 16px;
 }
 
-#base {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background : #ededed;
-}
-
 .App{
   font-family: sans-serif;
   background: $base;
-
 }
 
 .flight_Info {
-    text-align: start;
+    text-align: flex-start;
     margin-left: 40px;
     margin-top: 30px;
 } 
@@ -227,20 +222,29 @@ html{
 header{
   background: rgba(0, 0, 0, 0);
   color: rgba(0, 0, 0, 0.8);
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  width: 387px;
+  width: 100%;
   height: 46px;
-  text-align: justify;
-  word-spacing: 2px;
-  letter-spacing: 3px;
+  margin: 0 auto;
   position: relative;
-  display: flex;
-  z-index: 5;
+  top: 0;
+  span{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    word-spacing: 2px;
+    letter-spacing: 3px;
+    position: fixed;
+    height: 30px;
+    top: 0;
+    bottom: 0; 
+    left: 10px;
+    margin: auto;
+    }
+
 }
 
 .selectContainer {
-  border: 1px solid $base;
+  border: 2px solid $base;
   margin: {
     left: 1em;
     right: 1em;
@@ -249,9 +253,10 @@ header{
   max-width: 1035px;
   height: auto;
   box-sizing: border-box;
-  background: $base-liner;
+  background: $base;
   border-radius: $radius-3;
   box-shadow: $shadow-base;
+  margin: auto;
   padding: $spacing-4 $spacing-6;
   position: relative;
   display: flex;
@@ -259,11 +264,31 @@ header{
   justify-content: center;
   align-content: flex-start;
   cursor: pointer;
-}
 
+  &__inactive{
+    position: absolute;
+    opacity: 1;
+    h3{
+      top: 10px;
+    }
+  }
+  &__active-content{
+    overflow: hidden;
+    transition: width 0.5s ease;
+  }
+
+  &:active{
+    .selectContainer__inactive-content{
+      opacity: 0;
+    }
+    .selectContainer__active-content{
+      opacity: 1;
+    }
+  }
+
+  
 .flightContainer{
   display: flex;
-  //flex-wrap: wrap;
   justify-content: center;
   margin: {
     top: 10px;
@@ -276,7 +301,6 @@ header{
     padding: {
       left: 40px;
       right: 40px;}
- 
     h1{
       color: #000000;
       font: {
@@ -285,25 +309,37 @@ header{
       text-align: center; 
   }
 }
-
-.dateContainer{
+.shortInfo{
+  position: relative;
+  top: 10px;
+  span{
+    padding: 10px, 10px;
+    margin-right: 10px;
+  }
+}
+.set{
+  width: 90%;
+  align-content: flex-start;
   display: flex;
-  //flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  margin: {
+    top: 1rem;
+  }
+  left: -20px;
 
-  .searchDate{
-    margin: 16px;
+  [class=material-icons]{
+    font-size: 30px; 
+    color: rgb(80, 80, 80); 
+    margin: auto;
+    position: relative;
+    right: 8px;
   }
 }
 
-.cardContainer{
-  border-radius : solid 10px;
-  position: relative; 
-  width : 387px;
-  height : auto;
-}
-
 .block{
+  border: 1px solid rgba(168, 168, 168, 0.2);
   border-radius: 15px;
   box-shadow: $shadow-drop;
   background: $base;
@@ -323,23 +359,21 @@ input[type="radio"]{
 
 .passengers{
   @extend .block;
-  width: 100%;
-  max-width: 30rem;
+  width: 90%;
+  max-width: 21rem;
   height: 5rem;
   position: relative;
   display: flex;
-  //flex-direction: row;
-  //justify-content: space-between;
+
  li{
-  justify-content: center;
   display: inline;
   text-align: center;
- 
-  }  
+  font-size: 0.9rem;
+  } 
   h2{
-      color: $text-main;
+    color: $text-main;
         font: {
-        size: 0.2em;
+          size: 0.2em;
       }    
       margin: {
         top: 6px;
@@ -366,7 +400,7 @@ input[type="radio"]{
   position: relative;
   
   label{
-     margin: 10px;
+    margin: 10px;
    }
 }  
 
@@ -377,6 +411,7 @@ input[type="radio"]{
 }
 
 .BtnContainer{
+  width: 10%;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -384,11 +419,12 @@ input[type="radio"]{
 
 .classContainer{
   @extend .passengers;
+  width: 100%;
   border-radius: 15px, 15px, 15px, 15px;
   height: 4rem;
   margin: {
-    top: 0.2rem;
-    bottom: 1.4rem;
+   
+    bottom: 1.6rem;
   }
 }
 
@@ -400,11 +436,22 @@ input[type="radio"]{
 }
 .firstClass{
   @extend .selectLine;
+  width: 25%;
   border-radius: 15px, 15px, 15px, 15px;
   border: {
     right: none;
   }
 }
+
+  .ticketContainer{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+  }
+}
+
 
 
 </style>

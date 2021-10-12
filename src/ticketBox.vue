@@ -211,7 +211,9 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     border-radius: 8px;
     box-shadow: 0px 0px 3px 0px rgba(132, 132, 132, 0.1);
     transform-origin: bottom;
-    margin: 20px;
+    position: relative;
+    top: 1rem;
+    margin: 0.8rem 5rem;
     cursor: grab;  
 }
 

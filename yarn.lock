@@ -1790,7 +1790,7 @@
     "node-gyp" "^7.1.0"
     "read-package-json-fast" "^2.0.1"
 
-"@popperjs/core@^2.10.1", "@popperjs/core@^2.10.2":
+"@popperjs/core@^2.10.1", "@popperjs/core@^2.9.1":
   "integrity" "sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.10.2.tgz"
   "version" "2.10.2"
@@ -3193,10 +3193,10 @@
   "resolved" "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.5.0.tgz"
   "version" "1.5.0"
 
-"bootstrap@^5.1.2":
-  "integrity" "sha512-me838a7TSEkldKyplkx21dqFm16+9NbH/rCj3Myo+h2cByyjckqV4m0OnS8QBsSDEoBv8R2jHqfulGQXpvM8Bw=="
-  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.1.2.tgz"
-  "version" "5.1.2"
+"bootstrap@^5.0.0-beta3":
+  "integrity" "sha512-0urccjfIOzhrb9qJysN8XW/DRw6rg3zH7qLeKIp4Zyl8+Ens4JWB0NC0cB5AhnSFPd2tftRggjwCMxablo6Tpg=="
+  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.0.0-beta3.tgz"
+  "version" "5.0.0-beta3"
 
 "brace-expansion@^1.1.7":
   "integrity" "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA=="
