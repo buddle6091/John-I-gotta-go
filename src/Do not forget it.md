@@ -9,6 +9,9 @@
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
 > git reset --hard HEAD (HEAD가 가장 최신 버전이니까 그 하위의 버전은 ~1, ~2, 이런식으로 선택하여 되돌리기)
 
+# npm install github open source
+ clone으로 복사하고 깔았는데 사용에 실패하면 제작자가 패키지 이름이나 컴포넌트 이름을 잘못설정했을 확률이 높으니, 대소문자 구분해서 설정해보자
+
 <!--node-->
 # NVM (Node Version Manager)
 
@@ -58,6 +61,24 @@ text-align : 정렬을
 # modal 창 만들기
 
 ## 모달창이 작동할 때 뒤의 요소들보다 가장 앞에 표시하고 싶을 때는 Modal component를 가장 뒤에 놓기
+
+# datepicker
+
+<div>
+    <datepicker
+      class="picker"
+      v-model="selected"
+      :locale="locale"
+      :upperLimit="to"
+      :lowerLimit="from"
+      :clearable="true"
+			:disabledDates="{ predicate: isToday }"
+    >
+      <template v-slot:clear="{ onClear }">
+        <button @click="onClear">x</button>
+      </template>
+    </datepicker>
+  </div>
 
 
 

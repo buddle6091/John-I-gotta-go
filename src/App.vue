@@ -141,25 +141,6 @@
       placeholder="disabled"
     />
   </div>
-  <div>
-    <datepicker
-      class="picker"
-      v-model="yearSelected"
-      :locale="locale"
-      minimum-view="year"
-      placeholder="selectYear"
-    />
-  </div>
-  <div>
-    <datepicker
-      class="picker"
-      v-model="monthSelected"
-      :locale="locale"
-      minimum-view="month"
-      starting-view="year"
-      placeholder="selectMonth"
-    />
-  </div>
 </div>   
 
   <TicketBox/>
@@ -327,27 +308,6 @@ header{
   justify-content: center;
   align-content: flex-start;
   cursor: pointer;
-
-/*   &__inactive{
-    position: absolute;
-    opacity: 1;
-    h3{
-      top: 10px;
-    }
-  }
-  &__active-content{
-    overflow: hidden;
-    transition: width 0.5s ease;
-  }
-
-  &.is-active{
-    .selectContainer__inactive-content{
-      opacity: 0;
-    }
-    .selectContainer__active-content{
-      opacity: 1;
-    }
-  } */
   
 .flightContainer{
   display: flex;
