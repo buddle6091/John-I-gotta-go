@@ -4,6 +4,17 @@
 
 ----------------------- 필   기 ----------------------------
 
+<!--GitHub-->
+# reset
+> git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
+> git reset --hard HEAD (HEAD가 가장 최신 버전이니까 그 하위의 버전은 ~1, ~2, 이런식으로 선택하여 되돌리기)
+
+<!--node-->
+# NVM (Node Version Manager)
+
+# command
+1. node - v : node.js current version
+
 <!--css-->
 # icon (google material icon)
 패키지를 설치 후 index.html에 import 로 코딩해놓은 후부터 사용가능. 

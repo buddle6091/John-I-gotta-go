@@ -12,6 +12,7 @@
   "main": "babel.config.js",
   "dependencies": {
     "@popperjs/core": "^2.10.1",
+    "alga-js": "^0.0.9",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
     "bootstrap-icons": "^1.5.0",
@@ -23,7 +24,9 @@
     "scss": "^0.2.4",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
+    "vue-hotel-datepicker": "github:krystalcampioni/vue-hotel-datepicker",
     "vue-router": "4",
+    "vue3-datepicker": "^0.2.5",
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {

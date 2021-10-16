@@ -11,26 +11,20 @@
 <script>
 
 
-
+ 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
-
-
   props : {
-    
+    openModal: Boolean,
   },
   name: 'Modal',
 
   methods: {  
-   modaling: function()
-   {
-     this.openModal = !this.openModal;
-   }
+
   },
   
   data(){
     
     return{    
-      openModal : true,
     
     }
     

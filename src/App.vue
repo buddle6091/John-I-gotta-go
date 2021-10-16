@@ -4,7 +4,7 @@
 
 <div class="App">
 <header><span>John, I gotta go🛫</span></header>
-<div class="selectContainer" @click="openModal = true"> 
+<div class="selectContainer"> 
   <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
@@ -15,20 +15,22 @@
     Jeju Airport</span>
     </div>
     <div class="shortInfo">
-    <span>10.19</span>~ <span>10.22</span>
-    <span>3 people</span>
+    <span>10.19</span>~ <span>10.22</span>|
+    <span>3 people</span>|
     <span>economy</span>
 </div>
   </div>
-
+<Modal :openModal="openModal"/>
 <div class="selectContainer">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
-  <div class="flightContainer">
+   
+  <div class="flightContainer" @click="openModal = true">
+   
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
  <img src=".\assets\icon\airplane2.png" :style="airplane_img_active"/>
- <Button layout='reverse' color='base' :style="{top: '10px', display: 'inline'}">
+ <Button layout='reverse' color='base' :style="{top:'4px', left:'1px',display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
    </Button> </div>
    <span><h1>CJU</h1>
@@ -38,11 +40,10 @@
   <!--search Destination-->
 
 <div class="set">
-  <i class="material-icons"> calendar_today </i>
- <Search class="searchDate" 
- type='form' text="Depart Date" place="Select date" />
- <Search class="searchDate" 
- type='form' text="Return Date" place="Select date"/>
+  <i class="material-icons"> date_range </i>
+  <date-picker v-model="date" type="date" format="YYYY-MM-dd"></date-picker> 
+  <div class="dateBox"><i class="material-icons">flight_takeoff</i> <span>Depart Date</span> </div>
+  <div class="dateBox"><i class="material-icons">flight_land</i> <span>Return Date</span> </div>
 </div>
 <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
 
@@ -78,7 +79,7 @@
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg> </Button>
-  <Button layout='Decrease' color='base' @click="btnDecrease" > 
+  <Button layout='Decrease' color='base' @click="btnDecrease"> 
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
       <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -87,8 +88,8 @@
  </li> 
 </ul>       
 </div>
-
 <!--class-->
+
 <div class="set">
   <i class="material-icons">airline_seat_recline_extra</i>
   <ul class="classContainer">
@@ -104,12 +105,67 @@
 </div>
 
 <Button> Search </Button>
-
+<div>
+    <datepicker
+      class="picker"
+      v-model="selected"
+      :locale="locale"
+      :upperLimit="to"
+      :lowerLimit="from"
+      :clearable="true"
+			:disabledDates="{ predicate: isToday }"
+    >
+      <template v-slot:clear="{ onClear }">
+        <button @click="onClear">x</button>
+      </template>
+    </datepicker>
+  </div>
+  <div>
+    <datepicker
+      class="picker"
+      weekday-format="iiiiii"
+      month-list-format="LLLL"
+      v-model="from"
+      :locale="locale"
+      placeholder="from"
+    />
+  </div>
+  <div>
+    <datepicker class="picker" v-model="to" placeholder="to" />
+  </div>
+  <div>
+    <datepicker
+      class="picker"
+      v-model="to"
+      :locale="locale"
+      disabled
+      placeholder="disabled"
+    />
+  </div>
+  <div>
+    <datepicker
+      class="picker"
+      v-model="yearSelected"
+      :locale="locale"
+      minimum-view="year"
+      placeholder="selectYear"
+    />
+  </div>
+  <div>
+    <datepicker
+      class="picker"
+      v-model="monthSelected"
+      :locale="locale"
+      minimum-view="month"
+      starting-view="year"
+      placeholder="selectMonth"
+    />
+  </div>
 </div>   
 
-<div class="container">
+
   <TicketBox/>
-</div>
+
 </div>
 
 
@@ -118,14 +174,19 @@
 <script>
 import data from './data'; 
 import Button from './components/UI/neumorphism/button/Button.vue';
-//import Modal from './modal.vue';
 import TicketBox from './ticketBox.vue';
+import Modal from './modal.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
-import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
+//import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
 import { ref } from 'vue'
+import Datepicker from './components/UI/vue3-datepicker/src/datepicker/Datepicker.vue'
+import { defineComponent } from 'vue'
+import { enUS } from 'date-fns/locale'
+import { isSameDay } from 'date-fns'
 
-export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
+
+export default defineComponent({   // 데이터 저장하는 곳  {{데이터바인딩}}
   
   props: {
   
@@ -133,11 +194,13 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
   name: 'App',
   components: {
    TicketBox : TicketBox,
-   //Modal : Modal,
+   Modal : Modal,
    ToggleButton: ToggleButton,
-   Search: Search,
+   //Search: Search,
    Button: Button,
    Icon: Icon,
+   Datepicker
+ 
   },
   
   data(){
@@ -154,10 +217,14 @@ export default{   // 데이터 저장하는 곳  {{데이터바인딩}}
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       airplane_img_inactive : 
-      { width: '30px', height: '30px', marginTop: '20px', marginLeft: '20px', marginRight: '20px'},
+      { width: '30px', height: '30px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto'},
       airplane_img_active : 
-      { width: '30px', height: '30px', marginTop: '20px', marginLeft: '10px'},
-      
+      { width: '30px', height: '30px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto'},
+      selected: null,
+      from: null,
+      to: null,
+      yearSelected: null,
+      monthSelected: null,
     }
   },
 
@@ -172,29 +239,27 @@ setup(){
   }
 },
   methods: {  
-    activeModal(){
-      this.openModal == true;
-    },
-    btnDecrease(){
-     this.person--;
-    }
+  isToday(date){
+			return isSameDay(date, new Date());
+		}
   },
   watch: {
-    
+     // eslint-disable-next-line vue/no-arrow-functions-in-watch
+     selected: (value) => console.log(value),
   },
 
   mounted() { 
-
+          
   },
 
   computed: { 
-
+        locale: () => enUS,
   }
 
-}
+})
 </script>
  
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import './components/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
@@ -220,7 +285,7 @@ html{
 } 
 
 header{
-  background: rgba(0, 0, 0, 0);
+  background: rgba(130, 108, 255, 0.5);
   color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 46px;
@@ -244,19 +309,19 @@ header{
 }
 
 .selectContainer {
-  border: 2px solid $base;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   margin: {
-    left: 1em;
-    right: 1em;
+    top: 15px;
+    left: auto;
+    right: auto;
   };
-  width: 90%;
-  max-width: 1035px;
+  width: 88%;
+  max-width: 835px;
   height: auto;
   box-sizing: border-box;
   background: $base;
   border-radius: $radius-3;
   box-shadow: $shadow-base;
-  margin: auto;
   padding: $spacing-4 $spacing-6;
   position: relative;
   display: flex;
@@ -265,7 +330,7 @@ header{
   align-content: flex-start;
   cursor: pointer;
 
-  &__inactive{
+/*   &__inactive{
     position: absolute;
     opacity: 1;
     h3{
@@ -277,55 +342,92 @@ header{
     transition: width 0.5s ease;
   }
 
-  &:active{
+  &.is-active{
     .selectContainer__inactive-content{
       opacity: 0;
     }
     .selectContainer__active-content{
       opacity: 1;
     }
-  }
-
+  } */
   
 .flightContainer{
   display: flex;
   justify-content: center;
-  margin: {
-    top: 10px;
-    } 
+  margin: {top: 11px;}  
   span{
     color: #757575;
     font: {
-      size: 10px;
-    }
+      size: 10px;}
     padding: {
       left: 40px;
       right: 40px;}
+    
     h1{
       color: #000000;
       font: {
         size: 38px;}
         }
-      text-align: center; 
-  }
+      text-align: center;}
+    div{
+      display:flex;
+      flex-direction: column;
+    }
 }
 .shortInfo{
+  width: 20rem;
+  height: 2rem;
+  line-height: center;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(168, 168, 168, 0.1);
+  box-shadow: $shadow-concave;
+  top: 13px;
   position: relative;
-  top: 10px;
   span{
     padding: 10px, 10px;
     margin-right: 10px;
+    font-size: 5px;
+    color: gray;
   }
 }
+.dateBox{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: $text-main;
+    width: 42%;
+    box-sizing: border-box;
+    margin: {
+      left: auto;
+      right: auto;
+    };
+    padding: 0 $spacing-4 0 $spacing-1;
+    background: $base;
+    box-shadow: $shadow-concave;
+    border-radius: $radius-1;
+
+    i{
+      font-size: 2px;
+    }
+
+    span{
+      font-size: 14px;
+    }
+}
+
 .set{
-  width: 90%;
+  width: 100%;
   align-content: flex-start;
   display: flex;
+  //justify-content: center;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap;               /**/
   position: relative;
   margin: {
     top: 1rem;
+    left: 2px;
+    right: auto;
   }
   left: -20px;
 
@@ -411,8 +513,9 @@ input[type="radio"]{
 }
 
 .BtnContainer{
-  width: 10%;
-  display: flex;
+  width: 8%;
+  height: auto;
+  //display: flex;
   position: relative;
   flex-direction: column;
 }
@@ -423,7 +526,6 @@ input[type="radio"]{
   border-radius: 15px, 15px, 15px, 15px;
   height: 4rem;
   margin: {
-   
     bottom: 1.6rem;
   }
 }
