@@ -1,7 +1,7 @@
 <!--App.vue-->
 
 <template>
-
+<Modal/>
 <div class="App">
 <header><span>John, I gotta go🛫</span></header>
 <div class="selectContainer"> 
@@ -20,11 +20,10 @@
     <span>economy</span>
 </div>
   </div>
-<Modal :openModal="openModal"/>
 <div class="selectContainer">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
-  <div class="flightContainer" @click="openModal = true">
+  <div class="flightContainer" data-bs-toggle="modal" data-bs-target="#exampleModal">
    
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
@@ -162,7 +161,6 @@
     />
   </div>
 </div>   
-
 
   <TicketBox/>
 

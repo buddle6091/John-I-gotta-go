@@ -55,5 +55,9 @@ text-align : 정렬을
 ## inherit - 강제상속
 예를 들어 부모 요소의 height: 3rem인데 자식 요소들도 다 일일이 3rem 칠 필요 없이 height : inherit 치면 강제 상속이 된다.
 
+# modal 창 만들기
+
+## 모달창이 작동할 때 뒤의 요소들보다 가장 앞에 표시하고 싶을 때는 Modal component를 가장 뒤에 놓기
+
 
 

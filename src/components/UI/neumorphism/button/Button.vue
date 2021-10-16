@@ -153,9 +153,10 @@ export default {
   }
   &--small {
     padding: 0px 16px;
-    font-size: 12px;
-    height: 28px;
-    line-height: 28px;
+    font-size: 20px;
+    width: 100px !important;
+    height: 50px;
+    line-height: 18px !important;
   }
   &--medium {
     padding: 0 30px;
