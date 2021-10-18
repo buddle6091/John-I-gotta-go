@@ -167,32 +167,5 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 <style lang="scss">
 @import './components/scss/main.scss';
 
-body{
-  margin: 0
-}
-
-div {
-  box-sizing: border-box;
-}
-
-.background_B{
-     position: fixed;
-        top: 40px;
-        left: auto;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-      /*   align-items: center; */
-}
-.white{
-  width: 80%;
-  height: 50%;
-  background: $base;
-  border-radius: 8px;
-  padding: 20px;
-}
-
 </style>
 

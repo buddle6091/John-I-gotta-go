@@ -32,6 +32,7 @@ $border: #c6d6df;
 $danger: #ed7f93;
 $white: #ffffff;
 $filter-gray: #eff1f633;
+$icon: rgb(80, 80, 80);
 
 /* Effect styles */
 $shadow-drop: 0.3rem 0.3rem 0.3rem #a1a7aa99;
@@ -43,8 +44,8 @@ $shadow-base: 0.2rem 0.4rem 1rem #a5bac766,
   inset 0.2rem 0.3rem 0.4rem #cbd5df66;
 $shadow-convex: 0.2rem 0.3rem 0.8rem #a5bac78c,
   -0.5rem -0.5rem 1rem #ffffff99;
-$shadow-convex-hover: 0.1rem 0.2rem 0.4rem #a5bac78c,
-  -0.3rem -0.3rem 0.5rem #ffffff99;
+$shadow-convex-hover: 0.1rem 0.2rem 0.4rem #a5bac7ee,
+  -0.3rem -0.3rem 0.5rem #ffffff0a;
 $shadow-convex-large: 0.3rem 0.5rem 0.12rem #a5bac773,
   -0.5rem -5rem 0.1rem #ffffffcc;
 $shadow-icon: 0.1rem 0.3rem 0.3rem #43afb640,
@@ -75,6 +76,7 @@ $font-small: 1.2rem;
 $font-medium: 1.4rem;
 $font-large: 1.6rem;
 $font-maximum: 1.8rem;
+$font-icon: 1.9rem;
 
 // for border-radius
 $radius-0: 0;
@@ -82,7 +84,8 @@ $radius-1: 0.4rem;
 $radius-2: 0.8rem;
 $radius-3: 1.2rem;
 $radius-4: 1.6rem;
-$radius-button: 5rem;
+$radius-input: 1.4rem;
+$radius-button: 1rem;
 $circle: 50% 50%;
 
 // line-height
