@@ -39,9 +39,14 @@
   <!--search Destination-->
 
 <div class="set">
-  <i class="material-icons"> date_range </i>
-  <date-picker v-model="date" type="date" format="YYYY-MM-dd"></date-picker> 
-  <div class="dateBox"><i class="material-icons">flight_takeoff</i> <span>Depart Date</span> </div>
+  <i class="material-icons"> date_range </i> 
+  <datepicker class="dateBox" :class="picker"
+      :v-model="selected"
+      :locale="locale"
+      :upperLimit="to"
+      :lowerLimit="from"
+      :clearable="true"
+			:disabledDates="{ predicate: isToday }"><i class="material-icons">flight_takeoff</i> <span>Depart Date</span> </datepicker>
   <div class="dateBox"><i class="material-icons">flight_land</i> <span>Return Date</span> </div>
 </div>
 <Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
@@ -50,25 +55,25 @@
 <div class="set">
  <i class="material-icons">people</i>
  <ul class="block"> 
-  <li class="block-radio-first passengers">
+  <li class="block-radio first passengers">
    <label>
-    <input type="radio" id="passenger1" name="passenger" value="adult" checked>
+    <input type="radio" name="passenger" id="a" value="adult" checked>
         <div>Adult 
-          &times; <span> 1 </span>
+          &times; <span id="0"> {{ person[0] }} </span>
          <h2>12+ years old</h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" id="passenger2" name="passenger" value="kid"> 
-        kid &times; <span> 0 </span>
-        <h2>under 12 </h2>
+      <input type="radio" name="passenger" id="b" value="kid"> 
+        <div>kid &times; <span id="1"> {{ person[1] }} </span>
+        <h2>under 12 </h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" id="passenger3" name="passenger" value="baby"> 
-       <div>baby &times; <span> 0 </span>
+      <input type="radio" name="passenger" id="c" value="baby"> 
+       <div>baby &times; <span id="2"> {{ person[2] }} </span>
        <h2>less than 24 months</h2></div>
       </label> 
   </li>
@@ -94,28 +99,28 @@
  <ul class="block"> 
   <li class="block-radio-first class">
    <label>
-    <input type="radio" id="passenger1" name="passenger" value="adult" checked>
+    <input type="radio" id="class1" name="class" value="economy" checked>
         <div> <i class="material-icons">airline_seat_recline_normal</i>
          <h2>Economy</h2></div>
       </label>
   </li>
   <li class="block-radio class">
       <label>
-      <input type="radio" id="passenger2" name="passenger" value="kid"> 
+      <input type="radio" id="class2" name="class" value="premium economy"> 
         <div> <i class="material-icons">airline_seat_recline_extra</i>
          <h2>Premium economy</h2></div>         
       </label>
   </li>
   <li class="block-radio class">
       <label>
-      <input type="radio" id="passenger3" name="passenger" value="baby"> 
+      <input type="radio" id="class3" name="class" value="business"> 
        <div> <i class="material-icons">airline_seat_flat_angled</i>
          <h2>Business</h2></div>
       </label> 
   </li>
   <li class="block-radio-last class">
       <label>
-      <input type="radio" id="passenger3" name="passenger" value="baby"> 
+      <input type="radio" id="class4" name="class" value="first"> 
        <div> <i class="material-icons">airline_seat_individual_suite</i>
          <h2>First</h2></div>     
       </label> 
@@ -124,9 +129,9 @@
 </div>
 
 <Button :style="{marginTop: '2rem'}"> Search </Button>
-<!-- <div>
+<div>
     <datepicker
-      class="picker"
+      class="datebox"
       v-model="selected"
       :locale="locale"
       :upperLimit="to"
@@ -134,24 +139,23 @@
       :clearable="true"
 			:disabledDates="{ predicate: isToday }"
     >
-      <template v-slot:clear="{ onClear }">
-        <button @click="onClear">x</button>
-      </template>
+
     </datepicker>
   </div>
   <div>
     <datepicker
-      class="picker"
+      class="datebox"
       weekday-format="iiiiii"
       month-list-format="LLLL"
       v-model="from"
       :locale="locale"
       placeholder="from"
+      weekStartsOn=0
     />
-  </div> -->
-  <div>
-    <datepicker class="picker" v-model="to" placeholder="to" />
   </div>
+<!--   <div>
+    <datepicker class="picker" v-model="to" placeholder="to" />
+  </div> -->
 <!--   <div>
     <datepicker
       class="picker"
@@ -170,7 +174,7 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import data from './data'; 
 import Button from './components/UI/neumorphism/button/Button.vue';
 import TicketBox from './ticketBox.vue';
@@ -178,8 +182,10 @@ import Modal from './modal.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
 //import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
+import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
-import Datepicker from './components/UI/vue3-datepicker/src/datepicker/Datepicker.vue'
+// eslint-disable-next-line no-unused-vars
+const picked = ref(new Date())
 import { defineComponent } from 'vue'
 import { enUS } from 'date-fns/locale'
 import { isSameDay } from 'date-fns'
@@ -206,8 +212,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     
     return{
       ticket: data,   // from data.js,
-      person : 0,
-      selectClass : '',
+      person: [1, 0, 0],
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
@@ -221,6 +226,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       airplane_img_active : 
       { width: '30px', height: '30px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto'},
      
+     /* datePicker Elements */
       selected: null,
       from: null,
       to: null,
@@ -229,38 +235,49 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     }
   },
 
-setup(){
+  setup(){
+  /*   const divs = document.getElementsByClassName('block-radio'),
+    const countPerson = divs.document.getElementByTagName('span')
+     */
 
-  let person = ref(0)
-  function btnIncrease(){
-     person.value += 1
-  }
-  return {
-    btnIncrease,
-  }
-},
-  methods: {  
-  isToday(date){
-			return isSameDay(date, new Date());
-		}
   },
+  
+  methods: {  
+    isToday(date:number){
+			return isSameDay(date, new Date());
+		},
+   
+    increase(){
+      this.person
+    }
+  },
+
   watch: {
      // eslint-disable-next-line vue/no-arrow-functions-in-watch
      selected: (value) => console.log(value),
+     // passenger count
+     count(a){
+       if(a < 0){
+         alert('ddd');
+       }
+     }
   },
 
-  mounted() { 
-          
+  mounted() {   
+
   },
 
   computed: { 
-        locale: () => enUS,
+    locale: () => enUS,
+
+    
+
   }
 
 })
 </script>
  
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import './components/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
@@ -288,18 +305,30 @@ html{
   };
   width: 88%;
   max-width: 835px;
+  min-width: 400px;
   height: auto;
   box-sizing: border-box;
   background: $base;
   border-radius: $radius-3;
   box-shadow: $shadow-base;
   padding: $spacing-4 $spacing-6;
-  position: relative;
+  //position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  //cursor: pointer;
+  
+  &__inactive{
+    opacity: 1;
+    transition: opacity 0.6s;
+    position: absolute;
+
+  }
+
+  &__active{
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
   
 .flightContainer{
   display: flex;
@@ -365,6 +394,7 @@ html{
 
     i{
       font-size: 2px;
+      text-align: flex-start;
     }
 
     span{
@@ -396,8 +426,7 @@ html{
 }
 
 .block{
-  width: 90%;
-  max-width: 21rem;
+  width: 21rem;
   height: 5rem;
   border-radius: 15px;
   box-shadow: $shadow-convex-hover;
@@ -423,18 +452,28 @@ html{
 
   h2{
     color: $text-main;
-    font-size: 2px;   
+    font-size: 2px;
+    line-height: 0.6rem;   
     }
+
+    [class=material-icons]{
+    font-size: 30px; 
+    color: rgb(80, 80, 80); 
+    position: relative;
+    right: 0px;
+  }
 
     /* Design radio button */
   input[type="radio"]{
   display: none;
-
-  &:checked ~ div{
-    background-color: rgba($primary, 0.1);
-    transition: background-color .4s ease;
-   }
+  width: 100%;
+  height: 70px;
 }
+ 
+  input:checked ~ div{
+    //color: $primary;
+    background-color: $primary;
+   }
 }
 
 .block-radio-first {
@@ -451,7 +490,7 @@ html{
       width: 30%;
   }
     &.class{
-      width: 25%;     
+      width: 25%; 
   }
 }
 
