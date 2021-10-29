@@ -27,6 +27,7 @@
     "vue-hotel-datepicker": "github:krystalcampioni/vue-hotel-datepicker",
     "vue-router": "4",
     "vue3-datepicker": "^0.2.5",
+    "vuex": "^4.0.2",
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {

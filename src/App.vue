@@ -9,7 +9,7 @@
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img src=".\assets\icon\airplane2.png" :style="airplane_img_inactive"/>
+ <img src=".\assets\icon\airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
  </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
@@ -28,7 +28,7 @@
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img src=".\assets\icon\airplane2.png" :style="airplane_img_active"/>
+ <img src=".\assets\icon\airplane2.png" alt="비행기2" :style="airplane_img_active"/>
  <Button layout='reverse' color='base' :style="{top:'4px', left:'1px',display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
    </Button> </div>
@@ -57,23 +57,22 @@
  <ul class="block"> 
   <li class="block-radio first passengers">
    <label>
-    <input type="radio" name="passenger" id="a" value="adult" checked>
-        <div>Adult 
-          &times; <span id="0"> {{ person[0] }} </span>
+    <input type="radio" @change="selectPerson($event)" id="adult" name="passenger" value="1" checked>
+        <div>Adult &times; <span> {{ person[0] }} </span>
          <h2>12+ years old</h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" name="passenger" id="b" value="kid"> 
-        <div>kid &times; <span id="1"> {{ person[1] }} </span>
+      <input type="radio" @change="selectPerson($event)" id="kid" name="passenger" value="0"> 
+        <div>kid &times; <span> {{ person[1] }} </span>
         <h2>under 12 </h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" name="passenger" id="c" value="baby"> 
-       <div>baby &times; <span id="2"> {{ person[2] }} </span>
+      <input type="radio" @change="selectPerson($event)" id="baby" name="passenger" value="0"> 
+       <div>baby &times; <span> {{ person[2] }} </span>
        <h2>less than 24 months</h2></div>
       </label> 
   </li>
@@ -174,7 +173,7 @@
 
 </template>
 
-<script lang="ts">
+<script>
 import data from './data'; 
 import Button from './components/UI/neumorphism/button/Button.vue';
 import TicketBox from './ticketBox.vue';
@@ -187,7 +186,9 @@ import { ref } from 'vue'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date())
 import { defineComponent } from 'vue'
+// eslint-disable-next-line no-unused-vars
 import { enUS } from 'date-fns/locale'
+// eslint-disable-next-line no-unused-vars
 import { isSameDay } from 'date-fns'
 
 
@@ -213,6 +214,9 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     return{
       ticket: data,   // from data.js,
       person: [1, 0, 0],
+      countAdult: 1,
+      countKid: 0,
+      countBaby: 0,
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
@@ -234,46 +238,34 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       monthSelected: null,
     }
   },
+setup() {
+  
+},
 
-  setup(){
-  /*   const divs = document.getElementsByClassName('block-radio'),
-    const countPerson = divs.document.getElementByTagName('span')
-     */
-
+  methods: {
+    btnIncrease() {
+      if(document.querySelector("input[id=adult]:checked")) 
+        this.person[0]++;
+        else if(document.querySelector("input[id=kid]:checked"))
+        this.person[1]++;
+        else
+        this.person[2]++;
+   },
+   btnDecrease() {
+      if(document.querySelector("input[id=adult]:checked")) 
+        this.person[0]--;
+        else if(document.querySelector("input[id=kid]:checked"))
+        this.person[1]--;
+        else
+        this.person[2]--;
+   },
   },
   
-  methods: {  
-    isToday(date:number){
-			return isSameDay(date, new Date());
-		},
-   
-    increase(){
-      this.person
-    }
-  },
-
-  watch: {
-     // eslint-disable-next-line vue/no-arrow-functions-in-watch
-     selected: (value) => console.log(value),
-     // passenger count
-     count(a){
-       if(a < 0){
-         alert('ddd');
-       }
-     }
-  },
-
-  mounted() {   
-
-  },
-
-  computed: { 
-    locale: () => enUS,
-
-    
+  computed: {
 
   }
 
+ 
 })
 </script>
  
