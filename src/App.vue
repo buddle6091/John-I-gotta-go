@@ -4,7 +4,7 @@
 <Modal/>
 <div class="App">
 <span>John, I gotta go🛫</span>
-<div class="selectContainer"> 
+<div class="selectContainer inactive"> 
   <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
@@ -17,14 +17,13 @@
     <div class="shortInfo">
     <span>10.19</span>~ <span>10.22</span>|
     <span>3 people</span>|
-    <span>economy</span>
+    <span>economy</span>      
 </div>
   </div>
-<div class="selectContainer">  
+<div class="selectContainer active">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
   <div class="flightContainer" data-bs-toggle="modal" data-bs-target="#exampleModal">
-   
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
@@ -37,41 +36,36 @@
     </div>
 <!--search Departure-->
   <!--search Destination-->
-
 <div class="set">
   <i class="material-icons"> date_range </i> 
-  <datepicker class="dateBox" :class="picker"
-      :v-model="selected"
-      :locale="locale"
-      :upperLimit="to"
-      :lowerLimit="from"
-      :clearable="true"
-			:disabledDates="{ predicate: isToday }"><i class="material-icons">flight_takeoff</i> <span>Depart Date</span> </datepicker>
-  <div class="dateBox"><i class="material-icons">flight_land</i> <span>Return Date</span> </div>
+   <div class="dateBox"><i class="material-icons">flight_takeoff</i>
+    <datepicker class="picker" v-model="from" placeholder="Depart Date" :weekStartsOn='0' :style="{ backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    </div> 
+    <div class="dateBox"><i class="material-icons">flight_land</i>
+    <datepicker class="picker" v-model="to" placeholder="Return Date" :weekStartsOn='0' :style="{ backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    </div> 
 </div>
-<Icon icon='pesrson' :style="{width:'0px', height: '0px'}"/>
-
 <!-- passengers -->
-<div class="set">
+<div class="set" :style="{ zIndex: -5 }">
  <i class="material-icons">people</i>
  <ul class="block"> 
   <li class="block-radio first passengers">
    <label>
-    <input type="radio" @change="selectPerson($event)" id="adult" name="passenger" value="1" checked>
+    <input type="radio" id="adult" name="passenger" value="1" checked>
         <div>Adult &times; <span> {{ person[0] }} </span>
          <h2>12+ years old</h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" @change="selectPerson($event)" id="kid" name="passenger" value="0"> 
+      <input type="radio" id="kid" name="passenger" value="0"> 
         <div>kid &times; <span> {{ person[1] }} </span>
         <h2>under 12 </h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
-      <input type="radio" @change="selectPerson($event)" id="baby" name="passenger" value="0"> 
+      <input type="radio" id="baby" name="passenger" value="0"> 
        <div>baby &times; <span> {{ person[2] }} </span>
        <h2>less than 24 months</h2></div>
       </label> 
@@ -93,7 +87,7 @@
 </div>
 <!--class-->
 
-<div class="set">
+<div class="set" :style="{ zIndex: -5 }">
  <i class="material-icons">flight_class</i>
  <ul class="block"> 
   <li class="block-radio-first class">
@@ -127,8 +121,8 @@
 </ul>       
 </div>
 
-<Button :style="{marginTop: '2rem'}"> Search </Button>
-<div>
+<Button :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+<!-- <div>
     <datepicker
       class="datebox"
       v-model="selected"
@@ -151,7 +145,7 @@
       placeholder="from"
       weekStartsOn=0
     />
-  </div>
+  </div> -->
 <!--   <div>
     <datepicker class="picker" v-model="to" placeholder="to" />
   </div> -->
@@ -180,7 +174,7 @@ import TicketBox from './ticketBox.vue';
 import Modal from './modal.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
 //import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
-import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
+//import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
 // eslint-disable-next-line no-unused-vars
@@ -204,7 +198,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
    ToggleButton: ToggleButton,
    //Search: Search,
    Button: Button,
-   Icon: Icon,
+   //Icon: Icon,
    Datepicker
  
   },
@@ -217,6 +211,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       countAdult: 1,
       countKid: 0,
       countBaby: 0,
+      selectClass: '',
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
@@ -243,6 +238,7 @@ setup() {
 },
 
   methods: {
+  
     btnIncrease() {
       if(document.querySelector("input[id=adult]:checked")) 
         this.person[0]++;
@@ -251,7 +247,7 @@ setup() {
         else
         this.person[2]++;
    },
-   btnDecrease() {
+    btnDecrease() {
       if(document.querySelector("input[id=adult]:checked")) 
         this.person[0]--;
         else if(document.querySelector("input[id=kid]:checked"))
@@ -263,6 +259,10 @@ setup() {
   
   computed: {
 
+  },
+
+  watch: {
+ 
   }
 
  
@@ -309,17 +309,17 @@ html{
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+
+
+  &.is-active{
+    
+    .selectContainer__inactive{
+      opacity: 0;
+    }
   
-  &__inactive{
-    opacity: 1;
-    transition: opacity 0.6s;
-    position: absolute;
-
-  }
-
-  &__active{
-    opacity: 0;
-    transition: opacity 0.6s;
+    .selectContainer__active{
+      opacity: 1;
+    }
   }
   
 .flightContainer{
@@ -367,32 +367,6 @@ html{
     color: rgb(70, 68, 68) !important;
   }
 }
-.dateBox{
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
-    color: $text-main;
-    width: 42%;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin: {
-      left: auto;
-      right: auto;
-    };
-    padding: 0 $spacing-4 0 $spacing-1;
-    background: $base;
-    box-shadow: $shadow-concave;
-    border-radius: $radius-1;
-
-    i{
-      font-size: 2px;
-      text-align: flex-start;
-    }
-
-    span{
-      font-size: 14px;
-    }
-}
 
 .set{
   width: 100%;
@@ -408,6 +382,32 @@ html{
     right: auto;
   }
 
+    .dateBox{
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
+        color: $text-main;
+        width: 42%;
+        box-sizing: border-box;
+        cursor: pointer;
+        margin: {
+          left: auto;
+          right: auto;
+        };
+        padding: 0 $spacing-4 0 $spacing-1;
+        background: $base;
+        box-shadow: $shadow-concave;
+        border-radius: $radius-1;
+    
+        i{
+          font-size: 2px;
+          text-align: flex-start;
+        }
+    
+        span{
+          font-size: 14px;
+        }
+    }
   [class=material-icons]{
     font-size: 30px; 
     color: rgb(80, 80, 80); 
@@ -415,37 +415,35 @@ html{
     position: relative;
     right: 8px;
   } 
-}
 
-.block{
-  width: 21rem;
-  height: 5rem;
-  border-radius: 15px;
-  box-shadow: $shadow-convex-hover;
-  background: $base;
-  justify-content: center;
-  position: relative;
-  display: flex;
-  cursor: pointer;
+  .block{
+    width: 21rem;
+    height: 5rem;
+    border-radius: 15px;
+    box-shadow: $shadow-convex-hover;
+    background: $base;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    cursor: pointer;
 
   div{
-    margin: 0, auto;
+    top: 10px;
+    position: relative;
   }
   
-  label{
-    margin: 10px;
-   }
+
 
   li{
     display: inline;
     text-align: center;
     font-size: 0.9rem;
-    } 
+    }  
 
   h2{
     color: $text-main;
     font-size: 2px;
-    line-height: 0.6rem;   
+    line-height: 0.6rem;
     }
 
     [class=material-icons]{
@@ -477,6 +475,11 @@ html{
     bottom: none;
   }
   position: relative;
+
+  .div{
+    margin-top: 10px !important;
+    position: inherit;
+  }
  
     &.passengers{
       width: 30%;
@@ -495,6 +498,7 @@ html{
     bottom: none;
   } 
   position: relative;
+  z-index: inherit;
   
    &.passengers{
       width: 30%;
@@ -507,6 +511,7 @@ html{
 .block-radio-last{
   border-radius: 0px 15px 15px 0px;
   position: relative;
+  z-index: inherit;
    &.passengers{
       border: 0.1rem dashed $disabled;
       border: {
@@ -524,9 +529,10 @@ html{
 .BtnContainer{
   width: 10%;
   height: auto;
-  //display: flex;
   position: relative;
   flex-direction: column;
+}
+
 }
 
 .ticketContainer{
