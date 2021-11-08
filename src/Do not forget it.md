@@ -59,7 +59,62 @@ ex ) li a {}
 :visitied 가상 클래스는 이미 클릭했거나 방문했던 페이지에 있는 앵커 태그에만 특정한 스타일 적용
 ex ) a:link {}
 
-##
+## X + Y
+인접 선택자, 앞의 요소 바로 뒤에 있는 요소만 해당됨
+ex ) li + span {}
+
+## X > Y
+일반 X Y 와 다르게 직계 자식만을 선택하는 것이다.
+ex ) div > ul
+
+## X ~ Y
+X + Y 와 같은 형제 선택자이지만 관대한 버젼으로, 하위의 모든 요소를 선택가능하다.
+
+## X[title]
+속성 선택자, title 속성이 있는 앵커 태그만을 선택, title이 없는 태그에는 특정한 스타일이 적용되지 않는다. -> 상세한 작업 추천
+ex ) a[title] {}
+
+## X[href="foo"] / X[href*="nettuts"] / X[href^="http"] / X[href$=".jpg"] / X[data-*="foo"] / X[foo~="bar"]
+
+## X:checked
+라디오나 체크박스 같은 체크되는 사용자 인터페이스 요소만을 대상으로 한다. 
+ex ) input[type=radio]: checked {}
+
+## X::after(before)
+클래스 선택된 요소 주변에 콘텐츠를 생성 = 삽입해주는 요소
+content라는 속성과 함께 쓰임
+ex ) .clearfix::after {
+  content: ""
+}
+
+## X:hover
+사용자가 요소 위에 커서를 올리면 특정 스타일 적용
+
+## X:focus
+해당 컨테이너를 한번이라도 클릭 -> 지정 하면 동작. 
+만약 동작하지 않는 요소라면 ex ) <div class=" " tabindex="-1">
+
+## X:not(선택자)
+원하는 요소를 선택하고 싶은데 그중에 특정 요소만 제외하고 싶을 때 쓰임
+ex ) div:not(#container) {
+  color: blue;
+}
+
+## X::가상요소
+첫 번째 줄이나 첫 글자와 같이 요소 일부분에 스타일을 적용하는데 가상 요소 (::로 표기되는)를 사용할 수 있다. 블록 레벨 요소에 적용
+
+## X:nth-child(n)
+
+## X:only-of-type
+
+## data-@@-##
+해당 요소에 있는 값을 JS에서도 만질 수 있게 해줌
+ex ) <span data-car-name= "mercedes"> 메르세데스 </span>
+JS ex ) [data-car-name] {
+  color: royalblue;
+}
+
+
 
 # 스타일 상속
 

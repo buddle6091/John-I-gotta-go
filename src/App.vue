@@ -121,43 +121,7 @@
 </ul>       
 </div>
 
-<Button :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
-<!-- <div>
-    <datepicker
-      class="datebox"
-      v-model="selected"
-      :locale="locale"
-      :upperLimit="to"
-      :lowerLimit="from"
-      :clearable="true"
-			:disabledDates="{ predicate: isToday }"
-    >
-
-    </datepicker>
-  </div>
-  <div>
-    <datepicker
-      class="datebox"
-      weekday-format="iiiiii"
-      month-list-format="LLLL"
-      v-model="from"
-      :locale="locale"
-      placeholder="from"
-      weekStartsOn=0
-    />
-  </div> -->
-<!--   <div>
-    <datepicker class="picker" v-model="to" placeholder="to" />
-  </div> -->
-<!--   <div>
-    <datepicker
-      class="picker"
-      v-model="to"
-      :locale="locale"
-      disabled
-      placeholder="disabled"
-    />
-  </div> -->
+  <Button @click="search" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
 </div>   
 
   <TicketBox/>
@@ -177,6 +141,7 @@ import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton
 //import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
+//import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date())
 import { defineComponent } from 'vue'
@@ -238,8 +203,7 @@ setup() {
 },
 
   methods: {
-  
-    btnIncrease() {
+      btnIncrease() {
       if(document.querySelector("input[id=adult]:checked")) 
         this.person[0]++;
         else if(document.querySelector("input[id=kid]:checked"))
@@ -255,6 +219,13 @@ setup() {
         else
         this.person[2]--;
    },
+/*    async search(){
+    const Flight_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
+    const result = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${Flight_API_KEY}&numOfRows=${}&pageNo=${}&depAirportId=${}&arrAirportId=${}&depPlandTime=${}&airlineId=${}`)
+    consolelog(result); 
+   } */
+
+
   },
   
   computed: {
@@ -400,8 +371,9 @@ html{
         border-radius: $radius-1;
     
         i{
-          font-size: 2px;
+          font-size: 20px;
           text-align: flex-start;
+          margin-left: 10px;
         }
     
         span{
