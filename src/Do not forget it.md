@@ -152,5 +152,11 @@ text-align : 정렬을
     </datepicker>
   </div>
 
+<!--Back End-->
+
+# OPEN API
+## error
+  cors(cross origin resource sharing) 에러 : 도메인이 다르기에 발생 / port 차이
+  vue.config.js에서 수정 -> proxy root url 추가
 
 

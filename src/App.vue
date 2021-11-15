@@ -23,31 +23,33 @@
 <div class="selectContainer active">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
-  <div class="flightContainer" data-bs-toggle="modal" data-bs-target="#exampleModal">
-   <span><h1>ICN</h1>
+  <div class="flightContainer">
+   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
  <img src=".\assets\icon\airplane2.png" alt="비행기2" :style="airplane_img_active"/>
- <Button layout='reverse' color='base' :style="{top:'4px', left:'1px',display: 'relative'}">
+ <Button layout='reverse' color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
-   </Button> </div>
-   <span><h1>CJU</h1>
+ </Button> </div>
+   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>CJU</h1>
     Jeju Airport</span>
     </div>
 <!--search Departure-->
   <!--search Destination-->
 <div class="set">
-  <i class="material-icons"> date_range </i> 
+  <span class="material-icons"> date_range </span> 
    <div class="dateBox"><i class="material-icons">flight_takeoff</i>
-    <datepicker class="picker" v-model="from" placeholder="Depart Date" :weekStartsOn='0' :style="{ backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    <datepicker class="picker" v-model="from" placeholder="Depart Date" :weekStartsOn='0' 
+     :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="to" placeholder="Return Date" :weekStartsOn='0' :style="{ backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    <datepicker class="picker" v-model="to" placeholder="Return Date" :weekStartsOn='0' 
+     :lower-limit="picked" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
 <!-- passengers -->
 <div class="set" :style="{ zIndex: -5 }">
- <i class="material-icons">people</i>
+ <span class="material-icons">people</span>
  <ul class="block"> 
   <li class="block-radio first passengers">
    <label>
@@ -88,32 +90,32 @@
 <!--class-->
 
 <div class="set" :style="{ zIndex: -5 }">
- <i class="material-icons">flight_class</i>
+ <span class="material-icons">flight_class</span>
  <ul class="block"> 
   <li class="block-radio-first class">
    <label>
-    <input type="radio" id="class1" name="class" value="economy" checked>
+    <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
         <div> <i class="material-icons">airline_seat_recline_normal</i>
          <h2>Economy</h2></div>
       </label>
   </li>
   <li class="block-radio class">
       <label>
-      <input type="radio" id="class2" name="class" value="premium economy"> 
+      <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
         <div> <i class="material-icons">airline_seat_recline_extra</i>
          <h2>Premium economy</h2></div>         
       </label>
   </li>
   <li class="block-radio class">
       <label>
-      <input type="radio" id="class3" name="class" value="business"> 
+      <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
        <div> <i class="material-icons">airline_seat_flat_angled</i>
          <h2>Business</h2></div>
       </label> 
   </li>
   <li class="block-radio-last class">
       <label>
-      <input type="radio" id="class4" name="class" value="first"> 
+      <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
        <div> <i class="material-icons">airline_seat_individual_suite</i>
          <h2>First</h2></div>     
       </label> 
@@ -135,13 +137,13 @@
 import data from './data'; 
 import Button from './components/UI/neumorphism/button/Button.vue';
 import TicketBox from './ticketBox.vue';
-import Modal from './modal.vue';
+import Modal from './Modal.vue';
 import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
 //import Search from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 //import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
-//import axios from 'axios'
+import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date())
 import { defineComponent } from 'vue'
@@ -149,6 +151,7 @@ import { defineComponent } from 'vue'
 import { enUS } from 'date-fns/locale'
 // eslint-disable-next-line no-unused-vars
 import { isSameDay } from 'date-fns'
+
 
 
 export default defineComponent({   // 데이터 저장하는 곳  {{데이터바인딩}}
@@ -173,10 +176,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     return{
       ticket: data,   // from data.js,
       person: [1, 0, 0],
-      countAdult: 1,
-      countKid: 0,
-      countBaby: 0,
-      selectClass: '',
+      selectClass: 'economy',
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
@@ -219,11 +219,13 @@ setup() {
         else
         this.person[2]--;
    },
-/*    async search(){
-    const Flight_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
-    const result = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${Flight_API_KEY}&numOfRows=${}&pageNo=${}&depAirportId=${}&arrAirportId=${}&depPlandTime=${}&airlineId=${}`)
-    consolelog(result); 
-   } */
+  async search(){
+    //const converter = require("xml-js");
+    const Flight_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
+    const url = `http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?ServiceKey=${Flight_API_KEY}&pageNo=1`
+    const res = await axios.get(url)
+    console.log(res);
+   } 
 
 
   },
@@ -233,7 +235,7 @@ setup() {
   },
 
   watch: {
- 
+
   }
 
  
@@ -340,38 +342,44 @@ html{
 }
 
 .set{
-  width: 100%;
   align-content: flex-start;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;               
+  flex-wrap:  nowrap;               
   position: relative;
-  left: -20px;
+  left: 10px;
   margin: {
-    top: 1rem;
-    left: 2px;
-    right: auto;
+    top: 1.4rem;
+    //left: 2px;
+    //right: auto;
   }
-
+  span[class=material-icons]{
+    font-size: 30px; 
+    color: rgb(80, 80, 80); 
+    margin: auto;
+    position: relative;
+    left: -10px;
+    } 
     .dateBox{
-        display: flex;
-        align-items: center;
-        vertical-align: middle;
-        color: $text-main;
-        width: 42%;
-        box-sizing: border-box;
-        cursor: pointer;
-        margin: {
-          left: auto;
-          right: auto;
+      width: 9rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      vertical-align: middle;
+      color: $text-main;
+      box-sizing: border-box;
+      cursor: pointer;
+      margin: {
+          left: 10px;
+          right: 5px;
         };
-        padding: 0 $spacing-4 0 $spacing-1;
-        background: $base;
-        box-shadow: $shadow-concave;
-        border-radius: $radius-1;
+      padding: 0 $spacing-4 0 $spacing-1;
+      background: $base;
+      box-shadow: $shadow-concave;
+      border-radius: $radius-1;
     
         i{
-          font-size: 20px;
+          font-size: 18px;
           text-align: flex-start;
           margin-left: 10px;
         }
@@ -380,13 +388,6 @@ html{
           font-size: 14px;
         }
     }
-  [class=material-icons]{
-    font-size: 30px; 
-    color: rgb(80, 80, 80); 
-    margin: auto;
-    position: relative;
-    right: 8px;
-  } 
 
   .block{
     width: 21rem;
@@ -403,8 +404,6 @@ html{
     top: 10px;
     position: relative;
   }
-  
-
 
   li{
     display: inline;
