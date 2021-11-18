@@ -152,6 +152,14 @@ text-align : 정렬을
     </datepicker>
   </div>
 
+<!--JS-->
+# Date()
+## make single digit format -> 2 digit format
+  기본적으로 getMonth(), getDate()는 getFullYear()와 달리 1의 자리수는 싱글 포맷으로 표기됨.
+  ("0" + this.getDate()).slice(-2)
+  ("0" + (this.getMonth() + 1)).slice(-2) // month는 0부터 시작하기 때문
+
+
 <!--Back End-->
 
 # OPEN API
@@ -159,5 +167,7 @@ text-align : 정렬을
   cors(cross origin resource sharing) 에러 : 도메인이 다르기에 발생 / port 차이
   vue.config.js에서 수정 -> proxy root url 추가
   ❗ 공공데이터에서 제공하는 api인 경우 cors 부분은 해당 api 배포서버에서 해결해줘야하는 부분이기에 여기서 건들일 방법이 전무하다. 그러므로 개발 단계에서 사용하는 크롬 브라우저에 플러그인을 추가해 임시로 보호를 해제한다.
+
+  https://velog.io/@qortmdalsdl/CORS-%EC%A0%95%EB%A6%AC%EC%99%80-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95-Chrome
 
 

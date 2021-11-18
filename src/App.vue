@@ -224,7 +224,7 @@ setup() {
   async search(){
     //const converter = require("xml-js");
     const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
-    const depPlandTime = [this.picked_from.getFullYear()] + [this.picked_from.getMonth()] + [this.picked_from.getDate()];
+    const depPlandTime = [this.picked_from.getFullYear()] + [("0" + (this.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.picked_from.getDate()).slice(-2)];
     const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
     const res = await axios.get(url)
     console.log(depPlandTime);
