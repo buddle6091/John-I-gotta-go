@@ -158,5 +158,6 @@ text-align : 정렬을
 ## error
   cors(cross origin resource sharing) 에러 : 도메인이 다르기에 발생 / port 차이
   vue.config.js에서 수정 -> proxy root url 추가
+  ❗ 공공데이터에서 제공하는 api인 경우 cors 부분은 해당 api 배포서버에서 해결해줘야하는 부분이기에 여기서 건들일 방법이 전무하다. 그러므로 개발 단계에서 사용하는 크롬 브라우저에 플러그인을 추가해 임시로 보호를 해제한다.
 
 

@@ -39,12 +39,12 @@
 <div class="set">
   <span class="material-icons"> date_range </span> 
    <div class="dateBox"><i class="material-icons">flight_takeoff</i>
-    <datepicker class="picker" v-model="from" placeholder="Depart Date" :weekStartsOn='0' 
+    <datepicker class="picker" v-model="picked_from" placeholder="Depart Date" :weekStartsOn='0' 
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="to" placeholder="Return Date" :weekStartsOn='0' 
-     :lower-limit="picked" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    <datepicker class="picker" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
+     :lower-limit="picked_from" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
 <!-- passengers -->
@@ -175,6 +175,8 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     
     return{
       ticket: data,   // from data.js,
+      picked_from: new Date(),
+      picked_to: '',
       person: [1, 0, 0],
       selectClass: 'economy',
       openModal : false,
@@ -221,12 +223,13 @@ setup() {
    },
   async search(){
     //const converter = require("xml-js");
-    const Flight_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
-    const url = `http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?ServiceKey=${Flight_API_KEY}&pageNo=1`
+    const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
+    const depPlandTime = [this.picked_from.getFullYear()] + [this.picked_from.getMonth()] + [this.picked_from.getDate()];
+    const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
     const res = await axios.get(url)
+    console.log(depPlandTime);
     console.log(res);
    } 
-
 
   },
   
@@ -266,7 +269,7 @@ html{
   margin: {
     top: 15px;
     left: auto;
-    right: auto;
+    right: auto;  
   };
   width: 88%;
   max-width: 835px;

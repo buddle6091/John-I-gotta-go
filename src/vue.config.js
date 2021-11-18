@@ -14,9 +14,9 @@ module.exports = {
     },
     devServer:{
         proxy: {
-            '^/api':{
-                "target":'http://localhost:8080',
-                "changeOrigin":true,
+            '/api':{
+                target:'http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList',
+                changeOrigin:true,
                 logLevel: 'debug',
 
             }
