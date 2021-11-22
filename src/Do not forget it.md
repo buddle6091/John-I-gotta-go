@@ -159,6 +159,24 @@ text-align : 정렬을
   ("0" + this.getDate()).slice(-2)
   ("0" + (this.getMonth() + 1)).slice(-2) // month는 0부터 시작하기 때문
 
+# ||, && 연산자
+## || (or) 변수 초기화 연산자
+  ex ) function() {documentDate(theDate)
+  thedate = theDate || 20211121} // 인자값이 존재하지 않다면 or 연산자 오른쪽의 20211121이 리턴
+
+  documentDate("20211222") // "20211222"
+  documentDate() // "20211121"
+
+## && (and) 조건문 연산자
+  ex ) function isAdult(age) { if (age && age > 17) { return true; } else { return false; } } // age 라는 전달인자가 존재하고, 17보다 크게되면 true라는 boolean 값을 반환, 그게 아니라면 false
+
+  ex ) function enter(userName) { userName && logIn(userName) || signUp (); }
+  // usernName 인자를 받았다면 logIn 함수 실행, 아니라면 signUp 함수 실행
+
+<!--vue-->
+# watch()
+  Data (val, oldVal)
+  val 은 변경데이터, oldVal 은 변경 전 데이터
 
 <!--Back End-->
 
