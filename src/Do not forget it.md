@@ -114,7 +114,11 @@ JS ex ) [data-car-name] {
   color: royalblue;
 }
 
-
+# animation
+## colapse Tip
+  https://developers.google.com/web/updates/2017/03/performant-expand-and-collapse
+  getBoundingClientRect() : 뷰포트를 기준으로 요소의 크기와 해당 위치를 반환
+  왼쪽, 위쪽, 오른쪽, 아래, x, y, 너비, 높이,  8개의 속성 반환
 
 # 스타일 상속
 
@@ -177,6 +181,11 @@ text-align : 정렬을
 # watch()
   Data (val, oldVal)
   val 은 변경데이터, oldVal 은 변경 전 데이터
+
+# methods() vs computed()
+  methods에서는 안에 언급되지 않은 데이터의 변경될 때도 재실행 가능, computed에서는 자신이 참고하고있는 데이터의 변경에만 재실행
+
+  계속 methods에서 굴리다가 application이 필요 없는 데이터까지 계산에 넣어서 돌아가느라 부하가 걸릴 수 있으니, 자신과 관계없는 데이터는 x, 정해진 데이터에만 반응하는 함수는 computed
 
 <!--Back End-->
 

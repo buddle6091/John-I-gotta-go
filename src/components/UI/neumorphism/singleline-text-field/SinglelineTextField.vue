@@ -1,12 +1,12 @@
 <template>
   <div class="singlline-text-field">
-    <label for="text-box" :class="label"> {{ text }} </label>
+    <label for="text-box" :class="label"> {{ search }} </label>
     <div :class="classes">
       <input
         class="singlline-text-field__text"
         id="text-box"
         :type="{ varidater }"
-        :placeholder="place"
+        :placeholder="placeholder"
       /> 
     </div>
   </div>
@@ -16,11 +16,11 @@
 //import Vue from 'vue';
 
 export default {
-  name: 'search',
+  name: 'TextField',
   props: {
     text: {
       type: String,
-      default: ''
+      default: 'search'
     },
     place:{
       type:String,
@@ -32,7 +32,7 @@ export default {
     },
     type: {
       type: String,
-      default: 'search',
+      default: 'form',
       varidater() {
         return ['form', 'search', 'memo'];
       }
@@ -90,13 +90,13 @@ form {
     padding: 0 $spacing-2;
     background: $base;
     box-shadow: $shadow-concave;
-    font-size: 14px;
+    font-size: 20px;
     border-radius: $radius-2;
     &--form {
       height: 40px;
     }
     &--search {
-      height: 36px;
+      height: 46px;
       &::before {
         margin: 0 $spacing-1 0 0;
         font-family: 'Material Icons';

@@ -1,5 +1,5 @@
 <template>
-<div class="selectContainer inactive"> 
+<div class="selectContainer"> 
   <div class="flightContainer">
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
@@ -15,7 +15,7 @@
     <span>economy</span>      
 </div>
   </div>
-<div class="selectContainer active">  
+<div class="selectContainer">  
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
   <div class="flightContainer">
@@ -221,7 +221,10 @@ setup() {
   },
   
   computed: {
-
+    /* collapse animation
+    작은창을 누르면 상세 창의 높이 만큼 애니메이션이 부여되며
+    원래창은 opacity 가 0, 새 창은 1이 되어 간다. focus가 창에서 벗어나면,
+    search 버튼을 누르면 다시 원래대로*/
   },
 
   watch: {
@@ -273,12 +276,24 @@ html{
   border-radius: $radius-3;
   box-shadow: $shadow-base;
   padding: $spacing-4 $spacing-6;
-  //position: relative;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  overflow: hidden;
+  transition: height 0.4s;
 
+  &__inactive-content{
+    opacity: 1;
+    transition: opacity 0.4s;
+    position: absolute;
+  }
+
+  &__active-content{
+    opacity: 0;
+    transition: opacity 0.4s
+  }
 
   &.is-active{
     
