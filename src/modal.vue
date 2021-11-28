@@ -27,22 +27,22 @@
             </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="list-group-item list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="list-group-item list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="list-group-item list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="list-group-item list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="list-group-item list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="list-group-item list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="list-group-item list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="list-group-item list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="list-group-item list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="list-group-item list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="list-group-item list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="list-group-item list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="list-group-item list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
-                <button type="button" class="list-group-item list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
@@ -53,11 +53,11 @@
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
               </div>
             </div>
           </div>
@@ -68,11 +68,11 @@
               </button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
               </div>
             </div>
           </div>
@@ -94,22 +94,22 @@
             </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="neu-list-group-item list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="list-group-item list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="list-group-item list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
-                <button type="button" class="list-group-item list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="list-group-item list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="list-group-item list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="list-group-item list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="list-group-item list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="list-group-item list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="list-group-item list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="list-group-item list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="list-group-item list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="list-group-item list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="list-group-item list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="list-group-item list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
               </div>
             </div>
           </div>
@@ -120,11 +120,11 @@
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
               </div>
             </div>
           </div>
@@ -135,11 +135,11 @@
               </button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+              <div class="neu-list-group">
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
               </div>
             </div>
           </div>
@@ -308,9 +308,9 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   border-radius: 0;
 }
 
-/* bootstrap list customed */
+/* bootstrap neu-list customed */
 
-.list-group {
+.neu-list-group {
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -318,32 +318,32 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   border-radius: 0.25rem;
 }
 
-.list-group-numbered {
-  list-style-type: none;
+.neu-list-group-numbered {
+  neu-list-style-type: none;
   counter-reset: section;
 }
-.list-group-numbered > li::before {
+.neu-list-group-numbered > li::before {
   content: counters(section, ".") ". ";
   counter-increment: section;
 }
 
-.list-group-item-action {
+.neu-list-group-item-action {
   width: 100%;
   color: #495057;
   text-align: inherit;
 }
-.list-group-item-action:hover, .list-group-item-action:focus {
+.neu-list-group-item-action:hover, .neu-list-group-item-action:focus {
   z-index: 1;
   color: #495057;
   text-decoration: none;
   background-color: #f8f9fa;
 }
-.list-group-item-action:active {
+.neu-list-group-item-action:active {
   color: #212529;
   background-color: #e9ecef;
 }
 
-.neu-list-group-item {
+.neu-neu-list-group-item {
   position: relative;
   display: block;
   padding: 0.5rem 1rem;
@@ -355,29 +355,29 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   }
 
 }
-.list-group-item:first-child {
+.neu-list-group-item:first-child {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
 }
-.list-group-item:last-child {
+.neu-list-group-item:last-child {
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
 }
-.list-group-item.disabled, .list-group-item:disabled {
+.neu-list-group-item.disabled, .neu-list-group-item:disabled {
   color: #6c757d;
   pointer-events: none;
   background-color: #fff;
 }
-.list-group-item.active {
+.neu-list-group-item.active {
   z-index: 2;
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
-.list-group-item + .list-group-item {
+.neu-list-group-item + .neu-list-group-item {
   border-top-width: 0;
 }
-.list-group-item + .list-group-item.active {
+.neu-list-group-item + .neu-list-group-item.active {
   margin-top: -1px;
   border-top-width: 1px;
 }

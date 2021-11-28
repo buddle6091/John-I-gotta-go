@@ -12,11 +12,27 @@
 # npm install github open source
  clone으로 복사하고 깔았는데 사용에 실패하면 제작자가 패키지 이름이나 컴포넌트 이름을 잘못설정했을 확률이 높으니, 대소문자 구분해서 설정해보자
 
-<!--node-->
+# clone
+> git clone [repository url] 그 후 해당 폴더로 들어가(cd) > code . -r 을 하면 현재 화면에서 바로 표시됨
+
+# init
+> git init 으로 버전 관리
+❗ 만약 Reinitialized existing Git repository in ~ 오류가 발생하면 > git remote -v 으로 원격 리모트 주소가 아닌경우에는 삭제하면 됨
+
+<!--node js-->
 # NVM (Node Version Manager)
 
 # command
 1. node - v : node.js current version
+
+# npm run serve error
+에러 내용 : error - digital envelope routines::unsupported
+ "scripts": {
+    "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+  },
+  을 package.json에 교체 추가 해주면 됨.
 
 <!--css-->
 # icon (google material icon)
