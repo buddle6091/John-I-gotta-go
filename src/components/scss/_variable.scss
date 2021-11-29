@@ -1,5 +1,6 @@
 /* Color styles */
-$base: #fcfcfc;
+$base: #eff1f6;
+$modal-blur: #eff1f680;
 $base-liner: linear-gradient(
   158.17deg,
   #f3f5fa -1.94%,
@@ -46,6 +47,12 @@ $shadow-convex: 0.2rem 0.3rem 0.8rem #a5bac78c,
   -0.5rem -0.5rem 1rem #ffffff99;
 $shadow-convex-hover: 0.1rem 0.2rem 0.4rem #a5bac7ee,
   -0.3rem -0.3rem 0.5rem #ffffff0a;
+$shadow-modal: inset -0.7rem -0.7rem -2.1rem 0 #ffffff,
+  0.7rem 0.7rem 2.1rem 0 black;
+$shadow-accordion: 0.1rem 0.2rem 0.4rem #a5bac7ee,
+  -0.3rem -0.3rem 0.5rem #ffffff0a;
+$shadow-window: 0.2rem 0.2rem 0.5rem #a5bac7ee,
+  -0.5rem -0.5rem 0.5rem #ffffff0a;
 $shadow-convex-large: 0.3rem 0.5rem 0.12rem #a5bac773,
   -0.5rem -5rem 0.1rem #ffffffcc;
 $shadow-icon: 0.1rem 0.3rem 0.3rem #43afb640,

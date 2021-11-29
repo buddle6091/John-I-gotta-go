@@ -1,8 +1,8 @@
 <template>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  :style="{backgroundColor: 'rgba(255, 255, 255, 0)'}">
+  :style="{backgroundColor: '#eff1f650'}">
   <div class="modal-dialog">
-    <div class="modal-content" :style="modal_neu">
+    <div class="neu-modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">John, where are you going to 🛫</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -19,14 +19,14 @@
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample">
           
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="neu-accordion" id="accordionExample">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingOne">
+            <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#D_KR" aria-expanded="true" aria-controls="collapseOne">
                 Domestic (South Korea)
             </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
@@ -46,13 +46,13 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingTwo">
+              <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#D_JP" aria-expanded="false" aria-controls="collapseTwo">
                 Japan      
               </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div id="D_JP" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
@@ -61,13 +61,13 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingThree">
+              <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#D_CH" aria-expanded="false" aria-controls="collapseThree">
                 China
               </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div id="D_CH" class="neu-accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
@@ -86,18 +86,17 @@
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample2">
-          <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <div class="neu-accordion" id="accordionExample">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingOne">
+            <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Domestic (South Korea )
             </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
@@ -110,16 +109,17 @@
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingTwo">
+              <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Japan
               </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
@@ -128,13 +128,13 @@
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <div class="neu-accordion-item">
+            <h2 class="neu-accordion-header" id="headingThree">
+              <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 China
               </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div id="collapseThree" class="neu-accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
@@ -180,9 +180,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   data(){
     
     return{    
-      modal_neu: 
-      {borderRadius: '0.6rem', backgroundColor: '#eff1f6'},
-      
+
     }
     
   }
@@ -196,8 +194,24 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 @import './components/scss/main.scss';
 @import './components/scss/_variable.scss';
 
-/* bootstrap accordion customed */
-.accordion-button {
+/* bootstrap modal customed */
+
+.neu-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: $base;
+  background-clip: padding-box;
+  //border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow-concave;
+  border-radius: 0.7rem;
+  outline: 0;
+}
+
+/* bootstrap neu-accordion customed */
+.neu-accordion-button {
   position: relative;
   display: flex;
   align-items: center;
@@ -207,28 +221,27 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   color: #212529;
   text-align: left;
   background-color: $base;
-  border: 1px solid  ;
   border-radius: 0;
   overflow-anchor: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-  .accordion-button {
+  .neu-accordion-button {
     transition: none;
   }
 }
 
-/* activating accordion button*/
-.accordion-button:not(.collapsed) {
+/* activating neu-accordion button*/
+.neu-accordion-button:not(.collapsed) {
   color: #0c63e4;
   background-color: #e7f1ff;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
-.accordion-button:not(.collapsed)::after {
+.neu-accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   transform: rotate(-180deg);
 }
-.accordion-button::after {
+.neu-accordion-button::after {
   flex-shrink: 0;
   width: 1.25rem;
   height: 1.25rem;
@@ -240,71 +253,72 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   transition: transform 0.2s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .accordion-button::after {
+  .neu-accordion-button::after {
     transition: none;
   }
 }
-.accordion-button:hover {
+.neu-accordion-button:hover {
   z-index: 2;
 }
-.accordion-button:focus {
+.neu-accordion-button:focus {
   z-index: 3;
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-.accordion-header {
+.neu-accordion-header {
   margin-bottom: 0;
 }
 
-.accordion-item {
+.neu-accordion-item {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: $shadow-accordion;
 }
-.accordion-item:first-of-type {
+.neu-accordion-item:first-of-type {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
-.accordion-item:first-of-type .accordion-button {
+.neu-accordion-item:first-of-type .neu-accordion-button {
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
-.accordion-item:not(:first-of-type) {
+.neu-accordion-item:not(:first-of-type) {
   border-top: 0;
 }
-.accordion-item:last-of-type {
+.neu-accordion-item:last-of-type {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
-.accordion-item:last-of-type .accordion-button.collapsed {
+.neu-accordion-item:last-of-type .neu-accordion-button.collapsed {
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
-.accordion-item:last-of-type .accordion-collapse {
+.neu-accordion-item:last-of-type .neu-accordion-collapse {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
 
-.accordion-body {
+.neu-accordion-body {
   padding: 1rem 1.25rem;
 }
 
-.accordion-flush .accordion-collapse {
+.neu-accordion-flush .neu-accordion-collapse {
   border-width: 0;
 }
-.accordion-flush .accordion-item {
+.neu-accordion-flush .neu-accordion-item {
   border-right: 0;
   border-left: 0;
   border-radius: 0;
 }
-.accordion-flush .accordion-item:first-child {
+.neu-accordion-flush .neu-accordion-item:first-child {
   border-top: 0;
 }
-.accordion-flush .accordion-item:last-child {
+.neu-accordion-flush .neu-accordion-item:last-child {
   border-bottom: 0;
 }
-.accordion-flush .accordion-item .accordion-button {
+.neu-accordion-flush .neu-accordion-item .neu-accordion-button {
   border-radius: 0;
 }
 
@@ -319,7 +333,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 }
 
 .neu-list-group-numbered {
-  neu-list-style-type: none;
+  list-style-type: none;
   counter-reset: section;
 }
 .neu-list-group-numbered > li::before {
@@ -331,40 +345,45 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   width: 100%;
   color: #495057;
   text-align: inherit;
+  background-color: $base;
 }
 .neu-list-group-item-action:hover, .neu-list-group-item-action:focus {
   z-index: 1;
-  color: #495057;
-  text-decoration: none;
-  background-color: #f8f9fa;
-}
-.neu-list-group-item-action:active {
-  color: #212529;
-  background-color: #e9ecef;
-}
-
-.neu-neu-list-group-item {
-  position: relative;
-  display: block;
-  padding: 0.5rem 1rem;
   color: #212529;
   text-decoration: none;
   background-color: $base;
-  border: 1px solid rgba(0, 0, 0, 0.125) {
-    radius: 0px;
-  }
+  box-shadow: $shadow-concave;
+}
+.neu-list-group-item-action:active {
+  color: #212529;
+  background-color: $base;
+  box-shadow: $shadow-concave;
+  transition: background-color 1s ease;
+}
 
+/* list design */
+.neu-list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $text-main;
+  text-decoration: none;
+  background-color: $base;
+  border-bottom: 0.05rem solid rgba(148, 147, 147, 0.4);
 }
 .neu-list-group-item:first-child {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
+  border-bottom: 0.05rem solid rgba(148, 147, 147, 0.4);
 }
 .neu-list-group-item:last-child {
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
+  border: none;
 }
 .neu-list-group-item.disabled, .neu-list-group-item:disabled {
   color: #6c757d;
+  font-style: italic;
   pointer-events: none;
   background-color: #fff;
 }

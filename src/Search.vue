@@ -148,7 +148,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   components: {
    ToggleButton: ToggleButton,
    Button: Button,
-   Datepicker 
+   Datepicker: Datepicker
   },
   
   data(){
@@ -274,7 +274,7 @@ html{
   box-sizing: border-box;
   background: $base;
   border-radius: $radius-3;
-  box-shadow: $shadow-base;
+   box-shadow: $shadow-convex-hover;
   padding: $spacing-4 $spacing-6;
   position: relative;
   display: flex;
