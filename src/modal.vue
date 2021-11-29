@@ -12,7 +12,7 @@
       <div class="col-md-auto">
         <label for="validationServer03" class="form-label">Departure</label>
         <TextField class="is-invalid" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> search </TextField>
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> {{}} </TextField>
         <!-- <input type="text" class="neu-search is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
         data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> -->
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -28,21 +28,21 @@
             </h2>
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Busan(Pus)" disabled >Busan(Pus) &nbsp; <span class="badge bg-primary rounded-pill"> coming soon </span></button> <!-- Busan -->
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Domestic (South Korea )
+                Domestic (South Korea)
             </button>
             </h2>
             <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -171,20 +171,28 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   components: {
    TextField: TextField,
    Button: Button,
-
   },
-  methods: {  
 
-  },
-  
-  data(){
-    
+  data(){   
     return{    
-
+      Depature: '',
+      Flight: '',
+    }  
+  },
+  methods: {
+    selectDep(event){
+      const depature = event.target.value
+      console.log(depature)
     }
-    
+  },
+  computed: {
+  /*   selectDep() {
+      const t = document.getElementById('dep')
+      return t.addEventListener('click', function(event){
+        alert(event.target.tagName)
+      })
+    } */
   }
-  
 }
 
 
@@ -221,7 +229,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   color: #212529;
   text-align: left;
   background-color: $base;
-  border-radius: 0;
+  //border-radius: 10px;
   overflow-anchor: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 }
@@ -233,7 +241,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
 /* activating neu-accordion button*/
 .neu-accordion-button:not(.collapsed) {
-  color: #0c63e4;
+  color: black;
+  font-size: 1.2rem;
   background-color: #e7f1ff;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
@@ -262,7 +271,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 }
 .neu-accordion-button:focus {
   z-index: 3;
-  border-color: #86b7fe;
+  //border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
@@ -368,12 +377,12 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   padding: 0.5rem 1rem;
   color: $text-main;
   text-decoration: none;
-  background-color: $base;
+  background-color: #f5f5f5;
   border-bottom: 0.05rem solid rgba(148, 147, 147, 0.4);
 }
 .neu-list-group-item:first-child {
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+  /* border-top-left-radius: inherit;
+  border-top-right-radius: inherit; */
   border-bottom: 0.05rem solid rgba(148, 147, 147, 0.4);
 }
 .neu-list-group-item:last-child {
