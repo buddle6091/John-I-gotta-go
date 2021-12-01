@@ -1,6 +1,5 @@
 <template>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  :style="{backgroundColor: '#eff1f650'}">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" :style="{backgroundColor: '#eff1f650'}">
   <div class="modal-dialog">
     <div class="neu-modal-content">
       <div class="modal-header">
@@ -10,9 +9,10 @@
       <div class="modal-body">
         <form class="row g-3">
       <div class="col-md-auto">
-        <label for="validationServer03" class="form-label">Departure</label>
-        <TextField class="is-invalid" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> {{}} </TextField>
+        <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" label="ss" type="search" placeholder="search country or city"> 
+        {{ departure }}
+         </TextField>
         <!-- <input type="text" class="neu-search is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
         data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> -->
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -80,9 +80,8 @@
       </div>
       </div>
       <div class="col-md-auto">
-        <label for="validationServer03" class="form-label">arrival</label>
         <TextField class="is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" placeholder="search country or city"/>
+        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city"/>
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample2">
@@ -95,7 +94,7 @@
             </h2>
             <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="Fli" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
@@ -166,6 +165,7 @@ import TextField from './components/UI/neumorphism/singleline-text-field/Singlel
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   props : {
     openModal: Boolean,
+    value: String,
   },
   name: 'Modal',
   components: {
@@ -175,14 +175,20 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
   data(){   
     return{    
-      Depature: '',
-      Flight: '',
+      eparture: "xddd",
+      arrival: '',
     }  
   },
   methods: {
     selectDep(event){
-      const depature = event.target.value
-      console.log(depature)
+      var departure = event.target.value
+      console.log(departure)
+      
+    },
+
+    selectFli(event){
+      const arrival = event.target.value
+      console.log(arrival)
     }
   },
   computed: {

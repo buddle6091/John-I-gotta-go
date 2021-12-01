@@ -1,13 +1,14 @@
 <template>
   <div class="singlline-text-field">
-    <label for="text-box" :class="label"> {{ search }} </label>
+    <label for="text-box" :class="label"></label>
     <div :class="classes">
       <input
         class="singlline-text-field__text"
         id="text-box"
-        :type="{ varidater }"
-        :placeholder="placeholder"
-      /> 
+        type="text"
+        :placeholder="placeholder"  
+      />
+      
     </div>
   </div>
 </template>
@@ -18,14 +19,6 @@
 export default {
   name: 'TextField',
   props: {
-    text: {
-      type: String,
-      default: 'search'
-    },
-    place:{
-      type:String,
-      default: ''
-    },
     labelstate: {
       type: Boolean,
       default: true
@@ -33,14 +26,13 @@ export default {
     type: {
       type: String,
       default: 'form',
-      varidater() {
+      varidater: function () {
         return ['form', 'search', 'memo'];
       }
     },
     placeholder: {
       type: String,
-      default: 'local',
-    
+      default: ''
     }
   },
   computed: {
