@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- front toggle button -->
     <div class="toggle-button">
       <input
         id="left"
@@ -8,6 +9,7 @@
         name="toggle"
         value="One Way"
       />
+      <!-- behind description -->
       <label for="left" class="toggle-button__label--left"
         >One Way</label
       >
@@ -23,7 +25,7 @@
       </label>
       <span :class="sliderClasses">{{ isSelected }}</span>
     </div>
-
+    <!-- show selected -->
     <ul class="contents">
       <li v-if="isSelected === 'One Way'">
         selected : One Way

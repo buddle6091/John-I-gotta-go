@@ -38,7 +38,7 @@
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
+    <datepicker class="picker" v-if="beDisabled" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
      :lower-limit="picked_from" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
@@ -46,7 +46,7 @@
 <div class="set" :style="{ zIndex: -5 }">
  <span class="material-icons">people</span>
  <ul class="block" > 
-  <li class="block-radio first passengers">
+  <li class="block-radio passengers">
    <label>
     <input type="radio" id="adult" name="passenger" value="1" checked>
         <div>Adult &times; <span> {{ person[0] }} </span>
@@ -83,16 +83,47 @@
 </ul>       
 </div>
 <!--class-->
+<div class="set">
+ <span class="material-icons">flight_class</span>
+  <div class="block">
+    <label class="class">
+      <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
+      <div> <i class="material-icons">airline_seat_recline_normal</i>
+         <h2>Economy</h2></div>
+    </label>
+  </div>
+  <div class="block">
+    <label class="">
+      <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
+      <div> <i class="material-icons">airline_seat_recline_extra</i>
+         <h2>Premium economy</h2></div>
+    </label>
+  </div>
+  <div class="block">
+    <label>
+      <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
+       <div> <i class="material-icons">airline_seat_flat_angled</i>
+         <h2>Business</h2></div>
+    </label>
+  </div>
+  <div class="block">
+    <label>
+      <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
+       <div> <i class="material-icons">airline_seat_individual_suite</i>
+         <h2>First</h2></div>
+    </label>
+  </div>
+</div>
 
 <div class="set" :style="{ zIndex: -5 }">
  <span class="material-icons">flight_class</span>
- <ul class="block"> 
-  <li class="block-radio-first class">
-   <label>
+ <ul class="block class"> 
+  <li class="block class">
+  
     <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
         <div> <i class="material-icons">airline_seat_recline_normal</i>
          <h2>Economy</h2></div>
-      </label>
+  
   </li>
   <li class="block-radio class">
       <label>
@@ -108,7 +139,7 @@
          <h2>Business</h2></div>
       </label> 
   </li>
-  <li class="block-radio-last class">
+  <li class="block-radio class">
       <label>
       <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
        <div> <i class="material-icons">airline_seat_individual_suite</i>
@@ -158,7 +189,8 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       picked_from: new Date(),
       picked_to: '',
       person: [1, 0, 0],
-      selectClass: 'economy',
+      selectClass: '',
+      selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
@@ -221,10 +253,17 @@ setup() {
   },
   
   computed: {
-    /* collapse animation
-    작은창을 누르면 상세 창의 높이 만큼 애니메이션이 부여되며
-    원래창은 opacity 가 0, 새 창은 1이 되어 간다. focus가 창에서 벗어나면,
-    search 버튼을 누르면 다시 원래대로*/
+    /* 토글 버튼의 value 값이 One Way 일 때 datepicker를 disabled */
+/*     beDisabled() {
+      if()
+      return 
+    } */
+    /*DOM 을 이용하여 person, class 구간 버튼들을 클릭했을 때, background가 변하게 디자인*/
+   /*    showSelect() {
+        if (this.selectEl.checked) {
+          return this.selectEl.style.backgroundColor == "red"
+        }      
+     } */
   },
 
   watch: {
@@ -399,9 +438,10 @@ html{
           font-size: 14px;
         }
     }
-
+/* 블럭 잡고 각 블럭을 따닥따닥 연결..
+ 그 후 radio 버튼을 블럭으로 디자인 하고 */
   .block{
-    width: 21rem;
+    //width: 18rem;
     height: 5rem;
     border-radius: 15px;
     box-shadow: $shadow-convex-hover;
@@ -411,110 +451,113 @@ html{
     display: flex;
     cursor: pointer;
 
-  div{
-    top: 10px;
-    position: relative;
-  }
-
-  li{
-    display: inline;
-    text-align: center;
-    font-size: 0.9rem;
-    }  
-
-  h2{
-    color: $text-main;
-    font-size: 2px;
-    line-height: 0.6rem;
+    input[type="radio"] {
+      display:none;
     }
 
-    [class=material-icons]{
-    font-size: 30px; 
-    color: rgb(80, 80, 80); 
+    &.class{
+      //width: 18rem;
+      input[type="radio"] + div {
+        width: 20%;
+        height: 100%;
+        background-color: inherit;
+        display: inline-block;
+        border-radius: 0px 0px 0px 0px;
+        padding: auto, 20px;
+
+        &:first-child{
+          width: 2rem;
+          border-radius: 15px 0px 0px 15px;
+          border: 0.1rem dashed $disabled;
+          border: {
+            top: none;
+            left: none;
+            bottom: none;
+            }
+          position: relative;
+          }
+        &:last-child{
+          border-radius: 0px 15px 15px 0px;
+          position: relative;
+          border-right: none;
+        }
+      }
+      input[type="radio"]:checked + span {
+        background-color: $primary;
+      }
+    }
+
+    div{
+      top: 10px;
+      position: relative;
+    }
+
+    li{
+      display: inline;
+      text-align: center;
+      font-size: 0.9rem;
+      }  
+
+    h2{
+      color: $text-main;
+      font-size: 2px;
+      line-height: 0.6rem;
+      }
+
+      [class=material-icons]{
+      font-size: 30px; 
+      color: rgb(80, 80, 80); 
+      position: relative;
+      right: 0px;
+    }
+
+      /* Design radio button */
+    input[type="radio"]{
+      display: none;
+    }
+}
+
+  .block-radio{
+    border: 0.1rem dashed $disabled;
+    border: {
+      top: none;
+      left: none;
+      bottom: none;
+    } 
     position: relative;
-    right: 0px;
-  }
+    z-index: inherit;
 
-    /* Design radio button */
-  input[type="radio"]{
-  display: none;
-  width: 100%;
-  height: 70px;
-}
- 
-  input:checked ~ div{
-    //color: $primary;
-    background-color: $primary;
-   }
-}
-
-.block-radio-first {
-  border-radius: 15px 0px 0px 15px;
-  border: 0.1rem dashed $disabled;
-  border: {
-    top: none;
-    left: none;
-    bottom: none;
-  }
-  position: relative;
-
-  .div{
-    margin-top: 10px !important;
-    position: inherit;
-  }
- 
-    &.passengers{
-      width: 30%;
-  }
-    &.class{
-      width: 25%; 
-  }
-}
-
-.block-radio{
-  border-radius: 0px 0px 0px 0px;
-  border: 0.1rem dashed $disabled;
-  border: {
-    top: none;
-    left: none;
-    bottom: none;
-  } 
-  position: relative;
-  z-index: inherit;
-  
-   &.passengers{
-      width: 30%;
-  }
-    &.class{
-      width: 25%;     
-  }
-}
-
-.block-radio-last{
-  border-radius: 0px 15px 15px 0px;
-  position: relative;
-  z-index: inherit;
-   &.passengers{
-      border: 0.1rem dashed $disabled;
+    &:first-child{
+      border-radius: 15px 0px 0px 15px;
+      //border: 0.1rem dashed $disabled;
       border: {
         top: none;
         left: none;
         bottom: none;
       }
-      width: 30%;
-  }
+      position: relative;
+    }
+      
+    &:last-child{
+      border-radius: 0px 15px 15px 0px;
+      position: relative;
+      border-right: none;
+    }
+
+    &.passengers{
+        width: 30%;
+    }
     &.class{
-      width: 25%;     
+        width: 25%; 
+    }
   }
-}
 
-.BtnContainer{
-  width: 10%;
-  height: auto;
-  position: relative;
-  flex-direction: column;
-}
-
+  .BtnContainer{
+    width: 10%;
+    height: auto;
+    position: relative;
+    flex-direction: column;
+  }
 }
 
 .ticketContainer{

@@ -19,6 +19,10 @@
 > git init 으로 버전 관리
 ❗ 만약 Reinitialized existing Git repository in ~ 오류가 발생하면 > git remote -v 으로 원격 리모트 주소가 아닌경우에는 삭제하면 됨
 
+# CRLF error
+LF will be replaced by CRLF in package-lock.json.LF will be replaced by CRLF in package-lock.json. 라는 에러 발생 시
+> git config --global core.autocrlf true
+
 <!--node js-->
 # NVM (Node Version Manager)
 

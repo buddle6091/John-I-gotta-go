@@ -191,14 +191,11 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(arrival)
     }
   },
-  computed: {
-  /*   selectDep() {
-      const t = document.getElementById('dep')
-      return t.addEventListener('click', function(event){
-        alert(event.target.tagName)
-      })
-    } */
-  }
+/*   computed: {
+    selectEl: function() {
+
+    }
+  } */
 }
 
 
