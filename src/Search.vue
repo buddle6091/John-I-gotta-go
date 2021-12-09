@@ -31,7 +31,7 @@
     </div>
 <!--search Departure-->
   <!--search Destination-->
-<div class="set">
+<div class="set" :style="{zIndex: '30'}">
   <span class="material-icons"> date_range </span> 
    <div class="dateBox"><i class="material-icons">flight_takeoff</i>
     <datepicker class="picker" v-model="picked_from" placeholder="Depart Date" :weekStartsOn='0' 
@@ -43,7 +43,7 @@
     </div> 
 </div>
 <!-- passengers -->
-<div class="set" :style="{ zIndex: -5 }">
+<div class="set">
  <span class="material-icons">people</span>
  <ul class="block" > 
   <li class="block-radio passengers">
@@ -56,14 +56,14 @@
   <li class="block-radio passengers">
       <label>
       <input type="radio" id="kid" name="passenger" value="0"> 
-        <div>kid &times; <span> {{ person[1] }} </span>
+        <div><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
         <h2>under 12 </h2></div>
       </label>
   </li>
   <li class="block-radio passengers">
       <label>
       <input type="radio" id="baby" name="passenger" value="0"> 
-       <div>baby &times; <span> {{ person[2] }} </span>
+       <div><i class="fas fa-baby"></i>baby &times; <span> {{ person[2] }} </span>
        <h2>less than 24 months</h2></div>
       </label> 
   </li>
@@ -85,66 +85,26 @@
 <!--class-->
 <div class="set">
  <span class="material-icons">flight_class</span>
-  <div class="block">
-    <label class="class">
-      <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
-      <div> <i class="material-icons">airline_seat_recline_normal</i>
-         <h2>Economy</h2></div>
-    </label>
-  </div>
-  <div class="block">
-    <label class="">
-      <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
-      <div> <i class="material-icons">airline_seat_recline_extra</i>
-         <h2>Premium economy</h2></div>
-    </label>
-  </div>
-  <div class="block">
-    <label>
-      <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
-       <div> <i class="material-icons">airline_seat_flat_angled</i>
-         <h2>Business</h2></div>
-    </label>
-  </div>
-  <div class="block">
-    <label>
-      <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
-       <div> <i class="material-icons">airline_seat_individual_suite</i>
-         <h2>First</h2></div>
-    </label>
-  </div>
-</div>
-
-<div class="set" :style="{ zIndex: -5 }">
- <span class="material-icons">flight_class</span>
- <ul class="block class"> 
-  <li class="block class">
-  
+ <ul class="block"> 
+  <li class="block-radio class">
     <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
-        <div> <i class="material-icons">airline_seat_recline_normal</i>
-         <h2>Economy</h2></div>
-  
+        <label for="class1"> <i class="material-icons">airline_seat_recline_normal</i>
+         <h2>Economy</h2></label>
   </li>
   <li class="block-radio class">
-      <label>
       <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
-        <div> <i class="material-icons">airline_seat_recline_extra</i>
-         <h2>Premium economy</h2></div>         
-      </label>
+        <label for="class2"> <i class="material-icons">airline_seat_recline_extra</i>
+         <h2>Premium economy</h2></label>         
   </li>
   <li class="block-radio class">
-      <label>
       <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
-       <div> <i class="material-icons">airline_seat_flat_angled</i>
-         <h2>Business</h2></div>
-      </label> 
+       <label for="class3"> <i class="material-icons">airline_seat_flat_angled</i>
+         <h2>Business</h2></label>
   </li>
   <li class="block-radio class">
-      <label>
       <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
-       <div> <i class="material-icons">airline_seat_individual_suite</i>
-         <h2>First</h2></div>     
-      </label> 
+       <label for="class4"> <i class="material-icons">airline_seat_individual_suite</i>
+         <h2>First</h2></label>     
   </li>
 </ul>       
 </div>
@@ -397,6 +357,7 @@ html{
   flex-direction: row;
   flex-wrap:  nowrap;               
   position: relative;
+  z-index: -5;
   left: 10px;
   margin: {
     top: 1.4rem;
@@ -441,80 +402,80 @@ html{
 /* 블럭 잡고 각 블럭을 따닥따닥 연결..
  그 후 radio 버튼을 블럭으로 디자인 하고 */
   .block{
-    //width: 18rem;
+    width: 18rem;
     height: 5rem;
+    padding: 1px;
     border-radius: 15px;
     box-shadow: $shadow-convex-hover;
-    background: $base;
-    justify-content: center;
+    background-color: $base;
     position: relative;
-    display: flex;
     cursor: pointer;
-
-    input[type="radio"] {
-      display:none;
-    }
-
-    &.class{
-      //width: 18rem;
-      input[type="radio"] + div {
-        width: 20%;
-        height: 100%;
-        background-color: inherit;
-        display: inline-block;
-        border-radius: 0px 0px 0px 0px;
-        padding: auto, 20px;
-
-        &:first-child{
-          width: 2rem;
-          border-radius: 15px 0px 0px 15px;
-          border: 0.1rem dashed $disabled;
-          border: {
-            top: none;
-            left: none;
-            bottom: none;
-            }
-          position: relative;
-          }
-        &:last-child{
-          border-radius: 0px 15px 15px 0px;
-          position: relative;
-          border-right: none;
-        }
-      }
-      input[type="radio"]:checked + span {
-        background-color: $primary;
-      }
-    }
-
-    div{
-      top: 10px;
-      position: relative;
-    }
+    box-shadow: $shadow-convex-hover;
+    justify-content: center;
+    //align-items: center;
+    display: flex;
 
     li{
       display: inline;
       text-align: center;
       font-size: 0.9rem;
       }  
-
     h2{
       color: $text-main;
       font-size: 2px;
       line-height: 0.6rem;
       }
-
-      [class=material-icons]{
-      font-size: 30px; 
+    [class=material-icons]{
+      font-size: 30px;   
       color: rgb(80, 80, 80); 
       position: relative;
       right: 0px;
     }
-
-      /* Design radio button */
-    input[type="radio"]{
-      display: none;
+    input[type="radio"] {
+        display:none;
+        }
+    input[type="radio"]:not(:checked) ~ label {
+      box-shadow: none;
+      //transition: box-shadow ease-in-out 0.5s;
     }
+      input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
+        width: 4.5rem;
+        height: 5rem;
+        top: -1px;
+        left: -1px;
+        padding-top: 10px;
+        border-radius: 0px 0px 0px 0px;
+        background-color: $base;
+        box-shadow: $shadow-concave-large;
+        transition: box-shadow ease-in-out 0.5s;
+      }
+
+      input[id="class1"]:checked ~ label{
+        width: 4.5rem;
+        height: 5rem;
+        top: -1px;
+        left: -1px;
+        padding-top: 10px;
+        border-radius: 15px 0px 0px 15px;
+        background-color: $base;
+        box-shadow: $shadow-concave-large;
+        transition: box-shadow ease-in-out 0.5s;
+      }
+
+      input[id="class4"]:checked ~ label{
+        width: 4.5rem;
+        height: 5rem;
+        top: -1px;
+        padding-top: 10px;
+        border-radius: 0px 15px 15px 0px;
+        color: $primary;
+        background-color: $base;
+        box-shadow: $shadow-concave-large;
+        transition: box-shadow ease-in-out 0.5s;
+      }
+
+      /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
+      같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
 }
 
   .block-radio{
@@ -527,28 +488,33 @@ html{
     position: relative;
     z-index: inherit;
 
-    &:first-child{
-      border-radius: 15px 0px 0px 15px;
-      //border: 0.1rem dashed $disabled;
-      border: {
-        top: none;
-        left: none;
-        bottom: none;
-      }
-      position: relative;
-    }
-      
     &:last-child{
-      border-radius: 0px 15px 15px 0px;
-      position: relative;
-      border-right: none;
+      border: none;
     }
 
     &.passengers{
         width: 30%;
+        div{
+          top: 15px;
+          position: relative;
+        }
     }
     &.class{
-        width: 25%; 
+      width: 25%;
+      label{
+        top: 10px;
+        position: relative;
+        }
+/*       input[type="radio"]:checked + label{
+        width: 4.5rem;
+        height: 5rem;
+        top: -1px;
+        left: -1px;
+        padding-top: 10px;
+        border-radius: 0px 0px 0px 0px;
+        color: $primary;
+        background-color: red;
+          } */
     }
   }
 
