@@ -15,6 +15,18 @@
 # clone
 > git clone [repository url] 그 후 해당 폴더로 들어가(cd) > code . -r 을 하면 현재 화면에서 바로 표시됨
 
+# reset / revert
+reset : 커밋을 없애고 그 커밋으로 되돌아가는 기능이다. 그리고 그냥 git reset 만 하면 commit들이 다 지워지는... 
+> git reset [commitHASH]
+revoke : commit과 반대로 commit을 유지하며 되돌리는 방법이다.
+> git revert [commitHASH]
+
+# 'vue-cli-service'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다. error
+위의 백업 기능이 여러 branch의 충돌로 인해서 먹히지 않는다면. clone으로 가져와서 백업을 진행하였고, powershell에서 npm run serve를 하는데 위와 같은 에러가 발생한다.
+1. vue가 깔려있는지 확인. >npm i -g vue
+2. module을 지우고 다시 >npm i 로 모듈설치
+3. 다시 서버 실행 시키기
+
 # init
 > git init 으로 버전 관리
 ❗ 만약 Reinitialized existing Git repository in ~ 오류가 발생하면 > git remote -v 으로 원격 리모트 주소가 아닌경우에는 삭제하면 됨
