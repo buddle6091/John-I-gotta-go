@@ -6,8 +6,10 @@
         class="singlline-text-field__text"
         id="text-box"
         type="text"
-        :placeholder="placeholder"  
+        :placeholder="placeholder"
+        :value="value"
       />
+      {{}}
       
     </div>
   </div>

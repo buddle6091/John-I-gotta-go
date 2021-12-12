@@ -10,7 +10,7 @@
         <form class="row g-3">
       <div class="col-md-auto">
         <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" label="ss" type="search" placeholder="search country or city"> 
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" v-model="departure" :value="departure" @change="selectDep($event)" type="search" placeholder="search country or city"> 
         {{ departure }}
          </TextField>
         <!-- <input type="text" class="neu-search is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
@@ -28,7 +28,7 @@
             </h2>
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</a> <!-- Incheon (NAARKSI) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
@@ -175,19 +175,18 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
   data(){   
     return{    
-      eparture: "xddd",
+      departure: '',
       arrival: '',
     }  
   },
   methods: {
-    selectDep(event){
-      var departure = event.target.value
+    selectDep($event){
+      const departure = $event.target.value
       console.log(departure)
-      
     },
 
-    selectFli(event){
-      const arrival = event.target.value
+    selectFli($event){
+      const arrival = $event.target.value
       console.log(arrival)
     }
   },

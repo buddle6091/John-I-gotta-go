@@ -47,25 +47,19 @@
  <span class="material-icons">people</span>
  <ul class="block" > 
   <li class="block-radio passengers">
-   <label>
     <input type="radio" id="adult" name="passenger" value="1" checked>
-        <div>Adult &times; <span> {{ person[0] }} </span>
-         <h2>12+ years old</h2></div>
-      </label>
+      <label for="adult"> Adult &times; <span> {{ person[0] }} </span>
+         <h2>12+ years old</h2></label>
   </li>
   <li class="block-radio passengers">
-      <label>
       <input type="radio" id="kid" name="passenger" value="0"> 
-        <div><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
-        <h2>under 12 </h2></div>
-      </label>
+        <label for="kid"><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
+        <h2>under 12 </h2></label>
   </li>
   <li class="block-radio passengers">
-      <label>
       <input type="radio" id="baby" name="passenger" value="0"> 
-       <div><i class="fas fa-baby"></i>baby &times; <span> {{ person[2] }} </span>
-       <h2>less than 24 months</h2></div>
-      </label> 
+       <label for="baby"><i class="fas fa-baby"></i>baby &times; <span> {{ person[2] }} </span>
+       <h2>less than 24 months</h2></label>
   </li>
   <li class="BtnContainer">
   <Button layout='Increase' id="btn_inc" color='base' @click="btnIncrease"> 
@@ -438,11 +432,37 @@ html{
       box-shadow: none;
       //transition: box-shadow ease-in-out 0.5s;
     }
+    /* passengers radio*/
+    input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
+        width: 4.9rem;
+        height: 5rem;
+        top: -1px;
+        left: -1px;
+        padding-top: 10px;
+        border-radius: 0px 0px 0px 0px;
+        background-color: $base;
+        box-shadow: $shadow-concave-large;
+        transition: box-shadow ease-in-out 0.5s;
+      }
+
+      input[id="adult"]:checked ~ label{
+        width: 4.9rem;
+        height: 5rem;
+        top: -1px;
+        left: -1px;
+        padding-top: 10px;
+        border-radius: 15px 0px 0px 15px;
+        background-color: $base;
+        box-shadow: $shadow-concave-large;
+        transition: box-shadow ease-in-out 0.5s;
+      }
+
+    /* class radio*/
       input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
         width: 4.5rem;
         height: 5rem;
         top: -1px;
-        left: -1px;
+        left: -0.5px;
         padding-top: 10px;
         border-radius: 0px 0px 0px 0px;
         background-color: $base;
