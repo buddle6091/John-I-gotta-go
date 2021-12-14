@@ -4,7 +4,10 @@ const store = createStore({
     /* store the data */
     state(){
         return {
-            fliii : 'ddd',
+            totalPerson: '',
+            selectClass: '',
+            departure: '',
+            arrival: '',           
         }
     },
 })

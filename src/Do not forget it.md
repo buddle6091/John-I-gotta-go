@@ -3,7 +3,14 @@
 ## It means I`ll write own study subject in korean after this line. If you want to read this, plz translate your language
 
 ----------------------- 필   기 ----------------------------
-
+<!--TypeScript-->
+# 🤬 ERROR COLLECTION
+ 1. Cannot write file ~ because it would overwrite input file
+  = OutDir 옵션을 따로 지정해서 그럼.
+  a ) tsconfig.json -> compilerOption -> allowJS를 true -> false
+ 2. These relative modules were not found
+  = 대부분 경로나 import 한 파일 이름을 틀린 채로 module을 깔아서 충돌로 인한 오류
+  a ) 에러 첫번째 문단이랑, 마지막 문단으로 파일을 추적해서 오타 수정 후 모듈 삭제한 다음  > npm install
 <!--GitHub-->
 # reset
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
@@ -218,6 +225,11 @@ text-align : 정렬을
   methods에서는 안에 언급되지 않은 데이터의 변경될 때도 재실행 가능, computed에서는 자신이 참고하고있는 데이터의 변경에만 재실행
 
   계속 methods에서 굴리다가 application이 필요 없는 데이터까지 계산에 넣어서 돌아가느라 부하가 걸릴 수 있으니, 자신과 관계없는 데이터는 x, 정해진 데이터에만 반응하는 함수는 computed
+
+  # vuex
+    vuex data 불러오기. {{ $store.state.name }}
+    ❗ state의 데이터를 컴포넌트에서 억지로 변경 x -> 컴포넌트의 수가 많으면 나중에 버그 났을때
+     = > store.js에 요청하기
 
 <!--Back End-->
 

@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import app from './App.vue'
+import App from './App.vue'
 import axios from 'axios'
 import '../css/bootstrap.min.css'
-import store from './store.js'
+//import store from './store'
 
-createApp(app)
-   .use(store)
+createApp(App)
+ //  .use(store)
    .mount('#app')

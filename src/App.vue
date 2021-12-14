@@ -13,13 +13,9 @@
 </template>
 
 <script>
-import data from './data'; 
-//import Button from './components/UI/neumorphism/button/Button.vue';
-import TicketBox from './ticketBox.vue';
-import Modal from './modal.vue'
-//import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
-import Search from './Search.vue';
-//import Icon from './components/UI/neumorphism/decorated-icon/DecoratedIcon.vue'
+import TicketBox from './components/ticketBox.vue';
+import Modal from './components/modal.vue'
+import Search from './components/Search.vue';
 //import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
 //import axios from 'axios'
@@ -53,7 +49,6 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   data(){
     
     return{
-      ticket: data,   // from data.js,
       picked_from: new Date(),
       picked_to: '',
       person: [1, 0, 0],
@@ -101,7 +96,7 @@ setup() {
 </script>
  
 <style lang="scss" scoped>
-@import './components/scss/main.scss';
+@import './UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {

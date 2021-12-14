@@ -13,12 +13,12 @@ module.exports = {
         }
     },
     devServer:{
+        overlay: false,
         proxy: {
             '/api':{
                 target:'http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList',
                 changeOrigin:true,
                 logLevel: 'debug',
-
             }
         }
     }

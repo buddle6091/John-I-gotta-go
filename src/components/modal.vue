@@ -23,7 +23,7 @@
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#D_KR" aria-expanded="true" aria-controls="collapseOne">
-                Domestic (South Korea)
+                Domestic (South Korea) 
             </button>
             </h2>
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -159,15 +159,15 @@
 
 
 <script>
-import Button from './components/UI/neumorphism/button/Button.vue';
-import TextField from './components/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
+import Button from '../UI/UI/neumorphism/button/Button.vue';
+import TextField from '../UI/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   props : {
     openModal: Boolean,
     value: String,
   },
-  name: 'Modal',
+  name: 'Modal-components',
   components: {
    TextField: TextField,
    Button: Button,
@@ -182,11 +182,13 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   methods: {
     selectDep($event){
       const departure = $event.target.value
+      // eslint-disable-next-line no-console
       console.log(departure)
     },
 
     selectFli($event){
       const arrival = $event.target.value
+      // eslint-disable-next-line no-console
       console.log(arrival)
     }
   },
@@ -201,8 +203,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 </script>
 
 <style lang="scss">
-@import './components/scss/main.scss';
-@import './components/scss/_variable.scss';
+@import '../UI/scss/main.scss';
+@import '../UI/scss/_variable.scss';
 
 /* bootstrap modal customed */
 

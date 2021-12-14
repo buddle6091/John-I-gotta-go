@@ -4,7 +4,7 @@
    <span><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img src=".\assets\icon\airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
+ <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
  </div>
    <span><h1>CJU</h1>
     Jeju Airport</span>
@@ -22,7 +22,7 @@
    <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>ICN</h1>
     Incheon International Airport</span> 
   <div>  
- <img src=".\assets\icon\airplane2.png" alt="비행기2" :style="airplane_img_active"/>
+ <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
  <Button layout='reverse' color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
  </Button> </div>
@@ -58,7 +58,7 @@
   </li>
   <li class="block-radio passengers">
       <input type="radio" id="baby" name="passenger" value="0"> 
-       <label for="baby"><i class="fas fa-baby"></i>baby &times; <span> {{ person[2] }} </span>
+       <label for="baby">baby &times; <span> {{ person[2] }} </span>
        <h2>less than 24 months</h2></label>
   </li>
   <li class="BtnContainer">
@@ -107,10 +107,8 @@
 </template>
 
 <script>
-import data from './data'; 
-import Button from './components/UI/neumorphism/button/Button.vue';
-//import Modal from './Modal.vue';
-import ToggleButton from './components/UI/neumorphism/toggle-button/ToggleButton.vue';
+import Button from '../UI/UI/neumorphism/button/Button.vue';
+import ToggleButton from '../UI/UI/neumorphism/toggle-button/ToggleButton.vue';
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
 import axios from 'axios'
@@ -129,7 +127,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   props: {
   
   },
-  name: 'Search',
+  name: 'Search-component',
   components: {
    ToggleButton: ToggleButton,
    Button: Button,
@@ -139,7 +137,6 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   data(){
     
     return{
-      ticket: data,   // from data.js,
       picked_from: new Date(),
       picked_to: '',
       person: [1, 0, 0],
@@ -200,8 +197,10 @@ setup() {
       const depPlandTime = [this.picked_from.getFullYear()] + [("0" + (this.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.picked_from.getDate()).slice(-2)];
       const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
       const res = await axios.get(url)
-      console.log(depPlandTime);
-      console.log(res);
+      // eslint-disable-next-line no-console
+      console.log(depPlandTime)
+      // eslint-disable-next-line no-console
+      console.log(res)
     } 
 
   },
@@ -235,7 +234,7 @@ setup() {
 </script>
  
 <style lang="scss" scoped>
-@import './components/scss/main.scss';
+@import '../UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {

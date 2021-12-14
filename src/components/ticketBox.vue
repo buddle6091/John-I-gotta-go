@@ -135,8 +135,8 @@
 
 </template>
 
-<script lang = "ts">
-import data from './data'; 
+<script>
+import data from '../Data_tem.js'; 
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
@@ -159,12 +159,10 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   },
 
   components: {
-   // Modal : Modal
 
   },
 
   computed: {
-    
 
   },
   
@@ -201,7 +199,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 </script>
 
  <style lang="scss" scoped>
-@import './components/scss/main.scss';
+@import '../UI/scss/main.scss';
  
 .ticketBox{
     width: 340px;

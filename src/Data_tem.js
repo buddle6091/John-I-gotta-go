@@ -1,5 +1,5 @@
-export default [
-    { /*제주항공*/
+export default[
+    { 
       img : "https://raw.githubusercontent.com/buddle6091/Boardingpass/main/jejuairline_white.png",  
       style: {
         width: 'auto',
