@@ -11,6 +11,9 @@
  2. These relative modules were not found
   = 대부분 경로나 import 한 파일 이름을 틀린 채로 module을 깔아서 충돌로 인한 오류
   a ) 에러 첫번째 문단이랑, 마지막 문단으로 파일을 추적해서 오타 수정 후 모듈 삭제한 다음  > npm install
+ 3. Could not find a declaration file for module '~~'
+  = 파일명 및 경로도 정확했고, 모듈 폴더를 삭제 후 다시 깔아도 이런 오류가 발생하면
+  tsconfig.json - noImplicitAny 를 false 값으로 바꾼다. 
 <!--GitHub-->
 # reset
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
@@ -230,7 +233,9 @@ text-align : 정렬을
     vuex data 불러오기. {{ $store.state.name }}
     ❗ state의 데이터를 컴포넌트에서 억지로 변경 x -> 컴포넌트의 수가 많으면 나중에 버그 났을때
      = > store.js에 요청하기
+    만약 데이터 수정하려면 데이터 수정방법인 mutations 항목에서 처리하면 가능
 
+    ❗ mutations 에서 ajax 처리는 X -> 처리 기간에 따라 다른 mutations의 항목들이 동작하는 데 까지 딜레이가 예상됨 => 대신 actions 를 이용
 <!--Back End-->
 
 # OPEN API

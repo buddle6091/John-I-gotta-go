@@ -29,20 +29,20 @@
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
                 <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</a> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Busan(Pus)" disabled >Busan(Pus) &nbsp; <span class="badge bg-primary rounded-pill"> coming soon </span></button> <!-- Busan -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Seoul(GMP)">Seoul(GMP)</a> <!-- Gimpo (NAARKSS) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Jeju(CJU)">Jeju(CJU)</a> <!-- Jeju (NAARKPC) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gwangju(KWJ)">Gwangju(KWJ)</a> <!-- Gwangju (NAARKJJ) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Muan(MWX)">Muan(MWX)</a> <!-- Muan (NAARKJB) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Gunsan(KUV)">Gunsan(KUV)</a> <!-- Gunsan (NAARKJK) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Daegu(TAE)">Daegu(TAE)</a> <!-- Daegu (NAARKTN) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Sichuan(HIN)">Sichuan(HIN)</a> <!-- Sichuan (NAARKPS) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yeosu(RSU)">Yeosu(RSU)</a> <!-- Yeosu (NAARKJY) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Ulsan(USN)">Ulsan(USN)</a> <!-- Ulsan (NAARKPU) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Wonju(WJU)">Wonju(WJU)</a> <!-- Wonju (NAARKNW) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Cheongju(CJJ)">Cheongju(CJJ)</a> <!-- Cheongju (NAARKTU) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Pohang(KPO)">Pohang(KPO)</a> <!-- Pohang (NAARKTH) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Yangyang(YNY)">Yangyang(YNY)</a> <!-- Yangyang (NAARKNY) -->
+                <a href="#" class="neu-list-group-item neu-list-group-item-action" id="dep" @click="selectDep($event)" value="Busan(Pus)" disabled >Busan(Pus) &nbsp; <span class="badge bg-primary rounded-pill"> coming soon </span></a> <!-- Busan -->
               </div>
             </div>
           </div>
@@ -80,8 +80,9 @@
       </div>
       </div>
       <div class="col-md-auto">
-        <TextField class="is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city"/>
+        <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
+        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city" value="hey" @input="arrival=$event.target.value">
+         {{  }} </TextField>
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample2">
@@ -94,21 +95,21 @@
             </h2>
             <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" id="Fli" @click="selectDep($event)" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>Busan(Pus)</button> <!-- Busan -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="$store.commit(selectFli)" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKSS" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKPC" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKJJ" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKJB" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKJK" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKTN" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKPS" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKJY" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKPU" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKNW" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKYU" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKTH" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectFli($event)" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
@@ -120,7 +121,7 @@
             </h2>
             <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" ref="ICN">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
@@ -179,24 +180,39 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       arrival: '',
     }  
   },
-  methods: {
+  /* 처음 실행 후 사용해도 실행 x -> 계산 결과 저장 like data()
+  무조건 return 을 받아야 에러가 안 남*/
+  computed : {
+   /*  departure(){
+      return $store.state.departure == 
+    } */
+  },
+  /* 사용할 때 마다 실행 */
+  methods : {
     selectDep($event){
-      const departure = $event.target.value
+      this.departure = $event.target.value
       // eslint-disable-next-line no-console
-      console.log(departure)
+      console.log(this.departure)
+      // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
     },
 
     selectFli($event){
-      const arrival = $event.target.value
+      /* send data to store.js with $store.state */
+      this.$store.state.arrival = $event.target.value
+      this.$store.state.tempo = $event.target.name
+      /* display airport`s short */
+      this.$store.state.shortFli = $event.target.value.slice(-4,-1)
       // eslint-disable-next-line no-console
-      console.log(arrival)
+      console.log(this.$store.state.arrival)
+      //document.getElementById('fli_text').innerText = this.arrival
+      // eslint-disable-next-line no-console
+      console.log(this.$store.state.tempo)
+      // eslint-disable-next-line no-console
+      console.log(this.$store.state.shortFli)
     }
   },
-/*   computed: {
-    selectEl: function() {
-
-    }
-  } */
+  mounted() {
+  }
 }
 
 

@@ -7,10 +7,8 @@
         id="text-box"
         type="text"
         :placeholder="placeholder"
-        :value="value"
-      />
-      {{}}
-      
+        
+      />      
     </div>
   </div>
 </template>

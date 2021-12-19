@@ -1,12 +1,12 @@
 <template>
 <div class="selectContainer"> 
   <div class="flightContainer">
-   <span><h1>ICN</h1>
+   <span><h1>{{shortDep}}</h1>
     Incheon International Airport</span> 
   <div>  
  <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
  </div>
-   <span><h1>CJU</h1>
+   <span><h1>{{shortFli}}</h1>
     Jeju Airport</span>
     </div>
     <div class="shortInfo">
@@ -195,7 +195,8 @@ setup() {
       //const converter = require("xml-js");
       const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
       const depPlandTime = [this.picked_from.getFullYear()] + [("0" + (this.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.picked_from.getDate()).slice(-2)];
-      const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
+      // requset element : depairportId, arrAirportId, depPlandTime
+      const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
       const res = await axios.get(url)
       // eslint-disable-next-line no-console
       console.log(depPlandTime)
@@ -206,17 +207,12 @@ setup() {
   },
   
   computed: {
-    /* 토글 버튼의 value 값이 One Way 일 때 datepicker를 disabled */
-/*     beDisabled() {
-      if()
-      return 
-    } */
-    /*DOM 을 이용하여 person, class 구간 버튼들을 클릭했을 때, background가 변하게 디자인*/
-   /*    showSelect() {
-        if (this.selectEl.checked) {
-          return this.selectEl.style.backgroundColor == "red"
-        }      
-     } */
+    shortDep(){
+      return this.$store.state.departure.slice(-4,-1)
+    },
+    shortFli(){
+      return this.$store.state.arrival.slice(-4,-1)
+    }
   },
 
   watch: {
