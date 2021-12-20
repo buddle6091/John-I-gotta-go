@@ -1,13 +1,13 @@
 <template>
 <div class="selectContainer"> 
   <div class="flightContainer">
-   <span><h1>{{shortDep}}</h1>
-    Incheon International Airport</span> 
+   <span><h1>{{ shortDep }}</h1>
+    {{ getAirport_dep }}</span> 
   <div>  
  <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
  </div>
-   <span><h1>{{shortFli}}</h1>
-    Jeju Airport</span>
+   <span><h1>{{ shortFli }}</h1>
+    {{ getAirport_arr }}</span>
     </div>
     <div class="shortInfo">
     <span>10.19</span>~ <span>10.22</span>|
@@ -19,15 +19,15 @@
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
   <div class="flightContainer">
-   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>ICN</h1>
-    Incheon International Airport</span> 
+   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
+    {{ getAirport_dep }}</span> 
   <div>  
  <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
  <Button layout='reverse' color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
  </Button> </div>
-   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>CJU</h1>
-    Jeju Airport</span>
+   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortFli }} </h1>
+    {{ getAirport_arr }}</span>
     </div>
 <!--search Departure-->
   <!--search Destination-->
@@ -112,6 +112,7 @@ import ToggleButton from '../UI/UI/neumorphism/toggle-button/ToggleButton.vue';
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date())
 import { defineComponent } from 'vue'
@@ -145,8 +146,6 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       openModal : false,
       btnActive: false,
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
-      Departure : 'Incheon',
-      Arrival : 'Jeju',
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       
@@ -206,14 +205,12 @@ setup() {
 
   },
   
-  computed: {
-    shortDep(){
-      return this.$store.state.departure.slice(-4,-1)
-    },
-    shortFli(){
-      return this.$store.state.arrival.slice(-4,-1)
-    }
-  },
+  computed: mapGetters({
+    shortDep : 'shortDep',
+    shortFli : 'shortFli',
+    getAirport_dep : 'getAirport_dep',
+    getAirport_arr: 'getAirport_arr'
+  }),
 
   watch: {
     person(val){
