@@ -24,27 +24,16 @@ const store = createStore({
             return state.arrival.slice(-4, -1)
         },   
         getAirport_dep: (state) => {
-            return state.airport
+            return state.airport_dep
         },
         getAirport_arr: (state) => {
-            return state.airport
+            return state.airport_arr
         }
 
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
-        selectDep(state){
-            state.departure = state.target.value
-            // eslint-disable-next-line no-console
-            console.log(state.departure)
-            // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
-            state.shortFli = state.departure.slice(1, 3)
-            // eslint-disable-next-line no-console
-            console.log(state.shortFli)
-        },
-        shortFli(state){
-            return state.departure.slice()      
-          }
+        
     }, 
     /* be able to use ajax */
     actions : {
