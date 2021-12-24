@@ -19,11 +19,11 @@
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
   <div class="flightContainer">
-   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
+   <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
     {{ getAirport_dep }}</span> 
   <div>  
  <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
- <Button layout='reverse' color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
+ <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
  </Button> </div>
    <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortFli }} </h1>
@@ -168,6 +168,16 @@ setup() {
 },
 
   methods: {
+    reverse(){
+      /* shortDep <-> shortFli */
+      this.$store.state.tem_short = this.$store.state.arrival
+      this.$store.state.arrival = this.$store.state.departure
+      this.$store.state.departure = this.$store.state.tem_short
+      /* getAirport_dep <-> getAirport_arr */
+      this.$store.state.tem_airport = this.$store.state.airport_arr
+      this.$store.state.airport_arr = this.$store.state.airport_dep
+      this.$store.state.airport_dep = this.$store.state.tem_airport
+    },
     // 한계치를 넘으면 버튼 잠그기
     btnIncrease() {
       if(document.querySelector("input[id=adult]:checked")) 
