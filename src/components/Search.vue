@@ -16,6 +16,7 @@
 </div>
   </div>
 <div class="selectContainer">  
+  <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
   <div class="flightContainer">
@@ -38,7 +39,7 @@
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-if="beDisabled" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
+    <datepicker class="picker" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
      :lower-limit="picked_from" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
@@ -177,6 +178,10 @@ setup() {
       this.$store.state.tem_airport = this.$store.state.airport_arr
       this.$store.state.airport_arr = this.$store.state.airport_dep
       this.$store.state.airport_dep = this.$store.state.tem_airport
+      /* dep_code <-> arr_code */
+      this.$store.state.tem_code = this.$store.state.arr_code
+      this.$store.state.arr_code = this.$store.state.dep_code
+      this.$store.state.dep_code = this.$store.state.tem_code
     },
     // 한계치를 넘으면 버튼 잠그기
     btnIncrease() {
@@ -205,7 +210,7 @@ setup() {
       const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
       const depPlandTime = [this.picked_from.getFullYear()] + [("0" + (this.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.picked_from.getDate()).slice(-2)];
       // requset element : depairportId, arrAirportId, depPlandTime
-      const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=${depPlandTime}&_type=json`
+      const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=${this.$store.state.dep_code}&arrAirportId=${this.$store.state.arr_code}&depPlandTime=${depPlandTime}&_type=json`
       const res = await axios.get(url)
       // eslint-disable-next-line no-console
       console.log(depPlandTime)

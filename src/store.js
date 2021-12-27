@@ -10,13 +10,15 @@ const store = createStore({
             /* to modal*/
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
-            /* temporary data for reverse departure to arrival */
             arrival: 'CJU ',
-            tem_short: '',
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
+            dep_code: '',
+            arr_code: '',
+            /* temporary data for reverse departure to arrival */
+            tem_short: '',
             tem_airport: '',
-            tempo: '',
+            //tem_code: '',
     }),
     /* computed */
     getters :{

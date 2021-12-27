@@ -149,7 +149,7 @@
   <!-- button container -->
           <div class="modal-footer">
             <div class="g-col-6"><Button size="small" type="reset" style: marginRight=10px> reset </Button></div>
-            <div class="g-col-6"><Button size="small" type="submit"> ok </Button></div>
+            <div class="g-col-6"><Button size="small" data-bs-dismiss="modal"> ok </Button></div>
           </div>
         </form>
       </div>
@@ -190,7 +190,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectDep($event){
       /* send data to store.js with $store.state */
       this.$store.state.departure = $event.target.value
-      this.$store.state.tempo = $event.target.name
+      this.$store.state.dep_code = $event.target.name
       this.$store.state.airport_dep = $event.target.id
       /* display airport`s short */
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
@@ -198,7 +198,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.departure)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.tempo)
+      console.log(this.$store.state.dep_code)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortDep)
       // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
@@ -207,7 +207,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectFli($event){
       /* send data to store.js with $store.state */
       this.$store.state.arrival = $event.target.value
-      this.$store.state.tempo = $event.target.name
+      this.$store.state.arr_code = $event.target.name
       this.$store.state.airport_arr = $event.target.id
       /* display airport`s short */
       this.$store.state.shortFli = $event.target.value.slice(-4,-1)
@@ -215,7 +215,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.arrival)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.tempo)
+      console.log(this.$store.state.arr_code)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortFli)
     }
