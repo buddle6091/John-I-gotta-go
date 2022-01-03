@@ -220,6 +220,9 @@ text-align : 정렬을
   // usernName 인자를 받았다면 logIn 함수 실행, 아니라면 signUp 함수 실행
 
 <!--vue-->
+# API 숨기기
+  dotenv 이용
+
 # watch()
   Data (val, oldVal)
   val 은 변경데이터, oldVal 은 변경 전 데이터

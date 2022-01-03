@@ -18,7 +18,7 @@ const store = createStore({
             /* temporary data for reverse departure to arrival */
             tem_short: '',
             tem_airport: '',
-            //tem_code: '',
+            tem_code: '',
     }),
     /* computed */
     getters :{

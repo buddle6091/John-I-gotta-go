@@ -139,10 +139,6 @@
 import data from '../Data_tem.js'; 
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
-
-   emit: [
-       'array_air.unfold =! array_air.unfold'
-    ],   
  
   props : {
  

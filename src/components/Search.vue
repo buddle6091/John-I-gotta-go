@@ -39,8 +39,8 @@
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="picked_to" placeholder="Return Date" :weekStartsOn='0' 
-     :lower-limit="picked_from" :style="{ width: '8rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+    <datepicker class="picker" v-model="picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+     :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
 <!-- passengers -->
@@ -121,6 +121,7 @@ import { defineComponent } from 'vue'
 import { enUS } from 'date-fns/locale'
 // eslint-disable-next-line no-unused-vars
 import { isSameDay } from 'date-fns'
+import dotenv from 'dotenv'
 
 
 
@@ -206,16 +207,23 @@ setup() {
         this.person[2]--;
         },   
     async search(){
-      //const converter = require("xml-js");
-      const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
+      //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
+      dotenv.config();
+      const FLIGHT_API_KEY = process.env.VUE_APP_FLIGHTINFO;
       const depPlandTime = [this.picked_from.getFullYear()] + [("0" + (this.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.picked_from.getDate()).slice(-2)];
       // requset element : depairportId, arrAirportId, depPlandTime
       const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=${this.$store.state.dep_code}&arrAirportId=${this.$store.state.arr_code}&depPlandTime=${depPlandTime}&_type=json`
-      const res = await axios.get(url)
+      axios.get(url)
+      /* handle success */
+      .then((res) => {
+        /* figure out only data (data -> response -> body -> item) */
+        // eslint-disable-next-line no-console
+        console.log(res.data.response.body)
+        // eslint-disable-next-line no-console
+        console.log(res) 
+      })
       // eslint-disable-next-line no-console
       console.log(depPlandTime)
-      // eslint-disable-next-line no-console
-      console.log(res)
     } 
 
   },
