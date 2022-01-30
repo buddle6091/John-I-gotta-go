@@ -3,6 +3,14 @@
 ## It means I`ll write own study subject in korean after this line. If you want to read this, plz translate your language
 
 ----------------------- 필   기 ----------------------------
+<!--After Formated PC-->
+# 🤬 ERROR COLLECTION
+  1. yarn을 설치하려하는 도중 이 시스템에서 스크립트를 실행할 수 없다는 것을 표시 => no ExecutionPolicy
+    = 1. 관리자 권한으로 power shell 실행
+      2. Get-ExecutionPolicy 명령어로 권한상태 확인
+      3. 없다하면 Set-ExecutionPolicy RemoteSigned, 변경하시겠습니까? -> Y
+      4. 그 후 다시 Get-ExecutionPolicy로 확인해보면 remote 권한 획득에 성공. 다시 npm i yarn 하면 잘 만 깔린다.
+
 <!--TypeScript-->
 # 🤬 ERROR COLLECTION
  1. Cannot write file ~ because it would overwrite input file
@@ -239,6 +247,10 @@ text-align : 정렬을
     만약 데이터 수정하려면 데이터 수정방법인 mutations 항목에서 처리하면 가능
 
     ❗ mutations 에서 ajax 처리는 X -> 처리 기간에 따라 다른 mutations의 항목들이 동작하는 데 까지 딜레이가 예상됨 => 대신 actions 를 이용
+
+    ❗ actions 에서 vuex의 구조상 api data를 바로 state에 전달이 불가능하고, mutations 통해서 state에 전달 가능
+
+
 <!--Back End-->
 
 # OPEN API

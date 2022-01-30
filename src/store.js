@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-import dotenv from 'dotenv'
+import dotenv from 'dotenv' // make sure to hide api encoding code
 
 const store = createStore({
     /* store the data */
@@ -21,7 +21,8 @@ const store = createStore({
             tem_short: '',
             tem_airport: '',
             tem_code: '',
-            picked_from: new Date()
+            picked_from: new Date(),
+            search_result: {}
     }),
     /* computed */
     getters :{
@@ -50,21 +51,21 @@ const store = createStore({
             dotenv.config();
             // 구조분해 -> payload
             //const { dep_code, arr_code } = payload;
-            const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
-            const depPlandTime = [this.$store.state.picked_from.getFullYear()] + [("0" + (this.$state.store.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.$state.store.picked_from.getDate()).slice(-2)];
-            // requset element : depairportId, arrAirportId, depPlandTime
-            const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=${this.$store.state.dep_code}&arrAirportId=${this.$store.state.arr_code}&depPlandTime=${depPlandTime}&_type=json`
-            axios.get(url)
+/*             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
+ *//*             this.$store.state.depPlandTime = [this.$store.state.picked_from.getFullYear()] + [("0" + (this.$state.store.picked_from.getMonth() + 1)).slice(-2)] + [("0" + this.$state.store.picked_from.getDate()).slice(-2)];
+ */            // requset element : depAirportId, arrAirportId, depPlandTime
+/*             const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=20&pageNo=1&depAirportId=${this.$store.state.dep_code}&arrAirportId=${this.$store.state.arr_code}&depPlandTime=${this.$store.state.statedepPlandTime}&_type=json`
+ */            axios.get('http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D&numOfRows=10&pageNo=1&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=20220201&airlineId=AAR')
             /* handle success */
             .then((res) => {
               /* figure out only data (data -> response -> body -> item) */
               // eslint-disable-next-line no-console
               console.log(res.data.response.body)
               // eslint-disable-next-line no-console
-              console.log(res) 
+              console.log(res.data) 
             })
             // eslint-disable-next-line no-console
-            console.log(depPlandTime)
+            //console.log(this.$store.state.depPlandTime)
           } 
     }
 })

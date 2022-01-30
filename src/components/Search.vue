@@ -103,7 +103,7 @@
   </li>
 </ul>       
 </div>
-  <Button @click="search" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+  <Button @click="$store.dispatch('searchInfo')" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
 </div>   
 </template>
 
@@ -113,7 +113,7 @@ import ToggleButton from '../UI/UI/neumorphism/toggle-button/ToggleButton.vue';
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
 //import axios from 'axios'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions} from 'vuex'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date())
 import { defineComponent } from 'vue'
@@ -163,10 +163,6 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       monthSelected: null,
     }
   },
-setup() {
-
-  
-},
 
   methods: {
     reverse(){
@@ -205,9 +201,6 @@ setup() {
         else
         this.person[2]--;
         }, 
-    async search(){
-      this.$store.dispatch('searchInfo');
-    } 
 
   },
   
@@ -218,6 +211,9 @@ setup() {
       shortFli : 'shortFli',
       getAirport_dep : 'getAirport_dep',
       getAirport_arr: 'getAirport_arr'}),
+    ...mapActions({
+      searchInfo : 'searchInfo'
+    })
   },
 
   watch: {
