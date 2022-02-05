@@ -103,7 +103,7 @@
   </li>
 </ul>       
 </div>
-  <Button @click="$store.dispatch('searchInfo')" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+  <Button @click="search()" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
 </div>   
 </template>
 
@@ -202,6 +202,15 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
         this.person[2]--;
         }, 
 
+    async search() {
+      this.$store.dispatch('searchInfo', {
+        /* connect to object Data */
+        depAirportId : this.depAirportId,
+        arrAirportId : this.arrAirportId,
+        depPlandTime : this.depPlandTime
+      })
+    }
+
   },
   
   computed: {
@@ -210,7 +219,9 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       shortDep : 'shortDep',
       shortFli : 'shortFli',
       getAirport_dep : 'getAirport_dep',
-      getAirport_arr: 'getAirport_arr'}),
+      getAirport_arr : 'getAirport_arr',
+      depPlandTime : 'depPlandTime' 
+      }),
     ...mapActions({
       searchInfo : 'searchInfo'
     })
