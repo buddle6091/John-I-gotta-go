@@ -174,10 +174,10 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       this.$store.state.tem_airport = this.$store.state.airport_arr
       this.$store.state.airport_arr = this.$store.state.airport_dep
       this.$store.state.airport_dep = this.$store.state.tem_airport
-      /* dep_code <-> arr_code */
-      this.$store.state.tem_code = this.$store.state.arr_code
-      this.$store.state.arr_code = this.$store.state.dep_code
-      this.$store.state.dep_code = this.$store.state.tem_code
+      /*.depAirportId <-> arrAirportId */
+      this.$store.state.tem_code = this.$store.state.arrAirportId
+      this.$store.state.arrAirportId = this.$store.state.depAirportId
+      this.$store.state.depAirportId = this.$store.state.tem_code
     },
     // 한계치를 넘으면 버튼 잠그기
     btnIncrease() {
