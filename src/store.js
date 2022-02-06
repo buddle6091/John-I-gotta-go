@@ -15,14 +15,13 @@ const store = createStore({
             arrival: 'CJU ',
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
-            depAirportId: '',
-            arrAirportId: '',
+            depAirportId: 'NAARKSS',
+            arrAirportId: 'NAARKPC',
             /* temporary data for reverse departure to arrival */
             tem_short: '',
             tem_airport: '',
             tem_code: '',
             picked_from: new Date(),
-            search_result: {}
     }),
     /* computed */
     getters :{
@@ -51,8 +50,9 @@ const store = createStore({
             dotenv.config();
             // 구조분해 -> payload
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
-            const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (store.picked_from.getMonth() + 1)).slice(-2)] + [("0" + store.picked_from.getDate()).slice(-2)];
+            const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)];
             // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
+            // 7일 할일 : COMMIT 으로 state 값을 변경 한것으로 ajax 하기
             axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
             /* handle success */
             .then((res) => {
