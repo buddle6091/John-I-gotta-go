@@ -9,7 +9,7 @@
     = 1. 관리자 권한으로 power shell 실행
       2. Get-ExecutionPolicy 명령어로 권한상태 확인
       3. 없다하면 Set-ExecutionPolicy RemoteSigned, 변경하시겠습니까? -> Y
-      4. 그 후 다시 Get-ExecutionPolicy로 확인해보면 remote 권한 획득에 성공. 다시 npm i yarn 하면 잘 만 깔린다.
+      4. 그 후 다시 Get-ExecutionPolicy로 확인해보면 remote 권한 획득에 성공. 다시 npm i 하면 잘 만 깔린다.
 
 <!--TypeScript-->
 # 🤬 ERROR COLLECTION
@@ -39,11 +39,13 @@ reset : 커밋을 없애고 그 커밋으로 되돌아가는 기능이다. 그�
 revoke : commit과 반대로 commit을 유지하며 되돌리는 방법이다.
 > git revert [commitHASH]
 
-# 'vue-cli-service'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다. error
-위의 백업 기능이 여러 branch의 충돌로 인해서 먹히지 않는다면. clone으로 가져와서 백업을 진행하였고, powershell에서 npm run serve를 하는데 위와 같은 에러가 발생한다.
-1. vue가 깔려있는지 확인. >npm i -g vue
-2. module을 지우고 다시 >npm i 로 모듈설치
-3. 다시 서버 실행 시키기
+# git push 가 안되는 경우
+ ❗ fetal: regusing to merge unrelated histories
+ > git pull origin [branch] --allow-unrelated-histories -> pull 을 이용해 프로젝트 병합
+ 반대로 pull 이 안되면 
+ > git branch -> branch 확인
+ > git checkout master  -> master로 체크아웃
+ > git branch --set-upstream-to=origin/master master -> 로컬 master가 origin/master를 추적하게끔 해줌
 
 # init
 > git init 으로 버전 관리
@@ -67,6 +69,12 @@ LF will be replaced by CRLF in package-lock.json.LF will be replaced by CRLF in 
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   을 package.json에 교체 추가 해주면 됨.
+
+# 'vue-cli-service'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다. error
+위의 백업 기능이 여러 branch의 충돌로 인해서 먹히지 않는다면. clone으로 가져와서 백업을 진행하였고, powershell에서 npm run serve를 하는데 위와 같은 에러가 발생한다.
+1. vue가 깔려있는지 확인. >npm i -g vue
+2. module을 지우고 다시 >npm i 로 모듈설치
+3. 다시 서버 실행 시키기
 
 <!--css-->
 # icon (google material icon)
@@ -248,7 +256,7 @@ text-align : 정렬을
 
     ❗ mutations 에서 ajax 처리는 X -> 처리 기간에 따라 다른 mutations의 항목들이 동작하는 데 까지 딜레이가 예상됨 => 대신 actions 를 이용
 
-    ❗ actions 에서 vuex의 구조상 api data를 바로 state에 전달이 불가능하고, mutations 통해서 state에 전달 가능
+    ❗ actions 에서 vuex의 구조상 api data를 바로 state에 전달이 불가능하고, mutations 통해서 state에 전달 가능, actions에서 state 요소를 사용하고 싶어서 this.$store.state~ 이렇게 쓰면 vscode에선 에러가 잡히지 않아도, server에서 명령을 실행시키면 오류때문에 실행이 안됨. actions 함수 인자에 state 추가해야함
 
 
 <!--Back End-->

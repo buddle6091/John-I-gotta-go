@@ -66,8 +66,6 @@ const store = createStore({
               // eslint-disable-next-line no-console
               console.log(res.data) 
             })
-            // eslint-disable-next-line no-console
-            //console.log(this.$store.state.depPlandTime)
           } 
     }
 })

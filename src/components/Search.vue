@@ -35,11 +35,11 @@
 <div class="set" :style="{zIndex: '30'}">
   <span class="material-icons"> date_range </span> 
    <div class="dateBox"><i class="material-icons">flight_takeoff</i>
-    <datepicker class="picker" v-model="picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+    <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
     <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+    <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
     </div> 
 </div>
@@ -205,7 +205,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
   
   computed: {
-    ...mapState(['arrival', 'departure', 'tem_short']),
+    ...mapState(['arrival', 'departure', 'tem_short', ]),
     ...mapGetters({
       shortDep : 'shortDep',
       shortFli : 'shortFli',
