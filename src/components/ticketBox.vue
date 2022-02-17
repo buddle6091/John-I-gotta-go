@@ -1,12 +1,13 @@
 <template>
-<div v-for="(array_air,i) in ticket" v-bind:key="i">
-<div class ="ticketBox" @click="array_air.unfold =! array_air.unfold"
+<!-- <div v-for="(array_air,i) in ticket" v-bind:key="i">
+ --><div class ="ticketBox" @click="array_air.unfold =! array_air.unfold"
 :style="{ height: array_air.unfold ? `300px` : `100px`,
          transition : array_air.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
                <!--insert handle action-->
                       <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
                      <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
+
 
 <div id="firstDisplay">
   <div id="flightDetail">
@@ -130,8 +131,8 @@
           </div> 
          </div>
       </div>  
-      </div>
-      </div>
+    </div>
+ <!--  </div> -->
 
 </template>
 
@@ -164,7 +165,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   
   data(){
     
-    return{    
+    return{          
       openModal : true,
       ticket : data,   // from data.js
       

@@ -5,7 +5,7 @@
 <div class="App">
 <span>John, I gotta go🛫</span>
 <Search/>
-<TicketBox/>
+<TicketBox v-for="(array_air, i) in ticket" :key="i"/>
 
 </div>
 
@@ -26,6 +26,7 @@ import { defineComponent } from 'vue'
 import { enUS } from 'date-fns/locale'
 // eslint-disable-next-line no-unused-vars
 import { isSameDay } from 'date-fns'
+
 
 
 

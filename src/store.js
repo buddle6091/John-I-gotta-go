@@ -41,6 +41,7 @@ const store = createStore({
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
+        /* find parameter */
         storeTickets (state, item) {
             state.tickets = item
         }
@@ -71,7 +72,7 @@ const store = createStore({
             // eslint-disable-next-line no-console
             console.log(res.data.response.body)
             // eslint-disable-next-line no-console
-            console.log(res.data.response.body.items.item[0])
+            console.log(item)
            
           } 
     }
