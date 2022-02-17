@@ -41,11 +41,14 @@ const store = createStore({
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
-        
+        storeTickets (state, item) {
+            state.tickets = item
+        }
     }, 
     /* be able to use ajax, 비동기 */
     actions : {
-        async searchInfo( {state, }, context ){
+        /* actions 인자 context & payload 굳이 써야할까 */
+        async searchInfo( { state, commit }, ){
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
@@ -56,19 +59,19 @@ const store = createStore({
             // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
             const res = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
             /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
-            const item = res.data.response.body.items;
-            const totalCount = res.data.response
+            const item = res.data.response.body.items
+            commit('storeTickets', item)
+            //const totalCount = res.data.response
             /* handle success */
-            context.commit
-              /* figure out only data (data -> response -> body -> item) */
-              // eslint-disable-next-line no-console
-              console.log(state.depAirportId, state.arrAirportId, depPlandTime)
-              // eslint-disable-next-line no-console
-              console.log(res)
-              // eslint-disable-next-line no-console
-              console.log(res.data.response.body)
-              // eslint-disable-next-line no-console
-              console.log(res.data.response.body.items.item[0])
+            /* figure out only data (data -> response -> body -> item) */
+            // eslint-disable-next-line no-console
+            console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+            // eslint-disable-next-line no-console
+            console.log(res)
+            // eslint-disable-next-line no-console
+            console.log(res.data.response.body)
+            // eslint-disable-next-line no-console
+            console.log(res.data.response.body.items.item[0])
            
           } 
     }
