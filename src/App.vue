@@ -85,7 +85,9 @@ setup() {
   },
   
   computed: {
-
+    tickets() {
+      return this.$store.state.ticket.tickets;
+    }
   },
 
   watch: {

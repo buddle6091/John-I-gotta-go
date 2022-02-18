@@ -42,8 +42,12 @@ const store = createStore({
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
         /* find parameter */
-        storeTickets (state, item) {
-            state.tickets = item
+        updateState (state, payload) {
+            /* Object.keys() 전달된 객체에서 직접 찾은, 열거할 수 잇는 속성 이름에 해당하는 문자열을 반환 */
+            Object.keys(payload)  // 새로운 배열데이터를 만들어줌 ['tickets', ]
+            .forEach(key => {
+                state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
+            })
         }
     }, 
     /* be able to use ajax, 비동기 */
@@ -61,7 +65,9 @@ const store = createStore({
             const res = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
             /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
             const item = res.data.response.body.items
-            commit('storeTickets', item)
+            commit('updateState', {
+                tickets: item,
+            })
             //const totalCount = res.data.response
             /* handle success */
             /* figure out only data (data -> response -> body -> item) */
