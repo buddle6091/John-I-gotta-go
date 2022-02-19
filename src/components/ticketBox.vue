@@ -1,9 +1,9 @@
 <template>
-<!-- <div v-for="(array_air,i) in ticket" v-bind:key="i">
- --><div class ="ticketBox" @click="array_air.unfold =! array_air.unfold"
-:style="{ height: array_air.unfold ? `300px` : `100px`,
-         transition : array_air.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
-               <!--insert handle action-->
+<div v-for="ticket in tickets" v-bind:key="ticket">
+<div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
+:style="{ height: ticket.unfold ? `300px` : `100px`,
+         transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
+                    <!--insert handle action-->
                       <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
                      <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
@@ -45,8 +45,8 @@
        </div>
  </div>
  
-  <div id="first" :style="{transform: array_air.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
-  transition: array_air.unfold ? '0.4s' : '1s'}">
+  <div id="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
+  transition: ticket.unfold ? '0.4s' : '1s'}">
      
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
@@ -101,8 +101,8 @@
               </div>
             </div>
           </div> 
-<div id="second" :style="{transform: array_air.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
- transition: array_air.unfold ? '0.8s' : '0.8s'  }">
+<div id="second" :style="{transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
+ transition: ticket.unfold ? '0.8s' : '0.8s'  }">
     <div id="secondTop"/>
              <div id="secondBehind">
               <div id="secondBehindDisplay">
@@ -120,8 +120,8 @@
                 />
               </div> 
             
-               <div id="third"  :style="{ transform: array_air.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
-        transition: array_air.unfold ? '1s' : '0.4s' }">
+               <div id="third"  :style="{ transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
+        transition: ticket.unfold ? '1s' : '0.4s' }">
                 <div id="thirdTop"/>
                  <div id="secondBehindBottom">
               
@@ -132,17 +132,22 @@
          </div>
       </div>  
     </div>
- <!--  </div> -->
+  </div>
 
 </template>
 
 <script>
-import data from '../Data_tem.js'; 
+//import data from '../Data_tem.js'; 
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
  
   props : {
- 
+   /*  ticket: {
+      type: Object,
+      default: () => ({
+
+      }) 
+    } */
   },    
   name: 'TicketBox',
 
@@ -167,7 +172,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     
     return{          
       openModal : true,
-      ticket : data,   // from data.js
+      /* ticket : data,   // from data.js */
       
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
     

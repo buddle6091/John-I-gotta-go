@@ -5,7 +5,7 @@
 <div class="App">
 <span>John, I gotta go🛫</span>
 <Search/>
-<TicketBox v-for="(array_air, i) in ticket" :key="i"/>
+<TicketBox v-for="ticket in tickets" :key="ticket" :ticket="ticket"/>
 
 </div>
 
@@ -20,7 +20,7 @@ import Search from './components/Search.vue';
 import { ref } from 'vue'
 //import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
-const picked = ref(new Date())
+const picked = ref(new Date()) 
 import { defineComponent } from 'vue'
 // eslint-disable-next-line no-unused-vars
 import { enUS } from 'date-fns/locale'
@@ -86,7 +86,7 @@ setup() {
   
   computed: {
     tickets() {
-      return this.$store.state.ticket.tickets;
+      return this.$store.state.tickets;
     }
   },
 
