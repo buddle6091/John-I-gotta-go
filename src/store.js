@@ -22,7 +22,8 @@ const store = createStore({
             tem_airport: '',
             tem_code: '',
             picked_from: new Date(),
-            tickets: []   
+            tickets: [],
+            loading: false   
         }),
     /* computed */
     getters :{
@@ -53,35 +54,52 @@ const store = createStore({
     /* be able to use ajax, 비동기 */
     actions : {
         /* actions 인자 context & payload 굳이 써야할까 */
-        async searchInfo( { state, commit }, ){
+        /* 다른 페이지도 부를 수 있게 하는 함수 */
+        fetchItems ({ state, commit }, pageNo){
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
-            // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
-            // const { dpeAirportId, arrAirportId, depPlandTime } = payload
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
-            const res = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=1&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
-            /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
-            const item = res.data.response.body.items
-            commit('updateState', {
-                tickets: item,
-            })
-            //const totalCount = res.data.response
-            /* handle success */
-            /* figure out only data (data -> response -> body -> item) */
-            // eslint-disable-next-line no-console
-            console.log(state.depAirportId, state.arrAirportId, depPlandTime)
-            // eslint-disable-next-line no-console
-            console.log(res)
-            // eslint-disable-next-line no-console
-            console.log(res.data.response.body)
-            // eslint-disable-next-line no-console
-            console.log(item)
-           
-          } 
-    }
-})
+            const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`
+            return new Promise((resolve, reject) => {
+                // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
+                //const res = await axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
+                axios.get(url)
+                    .then((res) => {
+                        // eslint-disable-next-line no-console
+                        console.log(res)
+                        resolve(res)
+                    })
+                    .catch(err => {
+                        reject(err.message)
+                    })
+                /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
+                //const item = res.data.response.body.items
+                commit('updateState', {
+                   // tickets: item,
+                    loading: true,
+                })
+                // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
+                // const { dpeAirportId, arrAirportId, depPlandTime } = payload
+                /* handle success */
+                /* figure out only data (data -> response -> body -> item) */
+                // eslint-disable-next-line no-console
+                console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+                // eslint-disable-next-line no-console
+                //console.log(res)
+                // eslint-disable-next-line no-console
+                //console.log(res.data.response.body)
+                // eslint-disable-next-line no-console
+                //console.log(item)
+            })            
+            },
+        /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
+        -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
+        async searchInfo(){
+            
+        }
+    },
+    })
 
 export default store

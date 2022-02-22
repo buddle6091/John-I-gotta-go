@@ -51,8 +51,8 @@
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
   <div id="firstTop"> 
-  <img :src="ticket[i].img" :style="ticket[i].style"/>
-   <div id="timeContainer">
+<!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
+ -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
    {{ Departure }}             <!--출발3지-->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
@@ -165,7 +165,9 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   },
 
   computed: {
-
+    tickets() {
+      return this.$store.state.tickets;
+    }
   },
   
   data(){

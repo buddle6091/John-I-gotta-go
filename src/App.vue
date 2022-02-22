@@ -5,7 +5,7 @@
 <div class="App">
 <span>John, I gotta go🛫</span>
 <Search/>
-<TicketBox v-for="ticket in tickets" :key="ticket" :ticket="ticket"/>
+<TicketBox/>
 
 </div>
 
