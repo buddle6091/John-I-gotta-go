@@ -55,7 +55,7 @@ const store = createStore({
     actions : {
         /* actions 인자 context & payload 굳이 써야할까 */
         /* 다른 페이지도 부를 수 있게 하는 함수 */
-        fetchInfo ({ state }, pageNo){
+        fetchInfo ({ state, }, pageNo){
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
@@ -96,24 +96,22 @@ const store = createStore({
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
-        async searchInfo({ commit, }){
+        async searchInfo({ commit, dispatch}){
             try{
                 /* omdb랑 비교하면서 분석 */
                 commit('updateState', {
                     tickes: [],
                     loading: true,
                 })
-                /* const total = 
+                const totalCount = await dispatch('fetchInfo')
                 const numofRow = Math.ceil(totalCount / 10)
                 
                 if (numofRow > 1) {
                     for(let i = 2;  i <= numofRow; i += 1){
                         if(i > 4) break
-                        const res = await fetchInfo({
-                            pageNo: pageNo
-                        })
+                        await dispatch('fetchInfo')
                     }
-                } */ 
+                } 
             } catch(err){
                 // eslint-disable-next-line no-console
                 console.log(err.message)
