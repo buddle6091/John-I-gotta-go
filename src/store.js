@@ -67,12 +67,12 @@ const store = createStore({
                 const res = axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
                 /* 매개변수가 하나 = () 생략 */
                 .then(() => {
-                    const item = res.data.response.body.items
+                    //const item = res.data.response.body.items
                     // eslint-disable-next-line no-console
-                    console.log(res.data.response.body)
-                    // eslint-disable-next-line no-console
-                    console.log(item)
+                    //console.log(res.data.response.body)
                     resolve(res)
+                    // eslint-disable-next-line no-console
+                    //console.log(res.data)
                 })
                 .catch(err => {
                     reject(err.message)
@@ -85,12 +85,7 @@ const store = createStore({
                 /* figure out only data (data -> response -> body -> item) */
                 // eslint-disable-next-line no-console
                 console.log(state.depAirportId, state.arrAirportId, depPlandTime)
-                // eslint-disable-next-line no-console
-                //console.log(res)
-                // eslint-disable-next-line no-console
-                //console.log(res.data.response.body)
-                // eslint-disable-next-line no-console
-                //console.log(item)
+                
             })            
         },
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
