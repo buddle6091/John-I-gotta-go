@@ -1,5 +1,5 @@
 <template>
-<div v-for="ticket in tickets" v-bind:key="ticket">
+<div v-for="ticket in tickets" :key="ticket.item">
 <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
 :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
@@ -142,12 +142,12 @@
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
  
   props : {
-   /*  ticket: {
+    ticket: {
       type: Object,
       default: () => ({
 
       }) 
-    } */
+    }
   },    
   name: 'TicketBox',
 
@@ -161,7 +161,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   },
 
   components: {
-
+    
   },
 
   computed: {

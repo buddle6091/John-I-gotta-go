@@ -55,28 +55,20 @@ const store = createStore({
     actions : {
         /* actions 인자 context & payload 굳이 써야할까 */
         /* 다른 페이지도 부를 수 있게 하는 함수 */
-        fetchInfo ({ state, }, pageNo){
+        async fetchInfo ({ state,  }, pageNo){
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             //const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, ) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 const res = axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
                 /* 매개변수가 하나 = () 생략 */
-                .then(() => {
-                    //const item = res.data.response.body.items
-                    // eslint-disable-next-line no-console
-                    //console.log(res.data.response.body)
-                    resolve(res)
-                    // eslint-disable-next-line no-console
-                    //console.log(res.data)
-                })
-                .catch(err => {
-                    reject(err.message)
-                })
+                // eslint-disable-next-line no-console
+                console.log(res)
+                resolve(res)
                 /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
                 
                 // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
@@ -93,9 +85,9 @@ const store = createStore({
        /* async 문에서는 try & catch */
         async searchInfo({ commit, dispatch}){
             try{
-                /* omdb랑 비교하면서 분석 */
+                // omdb랑 비교하면서 분석
                 commit('updateState', {
-                    tickes: [],
+                    tickets: [],
                     loading: true,
                 })
                 const totalCount = await dispatch('fetchInfo')
@@ -108,8 +100,7 @@ const store = createStore({
                     }
                 } 
             } catch(err){
-                // eslint-disable-next-line no-console
-                console.log(err.message)
+                //console.log(err.message)
             }
         }
     },
