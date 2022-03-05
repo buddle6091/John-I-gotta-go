@@ -83,14 +83,14 @@ const store = createStore({
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
-        async searchInfo({ commit, dispatch}){
+        async searchInfo({ commit, dispatch }){
             try{
                 // omdb랑 비교하면서 분석
                 commit('updateState', {
                     tickets: [],
                     loading: true,
                 })
-                const totalCount = await dispatch('fetchInfo')
+                const totalCount = await dispatch('fetchInfo', 1)
                 const numofRow = Math.ceil(totalCount / 10)
                 
                 if (numofRow > 1) {

@@ -1,5 +1,5 @@
 <template>
-<div v-for="ticket in tickets" :key="ticket.item">
+<div v-for="ticket in tickets" :key="ticket">
 <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
 :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
@@ -54,18 +54,18 @@
 <!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
  -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ Departure }}             <!--출발3지-->
+   {{ ticket.depAirportNm }}             <!--출발지-->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
-    {{DepartureDate }}                     <!--날짜-->
-                                         <!--이미지-->
+    {{ ticket.depPlandTime }}                   
+                                         
  </div>
   <img alt="비행기" 
   src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_out"/>
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-     {{ Arrival }}     <!--출발지-->
+     {{ ticket.arrAirportNm }}     <!--출발지-->
         <div id="detailtime"> 10:30 </div>  <!--시간-->
-   {{ DepartureDate }}                   <!--날짜-->
+   {{ ticket.arrPlandTime }}                   <!--날짜-->
     </div>
   </div>
     </div>
@@ -74,7 +74,7 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Flight Time
-                <div id="detailLabel">09:40 - 10:30</div>
+                <div id="detailLabel">09:40 - 10:30</div> <!-- arrPlandTime - depPlandTime -->
               </div>
               <div id="detail">
                 Transfer
@@ -93,11 +93,11 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Boarding Time
-                <div id="detailLabel">09:15</div>
+                <div id="detailLabel">09:15</div>  <!-- depPlandTime - 20min -->
               </div>
               <div id="detail">
                 Seat
-                <div id="detailLabel">14C</div>
+                <div id="detailLabel">14C</div> <!-- random -->
               </div>
             </div>
           </div> 
@@ -108,7 +108,7 @@
               <div id="secondBehindDisplay">
                 <div id="price">
                   Price
-                  <div id="priceLabel">$17</div>
+                  <div id="priceLabel">$17</div> 
                 </div>
                 <div id="price">
                   Class
@@ -142,12 +142,12 @@
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
  
   props : {
-    ticket: {
+    /* tickets: {
       type: Object,
       default: () => ({
 
       }) 
-    }
+    } */
   },    
   name: 'TicketBox',
 
