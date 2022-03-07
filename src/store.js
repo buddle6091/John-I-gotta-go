@@ -62,21 +62,32 @@ const store = createStore({
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             //const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`
-            return new Promise((resolve, ) => {
+            return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
-                const res = axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
-                /* 매개변수가 하나 = () 생략 */
-                // eslint-disable-next-line no-console
-                console.log(res)
-                resolve(res)
+                try {
+                    const res = axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
+                    const item  = res
+                    /* 매개변수가 하나 = () 생략 */
+                    // eslint-disable-next-line no-console
+                
+                    // eslint-disable-next-line no-console
+                    console.log(item)
+                    resolve(item)
+                    // eslint-disable-next-line no-console
+                    console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+
+                }
+                catch (msg) {
+                    // eslint-disable-next-line no-console
+                    console.log(msg)
+                    reject('error')
+                }
                 /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
                 
                 // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
                 // const { dpeAirportId, arrAirportId, depPlandTime } = payload
                 /* handle success */
                 /* figure out only data (data -> response -> body -> item) */
-                // eslint-disable-next-line no-console
-                console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                 
             })            
         },
@@ -91,10 +102,10 @@ const store = createStore({
                     loading: true,
                 })
                 const totalCount = await dispatch('fetchInfo', 1)
-                const numofRow = Math.ceil(totalCount / 10)
+                //const numofRow = Math.ceil(totalCount / 10)
                 
-                if (numofRow > 1) {
-                    for(let i = 2;  i <= numofRow; i += 1){
+                if (totalCount > 1) {
+                    for(let i = 2;  i <= totalCount; i += 1){
                         if(i > 4) break
                         await dispatch('fetchInfo')
                     }
