@@ -81,28 +81,10 @@ const store = createStore({
                     .catch(err => {
                         reject(err.message)
                     })
-               /*  try {
-                    //const res = axios.get(`http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`)
-                    const item  = res
-                    /* 매개변수가 하나 = () 생략 */
-                    // eslint-disable-next-line no-console
-                
-                    // eslint-disable-next-line no-console
-                    //console.log(item)
-                    //resolve(item)
-                    // eslint-disable-next-line no-console
-                    //console.log(state.depAirportId, state.arrAirportId, depPlandTime)
-
-            
-                //catch (msg) {
-                    // eslint-disable-next-line no-console
-                    //console.log(msg)
-                    //reject('error')
-                
+             
                 /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
                 
                 // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
-                // const { dpeAirportId, arrAirportId, depPlandTime } = payload
                 /* handle success */
                 /* figure out only data (data -> response -> body -> item) */
                 
@@ -111,11 +93,11 @@ const store = createStore({
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
-        async searchInfo ({ commit }){
+        async searchInfo ({ commit, dispatch }){
             try {
                 // eslint-disable-next-line no-undef
-                const res = await fetchInfo({
-                    page: 2
+                const res = await dispatch('fetchInfo')({
+                    page: 1
                 })
                 const item = res.data.reponse.body.items
                 commit('updateState',{
@@ -125,18 +107,16 @@ const store = createStore({
                 // eslint-disable-next-line no-console
                 console.log(typeof totalCount)
                
-                /* additonal */
+                /* additional  */
                 if (totalCount > 1) {
                   for (let i = 2; i <= totalCount; i++){
-                    // eslint-disable-next-line no-unused-vars
-                    // eslint-disable-next-line no-undef
-                   
+                      if (i > 4) break
+                      await dispatch('fetchInfo', i)
                   }
                 }
             } catch (resultMsg) {
-                commit('updateState', {
-                    resultMsg
-                })
+                commit('updateState', 
+                resultMsg)
             }
 
         }
