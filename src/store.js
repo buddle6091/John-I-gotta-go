@@ -49,13 +49,16 @@ const store = createStore({
             .forEach(key => {
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
+        },
+        ex (state, tickets) {
+            state.tickets.push(...tickets)
         }
     }, 
     /* be able to use ajax, 비동기 */
     actions : {
         /* actions 인자 context & payload 굳이 써야할까 */
         /* 다른 페이지도 부를 수 있게 하는 함수 */
-        fetchInfo ({ state,  }, pageNo) {
+        fetchInfo ({ state, /* commit */ }, pageNo) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
@@ -67,11 +70,15 @@ const store = createStore({
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 axios.get(url)
                     .then(res => {
+                        /* const item = res.data.reponse.body.items */
                         // eslint-disable-next-line no-console
                         console.log(res)
                         // eslint-disable-next-line no-console
                         console.log(res.data.response.body.items)
-                        resolve(res)
+                        // eslint-disable-next-line no-console
+                        console.log(url.data)
+                        /* commit('ex', item) */
+                        resolve(res.data.response.body.items)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         if(res.data.response.resultMsg){
@@ -101,11 +108,14 @@ const store = createStore({
                 })
                 const item = res.data.reponse.body.items
                 commit('updateState',{
-                    movies: item
+                    loading: true,
+                    tickets: []
                 })
                 const totalCount = res.data.reponse.body
                 // eslint-disable-next-line no-console
                 console.log(typeof totalCount)
+                // eslint-disable-next-line no-console
+                console.log(item)
                
                 /* additional  */
                 if (totalCount > 1) {
@@ -118,7 +128,6 @@ const store = createStore({
                 commit('updateState', 
                 resultMsg)
             }
-
         }
     },
     })
