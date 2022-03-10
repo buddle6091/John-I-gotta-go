@@ -58,7 +58,7 @@ const store = createStore({
     actions : {
         /* actions 인자 context & payload 굳이 써야할까 */
         /* 다른 페이지도 부를 수 있게 하는 함수 */
-        fetchInfo ({ state, /* commit */ }, pageNo) {
+        fetchInfo ({ state, commit }, pageNo) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
@@ -70,14 +70,14 @@ const store = createStore({
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 axios.get(url)
                     .then(res => {
-                        /* const item = res.data.reponse.body.items */
+                        const item = res.data.response.body.items
                         // eslint-disable-next-line no-console
                         console.log(res)
                         // eslint-disable-next-line no-console
                         console.log(res.data.response.body.items)
-                        // eslint-disable-next-line no-console
-                        console.log(url.data)
-                        /* commit('ex', item) */
+                        commit('updateState', {
+                            tickets: item
+                        })
                         resolve(res.data.response.body.items)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
@@ -106,12 +106,12 @@ const store = createStore({
                 const res = await dispatch('fetchInfo')({
                     page: 1
                 })
-                const item = res.data.reponse.body.items
+                const { item } = res.data.response.body.items
                 commit('updateState',{
                     loading: true,
-                    tickets: []
+                    tickets: item
                 })
-                const totalCount = res.data.reponse.body
+                const { totalCount } = res.data.reponse.body
                 // eslint-disable-next-line no-console
                 console.log(typeof totalCount)
                 // eslint-disable-next-line no-console
@@ -120,7 +120,7 @@ const store = createStore({
                 /* additional  */
                 if (totalCount > 1) {
                   for (let i = 2; i <= totalCount; i++){
-                      if (i > 4) break
+                      if (i > totalCount) break
                       await dispatch('fetchInfo', i)
                   }
                 }
