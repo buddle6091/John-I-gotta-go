@@ -70,7 +70,8 @@ const store = createStore({
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 axios.get(url)
                     .then(res => {
-                        const item = res.data.response.body.items
+                        /* 하위 단위까지 모.두 경로를 써줘야됨 */
+                        const item = res.data.response.body.items.item
                         // eslint-disable-next-line no-console
                         console.log(res)
                         // eslint-disable-next-line no-console
