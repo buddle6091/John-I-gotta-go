@@ -30,7 +30,7 @@ const store = createStore({
         shortDep: (state) => {
             return state.departure.slice(-4, -1)
         },
-        shortFli: (state) => {
+        shortArr: (state) => {
             return state.arrival.slice(-4, -1)
         },   
         getAirport_dep: (state) => {
@@ -50,6 +50,9 @@ const store = createStore({
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
         },
+        translateEle (){
+
+        }
         
     }, 
     /* be able to use ajax, 비동기 */

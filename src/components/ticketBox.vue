@@ -4,10 +4,9 @@
 :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
                     <!--insert handle action-->
-                      <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
-                     <!--밀려나간 상태까지 걸리는 시간-->
+                    <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
+                    <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
-
 
 <div id="firstDisplay">
   <div id="flightDetail">
@@ -18,7 +17,6 @@
        {{ getAirport_dep }}</div>
        </div>
   <div id="flightDetail">
-    
       <div id="animContainer" style="left: -20px">
         <div id="animation">
         <div id="circle"> </div>
@@ -175,11 +173,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     
     return{          
       openModal : true,
-      /* ticket : data,   // from data.js */
-      
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
-    
-
       Departure : 'Incheon',
       Arrival : 'Jeju',
       DepartureDate : 'September 17th', 
@@ -197,9 +191,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
                       marginRight:'16px',
                       },  
     }
-    
   }
-  
 }
 </script>
 
