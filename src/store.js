@@ -50,9 +50,7 @@ const store = createStore({
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
         },
-        ex (state, tickets) {
-            state.tickets.push(...tickets)
-        }
+        
     }, 
     /* be able to use ajax, 비동기 */
     actions : {

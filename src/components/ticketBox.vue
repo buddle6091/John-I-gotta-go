@@ -1,5 +1,5 @@
 <template>
-<div v-for="ticket in tickets" :key="ticket.item" :ticket="item">
+<div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
 <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
 :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
@@ -13,9 +13,9 @@
   <div id="flightDetail">
     <div id="detailLabel">
       Departures</div>
-    INC
+    {{ shortDep }}
      <div id="detailLabel"> 
-       Incheon International Airport</div>
+       {{ getAirport_dep }}</div>
        </div>
   <div id="flightDetail">
     
@@ -39,9 +39,9 @@
   <div id="flightDetail">
     <div id="detailLabel">
       Arrivals </div>
-    CJU
+    {{ shortArr }}
      <div id="detailLabel">
-       Jeju International Airport</div>
+       {{ getAirport_arr }}</div>
        </div>
  </div>
  
@@ -137,15 +137,11 @@
 </template>
 
 <script>
-//import data from '../Data_tem.js'; 
+import { mapGetters } from 'vuex'
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
  
   props : {
-    /* tickets: {
-      type: Object,
-      default: () => ({}) 
-    } */
   },    
   name: 'TicketBox',
 
@@ -165,7 +161,14 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   computed: {
     tickets() {
       return this.$store.state.tickets;
-    }
+    },
+    ...mapGetters({
+      shortDep: 'shortDep',
+      shortArr: 'shortArr',
+      getAirport_dep : 'getAirport_dep',
+      getAirport_arr: 'getAirport_arr',
+    })
+
   },
   
   data(){

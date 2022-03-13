@@ -6,7 +6,7 @@
   <div>  
  <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
  </div>
-   <span><h1>{{ shortFli }}</h1>
+   <span><h1>{{ shortArr }}</h1>
     {{ getAirport_arr }}</span>
     </div>
     <div class="shortInfo">
@@ -27,7 +27,7 @@
  <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
  </Button> </div>
-   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortFli }} </h1>
+   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortArr }} </h1>
     {{ getAirport_arr }}</span>
     </div>
 <!--search Departure-->
@@ -166,7 +166,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
 
   methods: {
     reverse(){
-      /* shortDep <-> shortFli */
+      /* shortDep <-> shortArr */
       this.$store.state.tem_short = this.$store.state.arrival
       this.$store.state.arrival = this.$store.state.departure
       this.$store.state.departure = this.$store.state.tem_short
@@ -208,7 +208,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     ...mapState(['arrival', 'departure', 'tem_short', ]),
     ...mapGetters({
       shortDep : 'shortDep',
-      shortFli : 'shortFli',
+      shortArr : 'shortArr',
       getAirport_dep : 'getAirport_dep',
       getAirport_arr: 'getAirport_arr'}),
     ...mapActions({

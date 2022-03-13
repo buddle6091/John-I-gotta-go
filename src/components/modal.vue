@@ -95,21 +95,21 @@
             </h2>
             <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Gimpo International Airport" name="NAARKSS" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Jeju International Airport" name="NAARKPC" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Gwangju Airport" name="NAARKJJ" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Muan Airport" name="NAARKJB" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Gunsan Airport" name="NAARKJK" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Daegu International Airport" name="NAARKTN" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Sichuan Airport" name="NAARKPS" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Yeosu Airport" name="NAARKJY" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Ulsan Airport" name="NAARKPU" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Wonju Airport" name="NAARKNW" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Cheongju Airport" name="NAARKYU" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Pohang Airport" name="NAARKTH" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectFli($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectFli($event)" id="Busan International Airport" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gimpo International Airport" name="NAARKSS" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Jeju International Airport" name="NAARKPC" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gwangju Airport" name="NAARKJJ" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Muan Airport" name="NAARKJB" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gunsan Airport" name="NAARKJK" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Daegu International Airport" name="NAARKTN" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Sichuan Airport" name="NAARKPS" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Yeosu Airport" name="NAARKJY" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Ulsan Airport" name="NAARKPU" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Wonju Airport" name="NAARKNW" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Cheongju Airport" name="NAARKYU" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Pohang Airport" name="NAARKTH" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectArr($event)" id="Busan International Airport" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
@@ -204,20 +204,20 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
     },
 
-    selectFli($event){
+    selectArr($event){
       /* send data to store.js with $store.state */
       this.$store.state.arrival = $event.target.value
       this.$store.state.arrAirportId = $event.target.name
       this.$store.state.airport_arr = $event.target.id
       /* display airport`s short */
-      this.$store.state.shortFli = $event.target.value.slice(-4,-1)
+      this.$store.state.shortArr = $event.target.value.slice(-4,-1)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.arrival)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
       console.log(this.$store.state.arrAirportId)
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.shortFli)
+      console.log(this.$store.state.shortArr)
     }
   },
   mounted() {

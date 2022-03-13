@@ -236,6 +236,10 @@ text-align : 정렬을
   // usernName 인자를 받았다면 logIn 함수 실행, 아니라면 signUp 함수 실행
 
 <!--vue-->
+# vue warn
+  ❗ "Property [ ] was accessed during render but is not defined on instance."
+  -> 정의를 안해놓은것을 가져다 쓰고 있다..? 
+
 # API 숨기기
   dotenv 이용
 
@@ -255,7 +259,7 @@ text-align : 정렬을
     만약 데이터 수정하려면 데이터 수정방법인 mutations 항목에서 처리하면 가능
 
     ❗ mutations 에서 ajax 처리는 X -> 처리 기간에 따라 다른 mutations의 항목들이 동작하는 데 까지 딜레이가 예상됨 => 대신 actions 를 이용
-
+ 
     ❗ actions 에서 vuex의 구조상 api data를 바로 state에 전달이 불가능하고, mutations 통해서 state에 전달 가능, actions에서 state 요소를 사용하고 싶어서 this.$store.state~ 이렇게 쓰면 vscode에선 에러가 잡히지 않아도, server에서 명령을 실행시키면 오류때문에 실행이 안됨. actions 함수 인자에 state 추가해야함
 
 
