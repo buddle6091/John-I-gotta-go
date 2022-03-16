@@ -52,7 +52,7 @@
 <!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
  -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ ticket.depAirportNm }}             <!--출발지-->
+   {{ depNm }}             <!--출발지-->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ ticket.depPlandTime }}                   
                                          
@@ -135,7 +135,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
  
@@ -162,6 +162,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     tickets() {
       return this.$store.state.tickets;
     },
+    ...mapState(['depNm', 'arrNm']),
     ...mapGetters({
       shortDep: 'shortDep',
       shortArr: 'shortArr',
@@ -188,12 +189,12 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
                       marginRight:'10px',
                       position:'absolute',
                       },            
-       Airplane_out :{
+      Airplane_out :{
                       height:'27px',
                       marginTop:'24px',
                       marginLeft:'10px',
                       marginRight:'16px',
-                      },  
+                      }, 
     }
   }
 }
