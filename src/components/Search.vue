@@ -1,5 +1,5 @@
 <template>
-<div class="selectContainer"> 
+<div class="selectContainer-m" v-if="unfold == false"> 
   <div class="flightContainer">
    <span><h1>{{ shortDep }}</h1>
     {{ getAirport_dep }}</span> 
@@ -15,7 +15,7 @@
     <span>economy</span>      
 </div>
   </div>
-<div class="selectContainer">  
+<div class="selectContainer" v-if="unfold == true">  
   <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
   <ToggleButton :style="{marginLeft:'70%'}"/>
    
@@ -146,7 +146,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
-      unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
+      unfold: true,//처음에는 fold 되어있는 상태이니 초기값은 false
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       

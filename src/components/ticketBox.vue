@@ -61,7 +61,7 @@
   src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_out"/>
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-     {{ ticket.arrAirportNm }}     <!--출발지-->
+     {{ arrNm }}     <!--출발지-->
         <div id="detailtime"> 10:30 </div>  <!--시간-->
    {{ ticket.arrPlandTime }}                   <!--날짜-->
     </div>

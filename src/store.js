@@ -13,7 +13,7 @@ const store = createStore({
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
             arrival: 'CJU ',
-            depNm: '',
+            depNm: 'Gimpo',
             arrNm: 'Jeju',
             airline: '',
             airport_dep: 'Gimpo International Airport',
@@ -79,11 +79,13 @@ const store = createStore({
                         commit('updateState', {
                             tickets: item
                         })
-                        this.$store.state.depNm = res.data.response.body.items.item.depAirportNm
-                        this.$store.state.arrNm = res.data.response.body.items.item.arrAirportNm
+                        this.depNm = res.data.response.body.items.item.depAirportNm
+                        this.arrNm = res.data.response.body.items.item.arrAirportNm
                         resolve(res.data.response.body.items)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+                        // eslint-disable-next-line no-console
+                        console.log(this.depNm)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }
