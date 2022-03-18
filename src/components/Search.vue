@@ -1,110 +1,112 @@
 <template>
-<div class="selectContainer-m" v-if="unfold == false"> 
-  <div class="flightContainer">
-   <span><h1>{{ shortDep }}</h1>
-    {{ getAirport_dep }}</span> 
-  <div>  
- <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
- </div>
-   <span><h1>{{ shortArr }}</h1>
-    {{ getAirport_arr }}</span>
+<div>
+  <div class="selectContainer-m" v-if="unfold == false"> 
+    <div class="flightContainer">
+    <span><h1>{{ shortDep }}</h1>
+      {{ getAirport_dep }}</span> 
+    <div>  
+      <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
     </div>
-    <div class="shortInfo">
-    <span>10.19</span>~ <span>10.22</span>|
-    <span>3 people</span>|
-    <span>economy</span>      
-</div>
+    <span><h1>{{ shortArr }}</h1>
+      {{ getAirport_arr }}</span>
+      </div>
+      <div class="shortInfo">
+      <span>10.19</span>~ <span>10.22</span>|
+      <span>3 people</span>|
+      <span>economy</span>      
+      </div>
   </div>
-<div class="selectContainer" v-if="unfold == true">  
-  <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
-  <ToggleButton :style="{marginLeft:'70%'}"/>
-   
-  <div class="flightContainer">
-   <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
-    {{ getAirport_dep }}</span> 
-  <div>  
- <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
- <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
-   <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
- </Button> </div>
-   <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortArr }} </h1>
-    {{ getAirport_arr }}</span>
-    </div>
-<!--search Departure-->
-  <!--search Destination-->
-<div class="set" :style="{zIndex: '30'}">
-  <span class="material-icons"> date_range </span> 
-   <div class="dateBox"><i class="material-icons">flight_takeoff</i>
-    <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
-     :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
-    </div> 
-    <div class="dateBox"><i class="material-icons">flight_land</i>
-    <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
-     :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
-    </div> 
-</div>
-<!-- passengers -->
-<div class="set">
- <span class="material-icons">people</span>
- <ul class="block" > 
-  <li class="block-radio passengers">
-    <input type="radio" id="adult" name="passenger" value="1" checked>
-      <label for="adult"> Adult &times; <span> {{ person[0] }} </span>
-         <h2>12+ years old</h2></label>
-  </li>
-  <li class="block-radio passengers">
-      <input type="radio" id="kid" name="passenger" value="0"> 
-        <label for="kid"><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
-        <h2>under 12 </h2></label>
-  </li>
-  <li class="block-radio passengers">
-      <input type="radio" id="baby" name="passenger" value="0"> 
-       <label for="baby">baby &times; <span> {{ person[2] }} </span>
-       <h2>less than 24 months</h2></label>
-  </li>
-  <li class="BtnContainer">
-  <Button layout='Increase' id="btn_inc" color='base' @click="btnIncrease"> 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-person-plus-fill">
-      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-</svg> </Button>
-  <Button layout='Decrease' id="btn_dec" color='base' @click="btnDecrease"> 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
-      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-</svg>
-    </Button>
- </li> 
-</ul>       
-</div>
-<!--class-->
-<div class="set">
- <span class="material-icons">flight_class</span>
- <ul class="block"> 
-  <li class="block-radio class">
-    <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
-        <label for="class1"> <i class="material-icons">airline_seat_recline_normal</i>
-         <h2>Economy</h2></label>
-  </li>
-  <li class="block-radio class">
-      <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
-        <label for="class2"> <i class="material-icons">airline_seat_recline_extra</i>
-         <h2>Premium economy</h2></label>         
-  </li>
-  <li class="block-radio class">
-      <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
-       <label for="class3"> <i class="material-icons">airline_seat_flat_angled</i>
-         <h2>Business</h2></label>
-  </li>
-  <li class="block-radio class">
-      <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
-       <label for="class4"> <i class="material-icons">airline_seat_individual_suite</i>
-         <h2>First</h2></label>     
-  </li>
-</ul>       
-</div>
-  <Button @click="[searchTicket(), ]" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
-</div>   
+  <div class="selectContainer" v-if="unfold == true">  
+    <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
+    <ToggleButton :style="{marginLeft:'70%'}"/>
+    
+    <div class="flightContainer">
+    <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
+      {{ getAirport_dep }}</span> 
+    <div>  
+  <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
+  <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
+    <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
+  </Button> </div>
+    <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortArr }} </h1>
+      {{ getAirport_arr }}</span>
+      </div>
+  <!--search Departure-->
+    <!--search Destination-->
+  <div class="set" :style="{zIndex: '30'}">
+    <span class="material-icons"> date_range </span> 
+    <div class="dateBox"><i class="material-icons">flight_takeoff</i>
+      <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+      </div> 
+      <div class="dateBox"><i class="material-icons">flight_land</i>
+      <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+      :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+      </div> 
+  </div>
+  <!-- passengers -->
+  <div class="set">
+  <span class="material-icons">people</span>
+  <ul class="block" > 
+    <li class="block-radio passengers">
+      <input type="radio" id="adult" name="passenger" value="1" checked>
+        <label for="adult"> Adult &times; <span> {{ person[0] }} </span>
+          <h2>12+ years old</h2></label>
+    </li>
+    <li class="block-radio passengers">
+        <input type="radio" id="kid" name="passenger" value="0"> 
+          <label for="kid"><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
+          <h2>under 12 </h2></label>
+    </li>
+    <li class="block-radio passengers">
+        <input type="radio" id="baby" name="passenger" value="0"> 
+        <label for="baby">baby &times; <span> {{ person[2] }} </span>
+        <h2>less than 24 months</h2></label>
+    </li>
+    <li class="BtnContainer">
+    <Button layout='Increase' id="btn_inc" color='base' @click="btnIncrease"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor" class="bi bi-person-plus-fill">
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+  </svg> </Button>
+    <Button layout='Decrease' id="btn_dec" color='base' @click="btnDecrease"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  </svg>
+      </Button>
+  </li> 
+  </ul>       
+  </div>
+  <!--class-->
+  <div class="set">
+  <span class="material-icons">flight_class</span>
+  <ul class="block"> 
+    <li class="block-radio class">
+      <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
+          <label for="class1"> <i class="material-icons">airline_seat_recline_normal</i>
+          <h2>Economy</h2></label>
+    </li>
+    <li class="block-radio class">
+        <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
+          <label for="class2"> <i class="material-icons">airline_seat_recline_extra</i>
+          <h2>Premium economy</h2></label>         
+    </li>
+    <li class="block-radio class">
+        <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
+        <label for="class3"> <i class="material-icons">airline_seat_flat_angled</i>
+          <h2>Business</h2></label>
+    </li>
+    <li class="block-radio class">
+        <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
+        <label for="class4"> <i class="material-icons">airline_seat_individual_suite</i>
+          <h2>First</h2></label>     
+    </li>
+  </ul>       
+  </div>
+    <Button @click="searchTicket()" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+  </div> 
+ </div>   
 </template>
 
 <script>
