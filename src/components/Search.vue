@@ -103,7 +103,7 @@
   </li>
 </ul>       
 </div>
-  <Button @click="$store.dispatch('searchInfo')" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+  <Button @click="[searchTicket(), ]" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
 </div>   
 </template>
 
@@ -200,8 +200,11 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
         this.person[1]--;
         else
         this.person[2]--;
-        }, 
-
+        },
+    async searchTicket() {
+      this.$store.dispatch('searchInfo'),
+      this.unfold == false;
+    }
   },
   
   computed: {
