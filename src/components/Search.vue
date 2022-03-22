@@ -148,7 +148,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
-      unfold: true,//처음에는 fold 되어있는 상태이니 초기값은 false
+      active: false,//처음에는 fold 되어있는 상태이니 초기값은 false
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       
@@ -254,15 +254,6 @@ html{
   background: $base;
 }
 
-.selectContainer{
-  justify-content: center;
-  overflow: hidden;
-  min-height: 40rem;
-  max-height: 40rem;
-  position: relative;
-  transition: height 0.4s;
-}
-
 .selectContainer {
  // border: 1px solid rgba(0, 0, 0, 0.1);
   margin: {
@@ -271,7 +262,7 @@ html{
     right: auto;  
   };
   width: 88%;
-  height: 34rem;
+  //height: 34rem;
   max-width: 835px;
   min-width: 400px;
   box-sizing: border-box;
@@ -287,27 +278,26 @@ html{
   overflow: hidden;
   transition: height 0.4s;
 
-  &__inactive-content{
-    opacity: 1;
-    transition: opacity 0.4s;
-    position: absolute;
-  }
-
-  &__active-content{
-    opacity: 1;
-    transition: opacity 0.4s
-  }
-
-/*   &.is-active{
-    
-    .selectContainer__inactive{
+  &:active {
+    &__inactive{
       opacity: 0;
+      transition: opacity 0.4s;
+      position: absolute;
     }
-  
-    .selectContainer__active{
+    &__active{
       opacity: 1;
+      transition: opacity 0.4s
     }
-  } */
+  }
+
+  &__inactive{
+    opacity: 1;
+  }
+
+  &__active{
+    opacity: 0;
+  }
+
   
 .flightContainer{
   display: flex;
