@@ -1,6 +1,6 @@
 <template>
 <div class="selectContainer">
-  <div class="selectContainer__inactive"> 
+  <div class="selectContainer__inactive" @click="active"> 
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -263,8 +263,8 @@ html{
   };
   width: 88%;
   //height: 34rem;
-  max-width: 835px;
-  min-width: 400px;
+  /* max-width: 835px;
+  min-width: 400px; */
   box-sizing: border-box;
   background: $base;
   border-radius: $radius-3;
@@ -276,15 +276,14 @@ html{
   justify-content: center;
   align-content: flex-start;
   overflow: hidden;
-  transition: height 0.4s;
 
-  &:active {
-    &__inactive{
+  &.is-active {
+    &__inactive {
       opacity: 0;
       transition: opacity 0.4s;
       position: absolute;
     }
-    &__active{
+    &__active { 
       opacity: 1;
       transition: opacity 0.4s
     }
@@ -292,10 +291,12 @@ html{
 
   &__inactive{
     opacity: 1;
+    transition: opacity 0.4s;
   }
 
   &__active{
     opacity: 0;
+    transition: opacity 0.4s;
   }
 
   
