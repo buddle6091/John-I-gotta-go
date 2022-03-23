@@ -1,6 +1,6 @@
 <template>
-<div class="selectContainer">
-  <div class="selectContainer__inactive" @click="Active()"> <!-- 초기값 false -->
+<div class="selectContainer__total" @click="Active()" :class="{'is-active': isActive, [className]: true}">
+  <div class="selectContainer__inactive"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -16,7 +16,7 @@
       <span>economy</span>      
       </div>
   </div>
-  <div class="selectContainer__active">  
+  <div class="selectContainer__active" :style="{height: isActive ? '40rem' : '20rem', transition: isActive ? '0.4s' : '0.4s'}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
     <ToggleButton :style="{marginLeft:'70%'}"/>
     
@@ -268,92 +268,98 @@ html{
   width: 88%;
   //height: 34rem;
   //min-height: 20rem;
-  box-sizing: border-box;
-  background: $base;
-  border-radius: $radius-3;
-  box-shadow: $shadow-convex-hover;
+  //box-sizing: border-box;
+  //background: $base;
+  //border-radius: $radius-3;
+  //box-shadow: $shadow-convex-hover;
   padding: $spacing-4 $spacing-6;
   position: relative;
-  display: flex;
+  //display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  overflow: hidden;
+  //overflow: hidden;
 
-    &:active {
-      &__inactive {
+  &__total {
+    min-height: 10rem;
+    box-sizing: border-box;
+    background: $base;
+    border-radius: $radius-3;
+    box-shadow: $shadow-convex-hover;
+    padding: $spacing-4 $spacing-6;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    transition: height 0.4s;
+    
+    .flightContainer{
+      display: flex;
+      justify-content: center;
+      margin: {top: 11px;}  
+      cursor: pointer;
+      span{
+        color: #757575;
+        font: {
+          size: 10px;}
+          padding: {
+            left: 40px;
+            right: 40px;}
+        h1{
+          color: #000000;
+          font-size: 38px;
+          }
+          text-align: center;}
+          div{
+            display:flex;
+            flex-direction: column;
+          }
+      }
+    
+    &.is-active {
+      .selectContainer__inactive {
         opacity: 0;
-        transition: opacity 0.4s;
-        position: absolute;
         display: none;
       }
-      &__active { 
+      .selectContainer__active { 
         opacity: 1;
-        transition: opacity 0.4s
       }
     }
+  }
 
     &__inactive{
       //display: none;
       opacity: 1;
       transition: opacity 0.4s;
       position: relative;
+
+      .shortInfo{
+        width: 20rem;
+        height: 2rem;
+        color: #969696e8;
+        line-height: center;
+        text-align: center;
+        border-radius: 10px;
+        background: rgba(168, 168, 168, 0.1);
+        box-shadow: $shadow-concave;
+        top: 13px;
+        position: relative;
+        span{
+          padding: 10px, 10px;
+          margin-right: 10px;
+          font: { 
+            size: 7px;
+            weight: bold;
+            }
+          color: rgb(70, 68, 68) !important;
+        }
+      }
     }
 
     &__active{
       //display: none;
-      opacity: 1;
+      opacity: 0;
       transition: opacity 0.4s;
-    }
-
-    
-  .flightContainer{
-    display: flex;
-    justify-content: center;
-    margin: {top: 11px;}  
-    cursor: pointer;
-    span{
-      color: #757575;
-      font: {
-        size: 10px;}
-      padding: {
-        left: 40px;
-        right: 40px;}
-      
-      h1{
-        color: #000000;
-        font: {
-          size: 38px;}
-          }
-        text-align: center;}
-      div{
-        display:flex;
-        flex-direction: column;
-      }
-  }
-  .shortInfo{
-    width: 20rem;
-    height: 2rem;
-    color: #969696e8;
-    line-height: center;
-    text-align: center;
-    border-radius: 10px;
-    background: rgba(168, 168, 168, 0.1);
-    box-shadow: $shadow-concave;
-    top: 13px;
-    position: relative;
-    span{
-      padding: 10px, 10px;
-      margin-right: 10px;
-      font: { 
-        size: 7px;
-        weight: bold;
-        }
-      color: rgb(70, 68, 68) !important;
-    }
-  }
-
-  .set{
+      .set{
     align-content: flex-start;
     display: flex;
     flex-direction: row;
@@ -560,6 +566,32 @@ html{
     flex-direction: column;
     position: relative;
     justify-content: center;
+  }
+    }
+  
+  .flightContainer{
+    display: flex;
+    justify-content: center;
+    margin: {top: 11px;}  
+    cursor: pointer;
+    span{
+      color: #757575;
+      font: {
+        size: 10px;}
+      padding: {
+        left: 40px;
+        right: 40px;}
+      
+      h1{
+        color: #000000;
+        font: {
+          size: 38px;}
+          }
+        text-align: center;}
+      div{
+        display:flex;
+        flex-direction: column;
+      }
   }
 }
 </style>

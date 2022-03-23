@@ -252,6 +252,10 @@ text-align : 정렬을
 
   계속 methods에서 굴리다가 application이 필요 없는 데이터까지 계산에 넣어서 돌아가느라 부하가 걸릴 수 있으니, 자신과 관계없는 데이터는 x, 정해진 데이터에만 반응하는 함수는 computed
 
+# 조건부 (toggle) 에 따른 class 효과 부여하기
+ ex ) 
+ <div class="selectContainer__total" @click="Active()" :class="{'is-active': isActive, [className]: true}">
+
   # vuex
     vuex data 불러오기. {{ $store.state.name }}
     ❗ state의 데이터를 컴포넌트에서 억지로 변경 x -> 컴포넌트의 수가 많으면 나중에 버그 났을때
