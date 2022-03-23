@@ -1,6 +1,6 @@
 <template>
 <div class="selectContainer">
-  <div class="selectContainer__inactive" @click="active"> 
+  <div class="selectContainer__inactive" @click="Active()"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -148,7 +148,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
-      active: false,//처음에는 fold 되어있는 상태이니 초기값은 false
+      isActive: false,//처음에는 fold 되어있는 상태이니 초기값은 false
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       
@@ -167,6 +167,9 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
 
   methods: {
+    Active(){
+      this.isActive = true;
+    },
     reverse(){
       /* shortDep <-> shortArr */
       this.$store.state.tem_short = this.$store.state.arrival
@@ -244,6 +247,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   padding: 0; 
   box-sizing: border-box;
   perspective: 700px; 
+  user-select: none;    // prevent block
 }
 html{
   font-size: 16px;
@@ -263,8 +267,7 @@ html{
   };
   width: 88%;
   //height: 34rem;
-  /* max-width: 835px;
-  min-width: 400px; */
+  //min-height: 20rem;
   box-sizing: border-box;
   background: $base;
   border-radius: $radius-3;
@@ -277,282 +280,286 @@ html{
   align-content: flex-start;
   overflow: hidden;
 
-  &.is-active {
-    &__inactive {
-      opacity: 0;
-      transition: opacity 0.4s;
-      position: absolute;
+    &:active {
+      &__inactive {
+        opacity: 0;
+        transition: opacity 0.4s;
+        position: absolute;
+        display: none;
+      }
+      &__active { 
+        opacity: 1;
+        transition: opacity 0.4s
+      }
     }
-    &__active { 
+
+    &__inactive{
+      //display: none;
       opacity: 1;
-      transition: opacity 0.4s
+      transition: opacity 0.4s;
+      position: relative;
+    }
+
+    &__active{
+      //display: none;
+      opacity: 1;
+      transition: opacity 0.4s;
+    }
+
+    
+  .flightContainer{
+    display: flex;
+    justify-content: center;
+    margin: {top: 11px;}  
+    cursor: pointer;
+    span{
+      color: #757575;
+      font: {
+        size: 10px;}
+      padding: {
+        left: 40px;
+        right: 40px;}
+      
+      h1{
+        color: #000000;
+        font: {
+          size: 38px;}
+          }
+        text-align: center;}
+      div{
+        display:flex;
+        flex-direction: column;
+      }
+  }
+  .shortInfo{
+    width: 20rem;
+    height: 2rem;
+    color: #969696e8;
+    line-height: center;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(168, 168, 168, 0.1);
+    box-shadow: $shadow-concave;
+    top: 13px;
+    position: relative;
+    span{
+      padding: 10px, 10px;
+      margin-right: 10px;
+      font: { 
+        size: 7px;
+        weight: bold;
+        }
+      color: rgb(70, 68, 68) !important;
     }
   }
 
-  &__inactive{
-    opacity: 1;
-    transition: opacity 0.4s;
-  }
+  .set{
+    align-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:  nowrap;               
+    position: relative;
+    z-index: -5;
+    left: 10px;
+    margin: {
+      top: 1.4rem;
+      //left: 2px;
+      //right: auto;
+    }
+    span[class=material-icons]{
+      font-size: 30px; 
+      color: rgb(80, 80, 80); 
+      margin: auto;
+      position: relative;
+      left: -10px;
+      } 
+      .dateBox{
+        width: 9rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
+        color: $text-main;
+        box-sizing: border-box;
+        cursor: pointer;
+        margin: {
+            left: 10px;
+            right: 5px;
+          };
+        padding: 0 $spacing-4 0 $spacing-1;
+        background: $base;
+        box-shadow: $shadow-concave;
+        border-radius: $radius-1;
+      
+          i{
+            font-size: 18px;
+            text-align: flex-start;
+            margin-left: 10px;
+          }
+      
+          span{
+            font-size: 14px;
+          }
+      }
+  /* 블럭 잡고 각 블럭을 따닥따닥 연결..
+  그 후 radio 버튼을 블럭으로 디자인 하고 */
+    .block{
+      width: 18rem;
+      height: 5rem;
+      padding: 1px;
+      border-radius: 15px;
+      box-shadow: $shadow-convex-hover;
+      background-color: $base;
+      position: relative;
+      cursor: pointer;
+      box-shadow: $shadow-convex-hover;
+      justify-content: center;
+      //align-items: center;
+      display: flex;
 
-  &__active{
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  
-.flightContainer{
-  display: flex;
-  justify-content: center;
-  margin: {top: 11px;}  
-  cursor: pointer;
-  span{
-    color: #757575;
-    font: {
-      size: 10px;}
-    padding: {
-      left: 40px;
-      right: 40px;}
-    
-    h1{
-      color: #000000;
-      font: {
-        size: 38px;}
+      li{
+        display: inline;
+        text-align: center;
+        font-size: 0.9rem;
+        }  
+      h2{
+        color: $text-main;
+        font-size: 2px;
+        line-height: 0.6rem;
         }
-      text-align: center;}
-    div{
-      display:flex;
+      [class=material-icons]{
+        font-size: 30px;   
+        color: rgb(80, 80, 80); 
+        position: relative;
+        right: 0px;
+      }
+      input[type="radio"] {
+          display:none;
+          }
+      input[type="radio"]:not(:checked) ~ label {
+        box-shadow: none;
+        //transition: box-shadow ease-in-out 0.5s;
+      }
+      /* passengers radio*/
+      input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
+          width: 4.9rem;
+          height: 5rem;
+          top: -1px;
+          left: -1px;
+          padding-top: 10px;
+          border-radius: 0px 0px 0px 0px;
+          background-color: $base;
+          box-shadow: $shadow-concave-large;
+          transition: box-shadow ease-in-out 0.5s;
+        }
+
+        input[id="adult"]:checked ~ label{
+          width: 4.9rem;
+          height: 5rem;
+          top: -1px;
+          left: -1px;
+          padding-top: 10px;
+          border-radius: 15px 0px 0px 15px;
+          background-color: $base;
+          box-shadow: $shadow-concave-large;
+          transition: box-shadow ease-in-out 0.5s;
+        }
+
+      /* class radio*/
+        input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
+          width: 4.5rem;
+          height: 5rem;
+          top: -1px;
+          left: -0.5px;
+          padding-top: 10px;
+          border-radius: 0px 0px 0px 0px;
+          background-color: $base;
+          box-shadow: $shadow-concave-large;
+          transition: box-shadow ease-in-out 0.5s;
+        }
+
+        input[id="class1"]:checked ~ label{
+          width: 4.5rem;
+          height: 5rem;
+          top: -1px;
+          left: -1px;
+          padding-top: 10px;
+          border-radius: 15px 0px 0px 15px;
+          background-color: $base;
+          box-shadow: $shadow-concave-large;
+          transition: box-shadow ease-in-out 0.5s;
+        }
+
+        input[id="class4"]:checked ~ label{
+          width: 4.5rem;
+          height: 5rem;
+          top: -1px;
+          padding-top: 10px;
+          border-radius: 0px 15px 15px 0px;
+          color: $primary;
+          background-color: $base;
+          box-shadow: $shadow-concave-large;
+          transition: box-shadow ease-in-out 0.5s;
+        }
+
+        /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
+        같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
+  }
+
+    .block-radio{
+      border: 0.1rem dashed $disabled;
+      border: {
+        top: none;
+        left: none;
+        bottom: none;
+      } 
+      position: relative;
+      z-index: inherit;
+
+      &:last-child{
+        border: none;
+      }
+
+      &.passengers{
+          width: 30%;
+          div{
+            top: 15px;
+            position: relative;
+          }
+      }
+      &.class{
+        width: 25%;
+        label{
+          top: 10px;
+          position: relative;
+          }
+  /*       input[type="radio"]:checked + label{
+          width: 4.5rem;
+          height: 5rem;
+          top: -1px;
+          left: -1px;
+          padding-top: 10px;
+          border-radius: 0px 0px 0px 0px;
+          color: $primary;
+          background-color: red;
+            } */
+      }
+    }
+
+    .BtnContainer{
+      width: 10%;
+      height: auto;
+      position: relative;
       flex-direction: column;
     }
-}
-.shortInfo{
-  width: 20rem;
-  height: 2rem;
-  color: #969696e8;
-  line-height: center;
-  text-align: center;
-  border-radius: 10px;
-  background: rgba(168, 168, 168, 0.1);
-  box-shadow: $shadow-concave;
-  top: 13px;
-  position: relative;
-  span{
-    padding: 10px, 10px;
-    margin-right: 10px;
-    font: { 
-      size: 7px;
-      weight: bold;
-      }
-    color: rgb(70, 68, 68) !important;
   }
-}
 
-.set{
-  align-content: flex-start;
-  display: flex;
-  flex-direction: row;
-  flex-wrap:  nowrap;               
-  position: relative;
-  z-index: -5;
-  left: 10px;
-  margin: {
-    top: 1.4rem;
-    //left: 2px;
-    //right: auto;
-  }
-  span[class=material-icons]{
-    font-size: 30px; 
-    color: rgb(80, 80, 80); 
+  .ticketContainer{
     margin: auto;
-    position: relative;
-    left: -10px;
-    } 
-    .dateBox{
-      width: 9rem;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      vertical-align: middle;
-      color: $text-main;
-      box-sizing: border-box;
-      cursor: pointer;
-      margin: {
-          left: 10px;
-          right: 5px;
-        };
-      padding: 0 $spacing-4 0 $spacing-1;
-      background: $base;
-      box-shadow: $shadow-concave;
-      border-radius: $radius-1;
-    
-        i{
-          font-size: 18px;
-          text-align: flex-start;
-          margin-left: 10px;
-        }
-    
-        span{
-          font-size: 14px;
-        }
-    }
-/* 블럭 잡고 각 블럭을 따닥따닥 연결..
- 그 후 radio 버튼을 블럭으로 디자인 하고 */
-  .block{
-    width: 18rem;
-    height: 5rem;
-    padding: 1px;
-    border-radius: 15px;
-    box-shadow: $shadow-convex-hover;
-    background-color: $base;
-    position: relative;
-    cursor: pointer;
-    box-shadow: $shadow-convex-hover;
-    justify-content: center;
-    //align-items: center;
     display: flex;
-
-    li{
-      display: inline;
-      text-align: center;
-      font-size: 0.9rem;
-      }  
-    h2{
-      color: $text-main;
-      font-size: 2px;
-      line-height: 0.6rem;
-      }
-    [class=material-icons]{
-      font-size: 30px;   
-      color: rgb(80, 80, 80); 
-      position: relative;
-      right: 0px;
-    }
-    input[type="radio"] {
-        display:none;
-        }
-    input[type="radio"]:not(:checked) ~ label {
-      box-shadow: none;
-      //transition: box-shadow ease-in-out 0.5s;
-    }
-    /* passengers radio*/
-    input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
-        width: 4.9rem;
-        height: 5rem;
-        top: -1px;
-        left: -1px;
-        padding-top: 10px;
-        border-radius: 0px 0px 0px 0px;
-        background-color: $base;
-        box-shadow: $shadow-concave-large;
-        transition: box-shadow ease-in-out 0.5s;
-      }
-
-      input[id="adult"]:checked ~ label{
-        width: 4.9rem;
-        height: 5rem;
-        top: -1px;
-        left: -1px;
-        padding-top: 10px;
-        border-radius: 15px 0px 0px 15px;
-        background-color: $base;
-        box-shadow: $shadow-concave-large;
-        transition: box-shadow ease-in-out 0.5s;
-      }
-
-    /* class radio*/
-      input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
-        width: 4.5rem;
-        height: 5rem;
-        top: -1px;
-        left: -0.5px;
-        padding-top: 10px;
-        border-radius: 0px 0px 0px 0px;
-        background-color: $base;
-        box-shadow: $shadow-concave-large;
-        transition: box-shadow ease-in-out 0.5s;
-      }
-
-      input[id="class1"]:checked ~ label{
-        width: 4.5rem;
-        height: 5rem;
-        top: -1px;
-        left: -1px;
-        padding-top: 10px;
-        border-radius: 15px 0px 0px 15px;
-        background-color: $base;
-        box-shadow: $shadow-concave-large;
-        transition: box-shadow ease-in-out 0.5s;
-      }
-
-      input[id="class4"]:checked ~ label{
-        width: 4.5rem;
-        height: 5rem;
-        top: -1px;
-        padding-top: 10px;
-        border-radius: 0px 15px 15px 0px;
-        color: $primary;
-        background-color: $base;
-        box-shadow: $shadow-concave-large;
-        transition: box-shadow ease-in-out 0.5s;
-      }
-
-      /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
-      같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
-}
-
-  .block-radio{
-    border: 0.1rem dashed $disabled;
-    border: {
-      top: none;
-      left: none;
-      bottom: none;
-    } 
-    position: relative;
-    z-index: inherit;
-
-    &:last-child{
-      border: none;
-    }
-
-    &.passengers{
-        width: 30%;
-        div{
-          top: 15px;
-          position: relative;
-        }
-    }
-    &.class{
-      width: 25%;
-      label{
-        top: 10px;
-        position: relative;
-        }
-/*       input[type="radio"]:checked + label{
-        width: 4.5rem;
-        height: 5rem;
-        top: -1px;
-        left: -1px;
-        padding-top: 10px;
-        border-radius: 0px 0px 0px 0px;
-        color: $primary;
-        background-color: red;
-          } */
-    }
-  }
-
-  .BtnContainer{
-    width: 10%;
-    height: auto;
-    position: relative;
     flex-direction: column;
-  }
-}
-
-.ticketContainer{
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
+    position: relative;
+    justify-content: center;
   }
 }
 </style>
