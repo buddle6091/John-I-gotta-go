@@ -104,7 +104,7 @@
       </li>
     </ul>       
     </div>
-      <Button @click="searchTicket()" :style="{marginTop: '2rem', zIndex: '-1'}"> Search </Button>
+      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1'}" :class="{'is-Active' : isActive, [className]: true}"> Search </Button>
     </div> 
  </div>   
 </template>
@@ -167,8 +167,11 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
 
   methods: {
-    Active(){
+    Active() {
       this.isActive = true;
+    },
+    unActive() {
+      this.isActive = false;
     },
     reverse(){
       /* shortDep <-> shortArr */
@@ -265,22 +268,22 @@ html{
     left: auto;
     right: auto;  
   };
-  width: 88%;
   //height: 34rem;
   //min-height: 20rem;
   //box-sizing: border-box;
   //background: $base;
   //border-radius: $radius-3;
   //box-shadow: $shadow-convex-hover;
-  padding: $spacing-4 $spacing-6;
+  //width: 30rem;
   position: relative;
   //display: flex;
+  //padding: $spacing-4 $spacing-6;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: flex-start;
   //overflow: hidden;
 
   &__total {
+    width: 30rem;
+    align-content: center;
     min-height: 10rem;
     box-sizing: border-box;
     background: $base;
@@ -299,6 +302,7 @@ html{
       cursor: pointer;
       span{
         color: #757575;
+
         font: {
           size: 10px;}
           padding: {
