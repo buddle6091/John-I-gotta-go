@@ -104,7 +104,7 @@
       </li>
     </ul>       
     </div>
-      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1'}" :class="{'is-Active' : isActive, [className]: true}"> Search </Button>
+      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1'}" :class="{'isnot-active' : isActive, [className]: false}"> Search </Button>
     </div> 
  </div>   
 </template>
@@ -328,6 +328,17 @@ html{
         opacity: 1;
       }
     }
+
+    &.isnot-active{
+      .selectContainer__inactive {
+        opacity: 1;
+        display: flex;
+      }
+      .selectContainer__active {
+        opacity: 0;
+        display: none;
+      }
+    }
   }
 
     &__inactive{
@@ -364,238 +375,238 @@ html{
       opacity: 0;
       transition: opacity 0.4s;
       .set{
-    align-content: flex-start;
-    display: flex;
-    flex-direction: row;
-    flex-wrap:  nowrap;               
-    position: relative;
-    z-index: -5;
-    left: 10px;
-    margin: {
-      top: 1.4rem;
-      //left: 2px;
-      //right: auto;
-    }
-    span[class=material-icons]{
-      font-size: 30px; 
-      color: rgb(80, 80, 80); 
-      margin: auto;
-      position: relative;
-      left: -10px;
-      } 
-      .dateBox{
-        width: 9rem;
-        height: 3rem;
+        align-content: flex-start;
         display: flex;
-        align-items: center;
-        vertical-align: middle;
-        color: $text-main;
-        box-sizing: border-box;
-        cursor: pointer;
-        margin: {
-            left: 10px;
-            right: 5px;
-          };
-        padding: 0 $spacing-4 0 $spacing-1;
-        background: $base;
-        box-shadow: $shadow-concave;
-        border-radius: $radius-1;
-      
-          i{
-            font-size: 18px;
-            text-align: flex-start;
-            margin-left: 10px;
-          }
-      
-          span{
-            font-size: 14px;
-          }
-      }
-  /* 블럭 잡고 각 블럭을 따닥따닥 연결..
-  그 후 radio 버튼을 블럭으로 디자인 하고 */
-    .block{
-      width: 18rem;
-      height: 5rem;
-      padding: 1px;
-      border-radius: 15px;
-      box-shadow: $shadow-convex-hover;
-      background-color: $base;
-      position: relative;
-      cursor: pointer;
-      box-shadow: $shadow-convex-hover;
-      justify-content: center;
-      //align-items: center;
-      display: flex;
-
-      li{
-        display: inline;
-        text-align: center;
-        font-size: 0.9rem;
-        }  
-      h2{
-        color: $text-main;
-        font-size: 2px;
-        line-height: 0.6rem;
-        }
-      [class=material-icons]{
-        font-size: 30px;   
-        color: rgb(80, 80, 80); 
+        flex-direction: row;
+        flex-wrap:  nowrap;               
         position: relative;
-        right: 0px;
-      }
-      input[type="radio"] {
-          display:none;
+        z-index: -5;
+        left: 10px;
+        margin: {
+          top: 1.4rem;
+          //left: 2px;
+          //right: auto;
+        }
+      span[class=material-icons]{
+        font-size: 30px; 
+        color: rgb(80, 80, 80); 
+        margin: auto;
+        position: relative;
+        left: -10px;
+        } 
+        .dateBox{
+          width: 9rem;
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          vertical-align: middle;
+          color: $text-main;
+          box-sizing: border-box;
+          cursor: pointer;
+          margin: {
+              left: 10px;
+              right: 5px;
+            };
+          padding: 0 $spacing-4 0 $spacing-1;
+          background: $base;
+          box-shadow: $shadow-concave;
+          border-radius: $radius-1;
+        
+            i{
+              font-size: 18px;
+              text-align: flex-start;
+              margin-left: 10px;
+            }
+        
+            span{
+              font-size: 14px;
+            }
+        }
+    /* 블럭 잡고 각 블럭을 따닥따닥 연결..
+    그 후 radio 버튼을 블럭으로 디자인 하고 */
+      .block{
+        width: 18rem;
+        height: 5rem;
+        padding: 1px;
+        border-radius: 15px;
+        box-shadow: $shadow-convex-hover;
+        background-color: $base;
+        position: relative;
+        cursor: pointer;
+        box-shadow: $shadow-convex-hover;
+        justify-content: center;
+        //align-items: center;
+        display: flex;
+
+        li{
+          display: inline;
+          text-align: center;
+          font-size: 0.9rem;
+          }  
+        h2{
+          color: $text-main;
+          font-size: 2px;
+          line-height: 0.6rem;
           }
-      input[type="radio"]:not(:checked) ~ label {
-        box-shadow: none;
-        //transition: box-shadow ease-in-out 0.5s;
-      }
-      /* passengers radio*/
-      input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
-          width: 4.9rem;
-          height: 5rem;
-          top: -1px;
-          left: -1px;
-          padding-top: 10px;
-          border-radius: 0px 0px 0px 0px;
-          background-color: $base;
-          box-shadow: $shadow-concave-large;
-          transition: box-shadow ease-in-out 0.5s;
-        }
-
-        input[id="adult"]:checked ~ label{
-          width: 4.9rem;
-          height: 5rem;
-          top: -1px;
-          left: -1px;
-          padding-top: 10px;
-          border-radius: 15px 0px 0px 15px;
-          background-color: $base;
-          box-shadow: $shadow-concave-large;
-          transition: box-shadow ease-in-out 0.5s;
-        }
-
-      /* class radio*/
-        input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
-          width: 4.5rem;
-          height: 5rem;
-          top: -1px;
-          left: -0.5px;
-          padding-top: 10px;
-          border-radius: 0px 0px 0px 0px;
-          background-color: $base;
-          box-shadow: $shadow-concave-large;
-          transition: box-shadow ease-in-out 0.5s;
-        }
-
-        input[id="class1"]:checked ~ label{
-          width: 4.5rem;
-          height: 5rem;
-          top: -1px;
-          left: -1px;
-          padding-top: 10px;
-          border-radius: 15px 0px 0px 15px;
-          background-color: $base;
-          box-shadow: $shadow-concave-large;
-          transition: box-shadow ease-in-out 0.5s;
-        }
-
-        input[id="class4"]:checked ~ label{
-          width: 4.5rem;
-          height: 5rem;
-          top: -1px;
-          padding-top: 10px;
-          border-radius: 0px 15px 15px 0px;
-          color: $primary;
-          background-color: $base;
-          box-shadow: $shadow-concave-large;
-          transition: box-shadow ease-in-out 0.5s;
-        }
-
-        /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
-        같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
-  }
-
-    .block-radio{
-      border: 0.1rem dashed $disabled;
-      border: {
-        top: none;
-        left: none;
-        bottom: none;
-      } 
-      position: relative;
-      z-index: inherit;
-
-      &:last-child{
-        border: none;
-      }
-
-      &.passengers{
-          width: 30%;
-          div{
-            top: 15px;
-            position: relative;
-          }
-      }
-      &.class{
-        width: 25%;
-        label{
-          top: 10px;
+        [class=material-icons]{
+          font-size: 30px;   
+          color: rgb(80, 80, 80); 
           position: relative;
+          right: 0px;
+        }
+        input[type="radio"] {
+            display:none;
+            }
+        input[type="radio"]:not(:checked) ~ label {
+          box-shadow: none;
+          //transition: box-shadow ease-in-out 0.5s;
+        }
+        /* passengers radio*/
+        input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
+            width: 4.9rem;
+            height: 5rem;
+            top: -1px;
+            left: -1px;
+            padding-top: 10px;
+            border-radius: 0px 0px 0px 0px;
+            background-color: $base;
+            box-shadow: $shadow-concave-large;
+            transition: box-shadow ease-in-out 0.5s;
           }
-  /*       input[type="radio"]:checked + label{
-          width: 4.5rem;
-          height: 5rem;
-          top: -1px;
-          left: -1px;
-          padding-top: 10px;
-          border-radius: 0px 0px 0px 0px;
-          color: $primary;
-          background-color: red;
-            } */
+
+          input[id="adult"]:checked ~ label{
+            width: 4.9rem;
+            height: 5rem;
+            top: -1px;
+            left: -1px;
+            padding-top: 10px;
+            border-radius: 15px 0px 0px 15px;
+            background-color: $base;
+            box-shadow: $shadow-concave-large;
+            transition: box-shadow ease-in-out 0.5s;
+          }
+
+        /* class radio*/
+          input[id="class2"]:checked ~ label, input[id="class3"]:checked ~ label{
+            width: 4.5rem;
+            height: 5rem;
+            top: -1px;
+            left: -0.5px;
+            padding-top: 10px;
+            border-radius: 0px 0px 0px 0px;
+            background-color: $base;
+            box-shadow: $shadow-concave-large;
+            transition: box-shadow ease-in-out 0.5s;
+          }
+
+          input[id="class1"]:checked ~ label{
+            width: 4.5rem;
+            height: 5rem;
+            top: -1px;
+            left: -1px;
+            padding-top: 10px;
+            border-radius: 15px 0px 0px 15px;
+            background-color: $base;
+            box-shadow: $shadow-concave-large;
+            transition: box-shadow ease-in-out 0.5s;
+          }
+
+          input[id="class4"]:checked ~ label{
+            width: 4.5rem;
+            height: 5rem;
+            top: -1px;
+            padding-top: 10px;
+            border-radius: 0px 15px 15px 0px;
+            color: $primary;
+            background-color: $base;
+            box-shadow: $shadow-concave-large;
+            transition: box-shadow ease-in-out 0.5s;
+          }
+
+          /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
+          같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
+    }
+
+      .block-radio{
+        border: 0.1rem dashed $disabled;
+        border: {
+          top: none;
+          left: none;
+          bottom: none;
+        } 
+        position: relative;
+        z-index: inherit;
+
+        &:last-child{
+          border: none;
+        }
+
+        &.passengers{
+            width: 30%;
+            div{
+              top: 15px;
+              position: relative;
+            }
+        }
+        &.class{
+          width: 25%;
+          label{
+            top: 10px;
+            position: relative;
+            }
+    /*       input[type="radio"]:checked + label{
+            width: 4.5rem;
+            height: 5rem;
+            top: -1px;
+            left: -1px;
+            padding-top: 10px;
+            border-radius: 0px 0px 0px 0px;
+            color: $primary;
+            background-color: red;
+              } */
+        }
       }
-    }
 
-    .BtnContainer{
-      width: 10%;
-      height: auto;
-      position: relative;
-      flex-direction: column;
-    }
-  }
-
-  .ticketContainer{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: center;
-  }
-    }
-  
-  .flightContainer{
-    display: flex;
-    justify-content: center;
-    margin: {top: 11px;}  
-    cursor: pointer;
-    span{
-      color: #757575;
-      font: {
-        size: 10px;}
-      padding: {
-        left: 40px;
-        right: 40px;}
-      
-      h1{
-        color: #000000;
-        font: {
-          size: 38px;}
-          }
-        text-align: center;}
-      div{
-        display:flex;
+      .BtnContainer{
+        width: 10%;
+        height: auto;
+        position: relative;
         flex-direction: column;
       }
+    }
+
+    .ticketContainer{
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      justify-content: center;
+    }
+      }
+    
+    .flightContainer{
+      display: flex;
+      justify-content: center;
+      margin: {top: 11px;}  
+      cursor: pointer;
+      span{
+        color: #757575;
+        font: {
+          size: 10px;}
+        padding: {
+          left: 40px;
+          right: 40px;}
+        
+        h1{
+          color: #000000;
+          font: {
+            size: 38px;}
+            }
+          text-align: center;}
+        div{
+          display:flex;
+          flex-direction: column;
+        }
   }
 }
 </style>
