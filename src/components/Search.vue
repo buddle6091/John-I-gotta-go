@@ -289,7 +289,7 @@ html{
     background: $base;
     border-radius: $radius-3;
     box-shadow: $shadow-convex-hover;
-    padding: $spacing-4 $spacing-6;
+    //padding: $spacing-4 5rem;
     position: relative;
     display: flex;
     overflow: hidden;
@@ -342,7 +342,7 @@ html{
   }
 
     &__inactive{
-      //display: none;
+      padding: 0;
       opacity: 1;
       transition: opacity 0.4s;
       position: relative;
@@ -359,7 +359,7 @@ html{
         top: 13px;
         position: relative;
         span{
-          padding: 10px, 10px;
+          padding: 10px, 10p x;
           margin-right: 10px;
           font: { 
             size: 7px;
