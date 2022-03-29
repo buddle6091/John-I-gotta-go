@@ -282,9 +282,9 @@ html{
   //overflow: hidden;
 
   &__total {
-    width: 30rem;
+    width: 27rem;
     align-content: center;
-    min-height: 10rem;
+    //min-height: 0rem;
     box-sizing: border-box;
     background: $base;
     border-radius: $radius-3;
@@ -342,7 +342,8 @@ html{
   }
 
     &__inactive{
-      padding: 0;
+      height: 15rem;
+      padding: 2em 3.7em;
       opacity: 1;
       transition: opacity 0.4s;
       position: relative;
@@ -372,6 +373,7 @@ html{
 
     &__active{
       //display: none;
+      padding: 2em;
       opacity: 0;
       transition: opacity 0.4s;
       .set{
