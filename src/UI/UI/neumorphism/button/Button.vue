@@ -145,8 +145,9 @@ export default {
   &--reverse{
     width: 10px;
     height: 10px;
-    left: -10px;
-    margin: auto; 
+    //left: -10px;
+    margin: auto;
+    padding: 0px 5px;
     display: inline;
     position: relative;
     

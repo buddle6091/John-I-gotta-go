@@ -16,7 +16,7 @@
       <span>economy</span>      
       </div>
   </div>
-  <div class="selectContainer__active" :style="{height: isActive ? '40rem' : '20rem', transition: isActive ? '0.4s' : '0.4s'}">  
+  <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.4s' : '0.4s'}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
     <ToggleButton :style="{marginLeft:'70%'}"/>
     
@@ -25,8 +25,8 @@
       {{ getAirport_dep }}</span> 
     <div>  
     <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
-    <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', display: 'relative'}">
-      <div class="material-icons" :style="{fontSize:'30px', display:'flex'}">compare_arrows</div>
+    <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', padding: '', display: 'relative'}">
+      <div class="material-icons" :style="{fontSize:'30px', display:'flex', marginLeft:'-13px'}">compare_arrows</div>
     </Button> </div>
       <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortArr }} </h1>
         {{ getAirport_arr }}</span>
@@ -38,7 +38,7 @@
       <div class="dateBox"><i class="material-icons">flight_takeoff</i>
         <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
         :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
-        </div> 
+        </div>
         <div class="dateBox"><i class="material-icons">flight_land</i>
         <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
         :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
@@ -141,6 +141,8 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   data(){
     
     return{
+      inactiveHeight: '15rem',
+      activeHeight: '35rem',
       picked_from: new Date(),
       picked_to: '',
       person: [1, 0, 0],
@@ -363,7 +365,7 @@ html{
           padding: 10px, 10p x;
           margin-right: 10px;
           font: { 
-            size: 7px;
+            size: 9px;
             weight: bold;
             }
           color: rgb(70, 68, 68) !important;
@@ -372,27 +374,30 @@ html{
     }
 
     &__active{
-      //display: none;
       padding: 2em;
       opacity: 0;
       transition: opacity 0.4s;
       .set{
+        left: 10px;
+        margin: {
+          top: 1.4rem;
+          left: -2em;
+        }
         align-content: flex-start;
         display: flex;
         flex-direction: row;
         flex-wrap:  nowrap;               
         position: relative;
         z-index: -5;
-        left: 10px;
-        margin: {
-          top: 1.4rem;
-          //left: 2px;
-          //right: auto;
-        }
       span[class=material-icons]{
         font-size: 30px; 
         color: rgb(80, 80, 80); 
-        margin: auto;
+        margin:{
+          top: auto;
+          left: 0.7em;
+          right: 0.3em;
+          bottom: auto;
+        }
         position: relative;
         left: -10px;
         } 
@@ -405,21 +410,20 @@ html{
           color: $text-main;
           box-sizing: border-box;
           cursor: pointer;
-          margin: {
-              left: 10px;
-              right: 5px;
-            };
+          margin-right: 1em;
           padding: 0 $spacing-4 0 $spacing-1;
           background: $base;
           box-shadow: $shadow-concave;
           border-radius: $radius-1;
-        
+            
             i{
               font-size: 18px;
               text-align: flex-start;
-              margin-left: 10px;
+              margin: {
+                left: 10px;
+                right: 7px;
+              }
             }
-        
             span{
               font-size: 14px;
             }
@@ -429,7 +433,7 @@ html{
       .block{
         width: 18rem;
         height: 5rem;
-        padding: 1px;
+        padding: 0.5px;
         border-radius: 15px;
         box-shadow: $shadow-convex-hover;
         background-color: $base;
@@ -458,7 +462,7 @@ html{
         }
         input[type="radio"] {
             display:none;
-            }
+        }
         input[type="radio"]:not(:checked) ~ label {
           box-shadow: none;
           //transition: box-shadow ease-in-out 0.5s;
