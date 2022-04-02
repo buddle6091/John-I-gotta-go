@@ -15,7 +15,7 @@ const store = createStore({
             arrival: 'CJU ',
             depNm: 'Gimpo',
             arrNm: 'Jeju',
-            airline: '',
+            airlineNm: '',
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
             depAirportId: 'NAARKSS',
@@ -53,6 +53,9 @@ const store = createStore({
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
         },
+        /* airlineImg (state){
+            if ()
+        } */
         /* translateNm (state) {
             if()
         } */
@@ -67,7 +70,7 @@ const store = createStore({
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&numOfRows=10&pageNo=${pageNo}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}`
+            const url = `https://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&pageNo=${pageNo}&numOfRows=10&_type=xml&depAirportId=${this.state.depAirportId}&arrAirportId=${this.state.arrAirportId}&depPlandTime=${depPlandTime}`
             
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
@@ -82,13 +85,13 @@ const store = createStore({
                         commit('updateState', {
                             tickets: item
                         })
-                        this.depNm = res.data.response.body.items.item.depAirportNm
-                        this.arrNm = res.data.response.body.items.item.arrAirportNm
+                        
                         resolve(res.data.response.body.items)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(this.depNm)
+                        console.log(this.state.airlineNm)
+                        
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }
@@ -98,7 +101,7 @@ const store = createStore({
                     })
              
                 /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
-                
+                 
                 // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
                 /* handle success */
                 /* figure out only data (data -> response -> body -> item) */
@@ -120,6 +123,11 @@ const store = createStore({
                     tickets: item
                 })
                 const { totalCount } = res.data.reponse.body
+             /*    this.depNm = res.data.response.body.items.item.depAirportNm
+                this.arrNm = res.data.response.body.items.item.arrAirportNm
+                this.state.airlineNm = res.data.response.body.items.item.airlineNm
+                // eslint-disable-next-line no-console
+                console.log(this.depNm, this.arrNm) */
                 // eslint-disable-next-line no-console
                 console.log(typeof totalCount)
                 // eslint-disable-next-line no-console
