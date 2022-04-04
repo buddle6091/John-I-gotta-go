@@ -13,8 +13,8 @@ const store = createStore({
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
             arrival: 'CJU ',
-            depNm: 'Gimpo',
-            arrNm: 'Jeju',
+            depNm: '',
+            arrNm: '',
             airlineNm: '',
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
@@ -53,12 +53,10 @@ const store = createStore({
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
         },
-        /* airlineImg (state){
+    /*     Eng_Dep (state) {
             if ()
-        } */
-        /* translateNm (state) {
-            if()
-        } */
+        }
+         */
     }, 
     /* be able to use ajax, 비동기 */
     actions : {
@@ -77,20 +75,22 @@ const store = createStore({
                 axios.get(url)
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
-                        const item = res.data.response.body.items.item
+                        const item  = res.data.response.body.items.item
+                        this.state.depNm = item.depAirportNm
+                        this.arrNm = item.arrAirportNm
+                        this.airlineNm = item.airlineNm
                         // eslint-disable-next-line no-console
-                        console.log(res)
+                        console.log(item)
                         // eslint-disable-next-line no-console
                         console.log(res.data.response.body.items)
                         commit('updateState', {
                             tickets: item
                         })
-                        
                         resolve(res)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(this.state.airlineNm)
+                        console.log(this.state.depNm)
                         
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
@@ -117,22 +117,16 @@ const store = createStore({
                 const res = await dispatch('fetchInfo')({
                     pageNo: 1
                 })
-                const { item } = res.data.response.body.items
+                const { item } = res.data.response.body.items.item
                 commit('updateState',{
                     loading: true,
                     tickets: item
                 })
                 const { totalCount } = res.data.reponse.body
-                this.depNm = res.data.response.body.items.item.depAirportNm
-                this.arrNm = res.data.response.body.items.item.arrAirportNm
-                this.state.airlineNm = res.data.response.body.items.item.airlineNm
-                // eslint-disable-next-line no-console
-                console.log(this.depNm, this.arrNm)
-                // eslint-disable-next-line no-console
-                console.log(typeof totalCount)
-                // eslint-disable-next-line no-console
-                console.log(item)
-               
+                this.depNm = item[1].depAirportId
+                this.arrNm = item.arrAirportId
+                this.state.airlineNm = item.airlineNm
+                
                 /* additional  */
                 if (totalCount > 1) {
                   for (let i = 2; i <= totalCount; i++){

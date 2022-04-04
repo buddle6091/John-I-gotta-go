@@ -49,10 +49,11 @@
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
   <div id="firstTop"> 
+    {{ ticket.airlineNm }}
 <!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
  -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+   {{ depName }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ ticket.depPlandTime }}                   
                                          
@@ -61,7 +62,7 @@
   src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_out"/>
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-     {{ arrNm }}     <!--출발지-->
+     {{ ticket.arrAirportNm }}     <!--출발지-->
         <div id="detailtime"> 10:30 </div>  <!--시간-->
    {{ ticket.arrPlandTime }}                   <!--날짜-->
     </div>
@@ -169,9 +170,14 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       getAirport_dep : 'getAirport_dep',
       getAirport_arr: 'getAirport_arr',
     }),
-    DepNm() {
-      return this.ticket.depAirportNm
-    }, 
+    depName() {
+      if (this.$store.state.depNm == '김포') {
+        return this.$store.state.depNm == 'Gimpo';
+      }
+      else {
+        return []
+      }
+    }
   },
   
   data(){
