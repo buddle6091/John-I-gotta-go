@@ -68,7 +68,7 @@ const store = createStore({
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${this.state.depAirportId}&arrAirportId=${this.state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=10&pageNo=${pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${this.state.depAirportId}&arrAirportId=${this.state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
             
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
@@ -84,13 +84,14 @@ const store = createStore({
                         // eslint-disable-next-line no-console
                         console.log(res.data.response.body.items)
                         commit('updateState', {
-                            tickets: item
+                            tickets: item,
+
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(this.state.depNm)
+                        console.log(item[0].depPlandTime)
                         
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
@@ -123,9 +124,6 @@ const store = createStore({
                     tickets: item
                 })
                 const { totalCount } = res.data.reponse.body
-                this.depNm = item[1].depAirportId
-                this.arrNm = item.arrAirportId
-                this.state.airlineNm = item.airlineNm
                 
                 /* additional  */
                 if (totalCount > 1) {

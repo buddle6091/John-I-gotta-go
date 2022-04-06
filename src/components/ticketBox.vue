@@ -53,7 +53,7 @@
 <!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
  -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ depName }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+   {{ ticket.depAirportNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ ticket.depPlandTime }}                   
                                          
@@ -178,6 +178,10 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
         return []
       }
     }
+  },
+
+  watch: {
+
   },
   
   data(){
