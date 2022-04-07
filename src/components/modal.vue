@@ -23,7 +23,7 @@
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#D_KR" aria-expanded="true" aria-controls="collapseOne">
-                Domestic (South Korea) 
+                Domestic (South Korea) .
             </button>
             </h2>
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -190,7 +190,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectDep($event){
       /* send data to store.js with $store.state */
       this.$store.state.departure = $event.target.value
-      this.$store.state.depAirportId = $event.target.name
+      this.$store.state.depAirportNm = $event.target.name
       this.$store.state.airport_dep = $event.target.id
       /* display airport`s short */
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
@@ -198,7 +198,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.departure)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.depAirportId)
+      console.log(this.$store.state.depAirportNm)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortDep)
       // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
@@ -207,7 +207,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectArr($event){
       /* send data to store.js with $store.state */
       this.$store.state.arrival = $event.target.value
-      this.$store.state.arrAirportId = $event.target.name
+      this.$store.state.arrAirportNm = $event.target.name
       this.$store.state.airport_arr = $event.target.id
       /* display airport`s short */
       this.$store.state.shortArr = $event.target.value.slice(-4,-1)
@@ -215,7 +215,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.arrival)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.arrAirportId)
+      console.log(this.$store.state.arrAirportNm)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortArr)
     }

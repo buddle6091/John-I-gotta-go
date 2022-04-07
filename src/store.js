@@ -85,7 +85,6 @@ const store = createStore({
                         console.log(res.data.response.body.items)
                         commit('updateState', {
                             tickets: item,
-
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
