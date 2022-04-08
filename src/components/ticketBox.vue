@@ -145,10 +145,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   name: 'TicketBox',
 
   methods: {  
-    translateDepNm(){
-      if (this.ticket.depAirportNm == '김포')
-      return this.ticket.depAirportNm 
-    }
+    
   },
 
   mounted() { 

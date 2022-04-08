@@ -53,22 +53,19 @@ const store = createStore({
                 state[key] = payload[key]  // 무엇을 추가하든 state에 존재하는 것이면 배열 데이터로 만들어줌
             })
         },
-    /*     Eng_Dep (state) {
-            if ()
-        }
-         */
     }, 
     /* be able to use ajax, 비동기 */
     actions : {
-        /* actions 인자 context & payload 굳이 써야할까 */
         /* 다른 페이지도 부를 수 있게 하는 함수 */
+        /* actions 인자 context (state, mutations, getters), payload (request element) */
         fetchInfo ({ state, commit }, pageNo) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
+           // const { pageNo } = payload
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${this.state.depAirportId}&arrAirportId=${this.state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
             
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
@@ -76,9 +73,9 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
-                        this.state.depNm = item.depAirportNm
-                        this.arrNm = item.arrAirportNm
-                        this.airlineNm = item.airlineNm
+                        this.depAirportNm = res.data.response.body.items.item[0].depAirportNm
+                        this.arrAirportNm = res.data.response.body.items.item[0].arrAirportNm
+                        this.airlineNm = res.data.response.body.items.item[0].airlineNm
                         // eslint-disable-next-line no-console
                         console.log(item)
                         // eslint-disable-next-line no-console
@@ -90,7 +87,7 @@ const store = createStore({
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(item[0].depPlandTime)
+                        console.log(this.depAirportNm, this.arrAirportNm, this.airlineNm)
                         
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
@@ -120,7 +117,7 @@ const store = createStore({
                 const { item } = res.data.response.body.items.item
                 commit('updateState',{
                     loading: true,
-                    tickets: item
+                    tickets: item,
                 })
                 const { totalCount } = res.data.reponse.body
                 

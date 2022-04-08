@@ -183,6 +183,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
   /* 처음 실행 후 사용해도 실행 x -> 계산 결과 저장 like data()
   무조건 return 을 받아야 에러가 안 남*/
   computed : {
+
   },
   /* 사용할 때 마다 실행 */
   methods : {
@@ -190,24 +191,28 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectDep($event){
       /* send data to store.js with $store.state */
       this.$store.state.departure = $event.target.value
-      this.$store.state.depAirportNm = $event.target.name
+      this.$store.state.depAirportId = $event.target.name
       this.$store.state.airport_dep = $event.target.id
       /* display airport`s short */
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
+      /* display translate to Eng (depairportNm)*/
+      this.$store.state.depNm = $event.target.value.slice(-4, -1)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.departure)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.depAirportNm)
+      console.log(this.$store.state.depAirportId)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortDep)
+      // eslint-disable-next-line no-console
+      console.log(this.$store.state.depNm)
       // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
     },
 
     selectArr($event){
       /* send data to store.js with $store.state */
       this.$store.state.arrival = $event.target.value
-      this.$store.state.arrAirportNm = $event.target.name
+      this.$store.state.arrAirportId = $event.target.name
       this.$store.state.airport_arr = $event.target.id
       /* display airport`s short */
       this.$store.state.shortArr = $event.target.value.slice(-4,-1)
@@ -215,7 +220,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.arrival)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.arrAirportNm)
+      console.log(this.$store.state.arrAirportId)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortArr)
     }
