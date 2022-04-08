@@ -195,8 +195,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       this.$store.state.airport_dep = $event.target.id
       /* display airport`s short */
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
-      /* display translate to Eng (depairportNm)*/
-      this.$store.state.depNm = $event.target.value.slice(-4, -1)
+      /* display translate to Eng (depAirportNm)*/
+      this.$store.state.depNm = $event.target.id.replace(/International Airport|Airport/, '')  
       // eslint-disable-next-line no-console
       console.log(this.$store.state.departure)
       //document.getElementById('fli_text').innerText = this.arrival
@@ -216,13 +216,16 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       this.$store.state.airport_arr = $event.target.id
       /* display airport`s short */
       this.$store.state.shortArr = $event.target.value.slice(-4,-1)
+      /* display translate to Eng (arrAirportNm) */
+      this.$store.state.arrNm = $event.target.id.replace(/International Airport|Airport/, '')
       // eslint-disable-next-line no-console
       console.log(this.$store.state.arrival)
-      //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
       console.log(this.$store.state.arrAirportId)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortArr)
+      // eslint-disable-next-line no-console
+      console.log(this.$store.state.arrNm)
     }
   },
   mounted() {

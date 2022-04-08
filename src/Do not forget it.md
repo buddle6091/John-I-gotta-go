@@ -235,6 +235,12 @@ text-align : 정렬을
   ex ) function enter(userName) { userName && logIn(userName) || signUp (); }
   // usernName 인자를 받았다면 logIn 함수 실행, 아니라면 signUp 함수 실행
 
+# String.prototype
+## replace(oldvar, newvar): oldvar를 newvar로 대체, ''으로 공백을 주어 없애는 것도 가능
+  ### 모든 문자를 한번에 바꾸려면 정규식 사용 (/oldvar/)
+  '//' 사이에 검색할 문자를 입력 (여기서 부터 시작임)
+  '||' 로 여러개의 문자를 바꾸기도 가능 (ex /oldvar1|oldvar2|.../)
+  1 ) / 뒤에 g : 발생할 모든 패턴에 대한 전역 검색 (Gloval search), 2 ) i : 대/소문자 구분 무시 (Case-insensitive search), 3 ) m : 여러줄 검색 (Multi-line search)
 <!--vue-->
 # vue warn
   ❗ "Property [ ] was accessed during render but is not defined on instance."

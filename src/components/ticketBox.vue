@@ -53,7 +53,7 @@
 <!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
  -->   <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ ticket.depAirportNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+   {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ ticket.depPlandTime }}                   
                                          
@@ -62,7 +62,7 @@
   src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_out"/>
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-     {{ ticket.arrAirportNm }}     <!--출발지-->
+     {{ arrNm }}     <!--출발지-->
         <div id="detailtime"> 10:30 </div>  <!--시간-->
    {{ ticket.arrPlandTime }}                   <!--날짜-->
     </div>
