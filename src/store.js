@@ -13,8 +13,8 @@ const store = createStore({
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
             arrival: 'CJU ',
-            depNm: '',
-            arrNm: '',
+            depNm: 'Gimpo',
+            arrNm: 'Jeju',
             airlineNm: '',
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
@@ -42,6 +42,11 @@ const store = createStore({
         getAirport_arr: (state) => {
             return state.airport_arr
         },
+        translateDepNm: (state) => {
+            if (state.depAirportNm == '김포')
+            return state.depAirportNm == 'Gimpo'
+        }
+
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
@@ -73,9 +78,6 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
-                        this.depAirportNm = res.data.response.body.items.item[0].depAirportNm
-                        this.arrAirportNm = res.data.response.body.items.item[0].arrAirportNm
-                        this.airlineNm = res.data.response.body.items.item[0].airlineNm
                         // eslint-disable-next-line no-console
                         console.log(item)
                         // eslint-disable-next-line no-console
@@ -131,6 +133,10 @@ const store = createStore({
             } catch (resultMsg) {
                 commit('updateState', 
                 resultMsg)
+            } finally {
+                commit('updateState', {
+                    loading: false
+                })
             }
         }
     },
