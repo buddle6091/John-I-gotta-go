@@ -53,7 +53,7 @@
    <img src ={getAirline}/>
      <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+   {{ $store.getters.getDepAirportNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ exMonth }}                   
                                          
@@ -170,15 +170,12 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       shortArr: 'shortArr',
       getAirport_dep : 'getAirport_dep',
       getAirport_arr: 'getAirport_arr',
-      getAirline: 'getAirline'
+      getAirline: 'getAirline',
+      getDepAirportNm: 'getDepAirportNm'
     }),
   },
 
   watch: {
-  /*   getAirline() {
-      if(this.$store.state.airlineNm == '제주항공')
-      return 
-    } */
 
   },
   
@@ -191,7 +188,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       Arrival : 'Jeju',
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
-      Airplane_in :{ height:'37px',
+      Airplane_in :{  height:'37px',
                       marginTop:'23px',
                       marginLeft:'8px',
                       marginRight:'10px',

@@ -9,11 +9,14 @@ const store = createStore({
             /* 모달에서 오는 출발, 도착 value에서  */
             selectClass: '',
             depPlandTime: '',
+            depAirportNm: '',
+            arrAirportNm: '',
             /* to modal*/
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
             arrival: 'CJU ',
             depNm: 'Gimpo',
+            ddepNm: '',
             arrNm: 'Jeju',
             airlineNm: '',
             airlineImg: [
@@ -47,8 +50,6 @@ const store = createStore({
                     img: "../assets/BUSAN_airline.png",
                     style: ""
                 }
-                
-                
             ],
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
@@ -80,6 +81,10 @@ const store = createStore({
             if(state.airlineNm == '아시아나항공')
             return state.airlineImg[1].img
         },
+        getDepAirportNm: (state) => {
+            if(state.depAirportNm == '김포')
+            return state.ddepNm == 'Gimpo';
+        }
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
