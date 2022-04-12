@@ -49,13 +49,13 @@
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
   <div id="firstTop"> 
-    {{ ticket.airlineNm }}
-<!--   <img :src="ticket[i].img" :style="ticket[i].style"/>
- -->   <div id="timeContainer">
+   {{ticket.airlineNm}}
+   <img src ={getAirline}/>
+     <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
    {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
-    {{ ticket.depPlandTime }}                   
+    {{ exMonth }}                   
                                          
  </div>
   <img alt="비행기" 
@@ -123,7 +123,6 @@
         transition: ticket.unfold ? '1s' : '0.4s' }">
                 <div id="thirdTop"/>
                  <div id="secondBehindBottom">
-              
                 </div>
               </div> 
             </div>
@@ -138,14 +137,19 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 
-export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
+export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  
   props : {
   },    
   name: 'TicketBox',
 
   methods: {  
-    
+     ExtractMonth() {
+      if (this.$store.state.depPlandTime.slice(4,5) == '01')
+        return this.exMonth == 'Jan'
+      else if (this.$store.state.depPlandTime.slice(4,5) == '02')
+        return this.exMonth == 'Feb'
+     }
   },
 
   mounted() { 
@@ -160,24 +164,21 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     tickets() {
       return this.$store.state.tickets;
     },
-    ...mapState(['depNm', 'arrNm']),
+    ...mapState(['depNm', 'arrNm', 'airlineNm']),
     ...mapGetters({
       shortDep: 'shortDep',
       shortArr: 'shortArr',
       getAirport_dep : 'getAirport_dep',
       getAirport_arr: 'getAirport_arr',
+      getAirline: 'getAirline'
     }),
-    depName() {
-      if (this.$store.state.depNm == '김포') {
-        return this.$store.state.depNm == 'Gimpo';
-      }
-      else {
-        return []
-      }
-    }
   },
 
   watch: {
+  /*   getAirline() {
+      if(this.$store.state.airlineNm == '제주항공')
+      return 
+    } */
 
   },
   
@@ -202,6 +203,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
                       marginLeft:'10px',
                       marginRight:'16px',
                       }, 
+      exMonth : '',
+      exDay : '',
     }
   }
 }

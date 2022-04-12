@@ -16,6 +16,40 @@ const store = createStore({
             depNm: 'Gimpo',
             arrNm: 'Jeju',
             airlineNm: '',
+            airlineImg: [
+                /* ASIANA */
+                {
+                    img: "../assets/ASIANA_airline.png",
+                    style: ""
+                },
+                /* JEJUAIR */
+                {
+                    img: "../assets/JEJU_airline.png",
+                    style: ""
+                },
+                /* JINAIR */
+                {
+                    img: "../assets/JINAIR_airline.png",
+                    style: ""
+                },
+                /* TWAY */
+                {
+                    img: "../assets/TWAY_airline.png",
+                    style: ""
+                },
+                /* KOREANAIR */
+                {
+                    img: "../assets/KOREAN_airline.png",
+                    style: ""
+                },
+                /* AIRBUSAN */
+                {
+                    img: "../assets/BUSAN_airline.png",
+                    style: ""
+                }
+                
+                
+            ],
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
             depAirportId: 'NAARKSS',
@@ -42,11 +76,10 @@ const store = createStore({
         getAirport_arr: (state) => {
             return state.airport_arr
         },
-        translateDepNm: (state) => {
-            if (state.depAirportNm == '김포')
-            return state.depAirportNm == 'Gimpo'
-        }
-
+        getAirline: (state) => {
+            if(state.airlineNm == '아시아나항공')
+            return state.airlineImg[1].img
+        },
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
@@ -66,7 +99,6 @@ const store = createStore({
         fetchInfo ({ state, commit }, pageNo) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
-           // const { pageNo } = payload
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
@@ -78,6 +110,10 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
+                        this.state.depAirportNm = res.data.response.body.items.item[0].depAirportNm
+                        this.state.airlineNm = res.data.response.body.items.item.map((x) => {
+                            return x.airlineNm
+                        })
                         // eslint-disable-next-line no-console
                         console.log(item)
                         // eslint-disable-next-line no-console
@@ -89,7 +125,7 @@ const store = createStore({
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(this.depAirportNm, this.arrAirportNm, this.airlineNm)
+                        console.log(this.state.depAirportNm, this.state.arrAirportNm, this.state.airlineNm)
                         
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
@@ -104,7 +140,6 @@ const store = createStore({
                 // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
                 /* handle success */
                 /* figure out only data (data -> response -> body -> item) */
-                
             })            
         },
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
