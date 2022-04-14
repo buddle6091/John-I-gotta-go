@@ -212,13 +212,15 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
         this.person[2]--;
         },
     async searchTicket() {
-      this.$store.dispatch('searchInfo'),
+      this.$store.dispatch('searchInfo');
       this.unfold == false;
+      this.$store.state.depNm = this.$store.state.tem_depNm;
+      this.$store.state.arrNm = this.$store.state.tem_arrNm;
     }
   },
   
   computed: {
-    ...mapState(['arrival', 'departure', 'tem_short', ]),
+    ...mapState(['arrival', 'departure', 'tem_short']),
     ...mapGetters({
       shortDep : 'shortDep',
       shortArr : 'shortArr',

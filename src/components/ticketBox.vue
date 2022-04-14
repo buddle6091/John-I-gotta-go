@@ -53,7 +53,7 @@
    <img src ={getAirline}/>
      <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ $store.getters.getDepAirportNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+   {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
     {{ exMonth }}                   
                                          

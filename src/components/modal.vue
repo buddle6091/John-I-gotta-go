@@ -116,7 +116,7 @@
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingTwo">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Japan
+                Japan`1`
               </button>
             </h2>
             <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -195,8 +195,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       this.$store.state.airport_dep = $event.target.id
       /* display airport`s short */
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
-      /* display translate to Eng (depAirportNm)*/
-      this.$store.state.depNm = $event.target.id.replace(/International Airport|Airport/, '')  
+      /* display translate to Eng for temp(depAirportNm)*/
+      this.$store.state.tem_depNm = $event.target.id.replace(/International Airport|Airport/, '')  
       // eslint-disable-next-line no-console
       console.log(this.$store.state.departure)
       //document.getElementById('fli_text').innerText = this.arrival
@@ -205,7 +205,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortDep)
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.depNm)
+      console.log(this.$store.state.tem_depNm)
       // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
     },
 
@@ -217,7 +217,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       /* display airport`s short */
       this.$store.state.shortArr = $event.target.value.slice(-4,-1)
       /* display translate to Eng (arrAirportNm) */
-      this.$store.state.arrNm = $event.target.id.replace(/International Airport|Airport/, '')
+      this.$store.state.tem_arrNm = $event.target.id.replace(/International Airport|Airport/, '')
       // eslint-disable-next-line no-console
       console.log(this.$store.state.arrival)
       // eslint-disable-next-line no-console
@@ -225,10 +225,11 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       // eslint-disable-next-line no-console
       console.log(this.$store.state.shortArr)
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.arrNm)
+      console.log(this.$store.state.tem_arrNm)
     }
   },
   mounted() {
+    
   }
 }
 

@@ -16,7 +16,6 @@ const store = createStore({
             departure: 'GMP ',
             arrival: 'CJU ',
             depNm: 'Gimpo',
-            ddepNm: '',
             arrNm: 'Jeju',
             airlineNm: '',
             airlineImg: [
@@ -59,6 +58,8 @@ const store = createStore({
             tem_short: '',
             tem_airport: '',
             tem_code: '',
+            tem_depNm: '',
+            tem_arrNm: '',
             picked_from: new Date(),
             tickets: [],
             loading: false   
