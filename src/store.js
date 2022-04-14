@@ -58,8 +58,9 @@ const store = createStore({
             tem_short: '',
             tem_airport: '',
             tem_code: '',
-            tem_depNm: '',
-            tem_arrNm: '',
+            tem_depNm: 'Gimpo',
+            tem_arrNm: 'Jeju',
+            tem_DepArrNm: '',
             picked_from: new Date(),
             tickets: [],
             loading: false   
@@ -82,10 +83,6 @@ const store = createStore({
             if(state.airlineNm == '아시아나항공')
             return state.airlineImg[1].img
         },
-        getDepAirportNm: (state) => {
-            if(state.depAirportNm == '김포')
-            return state.ddepNm == 'Gimpo';
-        }
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
     mutations :{
@@ -117,6 +114,7 @@ const store = createStore({
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
                         this.state.depAirportNm = res.data.response.body.items.item[0].depAirportNm
+                        this.state.arrAirportNm = res.data.response.body.items.item[0].arrAirportNm
                         this.state.airlineNm = res.data.response.body.items.item.map((x) => {
                             return x.airlineNm
                         })

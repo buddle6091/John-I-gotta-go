@@ -188,6 +188,10 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       this.$store.state.tem_code = this.$store.state.arrAirportId
       this.$store.state.arrAirportId = this.$store.state.depAirportId
       this.$store.state.depAirportId = this.$store.state.tem_code
+      /* tem_depNm _<-> tem_arrNm */
+      this.$store.state.tem_DepArrNm = this.$store.state.tem_depNm
+      this.$store.state.tem_depNm = this.$store.state.tem_arrNm
+      this.$store.state.tem_arrNm = this.$store.state.tem_DepArrNm
     },
     // 한계치를 넘으면 버튼 잠그기
     btnIncrease() {
