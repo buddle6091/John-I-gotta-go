@@ -49,13 +49,24 @@
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
   <div id="firstTop"> 
-   {{ticket.airlineNm}}
-   <img src ={getAirline}/>
+   <!-- 해당 항공사에 속한 그림만 보여지게 if -->
+   <img src="../assets/JEJU_airline.png" v-if="ticket.airlineNm == '제주항공'"/>
+   <img src="../assets/ASIANA_airline.png" v-if="ticket.airlineNm == '아시아나항공'"/>
+   <img src="../assets/JINAIR_airline.png" v-if="ticket.airlineNm == '진에어'"/>
+   <img src="../assets/JEJU_airline.png" v-if="ticket.airlineNm == '에어서울'"/>
+   <img src="../assets/KOREAN_airline.png" v-if="ticket.airlineNm == '대한항공'"/>
+   <img src="../assets/BUSAN_airline.png" v-if="ticket.airlineNm == '에어부산'"/>
+   <img src="../assets/TWAY_airline.png" v-if="ticket.airlineNm == '티웨이항공'"/>
+   <img src="../assets/EASTAR_airline.png" v-if="ticket.airlineNm == '이스타항공'"/>
+   <img src="../assets/HI_AIR_airline.png" v-if="ticket.airlineNm == '하이에어'"/>
+   <img src="../assets/FLY_GANGWON_airline.png" v-if="ticket.airlineNm == '플라이강원'"/>
+
+
      <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
    {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
-    {{ exMonth }}                   
+    {{ ticket.depPlandTime }}                
                                          
  </div>
   <img alt="비행기" 

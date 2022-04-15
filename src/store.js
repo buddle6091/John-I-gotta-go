@@ -15,8 +15,6 @@ const store = createStore({
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
             arrival: 'CJU ',
-            depNm: 'Gimpo',
-            arrNm: 'Jeju',
             airlineNm: '',
             airlineImg: [
                 /* ASIANA */
@@ -58,9 +56,14 @@ const store = createStore({
             tem_short: '',
             tem_airport: '',
             tem_code: '',
+            /* to ticketBox */
             tem_depNm: 'Gimpo',
             tem_arrNm: 'Jeju',
+            depNm: 'Gimpo',
+            arrNm: 'Jeju',
             tem_DepArrNm: '',
+            exMonth: '',
+            exDate: '',
             picked_from: new Date(),
             tickets: [],
             loading: false   
@@ -105,7 +108,7 @@ const store = createStore({
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=10&pageNo=${pageNo}&_type=json`
             
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
@@ -113,8 +116,12 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
-                        this.state.depAirportNm = res.data.response.body.items.item[0].depAirportNm
-                        this.state.arrAirportNm = res.data.response.body.items.item[0].arrAirportNm
+                        this.state.depPlandTime = res.data.response.body.items.item.map((x) => {
+                            return x.depPlandTime
+                        })
+                        if(depPlandTime.slice(4,5) == '04'){
+                            return this.state.exMonth == 'April'
+                        }
                         this.state.airlineNm = res.data.response.body.items.item.map((x) => {
                             return x.airlineNm
                         })
@@ -127,10 +134,11 @@ const store = createStore({
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
-                        console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+                        console.log(state.depAirportId, state.arrAirportId, depPlandTime, this.exMonth)
                         // eslint-disable-next-line no-console
                         console.log(this.state.depAirportNm, this.state.arrAirportNm, this.state.airlineNm)
-                        
+                        // eslint-disable-next-line no-console
+                        console.log(this.state.depPlandTime)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }
