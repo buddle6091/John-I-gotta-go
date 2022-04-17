@@ -6,7 +6,7 @@ const store = createStore({
     /* store the data */
     state: () => ({
             /* to search */
-            /* 모달에서 오는 출발, 도착 value에서  */
+            /* 모달에서 오는 출발, 도착 value에서 ..입력값..  */
             selectClass: '',
             depPlandTime: '',
             depAirportNm: '',
@@ -62,6 +62,7 @@ const store = createStore({
             depNm: 'Gimpo',
             arrNm: 'Jeju',
             tem_DepArrNm: '',
+            resTime: '',
             exMonth: '',
             exDate: '',
             picked_from: new Date(),
@@ -116,29 +117,25 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
-                        this.state.depPlandTime = res.data.response.body.items.item.map((x) => {
+                        if(state.depPlandTime.slice(4,6) == '04'){
+                            return this.state.exMonth === 'April'
+                        }
+                        this.state.resTime = res.data.response.body.items.item.map((x) => {
                             return x.depPlandTime
                         })
-                        if(depPlandTime.slice(4,5) == '04'){
-                            return this.state.exMonth == 'April'
-                        }
                         this.state.airlineNm = res.data.response.body.items.item.map((x) => {
                             return x.airlineNm
                         })
                         // eslint-disable-next-line no-console
-                        console.log(item)
-                        // eslint-disable-next-line no-console
-                        console.log(res.data.response.body.items)
+                        console.log(item, depPlandTime.slice(4,6))
                         commit('updateState', {
                             tickets: item,
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
-                        console.log(state.depAirportId, state.arrAirportId, depPlandTime, this.exMonth)
+                        console.log(state.depAirportId, state.arrAirportId, depPlandTime)
                         // eslint-disable-next-line no-console
-                        console.log(this.state.depAirportNm, this.state.arrAirportNm, this.state.airlineNm)
-                        // eslint-disable-next-line no-console
-                        console.log(this.state.depPlandTime)
+                        console.log(state.exMonth, state.airlineNm, state.resTime)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }

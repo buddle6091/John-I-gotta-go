@@ -66,6 +66,7 @@
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
    {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
     <div id="detailtime"> 09:40 </div>  <!--시간-->
+    
     {{ ticket.depPlandTime }}                
                                          
  </div>
@@ -184,11 +185,10 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       getAirline: 'getAirline',
       getDepAirportNm: 'getDepAirportNm'
     }),
-  },
-
-  watch: {
 
   },
+
+
   
   data(){
     
@@ -211,8 +211,6 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
                       marginLeft:'10px',
                       marginRight:'16px',
                       }, 
-      exMonth : '',
-      exDay : '',
     }
   }
 }
