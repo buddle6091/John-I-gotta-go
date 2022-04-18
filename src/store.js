@@ -110,32 +110,27 @@ const store = createStore({
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=10&pageNo=${pageNo}&_type=json`
-            
+            state.exMonth = state.picked_from.getMonth() + 1
+
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 axios.get(url)
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
-                        if(state.depPlandTime.slice(4,6) == '04'){
-                            return this.state.exMonth === 'April'
-                        }
-                        this.state.resTime = res.data.response.body.items.item.map((x) => {
-                            return x.depPlandTime
-                        })
-                        this.state.airlineNm = res.data.response.body.items.item.map((x) => {
+                        /* this.state.airlineNm = res.data.response.body.items.item.map((x) => {
                             return x.airlineNm
-                        })
+                        }) */
                         // eslint-disable-next-line no-console
-                        console.log(item, depPlandTime.slice(4,6))
+                        console.log(item, depPlandTime)
                         commit('updateState', {
                             tickets: item,
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
-                        console.log(state.depAirportId, state.arrAirportId, depPlandTime)
+                        console.log(state.depAirportId, state.arrAirportId, depPlandTime, state.exMonth, state.picked_from)
                         // eslint-disable-next-line no-console
-                        console.log(state.exMonth, state.airlineNm, state.resTime)
+                        console.log(state.exMonth, state.resTime)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }

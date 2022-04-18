@@ -76,7 +76,7 @@
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
      {{ arrNm }}     <!--출발지-->
         <div id="detailtime"> 10:30 </div>  <!--시간-->
-   {{ ticket.arrPlandTime }}                   <!--날짜-->
+   {{ ex_month }}                   <!--날짜-->
     </div>
   </div>
     </div>
@@ -185,6 +185,47 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       getAirline: 'getAirline',
       getDepAirportNm: 'getDepAirportNm'
     }),
+    ex_month() {
+      let eng_Month = ''
+      if(this.$store.state.exMonth == '1'){
+        eng_Month = 'January'
+      }
+      else if(this.$store.state.exMonth == '2'){
+        eng_Month = 'Febuary'
+      }
+      else if(this.$store.state.exMonth == '3'){
+        eng_Month = 'March'
+      }
+      else if(this.$store.state.exMonth == '4'){
+        eng_Month = 'April'
+      }
+      else if(this.$store.state.exMonth == '5'){
+        eng_Month = 'May'
+      }
+      else if(this.$store.state.exMonth == '6'){
+        eng_Month = 'June'
+      }
+      else if(this.$store.state.exMonth == '7'){
+        eng_Month = 'July'
+      }
+      else if(this.$store.state.exMonth == '8'){
+        eng_Month = 'August'
+      }
+      else if(this.$store.state.exMonth == '9'){
+        eng_Month = 'September'
+      }
+      else if(this.$store.state.exMonth == '10'){
+        eng_Month = 'October'
+      }
+      else if(this.$store.state.exMonth == '11'){
+        eng_Month = 'November'
+      }
+      else if(this.$store.state.exMonth == '12'){
+        eng_Month = 'December'
+      }
+
+      return eng_Month
+    }
 
   },
 
