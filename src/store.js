@@ -62,9 +62,10 @@ const store = createStore({
             depNm: 'Gimpo',
             arrNm: 'Jeju',
             tem_DepArrNm: '',
-            resTime: '',
+            result_Time: [],
             exMonth: '',
             exDate: '',
+            exTime: '',
             picked_from: new Date(),
             tickets: [],
             loading: false   
@@ -82,10 +83,6 @@ const store = createStore({
         },
         getAirport_arr: (state) => {
             return state.airport_arr
-        },
-        getAirline: (state) => {
-            if(state.airlineNm == '아시아나항공')
-            return state.airlineImg[1].img
         },
     },
     /* mutations can modify state`s data only / state.data (=this.data) */
@@ -107,30 +104,33 @@ const store = createStore({
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
-            const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D';
+            const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=10&pageNo=${pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
+            state.exDate = state.picked_from.getDate()
+
 
             return new Promise((resolve, reject) => {
                 // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
                 axios.get(url)
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
+                        const resTime = res.data.response.body.items.item.map((x) => {
+                            return x.depPlandTime
+                        })
                         const item  = res.data.response.body.items.item
-                        /* this.state.airlineNm = res.data.response.body.items.item.map((x) => {
-                            return x.airlineNm
-                        }) */
                         // eslint-disable-next-line no-console
-                        console.log(item, depPlandTime)
+                        console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
                             tickets: item,
+                            result_Time: resTime[0]
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
-                        console.log(state.depAirportId, state.arrAirportId, depPlandTime, state.exMonth, state.picked_from)
+                        console.log(state.depAirportId, state.arrAirportId, depPlandTime, state.exMonth, state.exTime)
                         // eslint-disable-next-line no-console
-                        console.log(state.exMonth, state.resTime)
+                        console.log(state.exMonth, resTime)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }

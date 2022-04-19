@@ -41,7 +41,7 @@
      <div id="detailLabel">
        {{ getAirport_arr }}</div>
        </div>
- </div>
+  </div>
  
   <div id="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
   transition: ticket.unfold ? '0.4s' : '1s'}">
@@ -62,21 +62,19 @@
    <img src="../assets/FLY_GANGWON_airline.png" v-if="ticket.airlineNm == '플라이강원'"/>
 
 
-     <div id="timeContainer">
+    <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-   {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
-    <div id="detailtime"> 09:40 </div>  <!--시간-->
-    
-    {{ ticket.depPlandTime }}                
-                                         
- </div>
+      {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
+      <div id="detailtime"> {{ ticket.depPlandTime }} </div>  <!--시간-->
+      {{ ex_month }} {{ this.$store.state.exDate }}   <!--날짜-->                                       
+     </div>
   <img alt="비행기" 
   src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_out"/>
  <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
      {{ arrNm }}     <!--출발지-->
-        <div id="detailtime"> 10:30 </div>  <!--시간-->
-   {{ ex_month }}                   <!--날짜-->
+        <div id="detailtime"> {{ ticket.result_Time }} </div>  <!--시간-->
+   {{ ex_month }} {{ this.$store.state.exDate }} <!--날짜-->
     </div>
   </div>
     </div>
@@ -156,12 +154,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
   name: 'TicketBox',
 
   methods: {  
-     ExtractMonth() {
-      if (this.$store.state.depPlandTime.slice(4,5) == '01')
-        return this.exMonth == 'Jan'
-      else if (this.$store.state.depPlandTime.slice(4,5) == '02')
-        return this.exMonth == 'Feb'
-     }
+
   },
 
   mounted() { 
@@ -225,11 +218,9 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       }
 
       return eng_Month
-    }
+    },
 
   },
-
-
   
   data(){
     

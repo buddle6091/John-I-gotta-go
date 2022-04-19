@@ -116,7 +116,7 @@
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingTwo">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Japan`1`
+                Japan
               </button>
             </h2>
             <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
