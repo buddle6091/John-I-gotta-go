@@ -62,7 +62,7 @@ const store = createStore({
             depNm: 'Gimpo',
             arrNm: 'Jeju',
             tem_DepArrNm: '',
-            result_Time: [],
+            depTime: [],
             exMonth: '',
             exDate: '',
             exTime: '',
@@ -116,7 +116,7 @@ const store = createStore({
                 axios.get(url)
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
-                        const resTime = res.data.response.body.items.item.map((x) => {
+                        this.state.depTime = res.data.response.body.items.item.map((x) => {
                             return x.depPlandTime
                         })
                         const item  = res.data.response.body.items.item
@@ -124,13 +124,12 @@ const store = createStore({
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
                             tickets: item,
-                            result_Time: resTime[0]
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime, state.exMonth, state.exTime)
                         // eslint-disable-next-line no-console
-                        console.log(state.exMonth, resTime)
+                        console.log(state.exMonth, this.state.depTime)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }
