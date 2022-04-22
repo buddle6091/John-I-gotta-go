@@ -65,16 +65,14 @@
     <div id="timeContainer">
      <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
       {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
-      <div id="detailtime"> {{ depTime }} </div>  <!--시간-->
+      <div id="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  <!--시간-->
       {{ ex_month }} {{ this.$store.state.exDate }}   <!--날짜-->                                       
      </div>
-  <img alt="비행기" 
-  src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
- :style="Airplane_out"/>
- <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-     {{ arrNm }}     <!--출발지-->
-        <div id="detailtime" :value=" `${ticket.arrPlandTIme}.slice(-4,-2)` ">  </div>  <!--시간-->
-   {{ ex_month }} {{ this.$store.state.exDate }} <!--날짜-->
+  <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
+     <div id="dateContainer"><!--날짜, 시간 장소 등을 저장할 공간-->
+      {{ arrNm }}     <!--출발지-->
+      <div id="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  <!--시간-->
+      {{ ex_month }} {{ this.$store.state.exDate }}  <!--날짜-->
     </div>
   </div>
     </div>
@@ -83,7 +81,7 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Flight Time
-                <div id="detailLabel">09:40 - 10:30</div> <!-- arrPlandTime - depPlandTime -->
+                <div id="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }}</div> <!-- arrPlandTime - depPlandTime -->
               </div>
               <div id="detail">
                 Transfer
@@ -219,9 +217,6 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       }
       return eng_Month
     },
-    depTime() {
-      return this.$store.state.ticket.depPlandTIme
-    }
 
   },
   
@@ -232,7 +227,6 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
       Departure : 'Incheon',
       Arrival : 'Jeju',
-      DepartureDate : document.getE, 
       ArrivalDate : 'October 15th',
       Airplane_in :{  height:'37px',
                       marginTop:'23px',

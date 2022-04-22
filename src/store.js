@@ -63,12 +63,15 @@ const store = createStore({
             arrNm: 'Jeju',
             tem_DepArrNm: '',
             depTime: [],
+            depMin: [],
+            arrTime: [],
+            arrMin: [],
             exMonth: '',
             exDate: '',
             exTime: '',
             picked_from: new Date(),
             tickets: [],
-            loading: false   
+            loading: false,
         }),
     /* computed */
     getters :{
@@ -106,7 +109,7 @@ const store = createStore({
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=10&pageNo=${pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
             state.exDate = state.picked_from.getDate()
 
@@ -116,20 +119,38 @@ const store = createStore({
                 axios.get(url)
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
-                        this.state.depTime = res.data.response.body.items.item.map((x) => {
-                            return x.depPlandTime
-                        })
                         const item  = res.data.response.body.items.item
+                        this.state.depTime = res.data.response.body.items.item.map((obj) => {
+                            obj.depTime = `${obj.depPlandTime}`.slice(-4, -2)
+                            /* Object.values : make every Object to Array */
+                            return Object.values(obj)
+                        })
+                        this.state.depMin = res.data.response.body.items.item.map((obj) => {
+                            obj.depMin = `${obj.depPlandTime}`.slice(-2)
+                            return Object.values(obj)
+                        })
+                        this.state.arrTime = res.data.response.body.items.item.map((obj) => {
+                            obj.arrTime = `${obj.arrPlandTime}`.slice(-4, -2)
+                            return Object.values(obj)
+                        })
+                        this.state.arrMin = res.data.response.body.items.item.map((obj) => {
+                            obj.arrMin = `${obj.arrPlandTime}`.slice(-2)
+                            return Object.values(obj)
+                        })
+
+                        // eslint-disable-next-line no-console
+                        console.log(this.state.depTime)
                         // eslint-disable-next-line no-console
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
-                            tickets: item,
+                            /* copy for push array */
+                            tickets: [...item],
                         })
                         resolve(res)
                         // eslint-disable-next-line no-console
                         console.log(state.depAirportId, state.arrAirportId, depPlandTime, state.exMonth, state.exTime)
                         // eslint-disable-next-line no-console
-                        console.log(state.exMonth, this.state.depTime)
+                        console.log(state.exMonth)
                         if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
                         }
