@@ -50,16 +50,16 @@
 
   <div id="firstTop"> 
    <!-- 해당 항공사에 속한 그림만 보여지게 if -->
-   <img src="../assets/JEJU_airline.png" v-if="ticket.airlineNm == '제주항공'"/>
-   <img src="../assets/ASIANA_airline.png" v-if="ticket.airlineNm == '아시아나항공'"/>
-   <img src="../assets/JINAIR_airline.png" v-if="ticket.airlineNm == '진에어'"/>
-   <img src="../assets/JEJU_airline.png" v-if="ticket.airlineNm == '에어서울'"/>
-   <img src="../assets/KOREAN_airline.png" v-if="ticket.airlineNm == '대한항공'"/>
-   <img src="../assets/BUSAN_airline.png" v-if="ticket.airlineNm == '에어부산'"/>
-   <img src="../assets/TWAY_airline.png" v-if="ticket.airlineNm == '티웨이항공'"/>
-   <img src="../assets/EASTAR_airline.png" v-if="ticket.airlineNm == '이스타항공'"/>
-   <img src="../assets/HI_AIR_airline.png" v-if="ticket.airlineNm == '하이에어'"/>
-   <img src="../assets/FLY_GANGWON_airline.png" v-if="ticket.airlineNm == '플라이강원'"/>
+   <img src="../assets/JEJU_airline.png" :style="{ width: '9rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
+   <img src="../assets/ASIANA_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
+   <img src="../assets/JINAIR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
+   <img src="../assets/JEJU_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어서울'"/>
+   <img src="../assets/KOREAN_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto', marginTop: '-0.7rem'}" v-if="ticket.airlineNm == '대한항공'"/>
+   <img src="../assets/BUSAN_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
+   <img src="../assets/TWAY_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
+   <img src="../assets/EASTAR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
+   <img src="../assets/HI_AIR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
+   <img src="../assets/FLY_GANGWON_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
 
 
     <div id="timeContainer">
@@ -68,7 +68,7 @@
       <div id="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  <!--시간-->
       {{ ex_month }} {{ this.$store.state.exDate }}   <!--날짜-->                                       
      </div>
-  <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
+      <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
      <div id="dateContainer"><!--날짜, 시간 장소 등을 저장할 공간-->
       {{ arrNm }}     <!--출발지-->
       <div id="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  <!--시간-->
@@ -81,7 +81,7 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Flight Time
-                <div id="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }}</div> <!-- arrPlandTime - depPlandTime -->
+                <div id="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }} </div> <!-- arrPlandTime - depPlandTime -->
               </div>
               <div id="detail">
                 Transfer
@@ -91,16 +91,16 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Duration
-                <div id="detailLabel">0h 50 min</div>
+                <div id="detailLabel">h  min</div>
               </div>
               <div id="detail">
-                Gate<div id="detailLabel">Gate</div>
+                Gate<div id="detailLabel"> -- </div>
               </div>
             </div>
             <div id="firstBehindRow">
               <div id="detail">
                 Boarding Time
-                <div id="detailLabel">09:15</div>  <!-- depPlandTime - 20min -->
+                <div id="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
               </div>
               <div id="detail">
                 Seat
@@ -115,7 +115,7 @@
               <div id="secondBehindDisplay">
                 <div id="price">
                   Price
-                  <div id="priceLabel">$17</div> 
+                  <div id="priceLabel">please check in website</div> 
                 </div>
                 <div id="price">
                   Class
@@ -264,7 +264,11 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
 
  #timeContainer {
     display: flex;
-    padding-top: 14px;
+    margin:{
+      top: 13px;
+      left: auto;
+      right: 1.3rem;}
+
   }
                         
 #dateContainer{           /*첫페이지-출발지의 시간, 날짜*/

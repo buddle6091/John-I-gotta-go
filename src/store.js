@@ -121,6 +121,7 @@ const store = createStore({
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
                         this.state.depTime = res.data.response.body.items.item.map((obj) => {
+                            /* 보간법을 이용하면 function 가능 (object에 간섭을 안하므로 가능) */
                             obj.depTime = `${obj.depPlandTime}`.slice(-4, -2)
                             /* Object.values : make every Object to Array */
                             return Object.values(obj)
