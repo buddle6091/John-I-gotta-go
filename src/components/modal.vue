@@ -123,8 +123,8 @@
       </div>
       <div class="col-md-auto">
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city" value="hey" @input="arrival=$event.target.value">
-         {{  }} </TextField>
+        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city">
+        </TextField>
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample2">
@@ -137,20 +137,62 @@
             </h2>
             <div id="collapseOne" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> <!-- Incheon (NAARKSI) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gimpo International Airport" name="NAARKSS" value="Seoul(GMP)">Seoul(GMP)</button> <!-- Gimpo (NAARKSS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Jeju International Airport" name="NAARKPC" value="Jeju(CJU)">Jeju(CJU)</button> <!-- Jeju (NAARKPC) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gwangju Airport" name="NAARKJJ" value="Gwangju(KWJ)">Gwangju(KWJ)</button> <!-- Gwangju (NAARKJJ) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Muan Airport" name="NAARKJB" value="Muan(MWX)">Muan(MWX)</button> <!-- Muan (NAARKJB) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Gunsan Airport" name="NAARKJK" value="Gunsan(KUV)">Gunsan(KUV)</button> <!-- Gunsan (NAARKJK) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Daegu International Airport" name="NAARKTN" value="Daegu(TAE)">Daegu(TAE)</button> <!-- Daegu (NAARKTN) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Sichuan Airport" name="NAARKPS" value="Sichuan(HIN)">Sichuan(HIN)</button> <!-- Sichuan (NAARKPS) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Yeosu Airport" name="NAARKJY" value="Yeosu(RSU)">Yeosu(RSU)</button> <!-- Yeosu (NAARKJY) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Ulsan Airport" name="NAARKPU" value="Ulsan(USN)">Ulsan(USN)</button> <!-- Ulsan (NAARKPU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Wonju Airport" name="NAARKNW" value="Wonju(WJU)">Wonju(WJU)</button> <!-- Wonju (NAARKNW) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Cheongju Airport" name="NAARKYU" value="Cheongju(CJJ)">Cheongju(CJJ)</button> <!-- Cheongju (NAARKTU) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Pohang Airport" name="NAARKTH" value="Pohang(KPO)">Pohang(KPO)</button> <!-- Pohang (NAARKTH) -->
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" @click="selectArr($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> <!-- Yangyang (NAARKNY) -->
+                <!-- Incheon (NAARKSI) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> 
+                <!-- Gimpo (NAARKSS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Gimpo International Airport" name="NAARKSS" value="Seoul(GMP)">Seoul(GMP)</button> 
+                <!-- Jeju (NAARKPC) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Jeju International Airport" name="NAARKPC" value="Jeju(CJU)">Jeju(CJU)</button> 
+                <!-- Gwangju (NAARKJJ) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Gwangju Airport" name="NAARKJJ" value="Gwangju(KWJ)">Gwangju(KWJ)</button> 
+                <!-- Muan (NAARKJB) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Muan Airport" name="NAARKJB" value="Muan(MWX)">Muan(MWX)</button> 
+                <!-- Gunsan (NAARKJK) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Gunsan Airport" name="NAARKJK" value="Gunsan(KUV)">Gunsan(KUV)</button> 
+                <!-- Daegu (NAARKTN) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Daegu International Airport" name="NAARKTN" value="Daegu(TAE)">Daegu(TAE)</button> 
+                <!-- Sichuan (NAARKPS) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Sichuan Airport" name="NAARKPS" value="Sichuan(HIN)">Sichuan(HIN)</button> 
+                <!-- Yeosu (NAARKJY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Yeosu Airport" name="NAARKJY" value="Yeosu(RSU)">Yeosu(RSU)</button> 
+                <!-- Ulsan (NAARKPU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Ulsan Airport" name="NAARKPU" value="Ulsan(USN)">Ulsan(USN)</button> 
+                <!-- Wonju (NAARKNW) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Wonju Airport" name="NAARKNW" value="Wonju(WJU)">Wonju(WJU)</button> 
+                <!-- Cheongju (NAARKTU) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Cheongju Airport" name="NAARKYU" value="Cheongju(CJJ)">Cheongju(CJJ)</button> 
+                <!-- Pohang (NAARKTH) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Pohang Airport" name="NAARKTH" value="Pohang(KPO)">Pohang(KPO)</button> 
+                <!-- Yangyang (NAARKNY) -->
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
+                required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
+                @click="selectArr($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> 
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectArr($event)" id="Busan International Airport" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
