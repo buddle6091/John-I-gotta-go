@@ -273,8 +273,9 @@ html{
  // border: 1px solid rgba(0, 0, 0, 0.1);
   margin: {
     top: 15px;
-    left: auto;
-    right: auto;  
+    left: 0px;
+    right: auto; 
+    bottom: 0;
   };
   //height: 34rem;
   //min-height: 20rem;
@@ -297,6 +298,11 @@ html{
     background: $base;
     border-radius: $radius-3;
     box-shadow: $shadow-convex-hover;
+    margin: {
+      top: 10px;
+      left: auto;
+      right: auto;
+    }
     //padding: $spacing-4 5rem;
     position: relative;
     display: flex;

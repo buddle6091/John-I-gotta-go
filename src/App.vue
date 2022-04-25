@@ -50,29 +50,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   data(){
     
     return{
-      picked_from: new Date(),
-      picked_to: '',
-      person: [1, 0, 0],
-      selectClass: 'economy',
-      openModal : false,
-      btnActive: false,
-      unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
-      Departure : 'Incheon',
-      Arrival : 'Jeju',
-      DepartureDate : 'September 17th', 
-      ArrivalDate : 'October 15th',
       
-      airplane_img_inactive : 
-      { width: '30px', height: '30px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto'},
-      airplane_img_active : 
-      { width: '30px', height: '30px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto'},
-     
-     /* datePicker Elements */
-      selected: null,
-      from: null,
-      to: null,
-      yearSelected: null,
-      monthSelected: null,
     }
   },
 setup() {
@@ -118,7 +96,7 @@ html{
 }
 
 .ticketContainer{
-  margin: auto;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
   position: relative;

@@ -10,7 +10,7 @@
         <form class="row g-3">
       <div class="col-md-auto">
         <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" v-model="departure" :value="departure" @change="selectDep($event)" type="search" placeholder="search country or city"> 
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
          </TextField>
         <!-- <input type="text" class="neu-search is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
@@ -197,8 +197,9 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       this.$store.state.shortDep = $event.target.value.slice(-4,-1)
       /* display translate to Eng for temp(depAirportNm)*/
       this.$store.state.tem_depNm = $event.target.id.replace(/International Airport|Airport/, '')  
+      document.getElementById("dep_Text").placeholder = $event.target.value
       // eslint-disable-next-line no-console
-      console.log(this.$store.state.departure)
+      console.log(this.$store.state.departure, document.getElementById("dep_Text").placeholder)
       //document.getElementById('fli_text').innerText = this.arrival
       // eslint-disable-next-line no-console
       console.log(this.$store.state.depAirportId)

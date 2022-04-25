@@ -56,7 +56,7 @@
    <img src="../assets/JEJU_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어서울'"/>
    <img src="../assets/KOREAN_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto', marginTop: '-0.7rem'}" v-if="ticket.airlineNm == '대한항공'"/>
    <img src="../assets/BUSAN_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
-   <img src="../assets/TWAY_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
+   <img src="../assets/TWAY_airline.png" :style="{ width: '4.2rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
    <img src="../assets/EASTAR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
    <img src="../assets/HI_AIR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
    <img src="../assets/FLY_GANGWON_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
@@ -258,7 +258,12 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
     transform-origin: bottom;
     position: relative;
     top: 1rem;
-    margin: 0.8rem 5rem;
+    margin:{
+      top: 1.5rem;
+      left: auto;
+      right: auto;
+      bottom: 0;
+    }
     cursor: grab;  
 }
 

@@ -7,6 +7,7 @@
         id="text-box"
         type="text"
         :placeholder="placeholder"
+        disabled
         
       />      
     </div>
