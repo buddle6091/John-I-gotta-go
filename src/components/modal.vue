@@ -12,18 +12,15 @@
         <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
-         </TextField>
-        <!-- <input type="text" class="neu-search is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" placeholder="search country or city"> -->
+        </TextField>
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
         <div class="collapse" id="collapseExample">
-          
         <div class="neu-accordion" id="accordionExample">
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#D_KR" aria-expanded="true" aria-controls="collapseOne">
-                Domestic (South Korea) .
+                Domestic (South Korea)
             </button>
             </h2>
             <div id="D_KR" class="neu-accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -205,7 +202,7 @@
             </h2>
             <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" ref="ICN">A second item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
@@ -232,8 +229,8 @@
       </div>
   <!-- button container -->
           <div class="modal-footer">
-            <div class="g-col-6"><Button size="small" type="reset" style: marginRight=10px> reset </Button></div>
-            <div class="g-col-6"><Button size="small" data-bs-dismiss="modal"> ok </Button></div>
+            <div class="g-col-6"><Button size="small" type="reset" style: marginRight=10px> Reset </Button></div>
+            <div class="g-col-6"><Button size="small" data-bs-dismiss="modal"> Ok </Button></div>
           </div>
         </form>
       </div>

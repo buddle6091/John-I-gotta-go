@@ -156,8 +156,8 @@ export default {
   &--small {
     padding: 0px 16px;
     font-size: 20px;
-    width: 100px !important;
-    height: 50px;
+    width: 80px !important;
+    height: 40px;
     line-height: 18px !important;
   }
   &--medium {
