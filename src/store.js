@@ -7,7 +7,7 @@ const store = createStore({
     state: () => ({
             /* to search */
             /* 모달에서 오는 출발, 도착 value에서 ..입력값..  */
-            selectClass: '',
+            selectClass: 'economy',
             depPlandTime: '',
             depAirportNm: '',
             arrAirportNm: '',

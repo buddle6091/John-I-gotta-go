@@ -83,22 +83,22 @@
     <span class="material-icons">flight_class</span>
     <ul class="block"> 
       <li class="block-radio class">
-        <input type="radio" id="class1" name="class" value="economy" v-model="selectClass" checked>
+        <input type="radio" id="class1" name="class" value="economy" v-model="$store.state.selectClass" checked>
             <label for="class1"> <i class="material-icons">airline_seat_recline_normal</i>
             <h2>Economy</h2></label>
       </li>
       <li class="block-radio class">
-          <input type="radio" id="class2" name="class" value="premium economy" v-model="selectClass"> 
+          <input type="radio" id="class2" name="class" value="premium economy" v-model="$store.state.selectClass"> 
             <label for="class2"> <i class="material-icons">airline_seat_recline_extra</i>
             <h2>Premium economy</h2></label>         
       </li>
       <li class="block-radio class">
-          <input type="radio" id="class3" name="class" value="business" v-model="selectClass"> 
+          <input type="radio" id="class3" name="class" value="business" v-model="$store.state.selectClass"> 
           <label for="class3"> <i class="material-icons">airline_seat_flat_angled</i>
             <h2>Business</h2></label>
       </li>
       <li class="block-radio class">
-          <input type="radio" id="class4" name="class" value="first" v-model="selectClass"> 
+          <input type="radio" id="class4" name="class" value="first" v-model="$store.state.selectClass"> 
           <label for="class4"> <i class="material-icons">airline_seat_individual_suite</i>
             <h2>First</h2></label>     
       </li>
@@ -224,7 +224,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
   
   computed: {
-    ...mapState(['arrival', 'departure', 'tem_short']),
+    ...mapState(['arrival', 'departure', 'tem_short', 'selectClass']),
     ...mapGetters({
       shortDep : 'shortDep',
       shortArr : 'shortArr',

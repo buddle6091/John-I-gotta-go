@@ -119,7 +119,7 @@
                 </div>
                 <div id="price">
                   Class
-                  <div id="priceLabel">Economy</div>
+                  <div id="priceLabel"> {{$store.state.selectClass}} </div>
                 </div>
                 <img
                   id="barCode"
@@ -168,7 +168,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
     tickets() {
       return this.$store.state.tickets;
     },
-    ...mapState(['depNm', 'arrNm', 'airlineNm', 'resTime']),
+    ...mapState(['depNm', 'arrNm', 'airlineNm', 'selectClass']),
     ...mapGetters({
       shortDep: 'shortDep',
       shortArr: 'shortArr',
