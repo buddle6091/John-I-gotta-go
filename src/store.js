@@ -7,10 +7,11 @@ const store = createStore({
     state: () => ({
             /* to search */
             /* 모달에서 오는 출발, 도착 value에서 ..입력값..  */
-            selectClass: 'economy',
             depPlandTime: '',
             depAirportNm: '',
             arrAirportNm: '',
+            selectClass: 'economy', // default
+            totalPerson: '1', // default
             /* to modal*/
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',

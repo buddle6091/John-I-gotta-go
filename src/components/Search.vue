@@ -1,5 +1,5 @@
 <template>
-<div class="selectContainer__total" @click="Active()" :class="{'is-active': isActive, [className]: true}">
+<div class="selectContainer__total" @click="Active()" :class="{'is-active' : isActive}">
   <div class="selectContainer__inactive"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
@@ -196,30 +196,47 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
     // 한계치를 넘으면 버튼 잠그기
     btnIncrease() {
       if(document.querySelector("input[id=adult]:checked")) 
-        this.person[0]++;
+        this.person[0]++
         else if(document.querySelector("input[id=kid]:checked"))
-        this.person[1]++;
+        this.person[1]++
         else
-        this.person[2]++;
+        this.person[2]++
+      
+      /* Prevent from over 9 */
+      if(this.person[0] > 9)
+        this.person[0] = 9
 
-      const totalPerson = this.person.reduce((a, b) => a + b, 0)
-      if(totalPerson > 8)
-      //document.getElementById("btn_inc").disabled = true;
-      alert('Sorry, can not choose over 9'); // -> 이거 나중에 팝업으로 바꾸기
+      this.$store.state.totalPerson = this.person.reduce((a, b) => a + b, 0)
+      if(this.$store.state.totalPerson > 9)
+      alert('Sorry, can not choose over 9') // -> 이거 나중에 팝업으로 바꾸기
+      this.$store.state.totalPerson--
       },
     btnDecrease() {
       if(document.querySelector("input[id=adult]:checked")) 
-        this.person[0]--;
+        this.person[0]--
         else if(document.querySelector("input[id=kid]:checked"))
-        this.person[1]--;
+        this.person[1]--
         else
-        this.person[2]--;
-        },
+        this.person[2]--
+      
+      /* Prevent from negative num */
+      if(this.person[0] < 1)
+        this.person[0] = 0
+        else if(this.person[1] < 1)
+        this.person[1] = 0
+        else(this.person[2] < 1)
+        this.person[2] = 0
+
+
+      this.$store.state.totalPerson = this.person.reduce((a, b) => a + b, 0)
+      if(this.$store.state.totalPerson < 1)
+        alert('Sorry, can not choose under 1') // -> 이거 나중에 팝업으로 바꾸기
+      },
     async searchTicket() {
-      this.$store.dispatch('searchInfo');
-      this.unfold == false;
-      this.$store.state.depNm = this.$store.state.tem_depNm;
-      this.$store.state.arrNm = this.$store.state.tem_arrNm;
+      this.$store.dispatch('searchInfo')
+      this.unfold == false
+      this.$store.state.depNm = this.$store.state.tem_depNm
+      this.$store.state.arrNm = this.$store.state.tem_arrNm
     }
   },
   

@@ -91,7 +91,7 @@
             <div id="firstBehindRow">
               <div id="detail">
                 Duration
-                <div id="detailLabel">h  min</div>
+                <div id="detailLabel"> about 1hour </div>
               </div>
               <div id="detail">
                 Gate<div id="detailLabel"> -- </div>
@@ -103,8 +103,8 @@
                 <div id="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
               </div>
               <div id="detail">
-                Seat
-                <div id="detailLabel">14C</div> <!-- random -->
+                People
+                <div id="detailLabel"> {{ $store.state.totalPerson }} </div> <!-- random -->
               </div>
             </div>
           </div> 
