@@ -1,6 +1,6 @@
 <template>
-<div class="selectContainer__total" @click="Active()" :class="{'is-active' : isActive}">
-  <div class="selectContainer__inactive"> <!-- 초기값 false -->
+<div class="selectContainer__total">
+  <div class="selectContainer__inactive" @click="Active()" :style="{transition: isActive ? '4s' : '4s', opacity: isActive ? 0 : 1, display: isActive ? 'none' : 'inline'}"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -16,7 +16,7 @@
       <span>economy</span>      
       </div>
   </div>
-  <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.4s' : '0.4s'}">  
+  <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.6s' : '1s', opacity: isActive ? 1 : 0}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
     <ToggleButton :style="{marginLeft:'70%'}"/>
     
@@ -150,7 +150,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
-      isActive: false,//처음에는 fold 되어있는 상태이니 초기값은 false
+      isActive: false,   //처음에는 fold 되어있는 상태이니 초기값은 false
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       
@@ -253,12 +253,9 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
 
   watch: {
-    person(val){
-      if(val == 10){
-        alert('10 dltkd ss')
-      }
-      /* const totalPerson = this.person.reduce((a, b) => a + b, 0);
-      console.log(totalPerson) */
+    isActive(val){
+      // eslint-disable-next-line no-console
+      console.log(val)
     }
   }
 
