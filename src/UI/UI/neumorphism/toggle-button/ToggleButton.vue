@@ -1,24 +1,25 @@
 <template>
   <div>
     <!-- front toggle button -->
-    <div class="toggle-button">
+    <div class="toggle-button" @click="toggleAlert()">
       <input
         id="left"
         v-model="isSelected"
         type="radio"
         name="toggle"
         value="One Way"
+        ref="toggle"
       />
       <!-- behind description -->
       <label for="left" class="toggle-button__label--left"
-        >One Way</label
-      >
+        >One Way</label>
       <input
         id="right"
         v-model="isSelected"
         type="radio"
         name="toggle"
         value="Round Trip"
+        ref="toggle"
       />
       <label for="right" class="toggle-button__label--right"
         >Round Trip
@@ -43,6 +44,7 @@
 export default {
  
   name: 'ToggleButton',
+
   data() {
     return { isSelected: 'One Way', radioItems: ['One Way', 'Round Trip'] };
   },
@@ -54,7 +56,13 @@ export default {
           this.isSelected === 'Round Trip'
       };
     }
+  },
+  method: {
+    toggleAlert() {
+      alert('sorry, we just run only "one way"')
+    }
   }
+
 };
 </script>
 

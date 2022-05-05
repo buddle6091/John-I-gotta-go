@@ -72,6 +72,7 @@ const store = createStore({
             exMonth: '',
             exDate: '',
             exTime: '',
+            pageNo: 1,
             picked_from: new Date(),
             tickets: [],
             loading: false,
@@ -106,13 +107,13 @@ const store = createStore({
     actions : {
         /* 다른 페이지도 부를 수 있게 하는 함수 */
         /* actions 인자 context (state, mutations, getters), payload (request element) */
-        fetchInfo ({ state, commit }, pageNo) {
+        fetchInfo ({ state, commit }) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${this.state.pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
             state.exDate = state.picked_from.getDate()
 
@@ -143,7 +144,7 @@ const store = createStore({
                         })
 
                         // eslint-disable-next-line no-console
-                        console.log(this.state.depTime)
+                        console.log(res, item)
                         // eslint-disable-next-line no-console
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
@@ -173,34 +174,43 @@ const store = createStore({
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
-        async searchInfo ({ commit, dispatch }){
-            try {
+        async searchInfo ({ state, commit, dispatch }){
+            
+            const res = await dispatch('fetchInfo')({
+                pageNo: 1
+            })
+            
                 // eslint-disable-next-line no-undef
-                const res = await dispatch('fetchInfo')({
-                    pageNo: 1
-                })
+                
                 const { item } = res.data.response.body.items.item
                 commit('updateState',{
                     loading: true,
                     tickets: item,
                 })
-                const { totalCount } = res.data.reponse.body
+                const { totalCount } = res.data.reponse.body.totalCount
+                // eslint-disable-next-line no-console
+                console.log(typeof totalCount)
+
+                const total = parseInt(totalCount, 10) // Wtrans to the decimal system
+                const pageLength = Math.ceil(total / 20)
                 
                 /* additional  */
-                if (totalCount > 1) {
-                  for (let i = 2; i <= totalCount; i++){
-                      if (i > totalCount) break
-                      await dispatch('fetchInfo', i)
+                if (pageLength > 1) {
+                  for (let pageNo = 2; pageNo <= pageLength; pageNo++){
+                    const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
+                    const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
+                    const res = await dispatch('fetchInfo')({
+
+                    })
+                      const { item } = res.data.response.body.items.item
+                      commit('updateState', {
+                          tickets: [...item]
+                      })
                   }
                 }
-            } catch (resultMsg) {
-                commit('updateState', 
-                resultMsg)
-            } finally {
-                commit('updateState', {
-                    loading: false
-                })
-            }
+                else
+                    alert('there is no result..')
+            
         }
     },
     })

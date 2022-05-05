@@ -94,7 +94,8 @@
                 <div id="detailLabel"> about 1hour </div>
               </div>
               <div id="detail">
-                Gate<div id="detailLabel"> -- </div>
+                Flight Num
+                <div id="detailLabel"> {{ ticket.vihicleId }} </div>
               </div>
             </div>
             <div id="firstBehindRow">
