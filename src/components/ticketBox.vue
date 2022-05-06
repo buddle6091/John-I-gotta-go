@@ -59,7 +59,7 @@
    <img src="../assets/BUSAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
    <img src="../assets/TWAY_airline.png" :style="{ width: '4.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
    <img src="../assets/EASTAR_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
-   <img src="../assets/HI_AIR_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
+   <img src="../assets/HI_AIR_airline.png" :style="{ width: 'auto', height: '5.2em', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
    <img src="../assets/FLY_GANGWON_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
 
 

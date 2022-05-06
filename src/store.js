@@ -175,40 +175,48 @@ const store = createStore({
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
         async searchInfo ({ commit, dispatch }){
-            const res = await dispatch('fetchInfo')({
-                pageNo: 1
-            })
-            
-                // eslint-disable-next-line no-undef
-                
-                const { item } = res.data.response.body.items.item
-                commit('updateState',{
-                    loading: true,
-                    tickets: item,
+            try{
+                const res = await dispatch('fetchInfo') ({
+                    pageNo: 1
                 })
-                const { totalCount } = res.data.reponse.body.totalCount
-                // eslint-disable-next-line no-console
-                console.log(typeof totalCount)
-
-                const total = parseInt(totalCount, 10) // Wtrans to the decimal system
-                const pageLength = Math.ceil(total / 20)
-                
-                /* additional  */
-                if (pageLength > 1) {
-                  for (let pageNo = 2; pageNo <= pageLength; pageNo++){
-                   /*  const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
-                    const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)] */
-                    const res = await dispatch('fetchInfo')({
-                        pageNo
+                    // eslint-disable-next-line no-undef
+                    const { item } = res.data.response.body.items.item
+                    commit('updateState',{
+                        loading: true,
+                        tickets: item,
                     })
-                      const { item } = res.data.response.body.items.item
-                      commit('updateState', {
-                          tickets: [...item]
-                      })
-                  }
-                }
-                else
-                    alert('there is no result..')
+                    const { totalCount } = res.data.reponse.body.totalCount
+                    // eslint-disable-next-line no-console
+                    console.log(typeof totalCount)
+    
+                    const total = parseInt(totalCount, 10) // Wtrans to the decimal system
+                    const pageLength = Math.ceil(total / 20)
+                    
+                    /* additional  */
+                    if (pageLength > 1) {
+                      for (let pageNo = 2; pageNo <= pageLength; pageNo++){
+                       /*  const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
+                        const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)] */
+                        const res = await dispatch('fetchInfo')({
+                            pageNo
+                        })
+                          const { item } = res.data.response.body.items.item
+                          commit('updateState', {
+                              tickets: [...item]
+                          })
+                      }
+                    }
+                    else
+                        alert('there is no result..')
+            }
+            catch (message) {
+                commit('updateState', {
+                    tickets: [],
+                    message
+                })
+            } finally {
+                alert('3')
+            }
             
         }
     },

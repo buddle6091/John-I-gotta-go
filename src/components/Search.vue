@@ -13,7 +13,7 @@
       <div class="shortInfo">
       <span>10.19</span>~ <span>10.22</span>|
       <span>3 people</span>|
-      <span>economy</span>      
+      <span> {{ $store.state.selectClass }} </span>      
       </div>
   </div>
   <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.6s' : '1s', opacity: isActive ? 1 : 0}">  
@@ -495,7 +495,7 @@ html{
         }
         /* passengers radio*/
         input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
-            width: 5.2rem;
+            width: 5.3rem;
             height: 5rem;
             top: -1px;
             padding-top: 10px;
@@ -506,7 +506,7 @@ html{
           }
 
           input[id="adult"]:checked ~ label{
-            width: 5.2rem;
+            width: 5.3rem;
             height: 5rem;
             top: -1px;
             left: -1px;
