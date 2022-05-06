@@ -174,8 +174,7 @@ const store = createStore({
         /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
-        async searchInfo ({ state, commit, dispatch }){
-            
+        async searchInfo ({ commit, dispatch }){
             const res = await dispatch('fetchInfo')({
                 pageNo: 1
             })
@@ -197,10 +196,10 @@ const store = createStore({
                 /* additional  */
                 if (pageLength > 1) {
                   for (let pageNo = 2; pageNo <= pageLength; pageNo++){
-                    const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
-                    const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
+                   /*  const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
+                    const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)] */
                     const res = await dispatch('fetchInfo')({
-
+                        pageNo
                     })
                       const { item } = res.data.response.body.items.item
                       commit('updateState', {

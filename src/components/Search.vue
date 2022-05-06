@@ -495,10 +495,9 @@ html{
         }
         /* passengers radio*/
         input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
-            width: 4.9rem;
+            width: 5.2rem;
             height: 5rem;
             top: -1px;
-            left: -1px;
             padding-top: 10px;
             border-radius: 0px 0px 0px 0px;
             background-color: $base;
@@ -507,7 +506,7 @@ html{
           }
 
           input[id="adult"]:checked ~ label{
-            width: 4.9rem;
+            width: 5.2rem;
             height: 5rem;
             top: -1px;
             left: -1px;

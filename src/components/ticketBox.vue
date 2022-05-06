@@ -1,7 +1,8 @@
 <template>
-<div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
-<div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
-:style="{ height: ticket.unfold ? `300px` : `100px`,
+<!--  <infinite-scroll @infinite-scroll="loadDataFromServer">
+ --><div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
+  <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
+  :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
                     <!--insert handle action-->
                     <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
@@ -140,12 +141,13 @@
       </div>  
     </div>
   </div>
-
+ <!--  eslint-disable-next-line vue/no-parsing-error -->
+<!--  </inifinite-scroll> -->
 </template>
 
 <script>
+/* import InfiniteScroll from 'infinite-loading-vue3' */
 import { mapState, mapGetters } from 'vuex'
-
 export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  
   props : {
@@ -162,7 +164,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
   },
 
   components: {
-    
+/*     InfiniteScroll */
   },
 
   computed: {

@@ -23,7 +23,7 @@
   = 파일명 및 경로도 정확했고, 모듈 폴더를 삭제 후 다시 깔아도 이런 오류가 발생하면
   tsconfig.json - noImplicitAny 를 false 값으로 바꾼다. 
 <!--GitHub-->
-# reset
+# re
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
 > git reset --hard HEAD (HEAD가 가장 최신 버전이니까 그 하위의 버전은 ~1, ~2, 이런식으로 선택하여 되돌리기)
 
@@ -32,7 +32,6 @@
 
 # clone
 > git clone [repository url] 그 후 해당 폴더로 들어가(cd) > code . -r 을 하면 현재 화면에서 바로 표시됨
-
 # reset / revert
 reset : 커밋을 없애고 그 커밋으로 되돌아가는 기능이다. 그리고 그냥 git reset 만 하면 commit들이 다 지워지는... 
 > git reset [commitHASH]
@@ -75,6 +74,11 @@ LF will be replaced by CRLF in package-lock.json.LF will be replaced by CRLF in 
 1. vue가 깔려있는지 확인. >npm i -g vue
 2. module을 지우고 다시 >npm i 로 모듈설치
 3. 다시 서버 실행 시키기
+
+# ERR! ERESOlVe unable to resolve dependency tree for
+라이브러리 다운 중, npm의 의존성 문제에 충돌하여 설치가 안된다. 
+패키지 명 뒤에 --save --legacy-peer-deps 추가하면 성공
+
 
 <!--css-->
 # icon (google material icon)
