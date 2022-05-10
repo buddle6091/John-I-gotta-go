@@ -110,10 +110,10 @@ const store = createStore({
         fetchInfo ({ state, commit }) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
-            dotenv.config()
+            dotenv.config()  
             const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=20&pageNo=${this.state.pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
             state.exDate = state.picked_from.getDate()
 
@@ -189,16 +189,16 @@ const store = createStore({
                     // eslint-disable-next-line no-console
                     console.log(typeof totalCount)
     
-                    const total = parseInt(totalCount, 10) // Wtrans to the decimal system
-                    const pageLength = Math.ceil(total / 20)
+                   /*  const total = parseInt(totalCount, 10) // Wtrans to the decimal system */
+                    const pageLength = Math.ceil(totalCount / 20)
                     
                     /* additional  */
                     if (pageLength > 1) {
-                      for (let pageNo = 2; pageNo <= pageLength; pageNo++){
+                      for (let pageNo = 2; pageNo <= pageLength; pageNo += 1){
                        /*  const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
                         const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)] */
                         const res = await dispatch('fetchInfo')({
-                            pageNo
+                            pageNo: pageNo
                         })
                           const { item } = res.data.response.body.items.item
                           commit('updateState', {
@@ -212,10 +212,13 @@ const store = createStore({
             catch (message) {
                 commit('updateState', {
                     tickets: [],
-                    message
                 })
             } finally {
-                alert('3')
+                // eslint-disable-next-line no-console
+                console.log('success to search')
+                commit('updateState', {
+                    loading: false
+                })
             }
             
         }

@@ -39,7 +39,7 @@
         <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
         :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
         </div>
-        <div class="dateBox"><i class="material-icons">flight_land</i>
+        <div class="dateBox" :style="{zIndex: '-1'}"><i class="material-icons">flight_land</i>
         <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
         :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
         </div> 

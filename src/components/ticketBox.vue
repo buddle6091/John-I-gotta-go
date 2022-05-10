@@ -1,6 +1,8 @@
 <template>
-<!--  <infinite-scroll @infinite-scroll="loadDataFromServer">
- --><div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
+<div v-if="loading" class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
   :style="{ height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
@@ -141,13 +143,13 @@
       </div>  
     </div>
   </div>
- <!--  eslint-disable-next-line vue/no-parsing-error -->
-<!--  </inifinite-scroll> -->
-</template>
+<!-- <infinite-loading @infinite="()"></inifinite-loading>
+ --></template>
 
 <script>
 /* import InfiniteScroll from 'infinite-loading-vue3' */
-import { mapState, mapGetters } from 'vuex'
+/* import InfiniteLoading from 'vue-infinite-Loading'
+ */import { mapState, mapGetters } from 'vuex'
 export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  
   props : {
@@ -156,7 +158,9 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
   name: 'TicketBox',
 
   methods: {  
-
+   /*  infiniteHandler(){
+        this.#store.dispatch('searchInfo')
+    } */
   },
 
   mounted() { 
@@ -164,7 +168,8 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
   },
 
   components: {
-/*     InfiniteScroll */
+    /* InfiniteLoading */
+/* InfiniteScroll */
   },
 
   computed: {
@@ -180,6 +185,9 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       getAirline: 'getAirline',
       getDepAirportNm: 'getDepAirportNm'
     }),
+    loading() {
+      return this.$store.state.loading
+    },
     ex_month() {
       let eng_Month = ''
       if(this.$store.state.exMonth == '1'){
@@ -220,7 +228,6 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       }
       return eng_Month
     },
-
   },
   
   data(){
@@ -275,7 +282,8 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
     margin:{
       top: 13px;
       left: auto;
-      right: 1.3rem;}
+      right: 1.3rem;
+      }
 
   }
                         

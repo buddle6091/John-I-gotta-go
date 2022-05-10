@@ -3,6 +3,7 @@ import App from './App.vue'
 //import axios from 'axios'
 import '../css/bootstrap.min.css'
 import store from './store.js'
+import InfiniteLoading from 'vue-infinite-loading';
 
 createApp(App)
    .use(store)
