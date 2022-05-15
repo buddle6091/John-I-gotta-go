@@ -76,6 +76,7 @@ const store = createStore({
             picked_from: new Date(),
             tickets: [],
             loading: false,
+            message: 'John, I wanna go to travel.. '
         }),
     /* computed */
     getters :{
@@ -175,6 +176,8 @@ const store = createStore({
         -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
        /* async 문에서는 try & catch */
         async searchInfo ({ commit, dispatch }){
+            if(this.state.loading)
+                return
             try{
                 const res = await dispatch('fetchInfo') ({
                     pageNo: 1
@@ -217,7 +220,7 @@ const store = createStore({
                 // eslint-disable-next-line no-console
                 console.log('success to search')
                 commit('updateState', {
-                    loading: false
+                    loading: false,
                 })
             }
             

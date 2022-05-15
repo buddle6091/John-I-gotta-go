@@ -18,7 +18,7 @@
   </div>
   <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.6s' : '1s', opacity: isActive ? 1 : 0}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
-    <ToggleButton :style="{marginLeft:'70%'}"/>
+    <ToggleButton :style="{marginLeft:'69%'}"/>
     
     <div class="flightContainer">
     <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
@@ -40,8 +40,10 @@
         :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
         </div>
         <div class="dateBox" :style="{zIndex: '-1'}"><i class="material-icons">flight_land</i>
-        <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
-        :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+          <div v-if="toggle">
+            <datepicker class="picker" v-model="$store.state.picked_from" placeholder="Depart Date" :weekStartsOn='0' 
+            :lower-limit="new Date()" :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }"/>
+          </div>
         </div> 
     </div>
     <!-- passengers -->
@@ -50,18 +52,24 @@
     <ul class="block" > 
       <li class="block-radio passengers">
         <input type="radio" id="adult" name="passenger" value="1" checked>
-          <label for="adult"> Adult &times; <span> {{ person[0] }} </span>
-            <h2>12+ years old</h2></label>
+        <label for="adult"><i class="material-icons">man_4</i>&times;&nbsp; <span> {{ person[0] }} </span>
+           <h2> Adult </h2>
+           <h2>12+ years old</h2>
+        </label>
       </li>
       <li class="block-radio passengers">
           <input type="radio" id="kid" name="passenger" value="0"> 
-            <label for="kid"><i class="material-icons">child_care</i>kid &times; <span> {{ person[1] }} </span>
-            <h2>under 12 </h2></label>
+          <label for="kid"><i class="material-icons">boy</i>&times;&nbsp;<span> {{ person[1] }} </span>
+           <h2> Kid </h2>
+           <h2>under 12 </h2>
+          </label>
       </li>
       <li class="block-radio passengers">
           <input type="radio" id="baby" name="passenger" value="0"> 
-          <label for="baby">baby &times; <span> {{ person[2] }} </span>
-          <h2>less than 24 months</h2></label>
+          <label for="baby"><i class="material-icons">baby_changing_station</i>&times;&nbsp; <span> {{ person[2] }} </span>
+            <h2> baby </h2>
+            <h2>under 24 months</h2>
+          </label>
       </li>
       <li class="BtnContainer">
       <Button layout='Increase' id="btn_inc" color='base' @click="btnIncrease"> 
@@ -104,7 +112,7 @@
       </li>
     </ul>       
     </div>
-      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1'}" :class="{'isnot-active' : isActive, [className]: false}"> Search </Button>
+      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1', }" :class="{'isnot-active' : isActive, [className]: false}"> Search </Button>
     </div> 
  </div>   
 </template>
@@ -145,6 +153,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       activeHeight: '35rem',
       picked_from: new Date(),
       picked_to: '',
+      toggle: false,
       person: [1, 0, 0],
       selectClass: '',
       selectEl: document.getElementsByName('class'),
@@ -418,7 +427,7 @@ html{
       span[class=material-icons]{
         font-size: 30px; 
         color: rgb(80, 80, 80); 
-        margin:{
+        margin: {
           top: auto;
           left: 0.7em;
           right: 0.3em;

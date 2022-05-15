@@ -1,7 +1,9 @@
 <template>
-<div v-if="loading" class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+<div class="totalContainer">
+  <div class="inner">
+  <div v-if="loading" class="spinner-border text-primary" style="background-color: black"></div>
+  <div v-if="message"> {{ $store.state.message }} </div>
+  <div>
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
   :style="{ height: ticket.unfold ? `300px` : `100px`,
@@ -10,7 +12,6 @@
                     <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
                     <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
-
 <div id="firstDisplay">
   <div id="flightDetail">
     <div id="detailLabel">
@@ -27,7 +28,7 @@
         <div id="circle"> </div>
         </div>   
       </div>
-      <div id="animContainer" style="left:30px">
+      <div id="animContainer" style="left: 30px">
         <div id="animation">
         <div id="circle"> </div>
         <div id="circle"> </div>                              
@@ -144,7 +145,11 @@
     </div>
   </div>
 <!-- <infinite-loading @infinite="()"></inifinite-loading>
- --></template>
+ -->
+ </div>
+  </div>
+ </div>
+ </template>
 
 <script>
 /* import InfiniteScroll from 'infinite-loading-vue3' */
@@ -258,6 +263,10 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  <style lang="scss" scoped>
 @import '../UI/scss/main.scss';
  
+ .totalContainer {
+   display: flex;
+   justify-content: center;
+ }
 .ticketBox{
     width: 340px;
     height: 100px;
@@ -268,7 +277,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
     transform-origin: bottom;
     position: relative;
     top: 1rem;
-    margin:{
+    margin: {
       top: 1.5rem;
       left: auto;
       right: auto;
@@ -279,7 +288,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
 
  #timeContainer {
     display: flex;
-    margin:{
+    margin: { 
       top: 13px;
       left: auto;
       right: 1.3rem;
