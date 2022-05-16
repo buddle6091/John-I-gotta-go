@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- front toggle button -->
-    <div class="toggle-button" @click="toggleAlert()">
+    <div class="toggle-button">
       <input
         id="left"
         v-model="isSelected"
@@ -58,9 +58,7 @@ export default {
     }
   },
   method: {
-    toggleAlert() {
-      alert('sorry, we just run only "one way"')
-    }
+    
   }
 
 };

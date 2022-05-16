@@ -28,7 +28,7 @@
                 <!-- Incheon (NAARKSI) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
                 required data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-                @click="selectDep($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul(ICN)">Seoul(ICN)</button> 
+                @click="selectDep($event)" id="Incheon International Airport" name="NAARKSI" value="Seoul (ICN)">Seoul(ICN)</button> 
                 <!-- Gimpo (NAARKSS) -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
                 required data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
@@ -120,7 +120,7 @@
       </div>
       <div class="col-md-auto">
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" placeholder="search country or city">
+        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" :placeholder="this.$store.state.a_placeholder">
         </TextField>
         <div id="validationServer03Feedback" class="invalid-feedback">
          Please provide a valid city or state. </div>
@@ -229,7 +229,7 @@
       </div>
   <!-- button container -->
           <div class="modal-footer">
-            <div class="g-col-6"><Button size="small" type="reset" style: marginRight=10px> Reset </Button></div>
+            <div class="g-col-6"><Button size="small" type="reset" style:marginRight=10px> Reset </Button></div>
             <div class="g-col-6"><Button size="small" data-bs-dismiss="modal"> Ok </Button></div>
           </div>
         </form>
@@ -271,6 +271,10 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     /* 확인 용 */
     selectDep($event){
       /* send data to store.js with $store.state */
+      this.$store.state.d_placeholder = $event.target.value
+      if(this.$store.state.d_placeholder != 'search country or city')
+      
+
       this.$store.state.departure = $event.target.value
       this.$store.state.depAirportId = $event.target.name
       this.$store.state.airport_dep = $event.target.id
@@ -293,6 +297,7 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
 
     selectArr($event){
       /* send data to store.js with $store.state */
+      this.$store.state.a_placeholder = $event.target.value
       this.$store.state.arrival = $event.target.value
       this.$store.state.arrAirportId = $event.target.name
       this.$store.state.airport_arr = $event.target.id

@@ -8,7 +8,6 @@
         type="text"
         :placeholder="placeholder"
         disabled
-        
       />      
     </div>
   </div>

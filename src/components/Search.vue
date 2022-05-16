@@ -15,6 +15,7 @@
       <span>3 people</span>|
       <span> {{ $store.state.selectClass }} </span>      
       </div>
+    <i class="material-icons">keyboard_double_arrow_down</i>
   </div>
   <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.6s' : '1s', opacity: isActive ? 1 : 0}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
@@ -300,22 +301,11 @@ html{
     right: auto; 
     bottom: 0;
   };
-  //height: 34rem;
-  //min-height: 20rem;
-  //box-sizing: border-box;
-  //background: $base;
-  //border-radius: $radius-3;
-  //box-shadow: $shadow-convex-hover;
-  //width: 30rem;
   position: relative;
-  //display: flex;
-  //padding: $spacing-4 $spacing-6;
   flex-wrap: wrap;
-  //overflow: hidden;
 
   &__total {
     width: 27rem;
-    align-content: center;
     //min-height: 0rem;
     box-sizing: border-box;
     background: $base;
@@ -379,22 +369,23 @@ html{
   }
 
     &__inactive{
+      justify-content: center;
       height: 15rem;
-      padding: 2em 3.7em;
+      padding: 1em 2.7em;
       opacity: 1;
       transition: opacity 0.4s;
       position: relative;
-
       .shortInfo{
-        width: 20rem;
-        height: 2rem;
+        width: 19rem;
+        height: 2.2rem;
+        top: 1.8rem;
+        left: 1.55rem;
         color: #969696e8;
         line-height: center;
         text-align: center;
         border-radius: 10px;
         background: rgba(168, 168, 168, 0.1);
         box-shadow: $shadow-concave;
-        top: 13px;
         position: relative;
         span{
           padding: 10px, 10p x;
@@ -406,6 +397,14 @@ html{
           color: rgb(70, 68, 68) !important;
         }
       }
+        i{
+          font-size: 25px;
+          color: #5296FB;
+          margin: {
+            top: 2.6rem;
+            left: 10.2rem;
+          } 
+        }
     }
 
     &__active{
