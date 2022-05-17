@@ -24,7 +24,7 @@
       <label for="right" class="toggle-button__label--right"
         >Round Trip
       </label>
-      <span :class="sliderClasses">{{ isSelected }}</span>
+      <span :class="sliderClasses" @click="toggleAlert">{{ isSelected }}</span>
     </div>
     <!-- show selected -->
     <ul class="contents">
@@ -55,6 +55,17 @@ export default {
         [`toggle-button__slider--right`]:
           this.isSelected === 'Round Trip'
       };
+    },
+    toggleAlert() {
+      if(this.isSelected === 'One way')
+      {
+        alert('nnn')
+      }
+      return {
+        'toggle-button__slider': true,
+        [`toggle-button__slider--left`]:
+          this.isSelected === 'One Way'
+      }
     }
   },
   method: {

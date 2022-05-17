@@ -13,8 +13,10 @@
         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
         </TextField>
-        <div id="validationServer03Feedback" class="invalid-feedback">
+        <div class="invalid-feedback" v-if="$store.state.d_placeholder == 'search country or city'">
          Please provide a valid city or state. </div>
+        <div class="invalid-feedback" v-if="$store.state.d_placeholder !== 'search country or city'" style="color: green">
+         correct. </div>
         <div class="collapse" id="collapseExample">
         <div class="neu-accordion" id="accordionExample">
           <div class="neu-accordion-item">
@@ -122,8 +124,10 @@
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
         data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate type="search" :placeholder="this.$store.state.a_placeholder">
         </TextField>
-        <div id="validationServer03Feedback" class="invalid-feedback">
+        <div class="invalid-feedback" v-if="$store.state.a_placeholder == 'search country or city'">
          Please provide a valid city or state. </div>
+        <div class="invalid-feedback" v-if="$store.state.a_placeholder !== 'search country or city'" style="color: green">
+         correct. </div>
         <div class="collapse" id="collapseExample2">
           <div class="neu-accordion" id="accordionExample">
           <div class="neu-accordion-item">
@@ -228,9 +232,8 @@
         </div>
       </div>
   <!-- button container -->
-          <div class="modal-footer">
-            <div class="g-col-6"><Button size="small" type="reset" style:marginRight=10px> Reset </Button></div>
-            <div class="g-col-6"><Button size="small" data-bs-dismiss="modal"> Ok </Button></div>
+          <div class="modal-footer" style="margin-bottom: -10px">
+            <div class="g-col-6"><Button size="small" data-bs-dismiss="modal" style="font-size: 18px;"> ok </Button></div>
           </div>
         </form>
       </div>
@@ -272,9 +275,8 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
     selectDep($event){
       /* send data to store.js with $store.state */
       this.$store.state.d_placeholder = $event.target.value
-      if(this.$store.state.d_placeholder != 'search country or city')
-      
-
+      var t_holder = document.getElementById("dep_Text")
+      t_holder.style.color = "red"
       this.$store.state.departure = $event.target.value
       this.$store.state.depAirportId = $event.target.name
       this.$store.state.airport_dep = $event.target.id

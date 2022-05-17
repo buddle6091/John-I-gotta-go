@@ -110,6 +110,6 @@ form {
   }
 }
 ::placeholder {
-  color: $unselected;
+  color: rgb(136, 132, 132)
 }
 </style>
