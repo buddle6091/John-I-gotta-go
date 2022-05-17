@@ -11,8 +11,8 @@
       {{ getAirport_arr }}</span>
       </div>
       <div class="shortInfo">
-      <span>10.19</span>~ <span>10.22</span>|
-      <span>3 people</span>|
+      <span>{{ $store.state.exMonth }}.{{ $store.state.exDate }}</span>~  <span>{{ $store.state.exMonth }}.{{ $store.state.exDate }}</span>|
+      <span>{{ $store.state.totalPerson }} people</span>|
       <span> {{ $store.state.selectClass }} </span>      
       </div>
     <i class="material-icons">keyboard_double_arrow_down</i>
@@ -401,9 +401,36 @@ html{
           font-size: 25px;
           color: #5296FB;
           margin: {
-            top: 2.6rem;
+            top: 2.5rem;
             left: 10.2rem;
-          } 
+          }
+          animation: shake 1s;
+          animation-iteration-count: infinite; 
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+
+          @keyframes shake {
+            10%, 90% {
+              transform: translate3d(0, -1px, 0);
+            }
+            
+            20%, 80% {
+              transform: translate3d(0, 1px, 0);
+            }
+
+            30% {
+              transform : translate3d(0, 3px, 0);
+            }
+
+            50%, 70% {
+              transform: translate3d(0, -4px, 0);
+            }
+
+            40%, 60% {
+              transform: translate3d(0, 4px, 0);
+            }
+          }  
         }
     }
 

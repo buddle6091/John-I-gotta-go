@@ -11,7 +11,7 @@ const store = createStore({
             depAirportNm: '',
             arrAirportNm: '',
             selectClass: 'economy', // default
-            totalPerson: '1', // default
+            totalPerson: 1, // default
             /* to modal*/
             /* 모달에서는 출발, 도착값을 받고 넘겨준다. */
             departure: 'GMP ',
