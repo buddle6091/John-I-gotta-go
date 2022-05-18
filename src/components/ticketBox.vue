@@ -1,4 +1,15 @@
 <template>
+<div class="howtouse">
+ <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
+  <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
+  <p>2. Click the arrival - destination zone, and choose arrival, destination in modal window.</p><br/>
+  <p>2-1. Across arrow button can switch arrival to destination.</p><br/>
+  <p>2-2. Please understand that we only support 'One way' at the moment. also only domestic line :)</p><br/>
+  <p>3. And then, choose flight date, people and class.</p><br/>
+  <p>4. After click 'search' button, available tickets will be right here.</p><br/>
+  <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey.</p>
+
+</div>
 <div class="totalContainer">
   <div class="inner">
   <div v-if="loading" class="spinner-border text-primary" style="background-color: black"></div>
@@ -6,7 +17,7 @@
   <div>
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
-  :style="{ height: ticket.unfold ? `300px` : `100px`,
+  :style="{height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
                     <!--insert handle action-->
                     <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
@@ -262,7 +273,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
 
  <style lang="scss" scoped>
 @import '../UI/scss/main.scss';
- 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap'); 
  .totalContainer {
    display: flex;
    justify-content: center;

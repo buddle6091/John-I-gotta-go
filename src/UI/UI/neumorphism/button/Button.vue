@@ -119,8 +119,6 @@ export default {
       width: 2em;
       height: 2.7rem;
       display: inline;
-      justify-content: center;
-      align-items: center;
       border: 0.1rem solid #cfcfcf;
       border: {
        radius: 0px 15px 0px 0px;
@@ -184,7 +182,6 @@ export default {
     @include flexible;
   }
   &--fill {
-   
     display: block;
     width: 100%;
     max-width: 400px;

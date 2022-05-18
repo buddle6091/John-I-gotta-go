@@ -276,6 +276,8 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
 <style lang="scss" scoped>
 @import '../UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway:ital,wght@1,500&display=swap');
 
 * {
   margin: 0;
@@ -375,6 +377,10 @@ html{
       opacity: 1;
       transition: opacity 0.4s;
       position: relative;
+      h1{
+          font-family: 'Raleway', sans-serif;
+          font-weight: 400;
+        }
       .shortInfo{
         width: 19rem;
         height: 2.2rem;
@@ -388,13 +394,14 @@ html{
         box-shadow: $shadow-concave;
         position: relative;
         span{
-          padding: 10px, 10p x;
+          padding: 10px, 10px;
           margin-right: 10px;
+          font-family: 'Montserrat', sans-serif;
           font: { 
-            size: 9px;
+            size: 11px;
             weight: bold;
             }
-          color: rgb(70, 68, 68) !important;
+          color: rgb(83, 83, 83) !important;
         }
       }
         i{
@@ -438,6 +445,10 @@ html{
       padding: 2em;
       opacity: 0;
       transition: opacity 0.4s;
+      h1{
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+      }
       .set{
         left: 10px;
         margin: {
@@ -510,6 +521,10 @@ html{
           text-align: center;
           font-size: 0.9rem;
           }  
+        span{
+          font-family: 'Montserrat', sans-serif;
+          font-weight: bold;
+        }
         h2{
           color: $text-main;
           font-size: 2px;
@@ -532,8 +547,7 @@ html{
         input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
             width: 5.3rem;
             height: 5rem;
-            top: -1px;
-            padding-top: 10px;
+            padding-top: 1px;
             border-radius: 0px 0px 0px 0px;
             background-color: $base;
             box-shadow: $shadow-concave-large;
@@ -543,9 +557,7 @@ html{
           input[id="adult"]:checked ~ label{
             width: 5.3rem;
             height: 5rem;
-            top: -1px;
-            left: -1px;
-            padding-top: 10px;
+            padding-top: 1px;
             border-radius: 15px 0px 0px 15px;
             background-color: $base;
             box-shadow: $shadow-concave-large;
@@ -620,16 +632,6 @@ html{
             top: 10px;
             position: relative;
             }
-    /*       input[type="radio"]:checked + label{
-            width: 4.5rem;
-            height: 5rem;
-            top: -1px;
-            left: -1px;
-            padding-top: 10px;
-            border-radius: 0px 0px 0px 0px;
-            color: $primary;
-            background-color: red;
-              } */
         }
       }
 

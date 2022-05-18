@@ -95,10 +95,10 @@
             </h2>
             <div id="D_JP" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">coming soon..</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>...</button>
               </div>
             </div>
           </div>
@@ -110,10 +110,10 @@
             </h2>
             <div id="D_CH" class="neu-accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">coming soon..</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>...</button>
               </div>
             </div>
           </div>
@@ -206,10 +206,10 @@
             </h2>
             <div id="collapseTwo" class="neu-accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">coming soon..</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>...</button>
               </div>
             </div>
           </div>
@@ -221,10 +221,10 @@
             </h2>
             <div id="collapseThree" class="neu-accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="neu-list-group">
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A second item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A third button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action">A fourth button item</button>
-                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>A disabled button item</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">coming soon..</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action">...</button>
+                <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled>...</button>
               </div>
             </div>
           </div>
