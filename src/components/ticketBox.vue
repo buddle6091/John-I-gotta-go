@@ -1,14 +1,14 @@
 <template>
-<div class="howtouse">
+<div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
   <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
   <p>2. Click the arrival - destination zone, and choose arrival, destination in modal window.</p><br/>
   <p>2-1. Across arrow button can switch arrival to destination.</p><br/>
-  <p>2-2. Please understand that we only support 'One way' at the moment. also only domestic line :)</p><br/>
+  <p>2-2. Please understand that we only support 'One way' at the moment. Also only domestic line :)</p><br/>
   <p>3. And then, choose flight date, people and class.</p><br/>
   <p>4. After click 'search' button, available tickets will be right here.</p><br/>
-  <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey.</p>
-
+  <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
+  <p></p>
 </div>
 <div class="totalContainer">
   <div class="inner">
@@ -201,6 +201,11 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       getAirline: 'getAirline',
       getDepAirportNm: 'getDepAirportNm'
     }),
+  /*   disable() {
+      let a = document.getElementById('htu')
+      if(this.$store.state.isActive == true)
+        return a.style.display == 'none';
+    }, */
     loading() {
       return this.$store.state.loading
     },
@@ -274,6 +279,33 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  <style lang="scss" scoped>
 @import '../UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+ .howtouse {
+   width: 28rem;
+   height: auto;
+   margin: {
+     top: 2rem;
+     left: auto;
+     right: auto;
+   }
+   padding: 1rem;
+   border: 2px dashed #b9acac;
+   border-radius: $radius-3;
+   h2 {
+     font: {
+       family: 'Raleway', sans-serif;
+       weight: bold;
+     }
+   }
+   p {
+     margin-top: -12px;
+     font: {
+       family: 'Indie Flower', cursive;
+       size: 20px;
+       weight: 400;
+     }
+   }
+ }
  .totalContainer {
    display: flex;
    justify-content: center;

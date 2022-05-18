@@ -6,6 +6,7 @@ const store = createStore({
     /* store the data */
     state: () => ({
             /* to search */
+            isActive: false, /* search 바 활성화 */
             /* 모달에서 오는 출발, 도착 value에서 ..입력값..  */
             depPlandTime: '',
             depAirportNm: '',
@@ -69,14 +70,14 @@ const store = createStore({
             depMin: [],
             arrTime: [],
             arrMin: [],
-            exMonth: '',
-            exDate: '',
+            exMonth: new Date().getMonth()+1,
+            exDate: new Date().getDate(),
             exTime: '',
             pageNo: 1,
             picked_from: new Date(),
             tickets: [],
             loading: false,
-            message: 'John, I wanna go to travel.. '
+            getError: false,
         }),
     /* computed */
     getters :{

@@ -1,6 +1,6 @@
 <template>
 <div class="selectContainer__total">
-  <div class="selectContainer__inactive" @click="Active()" :style="{transition: isActive ? '4s' : '4s', opacity: isActive ? 0 : 1, display: isActive ? 'none' : 'inline'}"> <!-- 초기값 false -->
+  <div class="selectContainer__inactive" @click="Active()" :style="{transition: $store.state.isActive ? '4s' : '4s', opacity: $store.state.isActive ? 0 : 1, display: $store.state.isActive ? 'none' : 'inline'}"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -17,7 +17,7 @@
       </div>
     <i class="material-icons">keyboard_double_arrow_down</i>
   </div>
-  <div class="selectContainer__active" :style="{height: isActive ? activeHeight : inactiveHeight, transition: isActive ? '0.6s' : '1s', opacity: isActive ? 1 : 0}">  
+  <div class="selectContainer__active" :style="{height: $store.state.isActive ? activeHeight : inactiveHeight, transition: $store.state.isActive ? '0.6s' : '1s', opacity: $store.state.isActive ? 1 : 0}">  
     <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
     <ToggleButton :style="{marginLeft:'69%'}"/>
     
@@ -113,7 +113,7 @@
       </li>
     </ul>       
     </div>
-      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1', }" :class="{'isnot-active' : isActive, [className]: false}"> Search </Button>
+      <Button @click="[searchTicket(), unActive()]" :style="{marginTop: '2rem', zIndex: '-1', }" :class="{'isnot-active' : $store.state.isActive, [className]: false}"> Search </Button>
     </div> 
  </div>   
 </template>
@@ -160,7 +160,6 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       selectEl: document.getElementsByName('class'),
       openModal : false,
       btnActive: false,
-      isActive: false,   //처음에는 fold 되어있는 상태이니 초기값은 false
       DepartureDate : 'September 17th', 
       ArrivalDate : 'October 15th',
       
@@ -180,10 +179,10 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
 
   methods: {
     Active() {
-      this.isActive = true;
+      this.$store.state.isActive = true;
     },
     unActive() {
-      this.isActive = false;
+      this.$store.state.isActive = false;
     },
     reverse(){
       /* shortDep <-> shortArr */
@@ -263,10 +262,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   },
 
   watch: {
-    isActive(val){
-      // eslint-disable-next-line no-console
-      console.log(val)
-    }
+    
   }
 
  

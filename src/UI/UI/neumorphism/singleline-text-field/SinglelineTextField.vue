@@ -1,6 +1,6 @@
 <template>
   <div class="singlline-text-field">
-    <label for="text-box" :class="label"></label>
+    <label for="text-box" :class="label" :labelstate="labelstate"> {{labelstate}} </label>
     <div :class="classes">
       <input
         class="singlline-text-field__text"
@@ -20,8 +20,8 @@ export default {
   name: 'TextField',
   props: {
     labelstate: {
-      type: Boolean,
-      default: true
+      type: String,
+      default: ''
     },
     type: {
       type: String,
