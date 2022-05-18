@@ -6,22 +6,22 @@ $base-liner: linear-gradient(
   #f3f5fa -1.94%,
   #ebedf2 102.24%
 );
-$primary: #00c0c0;
+$primary: #93b9ff;
 $primary-liner: linear-gradient(
   119.06deg,
-  #3fdfd6 10.71%,
-  #44d8e1 60.37%,
-  #46dfd6 103.14%
+  #88b0fa 10.71%,
+  #89b1fa 60.37%,
+  #82adfc 103.14%
 );
 $primary-liner-large: linear-gradient(
   91.58deg,
-  #6bcedc -8.01%,
-  #71e2dc 105.39%
+  #93b9ff -8.01%,
+  #7ba9fd 105.39%
 );
 $primary-liner-light: linear-gradient(
   180deg,
-  #dbf2f3 0%,
-  #d2f3f3 100%
+  #b3d6ff 0%,
+  #b6d4fc 100%
 );
 $text-main: #626a76;
 $text-sub: #838e95;
@@ -60,7 +60,7 @@ $shadow-convex-large: 0.3rem 0.5rem 0.12rem #a5bac773,
 $shadow-icon: 0.1rem 0.3rem 0.3rem #43afb640,
   -0.1rem -0.1rem 0.2rem #ffffff33;
 $shadow-primary-concave: inset 0.2rem 0.3rem 0.4rem
-  #55b3c099;
+  #557fb699;
 $danger-shadow-concave: inset 0.1rem 0.2rem 0.3rem #c0545999;
 $liner-shadow-concave: inset 0.1rem 0.2rem 0.2rem #86e1dc40;
 $shadow-unselected-concave: 0.2rem 0.3rem 0.4rem
