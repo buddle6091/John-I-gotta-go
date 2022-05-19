@@ -76,6 +76,7 @@ const store = createStore({
             pageNo: 1,
             picked_from: new Date(),
             tickets: [],
+            totalCount: 1,
             loading: false,
             getError: false,
         }),
@@ -126,6 +127,7 @@ const store = createStore({
                     .then(res => {
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
+                        this.state.totalCount = res.data.response.body.totalCount
                         this.state.depTime = res.data.response.body.items.item.map((obj) => {
                             /* 보간법을 이용하면 function 가능 (object에 간섭을 안하므로 가능) */
                             obj.depTime = `${obj.depPlandTime}`.slice(-4, -2)
@@ -146,7 +148,7 @@ const store = createStore({
                         })
 
                         // eslint-disable-next-line no-console
-                        console.log(res, item)
+                        console.log(res)
                         // eslint-disable-next-line no-console
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {

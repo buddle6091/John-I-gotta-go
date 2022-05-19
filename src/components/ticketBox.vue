@@ -10,6 +10,9 @@
   <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
   <p></p>
 </div>
+<div class="notFound" v-if="$store.state.totalCount == 0">
+<h1>error</h1>
+</div>
 <div class="totalContainer">
   <div class="inner">
   <div v-if="loading" class="spinner-border text-primary" style="background-color: black"></div>
