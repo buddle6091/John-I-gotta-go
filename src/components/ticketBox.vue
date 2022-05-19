@@ -11,7 +11,7 @@
   <p></p>
 </div>
 <div class="notFound" v-if="$store.state.totalCount == 0">
-<h1>error</h1>
+<img src="../assets/icon/cutted_airplane.png" style="margin-left: -11em"/>
 </div>
 <div class="totalContainer">
   <div class="inner">
@@ -167,9 +167,9 @@
 
 <script>
 /* import InfiniteScroll from 'infinite-loading-vue3' */
-/* import InfiniteLoading from 'vue-infinite-Loading'
- */import { mapState, mapGetters } from 'vuex'
-export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
+/* import InfiniteLoading from 'vue-infinite-Loading' */
+   import { mapState, mapGetters } from 'vuex'
+  export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  
   props : {
 
@@ -204,11 +204,7 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
       getAirline: 'getAirline',
       getDepAirportNm: 'getDepAirportNm'
     }),
-  /*   disable() {
-      let a = document.getElementById('htu')
-      if(this.$store.state.isActive == true)
-        return a.style.display == 'none';
-    }, */
+
     loading() {
       return this.$store.state.loading
     },
@@ -308,6 +304,18 @@ export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
        weight: 400;
      }
    }
+ }
+ .notFound {
+   width: 400px;
+   height: 200px;
+   margin: {
+     top: 5rem;
+     left: auto;
+     right: auto;
+    }
+   background-color: $base;
+   border-radius: $radius-3;
+   box-shadow: $shadow-base;
  }
  .totalContainer {
    display: flex;
