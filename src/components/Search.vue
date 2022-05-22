@@ -310,7 +310,6 @@ html{
     border-radius: $radius-3;
     box-shadow: $shadow-convex-hover;
     margin: {
-      top: 10px;
       left: auto;
       right: auto;
     }

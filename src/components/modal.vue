@@ -10,7 +10,7 @@
         <form class="row g-3">
       <div class="col-md-auto">
         <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
-        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" labelstate="departure" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" labelstate="Departure" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
         </TextField>
         <div class="invalid-feedback" v-if="$store.state.d_placeholder == 'search country or city'">
@@ -122,7 +122,7 @@
       </div>
       <div class="col-md-auto">
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
-        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate="arrival" type="search" :placeholder="this.$store.state.a_placeholder">
+        data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate="Arrival" type="search" :placeholder="this.$store.state.a_placeholder">
         </TextField>
         <div class="invalid-feedback" v-if="$store.state.a_placeholder == 'search country or city'">
          Please provide a valid city or state. </div>

@@ -95,14 +95,7 @@ html{
 .App{
   font-family: sans-serif;
   background: $base;
+  padding-top: 1rem;
 }
-
-.ticketContainer{
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  }
 
 </style>

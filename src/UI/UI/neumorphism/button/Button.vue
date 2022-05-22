@@ -33,7 +33,7 @@ export default {
       default: 'fill',
       validater: function (value) {
         return (
-          ['flexible', 'fill', 'half', 'Increase', 'Decrease', 'reverse'].indexOf(value) !== -1
+          ['flexible', 'fill', 'half', 'Increase', 'Decrease', 'reverse', 'href'].indexOf(value) !== -1
         );
       }
     },
@@ -190,6 +190,13 @@ export default {
   &--half {
     width: 35%;
     max-width: 200px;
+  }
+  &--href {
+    width: 340px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: white;
+    @include button-hover;
   }
   &--withicon {
     &::after {

@@ -59,8 +59,8 @@ const store = createStore({
             tem_airport: '',
             tem_code: '',
             /* to ticketBox */
-            d_placeholder: 'search country or city',
-            a_placeholder: 'search country or city',
+            d_placeholder: 'Search country or city',
+            a_placeholder: 'Search country or city',
             tem_depNm: 'Gimpo',
             tem_arrNm: 'Jeju',
             depNm: 'Gimpo',

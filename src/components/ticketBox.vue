@@ -11,7 +11,10 @@
   <p></p>
 </div>
 <div class="notFound" v-if="$store.state.totalCount == 0">
-<img src="../assets/icon/cutted_airplane.png" style="margin-left: -11em"/>
+  <img src="../assets/icon/no_result.png"/>
+  <div class="underShadow"></div>
+  <h2>Sorry, there is no ticket today :(</h2><br/>
+  <p>How about change your flight date?</p>
 </div>
 <div class="totalContainer">
   <div class="inner">
@@ -26,47 +29,47 @@
                     <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
                     <!--밀려나간 상태까지 걸리는 시간-->
                     <!--Onclick Action-->
-<div id="firstDisplay">
-  <div id="flightDetail">
-    <div id="detailLabel">
+<div class="firstDisplay">
+  <div class="flightDetail">
+    <div class="detailLabel">
       Departures</div>
     {{ shortDep }}
-     <div id="detailLabel"> 
+     <div class="detailLabel"> 
        {{ getAirport_dep }}</div>
        </div>
-  <div id="flightDetail">
-      <div id="animContainer" style="left: -20px">
-        <div id="animation">
-        <div id="circle"> </div>
-        <div id="circle"> </div>  
-        <div id="circle"> </div>
+  <div class="flightDetail">
+      <div class="animContainer" style="left: -20px">
+        <div class="animation">
+        <div class="circle"> </div>
+        <div class="circle"> </div>  
+        <div class="circle"> </div>
         </div>   
       </div>
-      <div id="animContainer" style="left: 30px">
-        <div id="animation">
-        <div id="circle"> </div>
-        <div id="circle"> </div>                              
-        <div id="circle"> </div>
+      <div class="animContainer" style="left: 30px">
+        <div class="animation">
+        <div class="circle"> </div>
+        <div class="circle"> </div>                              
+        <div class="circle"> </div>
         </div>   
       </div>
       <img src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
  :style="Airplane_in"/>
   </div>
-  <div id="flightDetail">
-    <div id="detailLabel">
+  <div class="flightDetail">
+    <div class="detailLabel">
       Arrivals </div>
     {{ shortArr }}
-     <div id="detailLabel">
+     <div class="detailLabel">
        {{ getAirport_arr }}</div>
        </div>
   </div>
  
-  <div id="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
+  <div class="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
   transition: ticket.unfold ? '0.4s' : '1s'}">
      
   <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
-  <div id="firstTop"> 
+  <div class="firstTop"> 
    <!-- 해당 항공사에 속한 그림만 보여지게 if -->
    <img src="../assets/JEJU_airline.png" :style="{ width: '9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
    <img src="../assets/ASIANA_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
@@ -80,65 +83,65 @@
    <img src="../assets/FLY_GANGWON_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
 
 
-    <div id="timeContainer">
-     <div id="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
+    <div class="timeContainer">
+     <div class="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
       {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
-      <div id="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  <!--시간-->
+      <div class="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  <!--시간-->
       {{ ex_month }} {{ this.$store.state.exDate }}   <!--날짜-->                                       
      </div>
       <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
-     <div id="dateContainer"><!--날짜, 시간 장소 등을 저장할 공간-->
+     <div class="dateContainer"><!--날짜, 시간 장소 등을 저장할 공간-->
       {{ arrNm }}     <!--출발지-->
-      <div id="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  <!--시간-->
+      <div class="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  <!--시간-->
       {{ ex_month }} {{ this.$store.state.exDate }}  <!--날짜-->
     </div>
   </div>
     </div>
-  <div id="firstBehind">
-          <div id="firstBehindDisplay">
-            <div id="firstBehindRow">
-              <div id="detail">
+  <div class="firstBehind">
+          <div class="firstBehindDisplay">
+            <div class="firstBehindRow">
+              <div class="detail">
                 Flight Time
-                <div id="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }} </div> <!-- arrPlandTime - depPlandTime -->
+                <div class="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }} </div> <!-- arrPlandTime - depPlandTime -->
               </div>
-              <div id="detail">
+              <div class="detail">
                 Transfer
-                <div id="detailLabel">No Transfer</div>
+                <div class="detailLabel">No Transfer</div>
               </div>
             </div>
-            <div id="firstBehindRow">
-              <div id="detail">
+            <div class="firstBehindRow">
+              <div class="detail">
                 Duration
-                <div id="detailLabel"> about 1hour </div>
+                <div class="detailLabel"> about 1hour </div>
               </div>
-              <div id="detail">
+              <div class="detail">
                 Flight Num
-                <div id="detailLabel"> {{ ticket.vihicleId }} </div>
+                <div class="detailLabel"> {{ ticket.vihicleId }} </div>
               </div>
             </div>
-            <div id="firstBehindRow">
-              <div id="detail">
+            <div class="firstBehindRow">
+              <div class="detail">
                 Boarding Time
-                <div id="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
+                <div class="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
               </div>
-              <div id="detail">
+              <div class="detail">
                 People
-                <div id="detailLabel"> {{ $store.state.totalPerson }} </div> <!-- random -->
+                <div class="detailLabel"> {{ $store.state.totalPerson }} </div> <!-- random -->
               </div>
             </div>
           </div> 
-<div id="second" :style="{transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
+<div class="second" :style="{transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
  transition: ticket.unfold ? '0.8s' : '0.8s'  }">
-    <div id="secondTop"/>
-             <div id="secondBehind">
-              <div id="secondBehindDisplay">
-                <div id="price">
+    <div class="secondTop"/>
+             <div class="secondBehind">
+              <div class="secondBehindDisplay">
+                <div class="price">
                   Price
-                  <div id="priceLabel">please check in website</div> 
+                  <div class="priceLabel">please check in website</div> 
                 </div>
-                <div id="price">
+                <div class="price">
                   Class
-                  <div id="priceLabel"> {{$store.state.selectClass}} </div>
+                  <div class="priceLabel"> {{$store.state.selectClass}} </div>
                 </div>
                 <img
                   id="barCode"
@@ -146,10 +149,11 @@
                 />
               </div> 
             
-               <div id="third"  :style="{ transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
+               <div class="third" :style="{ transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
         transition: ticket.unfold ? '1s' : '0.4s' }">
-                <div id="thirdTop"/>
-                 <div id="secondBehindBottom">
+                <div class="thirdTop"/>
+                 <div class="secondBehindBottom">
+                   <Button layout="href" color="base"></Button>
                 </div>
               </div> 
             </div>
@@ -168,6 +172,7 @@
 <script>
 /* import InfiniteScroll from 'infinite-loading-vue3' */
 /* import InfiniteLoading from 'vue-infinite-Loading' */
+   import Button from '../UI/UI/neumorphism/button/Button.vue';
    import { mapState, mapGetters } from 'vuex'
   export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
  
@@ -187,6 +192,7 @@
   },
 
   components: {
+    Button: Button,
     /* InfiniteLoading */
 /* InfiniteScroll */
   },
@@ -279,6 +285,11 @@
 @import '../UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+ *{
+   user-select: none;
+ }
  .howtouse {
    width: 28rem;
    height: auto;
@@ -306,16 +317,54 @@
    }
  }
  .notFound {
-   width: 400px;
-   height: 200px;
+   width: 30rem;
    margin: {
-     top: 5rem;
+     top: 4.2rem;
      left: auto;
      right: auto;
+   }
+   padding: {
+     left: auto;
+     right: auto;
+   }
+  img {
+      width: 30rem;
+  }
+  .underShadow {
+    width: 10rem;
+    height: 1.3rem;
+    margin: {
+      top: -1.2rem;
+      left: 11rem;
+      bottom: 2rem;
     }
-   background-color: $base;
-   border-radius: $radius-3;
-   box-shadow: $shadow-base;
+    border-radius: 100%;
+    background-color: rgb(189, 189, 189); 
+   }
+
+   h2 {
+     left: 10px;
+     color: rgba(0, 0, 0, 0.729);
+     font: {
+       family: 'Comfortaa', cursive;
+       size: 29px;
+       weight: bold;
+     }
+      position: relative;
+   }
+   p {
+     left: 99px;
+     margin: {
+       top: -13px;
+       bottom: 6rem;
+     }
+     color: rgb(158, 158, 158);
+     font: {
+       size: 15px;
+       family: 'Comfortaa', cursive;
+     }
+     position: relative;
+   }
  }
  .totalContainer {
    display: flex;
@@ -340,29 +389,28 @@
     cursor: grab;  
 }
 
- #timeContainer {
+ .timeContainer {
     display: flex;
     margin: { 
       top: 13px;
       left: auto;
       right: 1.3rem;
       }
-
   }
                         
-#dateContainer{           /*첫페이지-출발지의 시간, 날짜*/
+.dateContainer{           /*첫페이지-출발지의 시간, 날짜*/
   color: rgb(121, 115, 115);
   font-size: 9px;
   padding-top: 10px; 
 }
 
-#detailtime{
+.detailtime{
   font-weight: bold;
   color:#000000;
   font-size: 16px; 
 }
 
-  #first {
+  .first {
     width: 340px;
     height: 100px;
     position: absolute;
@@ -405,7 +453,7 @@
     } */
   }
 
-  #firstTop {
+  .firstTop {
     width: 340px;
     height: 100px;
     position: absolute;
@@ -417,7 +465,7 @@
     justify-content: space-around;
   }
 
-  #firstDisplay {  /*첫번째 칸에 종속되어 있는 */
+  .firstDisplay {  /*첫번째 칸에 종속되어 있는 */
     width: 100%;
     height: 100px;
     position: absolute;
@@ -433,7 +481,7 @@
     box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.17);
   }
 
-  #flightDetail {
+  .flightDetail {
     font-size: 20px;
     font-weight: bold;
     margin: -3px 0px 0px 10px;
@@ -441,12 +489,12 @@
     flex: 0.4;
   }
 
-#detailLabel{
+.detailLabel{
   color: lightslategrey;
   font-size: 9px;
 }
 
-#animContainer{
+.animContainer{
   padding-left: 0px;
   position: absolute;
   width: 30px;
@@ -456,7 +504,7 @@
   overflow: hidden;
 }
 
-#animation{
+.animation{
   width: 100px;
   position: absolute;
   display: flex;
@@ -473,14 +521,14 @@
     }
   }
 
-#circle {
+.circle {
   width: 5px;
   height: 5px;
   background: #707070;
   border-radius: 50%;
   margin-right: 13px;
 }
-  #firstBehind {
+  .firstBehind {
     width: 340px;
     height: 100px;
     position: absolute;
@@ -494,7 +542,7 @@
     border-right: none;
   }
   
-  #firstBehindDisplay {
+  .firstBehindDisplay {
     width: 100%;
     height: 100px;
     position: absolute;
@@ -506,7 +554,7 @@
     box-shadow: 0px 11px 25px -1px rgba(0, 0, 0, 0.17);
   }
   
-  #firstBehindRow {
+  .firstBehindRow {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -515,19 +563,19 @@
     text-align: left;
   }
   
-  #detail {
+  .detail {
     font-size: 15px;
     color: rgb(69, 69, 69);
     font-weight: bold;
   }
   
-  #detailLabel {
+  .detailLabel {
     color: #686868;
     font-size: 10px;
     font-weight: 100;
   }
   
-  #second {
+  .second {
     width: 340px;
     height: 50px;
     position: absolute;
@@ -538,7 +586,7 @@
     border-radius: 8px;
   }
   
-  #secondTop {
+  .secondTop {
     width: 340px;
     height: 50px;
     position: absolute;
@@ -547,7 +595,7 @@
     border-radius: 8px;
   }
   
-  #secondBehind {
+  .secondBehind {
     width: 340px;
     height: 50px;
     position: absolute;
@@ -561,7 +609,7 @@
     border-right: none;
   }
   
-  #secondBehindDisplay {
+  .secondBehindDisplay {
     width: 100%;
     height: 50px;
     position: absolute;
@@ -574,7 +622,7 @@
     box-shadow: 0px 11px 25px -1px rgba(0, 0, 0, 0.17);
   }
   
-  #secondBehindBottom {
+  .secondBehindBottom {
     width: 340px;
     height: 50px;
     position: absolute;
@@ -587,7 +635,7 @@
     box-shadow: 0px 11px 25px -1px rgba(0, 0, 0, 0.17);
   }
 
-  #thirdTop {
+  .thirdTop {
   width: 340px;
   height: 50px;
   position: absolute;
@@ -596,7 +644,7 @@
   border-radius: 8px;
 }
   
-  #third {
+  .third {
     width: 340px;
     height: 50px;
     position: absolute;
@@ -605,7 +653,7 @@
     border-radius: 8px;
   }
 
-  #price {
+  .price {
     color: #2d2d2d;
     font-weight: bold;
     font-size: 15px;
@@ -614,16 +662,11 @@
     margin-top: -2px;
   }
   
-  #priceLabel {
+  .priceLabel {
     color: #747474;
     font-weight: 100;
     font-size: 10px;
     text-align: left;
-  }
-  
-  #barCode {
-    width: 98px;
-    height: 30px;
   }
   
  </style>
