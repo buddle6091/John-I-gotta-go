@@ -38,6 +38,12 @@
   cursor: pointer;
 }
 
+@mixin button-justShadow (
+  $negative-shadow-concave: inset 0 0 0 #00000000
+) {
+  box-shadow: $negative-shadow-concave, $shadow-convex-hover;
+}
+
 @mixin button-active($negative-shadow-convex: 0 0 0 #00000000) 
 {
   background: $primary-liner;

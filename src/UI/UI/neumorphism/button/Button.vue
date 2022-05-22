@@ -116,6 +116,7 @@ export default {
     @include button-hover;
   }
   &--Increase{    
+      @include button-justShadow;
       width: 2em;
       height: 2.7rem;
       display: inline;
@@ -126,9 +127,10 @@ export default {
        left: none;
        bottom: 1px;
        right: none;   
-         }   
+         }
   } 
    &--Decrease{
+     @include button-justShadow;
       width: 2em;
       height: 2.7rem;
       display: inline;
@@ -197,6 +199,9 @@ export default {
     border-radius: 8px;
     background-color: white;
     @include button-hover;
+      &:hover {
+        @include button-click;
+      }
   }
   &--withicon {
     &::after {

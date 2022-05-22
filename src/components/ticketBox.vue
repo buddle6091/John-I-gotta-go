@@ -153,8 +153,17 @@
         transition: ticket.unfold ? '1s' : '0.4s' }">
                 <div class="thirdTop"/>
                  <div class="secondBehindBottom">
-                   <Button layout="href" color="base"></Button>
-                </div>
+                   <Button layout="href" color="base" onclick="location.href='https://www.jejuair.net/ko/ibe/booking/Availability.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '제주항공'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://flyasiana.com/I/KR/KO/LowerPriceSearchList.do?menuId=CM201802220000728256&utm_source=google_pc&utm_medium=cpc&utm_campaign=brand_basic_creative&utm_content=&utm_term=&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45bR1j-o5izxMY3T37Abkzw3P8AHcYDdFfVSB2sFDm5z-qeb_HtM4fYaAn-ZEALw_wcB'" style="font-size: 17px;" v-if="ticket.airlineNm == '아시아나항공'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.jinair.com/booking/index?&ctrCd=KOR&snsLang=ko_KR&cid=BC_affiliate_AirMoney_PC_null_20200801'" style="font-size: 17px;" v-if="ticket.airlineNm == '진에어'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://flyairseoul.com/I/ko/viewBooking.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어서울'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.koreanair.com/kr/ko'" style="font-size: 17px;" v-if="ticket.airlineNm == '대한항공'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.airbusan.com/content/individual/'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어부산'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.twayair.com/app/main'" style="font-size: 17px;" v-if="ticket.airlineNm == '티웨이항공'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.eastarjet.com/newstar/PGWHC00001?lang=KR'" style="font-size: 17px;" v-if="ticket.airlineNm == '이스타항공'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://www.hi-airlines.com/'" style="font-size: 17px;" v-if="ticket.airlineNm == '하이에어'"> Booked in airline website </Button>
+                   <Button layout="href" color="base" onclick="location.href='https://flygangwon.com/ko/main/main.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '플라이강원'"> Booked in airline website </Button>
+                </div> 
               </div> 
             </div>
           </div> 
@@ -185,6 +194,10 @@
    /*  infiniteHandler(){
         this.#store.dispatch('searchInfo')
     } */
+    website() {
+      if(this.$store.state.airlineNm == '아시아나항공')
+      window.open("https://google.com", "_blank")
+    }
   },
 
   mounted() { 
@@ -668,5 +681,4 @@
     font-size: 10px;
     text-align: left;
   }
-  
  </style>
