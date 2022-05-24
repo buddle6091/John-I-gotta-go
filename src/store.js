@@ -195,7 +195,7 @@ const store = createStore({
                         })
 
                         // eslint-disable-next-line no-console
-                        console.log(res, state.loading, process.env.VUE_APP_API_KEY)
+                        console.log(res, state.loading)
                         // eslint-disable-next-line no-console
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
