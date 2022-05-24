@@ -215,7 +215,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       if(this.person[0] > 9)
         this.person[0] = 9
 
-      this.$store.state.totalPerson = this.person.reduce((a, b) => a + b, 0)
+      this.$store.state.totalPerson = this.person.reduce((a, b) => a + b, 0) + 1
       if(this.$store.state.totalPerson > 9)
       alert('Sorry, can not choose over 9') // -> 이거 나중에 팝업으로 바꾸기
       this.$store.state.totalPerson--

@@ -1,4 +1,5 @@
 <template>
+
 <div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
   <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
@@ -10,17 +11,18 @@
   <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
   <p></p>
 </div>
+
 <div class="notFound" v-if="$store.state.totalCount == 0">
   <img src="../assets/icon/no_result.png"/>
   <div class="underShadow"></div>
   <h2>Sorry, there is no ticket today :(</h2><br/>
   <p>How about change your flight date?</p>
 </div>
+
+  <div class="loadingWindow" v-if="loading">
+     <span class="material-icons"> travel_explore </span> 
+    </div>
 <div class="totalContainer">
-  <div class="inner">
-  <div v-if="loading" class="spinner-border text-primary" style="background-color: black"></div>
-  <div v-if="message"> {{ $store.state.message }} </div>
-  <div>
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
   :style="{height: ticket.unfold ? `300px` : `100px`,
@@ -174,8 +176,6 @@
 <!-- <infinite-loading @infinite="()"></inifinite-loading>
  -->
  </div>
-  </div>
- </div>
  </template>
 
 <script>
@@ -303,6 +303,35 @@
  *{
    user-select: none;
  }
+ .loadingWindow {
+   //width: 100%;
+   //height: 10rem;
+   //display: flex;
+   text-align: center;
+   span {
+     margin: {
+       top: 4rem;
+       left: auto;
+      }
+     display: inline;
+     font-size: 160px;
+     color: #777777;
+     animation: blink 1.5s;
+     animation-iteration-count: infinite; 
+     transform: translate3d(0, 0, 0);
+     backface-visibility: hidden;
+     perspective: 1000px;
+
+      @keyframes blink {
+          0%, 50%, 100% {
+            opacity: 1;
+          }
+          25%, 75% {
+            opacity: 0;
+          }
+      }
+   }
+ }
  .howtouse {
    width: 28rem;
    height: auto;
@@ -380,7 +409,6 @@
    }
  }
  .totalContainer {
-   display: flex;
    justify-content: center;
  }
 .ticketBox{
@@ -392,6 +420,7 @@
     box-shadow: 0px 0px 3px 0px rgba(132, 132, 132, 0.1);
     transform-origin: bottom;
     position: relative;
+    display: flex;
     top: 1rem;
     margin: {
       top: 1.5rem;

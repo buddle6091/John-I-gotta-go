@@ -4,9 +4,6 @@
 <Modal/>
 <div class="App">
 <Search/>
-<div v-if="loading" class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
 <TicketBox/>
 
 </div>
@@ -55,9 +52,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
       
     }
   },
-setup() {
-
-  
+created() {
 },
 
   methods: {
@@ -94,6 +89,7 @@ html{
 
 .App{
   font-family: sans-serif;
+  min-height: 100rem;
   background: $base;
   padding-top: 1rem;
 }
