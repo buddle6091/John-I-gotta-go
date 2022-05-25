@@ -15,9 +15,7 @@
 import TicketBox from './components/ticketBox.vue';
 import Modal from './components/modal.vue'
 import Search from './components/Search.vue';
-//import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
-//import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date()) 
 import { defineComponent } from 'vue'
@@ -38,12 +36,7 @@ export default defineComponent({   // 데이터 저장하는 곳  {{데이터바
   components: {
    TicketBox : TicketBox,
    Modal : Modal,
-   //ToggleButton: ToggleButton,
    Search: Search,
-   //Button: Button,
-   //Icon: Icon,
-   //Datepicker
- 
   },
   
   data(){
