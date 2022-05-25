@@ -13,9 +13,10 @@
 기존의 Flat Design + Material Design의 그저 평면 위의 떠있는 방식과는 다르게 버튼, 스위치 등의 요소들이 돌출되어 보이게 하여 서비스 이용자들로 하여금 조작하고 싶은 욕구가 생기게 유도할 수 있다는 생각이 디자인 선택에 큰 부분을 차지했습니다.
 
 # How to use
-1. <img src="./src/assets/for_readme/pStart.JPG" style="width: 400px">
-2. <img src="./src/assets/for_readme/pSelect.JPG" style="width: 400px">
-3. <img src="./src/assets/for_readme/pResult.JPG" style="width: 400px">
+<h2>서비스 첫 실행 화면</h2>
+ <img src="./src/assets/for_readme/pStart.JPG">
+ <img src="./src/assets/for_readme/pSelect.JPG">
+ <img src="./src/assets/for_readme/pResult.JPG">
 
 # Languages and Tools
 
