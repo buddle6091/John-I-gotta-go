@@ -55,7 +55,8 @@ npm run lint
 ```
 
 # Developer Info
-[이상원 (https://github.com/buddle6091)](https://github.com/buddle6091) </br>
+
+👨‍🎓 [이상원 (https://github.com/buddle6091)](https://github.com/buddle6091) </br>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=buddle6091&show_icons=true)
 
