@@ -6,16 +6,29 @@
 # About
 > [공공데이터포털](https://www.data.go.kr/index.do "go to api portal")에서 제공받은 국내항공운항정보 API를 활용해 실제 국내선 항공권의 정보를 티켓 (Boarding Pass) 형식으로 형상화하여 User들이 정보를 확인캐 하는 서비스입니다.
 
+</br>
 
 # UI / UX Design
 > "_One of the hottest design trends of 2020 is “Neumorphism” (soft UI). We can see a lot of designers with their version of Neumorphic User Interface(UI) on dribbble._"
 > > 명암과 반사의 특성들을 적절히 사용한 neumorphism 기법을 적용했습니다. </br>
 기존의 Flat Design + Material Design의 그저 평면 위의 떠있는 방식과는 다르게 버튼, 스위치 등의 요소들이 돌출되어 보이게 하여 서비스 이용자들로 하여금 조작하고 싶은 욕구가 생기게 유도할 수 있다는 생각이 디자인 선택에 큰 부분을 차지했습니다.
 
+</br>
+
 # How to use
-<h2>서비스 첫 실행 화면</h2>
- <img src="./src/assets/for_readme/pStart.JPG">
- <img src="./src/assets/for_readme/pSelect.JPG">
+<h2>🎈서비스 첫 실행 화면</h2>
+  <h3> 하단의 처음 사용하는 유저들을 위한 설명이 나타나 있으며, 상단의 간단정보 바를 클릭 시 상세한 정보를 고를 수 있는 바가 생깁니다. </h3></br>
+
+ <img src="./src/assets/for_readme/pStart.JPG"></br>
+
+ <h2>🎈상세 정보 입력 바</h2>
+  <h3> 도착지 칸을 클릭하면, 출발지 - 도착지를 선택할 수 있는 모달창이 생깁니다. 선택 후, 출발 날짜, 인원수, 클래스를 설정한 후 'search' 버튼을 누르면 실제 항공권 정보들을 확인이 가능합니다. </h3></br>
+  <p>(💦PS. 현재는 편도 운행만을 제공하고 있습니다. 추후에 v2에서 왕복 항공권도 확인이 가능하게 할 예정입니다.)<p></br>
+
+ <img src="./src/assets/for_readme/pSelect.JPG"></br>
+
+ <h2>🎈결과 확인</h2>
+  <h3> 당일 항공권이 존재 한다면, 하단에 티켓들이 나열됩니다. 원하는 항공권을 클릭하시면, 해당 항공권의 실제정보를 확인이 가능합니다. </h3></br>
  <img src="./src/assets/for_readme/pResult.JPG">
 
 # Languages and Tools
@@ -36,6 +49,8 @@
 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
 ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=flat&logo=GoogleChrome&logoColor=white)
+
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
 
 
@@ -58,6 +73,9 @@ npm run build
 ```
 npm run lint
 ```
+
+## ⚠ How to fix error
+1. fdfd
 
 
 

@@ -1,5 +1,4 @@
 <template>
-
 <div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
   <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
@@ -73,15 +72,15 @@
 
   <div class="firstTop"> 
    <!-- 해당 항공사에 속한 그림만 보여지게 if -->
-   <img src="../assets/JEJU_airline.png" :style="{ width: '9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
+   <img src="../assets/jejuairline_white.png" :style="{ width: '7.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
    <img src="../assets/ASIANA_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
-   <img src="../assets/JINAIR_airline.png" :style="{ width: '7.5rem', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
+   <img src="../assets/JINAIR_airline.png" :style="{ width: '6.9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
    <img src="../assets/JEJU_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어서울'"/>
    <img src="../assets/KOREAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto', marginTop: '-0.7rem'}" v-if="ticket.airlineNm == '대한항공'"/>
    <img src="../assets/BUSAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
    <img src="../assets/TWAY_airline.png" :style="{ width: '4.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
    <img src="../assets/EASTAR_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
-   <img src="../assets/HI_AIR_airline.png" :style="{ width: 'auto', height: '5.2em', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
+   <img src="../assets/HI_AIR_airline.png" :style="{ width: 'auto', height: '4.2em', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
    <img src="../assets/FLY_GANGWON_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
 
 

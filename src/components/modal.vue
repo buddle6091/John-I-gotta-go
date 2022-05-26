@@ -13,9 +13,9 @@
         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" labelstate="Departure" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
         </TextField>
-        <div class="invalid-feedback" v-if="$store.state.d_placeholder == 'search country or city'">
+        <div class="invalid-feedback" v-if="$store.state.d_placeholder == 'Search country or city'">
          Please provide a valid city or state. </div>
-        <div class="invalid-feedback" v-if="$store.state.d_placeholder !== 'search country or city'" style="color: green">
+        <div class="invalid-feedback" v-if="$store.state.d_placeholder !== 'Search country or city'" style="color: green">
          correct. </div>
         <div class="collapse" id="collapseExample">
         <div class="neu-accordion" id="accordionExample">
@@ -124,9 +124,9 @@
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
         data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate="Arrival" type="search" :placeholder="this.$store.state.a_placeholder">
         </TextField>
-        <div class="invalid-feedback" v-if="$store.state.a_placeholder == 'search country or city'">
+        <div class="invalid-feedback" v-if="$store.state.a_placeholder == 'Search country or city'">
          Please provide a valid city or state. </div>
-        <div class="invalid-feedback" v-if="$store.state.a_placeholder !== 'search country or city'" style="color: green">
+        <div class="invalid-feedback" v-if="$store.state.a_placeholder !== 'Search country or city'" style="color: green">
          correct. </div>
         <div class="collapse" id="collapseExample2">
           <div class="neu-accordion" id="accordionExample">
