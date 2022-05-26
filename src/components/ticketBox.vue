@@ -8,7 +8,6 @@
   <p>3. And then, choose flight date, people and class.</p><br/>
   <p>4. After click 'search' button, available tickets will be right here.</p><br/>
   <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
-  <p></p>
 </div>
 
 <div class="notFound" v-if="$store.state.totalCount == 0">
@@ -25,11 +24,8 @@
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
   :style="{height: ticket.unfold ? `300px` : `100px`,
-         transition : ticket.unfold ?'0.6s' : '0.8s' }">  <!--ticket`s base--> <!--토글 부여-->
-                    <!--insert handle action-->
-                    <!--누르면 밑의 객체들이 정해진 방향, 길이만큼 밀려남 -->
-                    <!--밀려나간 상태까지 걸리는 시간-->
-                    <!--Onclick Action-->
+         transition : ticket.unfold ?'0.6s' : '0.8s' }">  
+
 <div class="firstDisplay">
   <div class="flightDetail">
     <div class="detailLabel">
@@ -67,11 +63,8 @@
  
   <div class="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
   transition: ticket.unfold ? '0.4s' : '1s'}">
-     
-  <!--간단한 정보(출발, 목적지, 시간, 항공사)-->
 
   <div class="firstTop"> 
-   <!-- 해당 항공사에 속한 그림만 보여지게 if -->
    <img src="../assets/jejuairline_white.png" :style="{ width: '7.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
    <img src="../assets/ASIANA_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
    <img src="../assets/JINAIR_airline.png" :style="{ width: '6.9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
@@ -85,16 +78,24 @@
 
 
     <div class="timeContainer">
-     <div class="dateContainer">  <!--날짜, 시간 장소 등을 저장할 공간-->
-      {{ depNm }}             <!--출발지-->  <!-- <-- 이거 해결법 찾기 -->
-      <div class="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  <!--시간-->
-      {{ ex_month }} {{ this.$store.state.exDate }}   <!--날짜-->                                       
+      <!--날짜, 시간 장소 등을 저장할 공간-->
+     <div class="dateContainer">  
+       <!--출발지--> 
+      {{ depNm }}             
+      <!--시간-->
+      <div class="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  
+      <!--날짜--> 
+      {{ ex_month }} {{ this.$store.state.exDate }}                                         
      </div>
       <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
-     <div class="dateContainer"><!--날짜, 시간 장소 등을 저장할 공간-->
-      {{ arrNm }}     <!--출발지-->
-      <div class="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  <!--시간-->
-      {{ ex_month }} {{ this.$store.state.exDate }}  <!--날짜-->
+      <!--날짜, 시간 장소 등을 저장할 공간-->
+     <div class="dateContainer">
+       <!--출발지-->
+      {{ arrNm }}     
+      <!--시간-->
+      <div class="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  
+      <!--날짜-->
+      {{ ex_month }} {{ this.$store.state.exDate }}  
     </div>
   </div>
     </div>
@@ -127,7 +128,7 @@
               </div>
               <div class="detail">
                 People
-                <div class="detailLabel"> {{ $store.state.totalPerson }} </div> <!-- random -->
+                <div class="detailLabel"> {{ $store.state.totalPerson }} </div>
               </div>
             </div>
           </div> 
@@ -172,6 +173,7 @@
       </div>  
     </div>
   </div>
+  <!-- 추후 v2 출시 무한 스크롤 -->
 <!-- <infinite-loading @infinite="()"></inifinite-loading>
  -->
  </div>
@@ -182,7 +184,7 @@
 /* import InfiniteLoading from 'vue-infinite-Loading' */
    import Button from '../UI/UI/neumorphism/button/Button.vue';
    import { mapState, mapGetters } from 'vuex'
-  export default {   // 데이터 저장하는 곳  {{ 데이터바인딩 }}
+  export default {   
  
   props : {
 
@@ -272,7 +274,7 @@
     
     return{          
       openModal : true,
-      unfold: false,//처음에는 fold 되어있는 상태이니 초기값은 false
+      unfold: false,
       Departure : 'Incheon',
       Arrival : 'Jeju',
       ArrivalDate : 'October 15th',
@@ -303,9 +305,6 @@
    user-select: none;
  }
  .loadingWindow {
-   //width: 100%;
-   //height: 10rem;
-   //display: flex;
    text-align: center;
    span {
      margin: {
@@ -439,7 +438,7 @@
       }
   }
                         
-.dateContainer{           /*첫페이지-출발지의 시간, 날짜*/
+.dateContainer{        
   color: rgb(121, 115, 115);
   font-size: 9px;
   padding-top: 10px; 
@@ -463,7 +462,7 @@
     display: flex;
     animation: shake 0.3s;
     
-    /* vibration effect when close to flight */
+    /* vibration effect when close to flight v2 */
    /*  :hover {
       animation: shake 1s;
       transform: translate3d(0, 0, 0);

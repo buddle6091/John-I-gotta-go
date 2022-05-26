@@ -1,5 +1,7 @@
 <template>
+<!-- inactive - active 토탈 컨테이너 -->
 <div class="selectContainer__total">
+  <!-- 활성화 되기 전의 컨테이너 -->
   <div class="selectContainer__inactive" @click="Active()" :style="{transition: $store.state.isActive ? '4s' : '4s', opacity: $store.state.isActive ? 0 : 1, display: $store.state.isActive ? 'none' : 'inline'}"> <!-- 초기값 false -->
     <div class="flightContainer">
     <span><h1>{{ shortDep }}</h1>
@@ -17,10 +19,13 @@
       </div>
     <i class="material-icons">keyboard_double_arrow_down</i>
   </div>
+
+  <!-- 활성화 된 후의 컨테이너 -->
   <div class="selectContainer__active" :style="{height: $store.state.isActive ? activeHeight : inactiveHeight, transition: $store.state.isActive ? '0.6s' : '1s', opacity: $store.state.isActive ? 1 : 0}">  
-    <!-- datepicker 를 disable 할 건지에 대해 if 로 boolean 값을 이용 -->
+    <!-- 편도 - 왕복 토글 버튼 -->
     <ToggleButton :style="{marginLeft:'69%'}"/>
     
+    <!-- 모달창 연계 -->
     <div class="flightContainer">
     <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
@@ -32,7 +37,6 @@
       <span  data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortArr }} </h1>
         {{ getAirport_arr }}</span>
         </div>
-    <!--search Departure-->
       <!--search Destination-->
     <div class="set" :style="{zIndex: '30'}">
       <span class="material-icons"> date_range </span> 
@@ -292,7 +296,6 @@ html{
 }
 
 .selectContainer {
- // border: 1px solid rgba(0, 0, 0, 0.1);
   margin: {
     top: 15px;
     left: 0px;
@@ -304,7 +307,6 @@ html{
 
   &__total {
     width: 27rem;
-    //min-height: 0rem;
     box-sizing: border-box;
     background: $base;
     border-radius: $radius-3;
@@ -313,7 +315,6 @@ html{
       left: auto;
       right: auto;
     }
-    //padding: $spacing-4 5rem;
     position: relative;
     display: flex;
     overflow: hidden;
@@ -495,8 +496,7 @@ html{
               font-size: 14px;
             }
         }
-    /* 블럭 잡고 각 블럭을 따닥따닥 연결..
-    그 후 radio 버튼을 블럭으로 디자인 하고 */
+
       .block{
         width: 18rem;
         height: 5rem;
@@ -536,7 +536,6 @@ html{
         }
         input[type="radio"]:not(:checked) ~ label {
           box-shadow: none;
-          //transition: box-shadow ease-in-out 0.5s;
         }
         /* passengers radio*/
         input[id="kid"]:checked ~ label, input[id="baby"]:checked ~ label{
@@ -595,9 +594,6 @@ html{
             box-shadow: $shadow-concave-large;
             transition: box-shadow ease-in-out 0.5s;
           }
-
-          /* 이거 라벨 안에 부모 자식 나누니까 다 마지막 자식으로 표시되는 것
-          같음 ㅇㅇ 그냥 다 하나하나 빼서 디자인 하는 방법이 나을듯 */
     }
 
       .block-radio{

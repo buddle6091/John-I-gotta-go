@@ -9,16 +9,21 @@
       <div class="modal-body">
         <form class="row g-3">
       <div class="col-md-auto">
+        <!-- 출발지 선택바 -->
         <TextField class="is-invalid" id="dep_Text" aria-describedby="validationServer03Feedback" required data-bs-toggle="collapse" 
         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" role="text" labelstate="Departure" v-model="departure" type="search" :placeholder="this.$store.state.d_placeholder"> 
         {{ departure }}
         </TextField>
+
+        <!-- 출발지 선택 유무의 따른 텍스트 표시 -->
         <div class="invalid-feedback" v-if="$store.state.d_placeholder == 'Search country or city'">
          Please provide a valid city or state. </div>
         <div class="invalid-feedback" v-if="$store.state.d_placeholder !== 'Search country or city'" style="color: green">
          correct. </div>
+
         <div class="collapse" id="collapseExample">
         <div class="neu-accordion" id="accordionExample">
+          <!-- 출발지 (국내선) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#D_KR" aria-expanded="true" aria-controls="collapseOne">
@@ -83,10 +88,13 @@
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
                 required data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                 @click="selectDep($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> 
+                <!-- 현재 부산은 데이터가 제공되지 않아서 선택이 불가합니다 -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectDep($event)" id="Busan International Airport" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
+
+          <!-- 출발지 (일본) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingTwo">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#D_JP" aria-expanded="false" aria-controls="collapseTwo">
@@ -102,6 +110,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 출발지 (중국) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingThree">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#D_CH" aria-expanded="false" aria-controls="collapseThree">
@@ -121,15 +131,21 @@
       </div>
       </div>
       <div class="col-md-auto">
+
+        <!-- 도착지 선택바 -->
         <TextField class="is-invalid" id="fli_text" aria-describedby="validationServer03Feedback" required
         data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" labelstate="Arrival" type="search" :placeholder="this.$store.state.a_placeholder">
         </TextField>
+
+        <!-- 도착지 선택 유뮤의 따른 텍스트 표시 -->
         <div class="invalid-feedback" v-if="$store.state.a_placeholder == 'Search country or city'">
          Please provide a valid city or state. </div>
         <div class="invalid-feedback" v-if="$store.state.a_placeholder !== 'Search country or city'" style="color: green">
          correct. </div>
         <div class="collapse" id="collapseExample2">
           <div class="neu-accordion" id="accordionExample">
+
+          <!-- 도착지 (국내선) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingOne">
             <button class="neu-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -194,10 +210,13 @@
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" aria-describedby="validationServer03Feedback" 
                 required data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"
                 @click="selectArr($event)" id="Yangyang Airport" name="NAARKNY" value="Yangyang(YNY)">Yangyang(YNY)</button> 
+                <!-- 현재 부산은 서비스 지역이 아닙니다. -->
                 <button type="button" class="neu-list-group-item neu-list-group-item-action" disabled @click="selectArr($event)" id="Busan International Airport" value="Busan(PUS)">Busan(Pus)</button> <!-- Busan -->
               </div>
             </div>
           </div>
+
+          <!-- 도착지 (일본) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingTwo">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -213,6 +232,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 도착지 (중국) -->
           <div class="neu-accordion-item">
             <h2 class="neu-accordion-header" id="headingThree">
               <button class="neu-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -231,7 +252,8 @@
         </div>
         </div>
       </div>
-  <!-- button container -->
+
+          <!-- 버튼 컨테이너 -->
           <div class="modal-footer" style="margin-bottom: -10px">
             <div class="g-col-6"><Button size="small" data-bs-dismiss="modal" style="font-size: 18px;"> ok </Button></div>
           </div>
@@ -247,7 +269,7 @@
 import Button from '../UI/UI/neumorphism/button/Button.vue';
 import TextField from '../UI/UI/neumorphism/singleline-text-field/SinglelineTextField.vue';
 
-export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
+export default {   
   props : {
     openModal: Boolean,
     value: String,
@@ -264,14 +286,13 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       arrival: '',
     }  
   },
-  /* 처음 실행 후 사용해도 실행 x -> 계산 결과 저장 like data()
-  무조건 return 을 받아야 에러가 안 남*/
+
   computed : {
 
   },
-  /* 사용할 때 마다 실행 */
+
   methods : {
-    /* 확인 용 */
+    
     selectDep($event){
       /* send data to store.js with $store.state */
       this.$store.state.d_placeholder = $event.target.value
@@ -294,7 +315,6 @@ export default {   // 데이터 저장하는 곳  {{데이터바인딩}}
       console.log(this.$store.state.shortDep)
       // eslint-disable-next-line no-console
       console.log(this.$store.state.tem_depNm)
-      // innertext 에 넣으면 상자가 없어짐. value는 인식을 못받음 아래것만 바뀌게 해야됨.
     },
 
     selectArr($event){
