@@ -6,6 +6,7 @@
   "author": "",
   "scripts": {
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
@@ -31,7 +32,6 @@
     "vue": "^3.0.0",
     "vue-axios-cors": "^1.0.1",
     "vue-class-component": "^8.0.0-0",
-    "vue-hotel-datepicker": "github:krystalcampioni/vue-hotel-datepicker",
     "vue-infinite-loading": "^2.4.5",
     "vue-router": "4",
     "vue3-datepicker": "^0.3.1",
@@ -56,7 +56,8 @@
     "eslint-plugin-vue": "^8.2.0",
     "netlify-cli": "^10.3.3",
     "node-sass": "^7.0.0",
-    "typescript": "~4.5.3"
+    "typescript": "~4.5.3",
+    "webpack-cli": "^4.9.2"
   },
   "eslintConfig": {
     "root": true,
