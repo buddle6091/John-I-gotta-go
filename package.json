@@ -6,7 +6,7 @@
   "author": "",
   "scripts": {
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service",
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "main": "babel.config.js",
