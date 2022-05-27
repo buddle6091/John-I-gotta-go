@@ -1,6 +1,6 @@
 [build]
     build = "build"
-    command = "npm run build"
+    command = "yarn build"
     publish = "dist"
 
 [dev]
