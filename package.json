@@ -6,6 +6,7 @@
   "author": "",
   "scripts": {
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "dev:netlify": "netlify dev",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
@@ -53,6 +54,7 @@
     "dotenv-webpack": "^7.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^8.2.0",
+    "netlify-cli": "^10.3.3",
     "node-sass": "^7.0.0",
     "typescript": "~4.5.3"
   },

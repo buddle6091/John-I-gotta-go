@@ -1,3 +1,12 @@
 [build]
-build = "build"
-command = "CI= npm run build"
+    build = "build"
+    command = "npm run build"
+    publish = "dist"
+
+[dev]
+    command = "npm run dev"
+    framework = "#custom"
+    targetPort = 8080
+    port = 8888
+    publish = "dist"
+    autoLaunch = false
