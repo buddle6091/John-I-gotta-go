@@ -1,6 +1,6 @@
 [build]
     build = "build"
-    command = "Cl= npm run build"
+    command = "CI= npm run build"
     publish = "publish"
 
 [dev]
