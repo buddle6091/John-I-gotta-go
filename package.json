@@ -8,7 +8,7 @@
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "build": "npm run build && vue-cli-service build",
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "main": "babel.config.js",
