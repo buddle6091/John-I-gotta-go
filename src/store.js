@@ -122,14 +122,12 @@ const store = createStore({
                     // eslint-disable-next-line no-console
                     console.log(typeof totalCount, this.state.loading)
     
-                   /*  const total = parseInt(totalCount, 10) // Wtrans to the decimal system */
+                   /*  const total = parseInt(totalCount, 10) // trans to the decimal system */
                     const pageLength = Math.ceil(totalCount / 20)
                     
                     /* additional 추후에 무한 로딩 넣기 */
                     if (pageLength > 1) {
                       for (let pageNo = 2; pageNo <= pageLength; pageNo += 1){
-                       /*  const FLIGHT_API_KEY = 'gOB08iIzzqGOwRT3bTdx%2Fuo6IEk0zKSilGVmnKx4mGOy%2B%2Bq2d%2FraX49coFC8zIZlC3Yx%2FfUPUyfddEH0Ww0RUA%3D%3D'
-                        const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)] */
                         const res = await dispatch('fetchInfo')({
                             pageNo: pageNo
                         })

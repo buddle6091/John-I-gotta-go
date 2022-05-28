@@ -9,7 +9,9 @@
     "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-    "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+    "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "main": "babel.config.js",
   "dependencies": {
