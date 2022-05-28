@@ -8,7 +8,7 @@
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build && yarn build",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "lint": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "main": "babel.config.js",
@@ -54,6 +54,7 @@
     "dotenv-webpack": "^7.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^8.2.0",
+    "gh-pages": "^4.0.0",
     "netlify-cli": "^10.3.3",
     "node-sass": "^7.0.0",
     "typescript": "~4.5.3",
@@ -87,6 +88,6 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/buddle6091/buddle6091.github.io"
+    "url": "git+https://github.com/buddle6091/John-I-gotta-go"
   }
 }
