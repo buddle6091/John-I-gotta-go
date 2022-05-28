@@ -101,10 +101,11 @@ npm run lint
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=buddle6091&show_icons=true)
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
+</br>
+</br>
 
 
-
-## How to contact me
+# How to contact me
 💌 mail : sw980306@gmail.com </br>
 
 <a href="https://www.instagram.com/buddle_98/">
@@ -116,3 +117,7 @@ instagram : buddle_98
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## version
+ver 1.0.0 (05.28) (available) https://buddle6091.github.io/ </br>
+ver 1.1 - 스켈레톤 UI, Ifinite Scroll 적용 예정
