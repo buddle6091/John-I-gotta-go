@@ -52,7 +52,16 @@
 
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
+</br>
+</br>
 
+## How to run the service except installed
+</br>
+
+ > Click this! 👉 [https://buddle6091.github.io/](https://buddle6091.github.io)
+ >> ❗ This service only work in chrome. And then, you have to install and active an extension program which can allow cors. https://chrome.google.com/webstore/search/cors
+
+</br>
 
 ## Project setup
 ```
@@ -73,11 +82,17 @@ npm run build
 ```
 npm run lint
 ```
+</br>
 
-## ⚠ How to fix error
-1. fdfd
+## ⁉ FAQ
+1. **김포에서 제주까지 가는 가장 빠른 티켓의 url 링크가 원하지 않는 곳으로 연결되요.** </br>
+ A . 원인불명의 버그로 인해 항상 그 구간의 첫번째 티켓의 이미지가 제주항공으로 나옵니다. 다음 패치 때 원인을 찾아 해결에 반영하도록 하겠습니다.
 
-
+2. **Internet Edge, 스마트폰에서 서치가 안되요.** </br>
+ A . CORS(Access-Control-Allow-Origin) 허용프로그램이 Chrome 에서만 구동 가능하여, 현재는 pc Chrome 브라우져에서만 이용가능합니다 :( </br>
+ (CORS 허용프로그램은 크롬 확장프로그램에서 다운 가능합니다. 다운 후 활성화 해주셔야 항공권 검색이 가능합니다.
+   </br>
+   </br>
 
 # Developer Info
 
@@ -90,7 +105,8 @@ npm run lint
 
 
 ## How to contact me
-<p>💌 mail : sw980306@gmail.com </br> </p>
+💌 mail : sw980306@gmail.com </br>
+
 <a href="https://www.instagram.com/buddle_98/">
     <img 
         src="http://img.shields.io/badge/-insta-f9f9f9?style=flat&logo=Instagram&link=https://www.instagram.com/buddle_98/"
