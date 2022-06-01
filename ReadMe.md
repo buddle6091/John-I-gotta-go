@@ -92,6 +92,10 @@ npm run lint
  A . CORS(Access-Control-Allow-Origin) 허용프로그램이 Chrome 에서만 구동 가능하여, 현재는 pc Chrome 브라우져에서만 이용가능합니다 :( </br>
  (CORS 허용프로그램은 크롬 확장프로그램에서 다운 가능합니다. 다운 후 활성화 해주셔야 항공권 검색이 가능합니다.
    </br>
+
+3. **CORS ALLOW를 했는데도 결과 값이 보이지 않아요 or 결과가 엄청 느리게 보여요** </br>
+ A . 현재 이용한 API의 저장소인 [공공데이터포털](https://www.data.go.kr/index.do "go to api portal")에서 가끔 요청에 대한 응답이 지연되는 경우가 발생하고 있습니다. Chrome 개발자 모드에서 네트워크 항목을 들어가시면, 지연이 되는지 확인이 가능합니다. 이럴 때는 대략 5초에서 15초 사이에 렌더링이 이루어집니다.
+   </br>
    </br>
 
 # Developer Info
