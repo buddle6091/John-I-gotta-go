@@ -22,6 +22,7 @@
  3. Could not find a declaration file for module '~~'
   = 파일명 및 경로도 정확했고, 모듈 폴더를 삭제 후 다시 깔아도 이런 오류가 발생하면
   tsconfig.json - noImplicitAny 를 false 값으로 바꾼다. 
+4. 
 <!--GitHub-->
 # re
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
@@ -75,7 +76,7 @@ LF will be replaced by CRLF in package-lock.json.LF will be replaced by CRLF in 
 2. module을 지우고 다시 >npm i 로 모듈설치
 3. 다시 서버 실행 시키기
 
-# ERR! ERESOlVe unable to resolve dependency tree for
+# ERR! ERESOlVE unable to resolve dependency tree for
 라이브러리 다운 중, npm의 의존성 문제에 충돌하여 설치가 안된다. 
 패키지 명 뒤에 --save --legacy-peer-deps 추가하면 성공
 
