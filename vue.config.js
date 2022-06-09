@@ -15,11 +15,12 @@ module.exports = {
     },
     devServer:{
         host: 'localhost',
-        '/' : {
+        /* proxy 대신 heroku 사용 */
+      /*   '/' : {
             "target": 'http://openapi.data.go.kr',
             "pathRewrite": { '^/': '' },
             "changeOrigin": true,
             "secure": false 
-        }
+        } */
     }
 }
