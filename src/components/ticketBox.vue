@@ -1,5 +1,5 @@
 <template>
-<div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
+<div class="howtouse" style="{ display : $store.state.isActive ? 'none' : true}">
  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
   <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
   <p>2. Click the arrival - destination zone, and choose arrival, destination in modal window.</p><br/>

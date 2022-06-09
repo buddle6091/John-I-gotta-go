@@ -67,7 +67,7 @@ created() {
 </script>
  
 <style lang="scss" scoped>
-@import './UI/scss/main.scss';
+@import './src/UI/scss/main.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
