@@ -9,7 +9,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'public'), // __dirname = node js real directory
-        filename: 'main.js',
+        filename: 'main.ts',
         clean: true  // clean the output directory before emit.
     },
 

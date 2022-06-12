@@ -2,6 +2,10 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import dotenv from 'dotenv' // make sure to hide api encoding code
 
+axios.defaults.baseURL = 'http://localhost:8080'
+axios.defaults.headers.post['Content-Types'] = 'application/json;charset=utf-8'
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+
 const store = createStore({
     /* store the data */
     state: () => ({
@@ -158,12 +162,12 @@ const store = createStore({
         /* actions 인자 context (state, mutations, getters), payload (request element) */
         fetchInfo ({ state, commit }) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
-            // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기 /
+            // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기 https://cors-anywhere.herokuapp.com/
             dotenv.config()  
             const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             /* use heroku for allow cors */
-            const url = `http://cors-anywhere.herokuapp.com/http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`
+            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
             state.exDate = state.picked_from.getDate()
 

@@ -14,13 +14,14 @@ module.exports = {
         }
     },
     devServer:{
-        host: 'localhost',
+        /* clientLogLevel: 'info',
+        host: 'localhost', */
         /* proxy 대신 heroku 사용 */
-      /*   '/' : {
-            "target": 'http://openapi.data.go.kr',
-            "pathRewrite": { '^/': '' },
+    /*    '/' : {
+            "target": 'http://apis.data.go.kr',
+            "pathRewrite": {'^/': ''},
             "changeOrigin": true,
             "secure": false 
-        } */
+        }  */
     }
 }
