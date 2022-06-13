@@ -3,7 +3,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbuddle6091%2Fbuddle6091.github.io&count_bg=%23694EF0&title_bg=%23555555&icon=protocols-dot-io.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 
-## Recently Notice
+## Recently update
 > (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다.
 
 # About
@@ -92,8 +92,8 @@ npm run lint
  A . 원인불명의 버그로 인해 항상 그 구간의 첫번째 티켓의 이미지가 제주항공으로 나옵니다. 다음 패치 때 원인을 찾아 해결에 반영하도록 하겠습니다.
 
 2. **Internet Edge, 스마트폰에서 서치가 안되요.** </br>
- A . CORS(Access-Control-Allow-Origin) 허용프로그램이 Chrome 에서만 구동 가능하여, 현재는 pc Chrome 브라우져에서만 이용가능합니다 :( </br>
- (CORS 허용프로그램은 크롬 확장프로그램에서 다운 가능합니다. 다운 후 활성화 해주셔야 항공권 검색이 가능합니다.
+ A . ~~CORS(Access-Control-Allow-Origin) 허용프로그램이 Chrome 에서만 구동 가능하여, 현재는 pc Chrome 브라우져에서만 이용가능합니다 :(~~ </br>
+ ver 1.0.2 cors 문제는 해결되었습니다!
    </br>
    </br>
 
