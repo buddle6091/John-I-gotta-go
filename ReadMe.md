@@ -65,7 +65,7 @@
 </br>
 
  > Click this! 👉 [https://johnigottago.netlify.app/](https://johnigottago.netlify.app/)
- >> ❗ This service only work in chrome. And then, you have to install and active an extension program which can allow cors. https://chrome.google.com/webstore/search/cors
+
 
 </br>
 
