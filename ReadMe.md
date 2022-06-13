@@ -3,6 +3,9 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbuddle6091%2Fbuddle6091.github.io&count_bg=%23694EF0&title_bg=%23555555&icon=protocols-dot-io.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 
+## Recently Notice
+> (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다.
+
 # About
 > [공공데이터포털](https://www.data.go.kr/index.do "go to api portal")에서 제공받은 국내항공운항정보 API를 활용해 실제 국내선 항공권의 정보를 티켓 (Boarding Pass) 형식으로 형상화하여 User들이 정보를 확인캐 하는 서비스입니다.
 
