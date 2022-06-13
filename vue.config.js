@@ -50,13 +50,14 @@ module.exports = {
           }, */
     },
     devServer:{
-        proxy: {
+        // 현재는 https://john-i-gotta-go.herokuapp.com/ 라는 프록시 서버 생성
+ /*        proxy: {
             '/' : {
                  "target": 'http://apis.data.go.kr',
                  "pathRewrite": {'^/': ''},
                  "changeOrigin": true,
                  "secure": false 
              }  
-        }
+        } */
     },
 }

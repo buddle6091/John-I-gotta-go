@@ -56,6 +56,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^8.2.0",
     "gh-pages": "^4.0.0",
+    "heroku-cli": "^7.0.9",
     "netlify-cli": "^10.3.3",
     "sass": "^1.52.3",
     "sass-loader": "^7.1.0",
