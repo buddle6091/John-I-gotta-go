@@ -4,7 +4,7 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbuddle6091%2Fbuddle6091.github.io&count_bg=%23694EF0&title_bg=%23555555&icon=protocols-dot-io.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 
 ## Recently update
-> (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다.
+> (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다. </br> Github-page에서 netlify로 배포 페이지를 변경하였습니다.
 
 # About
 > [공공데이터포털](https://www.data.go.kr/index.do "go to api portal")에서 제공받은 국내항공운항정보 API를 활용해 실제 국내선 항공권의 정보를 티켓 (Boarding Pass) 형식으로 형상화하여 User들이 정보를 확인캐 하는 서비스입니다.
@@ -122,6 +122,6 @@ instagram : buddle_98
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## version
-ver 1.0.0 (05.28) (available) https://buddle6091.github.io/ </br>
-ver 1.0.2 - 자체 heroku server 도입으로 cors allow 앱 없이 어느 환경에서나 검색이 가능케 수정</br>
+~~ver 1.0.0 (05.28) https://buddle6091.github.io/~~ </br>
+ver 1.0.2 (available) : 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다. </br> Github-page에서 netlify로 배포 페이지를 변경하였습니다.</br>
 ver 1.1 - 스켈레톤 UI, Ifinite Scroll 적용 예정
