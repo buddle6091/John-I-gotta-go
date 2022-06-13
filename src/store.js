@@ -167,7 +167,7 @@ const store = createStore({
             const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
             /* use heroku for allow cors */
-            const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`
+            const url = `/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`
             state.exMonth = state.picked_from.getMonth() + 1
             state.exDate = state.picked_from.getDate()
 

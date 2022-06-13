@@ -13,15 +13,22 @@ module.exports = {
             }
         }
     },
+    configureWebpack: {
+        entry: "./src/main.ts",
+        /* output: {
+            path: this.publicPath.resolve(__dirname, './dist'),
+            publicPath: '/dist/',
+            filename: "build.js",
+        } */
+    },
     devServer:{
-        /* clientLogLevel: 'info',
-        host: 'localhost', */
-        /* proxy 대신 heroku 사용 */
-    /*    '/' : {
-            "target": 'http://apis.data.go.kr',
-            "pathRewrite": {'^/': ''},
-            "changeOrigin": true,
-            "secure": false 
-        }  */
+        proxy: {
+            '/' : {
+                 "target": 'http://apis.data.go.kr',
+                 "pathRewrite": {'^/': ''},
+                 "changeOrigin": true,
+                 "secure": false 
+             }  
+        }
     }
 }
