@@ -120,4 +120,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## version
 ver 1.0.0 (05.28) (available) https://buddle6091.github.io/ </br>
+ver 1.0.2 - 자체 heroku server 도입으로 cors allow 앱 없이 어느 환경에서나 검색이 가능케 수정</br>
 ver 1.1 - 스켈레톤 UI, Ifinite Scroll 적용 예정
