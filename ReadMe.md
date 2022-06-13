@@ -3,7 +3,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbuddle6091%2Fbuddle6091.github.io&count_bg=%23694EF0&title_bg=%23555555&icon=protocols-dot-io.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 
-## Recently Notice
+## Recently update
 > (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다.
 
 # About
