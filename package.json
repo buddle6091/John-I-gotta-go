@@ -32,6 +32,7 @@
     "vue": "^3.0.0",
     "vue-axios-cors": "^1.0.1",
     "vue-class-component": "^8.0.0-0",
+    "vue-cli": "^2.9.6",
     "vue-infinite-loading": "^2.4.5",
     "vue-router": "4",
     "vue3-datepicker": "^0.3.1",
@@ -88,7 +89,7 @@
   "bugs": {
     "url": "https://github.com/buddle6091/Boardingpass/issues"
   },
-  "homepage": "https://github.com/buddle6091/Boardingpass#readme",
+  "homepage": ".",
   "keywords": [],
   "license": "ISC",
   "repository": {

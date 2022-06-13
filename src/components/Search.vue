@@ -7,7 +7,7 @@
     <span><h1>{{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
     <div>  
-      <img src="../assets/icon/airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
+      <img src="./airplane2.png" alt="비행기" :style="airplane_img_inactive"/>
     </div>
     <span><h1>{{ shortArr }}</h1>
       {{ getAirport_arr }}</span>
@@ -30,7 +30,7 @@
     <span data-bs-toggle="modal" data-bs-target="#exampleModal"><h1> {{ shortDep }}</h1>
       {{ getAirport_dep }}</span> 
     <div>  
-    <img src="../assets/icon/airplane2.png" alt="비행기2" :style="airplane_img_active"/>
+    <img src="./airplane2.png" alt="비행기2" :style="airplane_img_active"/>
     <Button layout='reverse' @click="reverse" color='base' :style="{top:'4px', left:'1px', padding: '', display: 'relative'}">
       <div class="material-icons" :style="{fontSize:'30px', display:'flex', marginLeft:'-13px'}">compare_arrows</div>
     </Button> </div>
