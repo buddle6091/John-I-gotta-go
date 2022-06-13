@@ -3,6 +3,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbuddle6091%2Fbuddle6091.github.io&count_bg=%23694EF0&title_bg=%23555555&icon=protocols-dot-io.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c6794c66-6d37-477f-993a-e1c8b85f6fa7/deploy-status)](https://app.netlify.com/sites/johnigottago/deploys)
 ## Recently update
 > (ver 1.0.2) 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다. </br> Github-page에서 netlify로 배포 페이지를 변경하였습니다.
 
@@ -49,6 +50,8 @@
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white)
+
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
 ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=flat&logo=GoogleChrome&logoColor=white)
