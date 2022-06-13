@@ -2,9 +2,7 @@
 const path = require('path');
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-    ? 'index.html'
-    : '/',
+    publicPath: '',
     outputDir: path.resolve(__dirname, "./dist/"),
     assetsDir: "./assets/",
     css: {
