@@ -306,7 +306,8 @@ html{
   flex-wrap: wrap;
 
   &__total {
-    width: 27rem;
+    width: 85%;
+    max-width: 27rem;
     box-sizing: border-box;
     background: $base;
     border-radius: $radius-3;
