@@ -119,7 +119,8 @@ npm run lint
         src="http://img.shields.io/badge/-insta-f9f9f9?style=flat&logo=Instagram&link=https://www.instagram.com/buddle_98/"
         style="height : auto; margin-left : -10px; margin-right : 10px;"/>
 </a>
-instagram : buddle_98
+instagram : buddle_98 </br>
+notion : https://buddle6091.notion.site/Junior-Front-end-Developer-9dc99e910f114483a36b7ee04682440f
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
