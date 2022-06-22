@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import dotenv from 'dotenv' // make sure to hide api encoding code
-
+/* 
 axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.headers.post['Content-Types'] = 'application/json;charset=utf-8'
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*' */
 
 const store = createStore({
     /* store the data */
@@ -81,7 +81,7 @@ const store = createStore({
             picked_from: new Date(),
             tickets: [],
             totalCount: 1,
-            loading: false,
+            //loading: false,
         }),
     /* computed */
     getters :{
@@ -114,9 +114,9 @@ const store = createStore({
         async searchInfo ({ commit, dispatch }){  
             // eslint-disable-next-line no-console
             /* if (this.state.loading) return */
-            this.state.loading = true;
+            /* this.state.loading = true; */
             commit('updateState', {
-                loading: true
+                /* loading: true */
             })
             try{
                 const res = await dispatch('fetchInfo') ({
@@ -162,7 +162,7 @@ const store = createStore({
         /* actions 인자 context (state, mutations, getters), payload (request element) */
         fetchInfo ({ state, commit }) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
-            // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기 https://cors-anywhere.herokuapp.com/
+            // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
             dotenv.config()  
             const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY
             const depPlandTime = [state.picked_from.getFullYear()] + [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] + [("0" + state.picked_from.getDate()).slice(-2)]
