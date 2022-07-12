@@ -22,7 +22,7 @@
     </div>
 <div class="totalContainer">
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
-  <div class ="ticketBox" @click="ticket.unfold =! ticket.unfold"
+  <div class="ticketBox" @click="ticket.unfold =! ticket.unfold"
   :style="{height: ticket.unfold ? `300px` : `100px`,
          transition : ticket.unfold ?'0.6s' : '0.8s' }">  
 
@@ -485,7 +485,7 @@
 
       50%, 70% {
         transform: translate3d(-4px, 0, 0);
-      }
+      } 
 
       40%, 60% {
         transform: translate3d(4px, 0, 0);
