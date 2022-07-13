@@ -324,7 +324,7 @@ html{
     .flightContainer{
       display: flex;
       justify-content: center;
-      margin: {top: 11px;}  
+      margin-top: 11px;  
       cursor: pointer;
       span{
         color: #757575;
