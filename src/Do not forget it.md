@@ -24,7 +24,7 @@
   tsconfig.json - noImplicitAny 를 false 값으로 바꾼다. 
 4. 
 <!--GitHub-->
-# re
+# reset
 > git log로 버전 확인 (이때 최신 버전은 HEAD -> MASTER)
 > git reset --hard HEAD (HEAD가 가장 최신 버전이니까 그 하위의 버전은 ~1, ~2, 이런식으로 선택하여 되돌리기)
 

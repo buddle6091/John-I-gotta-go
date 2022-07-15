@@ -17,9 +17,10 @@
   <p>How about change your flight date?</p>
 </div>
 
-  <div class="loadingWindow" v-if="loading">
-     <span class="material-icons"> travel_explore </span> 
-    </div>
+<div class="loadingWindow" v-if="$store.state.loading == true">
+    <span class="material-icons"> travel_explore </span> 
+</div>
+
 <div class="totalContainer">
 <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
   <div class="ticketBox" @click="ticket.unfold =! ticket.unfold"
@@ -173,15 +174,10 @@
       </div>  
     </div>
   </div>
-  <!-- 추후 v2 출시 무한 스크롤 -->
-<!-- <infinite-loading @infinite="()"></inifinite-loading>
- -->
  </div>
  </template>
 
 <script>
-/* import InfiniteScroll from 'infinite-loading-vue3' */
-/* import InfiniteLoading from 'vue-infinite-Loading' */
    import Button from '../UI/UI/neumorphism/button/Button.vue';
    import { mapState, mapGetters } from 'vuex'
   export default {   
@@ -192,13 +188,7 @@
   name: 'TicketBox',
 
   methods: {  
-   /*  infiniteHandler(){
-        this.#store.dispatch('searchInfo')
-    } */
-    website() {
-      if(this.$store.state.airlineNm == '아시아나항공')
-      window.open("https://google.com", "_blank")
-    }
+
   },
 
   mounted() { 
@@ -207,8 +197,6 @@
 
   components: {
     Button: Button,
-    /* InfiniteLoading */
-/* InfiniteScroll */
   },
 
   computed: {

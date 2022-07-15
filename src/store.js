@@ -22,38 +22,6 @@ const store = createStore({
             departure: 'GMP ',
             arrival: 'CJU ',
             airlineNm: '',
-            airlineImg: [
-                /* ASIANA */
-                {
-                    img: "../assets/ASIANA_airline.png",
-                    style: ""
-                },
-                /* JEJUAIR */
-                {
-                    img: "../assets/JEJU_airline.png",
-                    style: ""
-                },
-                /* JINAIR */
-                {
-                    img: "../assets/JINAIR_airline.png",
-                    style: ""
-                },
-                /* TWAY */
-                {
-                    img: "../assets/TWAY_airline.png",
-                    style: ""
-                },
-                /* KOREANAIR */
-                {
-                    img: "../assets/KOREAN_airline.png",
-                    style: ""
-                },
-                /* AIRBUSAN */
-                {
-                    img: "../assets/BUSAN_airline.png",
-                    style: ""
-                }
-            ],
             airport_dep: 'Gimpo International Airport',
             airport_arr: 'Jeju International Airport',
             depAirportId: 'NAARKSS',
@@ -81,7 +49,7 @@ const store = createStore({
             picked_from: new Date(),
             tickets: [],
             totalCount: 1,
-            //loading: false,
+            loading: false,
         }),
     /* computed */
     getters :{
@@ -112,11 +80,9 @@ const store = createStore({
     /* be able to use ajax, 비동기 */
     actions : {
         async searchInfo ({ commit, dispatch }){  
-            // eslint-disable-next-line no-console
-            /* if (this.state.loading) return */
-            /* this.state.loading = true; */
+            if (this.state.loading) return
             commit('updateState', {
-                /* loading: true */
+                loading: true
             })
             try{
                 const res = await dispatch('fetchInfo') ({
@@ -138,7 +104,6 @@ const store = createStore({
                           const { item } = res.data.response.body.items.item
                           commit('updateState', {
                               tickets: [...item],
-                              
                           })
                       }
                     }
@@ -151,12 +116,11 @@ const store = createStore({
                 })
             } finally {
                 commit('updateState', {
-                    loading: false
+                    
                 })
                 // eslint-disable-next-line no-console
                 console.log('success to search', this.state.loading)
             }
-            
         },
         /* 다른 페이지도 부를 수 있게 하는 함수 */
         /* actions 인자 context (state, mutations, getters), payload (request element) */
@@ -221,6 +185,9 @@ const store = createStore({
                         reject(err.message)
                     })
                     .finally (() => {
+                        commit('updateState', {
+                            loading: false
+                        })
                     })
              
                 /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
