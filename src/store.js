@@ -50,6 +50,7 @@ const store = createStore({
             tickets: [],
             totalCount: 1,
             loading: false,
+            noTicket: false
         }),
     /* computed */
     getters :{
@@ -82,15 +83,20 @@ const store = createStore({
         async searchInfo ({ commit, dispatch }){  
             if (this.state.loading) return
             commit('updateState', {
-                loading: true
+                loading: true,
+                totalCount: 1
             })
             try{
                 const res = await dispatch('fetchInfo') ({
                 })
-                // eslint-disable-next-line no-undef
-                    const { totalCount } = res.data.reponse.body.totalCount
-                    // eslint-disable-next-line no-console
-                    console.log(typeof totalCount, this.state.loading)
+                const totalCount = res.data.reponse.body.totalCount
+
+                if(this.totalCount == 0) {
+                    commit('updateState', {
+                        noTicket: true
+                    })
+                }
+                // eslint-disable-next-line no-console
     
                    /*  const total = parseInt(totalCount, 10) // trans to the decimal system */
                     const pageLength = Math.ceil(totalCount / 20)
@@ -114,16 +120,13 @@ const store = createStore({
                 commit('updateState', {
                     tickets: [],
                 })
-            } finally {
-                commit('updateState', {
-                    
-                })
                 // eslint-disable-next-line no-console
-                console.log('success to search', this.state.loading)
-            }
+               /*  console.error(message) */
+            } 
         },
         /* 다른 페이지도 부를 수 있게 하는 함수 */
         /* actions 인자 context (state, mutations, getters), payload (request element) */
+        /* fetchInfo 에서 에러를 잡고 사실상 에러없는 결과물은 searchInfo */
         fetchInfo ({ state, commit }) {
             //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
             // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
@@ -142,28 +145,32 @@ const store = createStore({
                         /* 하위 단위까지 모.두 경로를 써줘야됨 */
                         const item  = res.data.response.body.items.item
                         this.state.totalCount = res.data.response.body.totalCount
-                        this.state.depTime = res.data.response.body.items.item.map((obj) => {
+                        if(this.state.totalCount < 1)
+                        return this.state.noTicket
+
+                        this.state.depTime = res.data.response.body.items.item.forEach((obj) => {
                             /* 보간법을 이용하면 function 가능 (object에 간섭을 안하므로 가능) */
                             obj.depTime = `${obj.depPlandTime}`.slice(-4, -2)
                             /* Object.values : make every Object to Array */
                             return Object.values(obj)
                         })
-                        this.state.depMin = res.data.response.body.items.item.map((obj) => {
+                        this.state.depMin = res.data.response.body.items.item.forEach((obj) => {
                             obj.depMin = `${obj.depPlandTime}`.slice(-2)
                             return Object.values(obj)
                         })
-                        this.state.arrTime = res.data.response.body.items.item.map((obj) => {
+                        this.state.arrTime = res.data.response.body.items.item.forEach((obj) => {
                             obj.arrTime = `${obj.arrPlandTime}`.slice(-4, -2)
                             return Object.values(obj)
                         })
-                        this.state.arrMin = res.data.response.body.items.item.map((obj) => {
+                        this.state.arrMin = res.data.response.body.items.item.forEach((obj) => {
                             obj.arrMin = `${obj.arrPlandTime}`.slice(-2)
                             return Object.values(obj)
                         })
-
+                      
+                       
                         // eslint-disable-next-line no-console
-                        console.log(res, state.loading)
-                        // eslint-disable-next-line no-console
+                        console.log(res, this.state.loading, this.state.totalCount, this.state.noTicket)
+                        // eslint-disable-next-line no-console 
                         console.log(item, depPlandTime, state.exDate)
                         commit('updateState', {
                             /* copy for push array */
@@ -175,11 +182,9 @@ const store = createStore({
                         // eslint-disable-next-line no-console
                         console.log(state.exMonth)
 
-                        if(res.data.response.resultMsg){
+                       /*  if(res.data.response.resultMsg){
                             reject(res.data.response.resultMsg)
-                        }
-
-
+                        } */
                     })
                     .catch(err => {
                         reject(err.message)
