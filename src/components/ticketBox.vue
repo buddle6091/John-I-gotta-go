@@ -1,4 +1,23 @@
 <template>
+<div v-if="$store.state.loading == true">
+  <div v-for="skeleton in 5" :key="skeleton">
+  <div class="skeleton">
+    <div class="skeleton ticket">
+      <div class="skeleton airlineImg"></div>
+      <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
+        <div class="skeleton flightInfo small-text"></div>
+        <div class="skeleton flightInfo middle-text"></div>
+        <div class="skeleton flightInfo small-text"></div>
+      </div>
+      <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
+        <div class="skeleton flightInfo small-text"></div>
+        <div class="skeleton flightInfo middle-text"></div>
+        <div class="skeleton flightInfo small-text"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 <div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
   <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
@@ -15,10 +34,6 @@
   <div class="underShadow"></div>
   <h2>Sorry, there is no ticket today :(</h2><br/>
   <p>How about change your flight date?</p>
-</div>
-
-<div class="loadingWindow" v-if="$store.state.loading == true">
-    <span class="material-icons"> travel_explore </span> 
 </div>
 
 <div class="totalContainer">
@@ -94,7 +109,7 @@
        <!--출발지-->
       {{ arrNm }}     
       <!--시간-->
-      <div class="detailtime">  {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  
+      <div class="detailtime"> {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  
       <!--날짜-->
       {{ ex_month }} {{ this.$store.state.exDate }}  
     </div>
@@ -358,41 +373,108 @@
   img {
       width: 30rem;
   }
-  .underShadow {
-    width: 10rem;
-    height: 1.3rem;
-    margin: {
-      top: -1.2rem;
-      left: 11rem;
-      bottom: 2rem;
+    .underShadow {
+      width: 10rem;
+      height: 1.3rem;
+      margin: {
+        top: -1.2rem;
+        left: 11rem;
+        bottom: 2rem;
+      }
+      border-radius: 100%;
+      background-color: rgb(189, 189, 189); 
     }
-    border-radius: 100%;
-    background-color: rgb(189, 189, 189); 
-   }
 
-   h2 {
-     left: 10px;
-     color: rgba(0, 0, 0, 0.729);
-     font: {
-       family: 'Comfortaa', cursive;
-       size: 29px;
-       weight: bold;
-     }
+    h2 {
+      left: 10px;
+      color: rgba(0, 0, 0, 0.729);
+      font: {
+        family: 'Comfortaa', cursive;
+        size: 29px;
+        weight: bold;
+      }
+        position: relative;
+    }
+    p {
+      left: 99px;
+      margin: {
+        top: -13px;
+        bottom: 6rem;
+      }
+      color: rgb(158, 158, 158);
+      font: {
+        size: 15px;
+        family: 'Comfortaa', cursive;
+      }
       position: relative;
-   }
-   p {
-     left: 99px;
-     margin: {
-       top: -13px;
-       bottom: 6rem;
-     }
-     color: rgb(158, 158, 158);
-     font: {
-       size: 15px;
-       family: 'Comfortaa', cursive;
-     }
-     position: relative;
-   }
+    }
+ }
+ .skeleton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    @keyframes skeleton-gradation {
+      0% {
+        background-color: rgba(216, 216, 216, 0.1);
+        }
+
+      50% {
+          background-color: rgba(216, 216, 216, 0.664);
+      }
+
+      100% {
+          background-color: rgba(216, 216, 216, 0.1);
+      }
+    }
+  &.ticket {
+    max-width: 340px;
+    max-height: 100px;
+    width: 340px;
+    height: 100px;
+    top: 1rem;
+    margin: {
+      top: 1rem;
+      left: auto;
+      right: auto;
+    }
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px 0px rgba(37, 37, 37, 0.171);
+  }
+    
+  &.airlineImg {
+    width: 7.2rem;
+    height: 4rem;
+    margin: {
+      top: auto;
+      left: 1rem;
+      right: auto;
+      bottom: auto;
+    }
+    background-color: rgb(216, 216, 216);
+    border-radius: 4px; 
+    animation: skeleton-gradation 1.7s infinite ease-in-out;
+  }
+  &.flightInfo {
+    background-color: rgb(216, 216, 216);
+    animation: skeleton-gradation 1.7s infinite ease-in-out;
+
+    &.small-text {
+      width: 2rem;
+      height: 0.55rem;
+      margin: {
+        top: 5px;
+        bottom: 5px;
+      }
+      border-radius: 2px; 
+    } 
+    &.middle-text {
+      width: 3.8rem;
+      height: 1.25rem;
+      border-radius: 2px; 
+    }
+  }
  }
  .totalContainer {
    justify-content: center;
@@ -405,7 +487,6 @@
     border-radius: 8px;
     box-shadow: 0px 0px 3px 0px rgba(132, 132, 132, 0.1);
     transform-origin: bottom;
-    position: relative;
     display: flex;
     top: 1rem;
     margin: {
