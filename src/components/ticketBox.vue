@@ -1,192 +1,194 @@
 <template>
-<div v-if="$store.state.loading == true">
-  <div v-for="skeleton in 5" :key="skeleton">
-  <div class="skeleton">
-    <div class="skeleton ticket">
-      <div class="skeleton airlineImg"></div>
-      <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
-        <div class="skeleton flightInfo small-text"></div>
-        <div class="skeleton flightInfo middle-text"></div>
-        <div class="skeleton flightInfo small-text"></div>
-      </div>
-      <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
-        <div class="skeleton flightInfo small-text"></div>
-        <div class="skeleton flightInfo middle-text"></div>
-        <div class="skeleton flightInfo small-text"></div>
+<div>
+  <div v-if="$store.state.loading == true">
+    <div v-for="skeleton in 5" :key="skeleton">
+    <div class="skeleton">
+      <div class="skeleton ticket">
+        <div class="skeleton airlineImg"></div>
+        <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
+          <div class="skeleton flightInfo small-text"></div>
+          <div class="skeleton flightInfo middle-text"></div>
+          <div class="skeleton flightInfo small-text"></div>
+        </div>
+        <div :style="{flexDirection: 'column', display: 'inline-block', marginTop: 'auto', marginBottom: 'auto', marginRight: '1.3rem'}">
+          <div class="skeleton flightInfo small-text"></div>
+          <div class="skeleton flightInfo middle-text"></div>
+          <div class="skeleton flightInfo small-text"></div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-</div>
-<div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
- <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
-  <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
-  <p>2. Click the arrival - destination zone, and choose arrival, destination in modal window.</p><br/>
-  <p>2-1. Across arrow button can switch arrival to destination.</p><br/>
-  <p>2-2. Please understand that we only support 'One way' at the moment. Also only domestic line :)</p><br/>
-  <p>3. And then, choose flight date, people and class.</p><br/>
-  <p>4. After click 'search' button, available tickets will be right here.</p><br/>
-  <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
-</div>
-
-<div class="notFound" v-if="$store.state.totalCount == 0">
-  <img src="./no_result.png"/>
-  <div class="underShadow"></div>
-  <h2>Sorry, there is no ticket today :(</h2><br/>
-  <p>How about change your flight date?</p>
-</div>
-
-<div class="totalContainer">
-<div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
-  <div class="ticketBox" @click="ticket.unfold =! ticket.unfold"
-  :style="{height: ticket.unfold ? `300px` : `100px`,
-         transition : ticket.unfold ?'0.6s' : '0.8s' }">  
-
-<div class="firstDisplay">
-  <div class="flightDetail">
-    <div class="detailLabel">
-      Departures</div>
-    {{ shortDep }}
-     <div class="detailLabel"> 
-       {{ getAirport_dep }}</div>
-       </div>
-  <div class="flightDetail">
-      <div class="animContainer" style="left: -20px">
-        <div class="animation">
-        <div class="circle"> </div>
-        <div class="circle"> </div>  
-        <div class="circle"> </div>
-        </div>   
-      </div>
-      <div class="animContainer" style="left: 30px">
-        <div class="animation">
-        <div class="circle"> </div>
-        <div class="circle"> </div>                              
-        <div class="circle"> </div>
-        </div>   
-      </div>
-      <img src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
- :style="Airplane_in"/>
-  </div>
-  <div class="flightDetail">
-    <div class="detailLabel">
-      Arrivals </div>
-    {{ shortArr }}
-     <div class="detailLabel">
-       {{ getAirport_arr }}</div>
-       </div>
-  </div>
- 
-  <div class="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
-  transition: ticket.unfold ? '0.4s' : '1s'}">
-
-  <div class="firstTop"> 
-   <img src="./jejuairline_white.png" :style="{ width: '7.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
-   <img src="./ASIANA_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
-   <img src="./JINAIR_airline.png" :style="{ width: '6.9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
-   <img src="./JEJU_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어서울'"/>
-   <img src="./KOREAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto', marginTop: '-0.7rem'}" v-if="ticket.airlineNm == '대한항공'"/>
-   <img src="./BUSAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
-   <img src="./TWAY_airline.png" :style="{ width: '4.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
-   <img src="./EASTAR_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
-   <img src="./HI_AIR_airline.png" :style="{ width: 'auto', height: '4.2em', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
-   <img src="./FLY_GANGWON_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
-
-
-    <div class="timeContainer">
-      <!--날짜, 시간 장소 등을 저장할 공간-->
-     <div class="dateContainer">  
-       <!--출발지--> 
-      {{ depNm }}             
-      <!--시간-->
-      <div class="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  
-      <!--날짜--> 
-      {{ ex_month }} {{ this.$store.state.exDate }}                                         
-     </div>
-      <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
-      <!--날짜, 시간 장소 등을 저장할 공간-->
-     <div class="dateContainer">
-       <!--출발지-->
-      {{ arrNm }}     
-      <!--시간-->
-      <div class="detailtime"> {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  
-      <!--날짜-->
-      {{ ex_month }} {{ this.$store.state.exDate }}  
     </div>
   </div>
+  <div class="howtouse" :style="{ display : $store.state.isActive ? 'none' : true}">
+  <h2>🤷‍♂️How to use 'John, I gotta go'🤷</h2><br/>
+    <p>1. If you wanna search your destination, click on the container at the top.</p><br/>
+    <p>2. Click the arrival - destination zone, and choose arrival, destination in modal window.</p><br/>
+    <p>2-1. Across arrow button can switch arrival to destination.</p><br/>
+    <p>2-2. Please understand that we only support 'One way' at the moment. Also only domestic line :)</p><br/>
+    <p>3. And then, choose flight date, people and class.</p><br/>
+    <p>4. After click 'search' button, available tickets will be right here.</p><br/>
+    <p>5. Thank you for using 'John, I gotta go' and hope it will help you on your journey🛫.</p><br/>
+  </div>
+
+  <div class="notFound" v-if="$store.state.totalCount == 0">
+    <img src="./no_result.png"/>
+    <div class="underShadow"></div>
+    <h2>Sorry, there is no ticket today :(</h2><br/>
+    <p>How about change your flight date?</p>
+  </div>
+
+  <div class="totalContainer">
+  <div v-for="ticket in tickets" :key="ticket" :ticket="ticket">
+    <div class="ticketBox" @click="ticket.unfold =! ticket.unfold"
+    :style="{height: ticket.unfold ? `300px` : `100px`,
+          transition : ticket.unfold ?'0.6s' : '0.8s' }">  
+
+  <div class="firstDisplay">
+    <div class="flightDetail">
+      <div class="detailLabel">
+        Departures</div>
+      {{ shortDep }}
+      <div class="detailLabel"> 
+        {{ getAirport_dep }}</div>
+        </div>
+    <div class="flightDetail">
+        <div class="animContainer" style="left: -20px">
+          <div class="animation">
+          <div class="circle"> </div>
+          <div class="circle"> </div>  
+          <div class="circle"> </div>
+          </div>   
+        </div>
+        <div class="animContainer" style="left: 30px">
+          <div class="animation">
+          <div class="circle"> </div>
+          <div class="circle"> </div>                              
+          <div class="circle"> </div>
+          </div>   
+        </div>
+        <img src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" 
+  :style="Airplane_in"/>
     </div>
-  <div class="firstBehind">
-          <div class="firstBehindDisplay">
-            <div class="firstBehindRow">
-              <div class="detail">
-                Flight Time
-                <div class="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }} </div> <!-- arrPlandTime - depPlandTime -->
-              </div>
-              <div class="detail">
-                Transfer
-                <div class="detailLabel">No Transfer</div>
-              </div>
-            </div>
-            <div class="firstBehindRow">
-              <div class="detail">
-                Duration
-                <div class="detailLabel"> about 1hour </div>
-              </div>
-              <div class="detail">
-                Flight Num
-                <div class="detailLabel"> {{ ticket.vihicleId }} </div>
-              </div>
-            </div>
-            <div class="firstBehindRow">
-              <div class="detail">
-                Boarding Time
-                <div class="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
-              </div>
-              <div class="detail">
-                People
-                <div class="detailLabel"> {{ $store.state.totalPerson }} </div>
-              </div>
-            </div>
-          </div> 
-<div class="second" :style="{transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
- transition: ticket.unfold ? '0.8s' : '0.8s'  }">
-    <div class="secondTop"/>
-             <div class="secondBehind">
-              <div class="secondBehindDisplay">
-                <div class="price">
-                  Price
-                  <div class="priceLabel">please check in website</div> 
+    <div class="flightDetail">
+      <div class="detailLabel">
+        Arrivals </div>
+      {{ shortArr }}
+      <div class="detailLabel">
+        {{ getAirport_arr }}</div>
+        </div>
+    </div>
+  
+    <div class="first" :style="{transform: ticket.unfold ? 'rotate3d(1, 0, 0, -180deg)':'rotate3d(1, 0, 0, 0deg)',
+    transition: ticket.unfold ? '0.4s' : '1s'}">
+
+    <div class="firstTop"> 
+    <img src="./jejuairline_white.png" :style="{ width: '7.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '제주항공'"/>
+    <img src="./ASIANA_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '아시아나항공'"/>
+    <img src="./JINAIR_airline.png" :style="{ width: '6.9em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '진에어'"/>
+    <img src="./JEJU_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어서울'"/>
+    <img src="./KOREAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto', marginTop: '-0.7rem'}" v-if="ticket.airlineNm == '대한항공'"/>
+    <img src="./BUSAN_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '에어부산'"/>
+    <img src="./TWAY_airline.png" :style="{ width: '4.2em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '티웨이항공'"/>
+    <img src="./EASTAR_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '이스타항공'"/>
+    <img src="./HI_AIR_airline.png" :style="{ width: 'auto', height: '4.2em', margin: 'auto'}" v-if="ticket.airlineNm == '하이에어'"/>
+    <img src="./FLY_GANGWON_airline.png" :style="{ width: '7.5em', height: 'auto', margin: 'auto'}" v-if="ticket.airlineNm == '플라이강원'"/>
+
+
+      <div class="timeContainer">
+        <!--날짜, 시간 장소 등을 저장할 공간-->
+      <div class="dateContainer">  
+        <!--출발지--> 
+        {{ depNm }}             
+        <!--시간-->
+        <div class="detailtime"> {{ ticket.depTime }}:{{ ticket.depMin }} </div>  
+        <!--날짜--> 
+        {{ ex_month }} {{ this.$store.state.exDate }}                                         
+      </div>
+        <img alt="비행기" src="https://github.com/pizza3/asset/blob/master/airplane2.png?raw=true" :style="Airplane_out"/>
+        <!--날짜, 시간 장소 등을 저장할 공간-->
+      <div class="dateContainer">
+        <!--출발지-->
+        {{ arrNm }}     
+        <!--시간-->
+        <div class="detailtime"> {{ ticket.arrTime }}:{{ ticket.arrMin }} </div>  
+        <!--날짜-->
+        {{ ex_month }} {{ this.$store.state.exDate }}  
+      </div>
+    </div>
+      </div>
+    <div class="firstBehind">
+            <div class="firstBehindDisplay">
+              <div class="firstBehindRow">
+                <div class="detail">
+                  Flight Time
+                  <div class="detailLabel">{{ ticket.depTime }}:{{ ticket.depMin }} - {{ ticket.arrTime }}:{{ ticket.arrMin }} </div> <!-- arrPlandTime - depPlandTime -->
                 </div>
-                <div class="price">
-                  Class
-                  <div class="priceLabel"> {{$store.state.selectClass}} </div>
+                <div class="detail">
+                  Transfer
+                  <div class="detailLabel">No Transfer</div>
                 </div>
-                <img
-                  id="barCode"
-                  src="https://github.com/pizza3/asset/blob/master/barcode.png?raw=true"
-                />
-              </div> 
-            
-               <div class="third" :style="{ transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
-        transition: ticket.unfold ? '1s' : '0.4s' }">
-                <div class="thirdTop"/>
-                 <div class="secondBehindBottom">
-                   <Button layout="href" color="base" onclick="location.href='https://www.jejuair.net/ko/ibe/booking/Availability.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '제주항공'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://flyasiana.com/I/KR/KO/LowerPriceSearchList.do?menuId=CM201802220000728256&utm_source=google_pc&utm_medium=cpc&utm_campaign=brand_basic_creative&utm_content=&utm_term=&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45bR1j-o5izxMY3T37Abkzw3P8AHcYDdFfVSB2sFDm5z-qeb_HtM4fYaAn-ZEALw_wcB'" style="font-size: 17px;" v-if="ticket.airlineNm == '아시아나항공'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.jinair.com/booking/index?&ctrCd=KOR&snsLang=ko_KR&cid=BC_affiliate_AirMoney_PC_null_20200801'" style="font-size: 17px;" v-if="ticket.airlineNm == '진에어'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://flyairseoul.com/I/ko/viewBooking.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어서울'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.koreanair.com/kr/ko'" style="font-size: 17px;" v-if="ticket.airlineNm == '대한항공'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.airbusan.com/content/individual/'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어부산'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.twayair.com/app/main'" style="font-size: 17px;" v-if="ticket.airlineNm == '티웨이항공'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.eastarjet.com/newstar/PGWHC00001?lang=KR'" style="font-size: 17px;" v-if="ticket.airlineNm == '이스타항공'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://www.hi-airlines.com/'" style="font-size: 17px;" v-if="ticket.airlineNm == '하이에어'"> Booked in airline website </Button>
-                   <Button layout="href" color="base" onclick="location.href='https://flygangwon.com/ko/main/main.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '플라이강원'"> Booked in airline website </Button>
+              </div>
+              <div class="firstBehindRow">
+                <div class="detail">
+                  Duration
+                  <div class="detailLabel"> about 1hour </div>
+                </div>
+                <div class="detail">
+                  Flight Num
+                  <div class="detailLabel"> {{ ticket.vihicleId }} </div>
+                </div>
+              </div>
+              <div class="firstBehindRow">
+                <div class="detail">
+                  Boarding Time
+                  <div class="detailLabel"> {{ ticket.depTime }}:{{ ticket.depMin }} - 20min </div>  <!-- depPlandTime - 20min -->
+                </div>
+                <div class="detail">
+                  People
+                  <div class="detailLabel"> {{ $store.state.totalPerson }} </div>
+                </div>
+              </div>
+            </div> 
+  <div class="second" :style="{transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)`:`rotate3d(1, 0, 0, 0deg)`,
+  transition: ticket.unfold ? '0.8s' : '0.8s'  }">
+      <div class="secondTop"/>
+              <div class="secondBehind">
+                <div class="secondBehindDisplay">
+                  <div class="price">
+                    Price
+                    <div class="priceLabel">please check in website</div> 
+                  </div>
+                  <div class="price">
+                    Class
+                    <div class="priceLabel"> {{$store.state.selectClass}} </div>
+                  </div>
+                  <img
+                    id="barCode"
+                    src="https://github.com/pizza3/asset/blob/master/barcode.png?raw=true"
+                  />
                 </div> 
-              </div> 
-            </div>
-          </div> 
-         </div>
-      </div>  
+              
+                <div class="third" :style="{ transform: ticket.unfold ? `rotate3d(1, 0, 0, -180deg)` : `rotate3d(1, 0, 0, 0deg)`,
+          transition: ticket.unfold ? '1s' : '0.4s' }">
+                  <div class="thirdTop"/>
+                  <div class="secondBehindBottom">
+                    <Button layout="href" color="base" onclick="location.href='https://www.jejuair.net/ko/ibe/booking/Availability.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '제주항공'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://flyasiana.com/I/KR/KO/LowerPriceSearchList.do?menuId=CM201802220000728256&utm_source=google_pc&utm_medium=cpc&utm_campaign=brand_basic_creative&utm_content=&utm_term=&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45bR1j-o5izxMY3T37Abkzw3P8AHcYDdFfVSB2sFDm5z-qeb_HtM4fYaAn-ZEALw_wcB'" style="font-size: 17px;" v-if="ticket.airlineNm == '아시아나항공'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.jinair.com/booking/index?&ctrCd=KOR&snsLang=ko_KR&cid=BC_affiliate_AirMoney_PC_null_20200801'" style="font-size: 17px;" v-if="ticket.airlineNm == '진에어'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://flyairseoul.com/I/ko/viewBooking.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어서울'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.koreanair.com/kr/ko'" style="font-size: 17px;" v-if="ticket.airlineNm == '대한항공'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.airbusan.com/content/individual/'" style="font-size: 17px;" v-if="ticket.airlineNm == '에어부산'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.twayair.com/app/main'" style="font-size: 17px;" v-if="ticket.airlineNm == '티웨이항공'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.eastarjet.com/newstar/PGWHC00001?lang=KR'" style="font-size: 17px;" v-if="ticket.airlineNm == '이스타항공'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://www.hi-airlines.com/'" style="font-size: 17px;" v-if="ticket.airlineNm == '하이에어'"> Booked in airline website </Button>
+                    <Button layout="href" color="base" onclick="location.href='https://flygangwon.com/ko/main/main.do'" style="font-size: 17px;" v-if="ticket.airlineNm == '플라이강원'"> Booked in airline website </Button>
+                  </div> 
+                </div> 
+              </div>
+            </div> 
+          </div>
+        </div>  
+      </div>
     </div>
   </div>
  </div>
