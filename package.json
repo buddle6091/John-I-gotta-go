@@ -1,6 +1,6 @@
 {
   "name": "boardingpass",
-  "version": "1.1",
+  "version": "1.0.0",
   "private": true,
   "description": "## Project setup ``` npm install ```",
   "author": "buddle6091",
@@ -28,6 +28,7 @@
     "request": "^2.88.2",
     "require": "^2.4.20",
     "scss": "^0.2.4",
+    "type": "^2.7.2",
     "vue": "^3.0.0",
     "vue-axios-cors": "^1.0.1",
     "vue-class-component": "^8.0.0-0",

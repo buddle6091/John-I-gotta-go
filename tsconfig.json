@@ -1,46 +1,45 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "outDir": "",
-    "checkJs": false,
-    "maxNodeModuleJsDepth": 0,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
+    "module": "esnext", //무슨 import 문법 쓸건지 'commonjs', 'amd', 'es2015', 'esnext'
+    "allowJs": false, // js 파일들 ts에서 import해서 쓸 수 있는지
+    "checkJs": false, // 일반 js 파일에서도 에러체크 여부
+    // strict mode
+    "strict": true, //strict 관련, noimplicit 어쩌구 관련 모드 전부 켜기
+    "strictNullChecks": false /* Null 과 Undefined 서로의 타입까지 더이상 할당할 수 없게 함 */,
+    "strictPropertyInitialization": false,
+    "strictFunctionTypes": false, //함수파라미터 타입체크 강하게
+    "strictBindCallApply": false, // 설정되면 TypeScript는 내장 함수 call, bind, 및 apply기본 제공 함수에 대한 올바른 인수로 호출되는지 확인합니다.
+    "noImplicitAny": false, //any타입 금지 여부
+    "noImplicitThis": false, //this 키워드가 any 타입일 경우 에러내기
+    "noImplicitReturns": false, // 활성화되면 TypeScript는 함수의 모든 코드 경로를 검사하여 값을 반환하는지 확인합니다.
+    "alwaysStrict": false, //자바스크립트 "use strict" 모드 켜기
+    "jsx": "preserve", // tsx 파일을 jsx로 어떻게 컴파일할 것인지 'preserve', 'react-native', 'react'
+    "importHelpers": false, // import 도우미 코드
+    "moduleResolution": "node", // 모듈 전략을 제안합니다
+    "experimentalDecorators": true, // TC39 표준화 프로세스의 2단계에 있는 데코레이터에 대한 실험적 지원을 활성화합니다 .
+    "outDir": "./dist", //js파일 아웃풋 경로바꾸기
+    "maxNodeModuleJsDepth": 0, // node_modules JavaScript 파일 을 검색하고 로드하기 위한 최대 종속성 깊이
+    "skipLibCheck": true, // 선언 파일의 유형 검사를 건너뜁니다.
+    "esModuleInterop": true, // ES 모듈 상호 운용성
+    "allowSyntheticDefaultImports": true, // 합성 기본 가져오기 허용
+    "sourceMap": true, // 소스맵 파일 생성을 활성화
     "baseUrl": ".",
-    "forceConsistentCasingInFileNames": false,
-    "types": [
-      "webpack-env"
-    ],
+    "forceConsistentCasingInFileNames": false, // 파일 이름의 일관된 대소문자 지정
+    "types": ["webpack-env"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
-, "src/main.js", "src/data_tem.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "tests/**/*.tsx",
+    "src/main.js",
+    "src/data_tem.js"
+  ],
+  "exclude": ["node_modules"]
 }
