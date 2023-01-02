@@ -6,14 +6,14 @@
     "checkJs": false, // 일반 js 파일에서도 에러체크 여부
     // strict mode
     "strict": true, //strict 관련, noimplicit 어쩌구 관련 모드 전부 켜기
-    "strictNullChecks": false /* Null 과 Undefined 서로의 타입까지 더이상 할당할 수 없게 함 */,
-    "strictPropertyInitialization": false,
-    "strictFunctionTypes": false, //함수파라미터 타입체크 강하게
-    "strictBindCallApply": false, // 설정되면 TypeScript는 내장 함수 call, bind, 및 apply기본 제공 함수에 대한 올바른 인수로 호출되는지 확인합니다.
-    "noImplicitAny": false, //any타입 금지 여부
-    "noImplicitThis": false, //this 키워드가 any 타입일 경우 에러내기
-    "noImplicitReturns": false, // 활성화되면 TypeScript는 함수의 모든 코드 경로를 검사하여 값을 반환하는지 확인합니다.
-    "alwaysStrict": false, //자바스크립트 "use strict" 모드 켜기
+    "strictNullChecks": true /* Null 과 Undefined 서로의 타입까지 더이상 할당할 수 없게 함 */,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true, //함수파라미터 타입체크 강하게
+    "strictBindCallApply": true, // 설정되면 TypeScript는 내장 함수 call, bind, 및 apply기본 제공 함수에 대한 올바른 인수로 호출되는지 확인합니다.
+    "noImplicitAny": true, //any타입 금지 여부
+    "noImplicitThis": true, //this 키워드가 any 타입일 경우 에러내기
+    "noImplicitReturns": true, // 활성화되면 TypeScript는 함수의 모든 코드 경로를 검사하여 값을 반환하는지 확인합니다.
+    "alwaysStrict": true, //자바스크립트 "use strict" 모드 켜기
     "jsx": "preserve", // tsx 파일을 jsx로 어떻게 컴파일할 것인지 'preserve', 'react-native', 'react'
     "importHelpers": false, // import 도우미 코드
     "moduleResolution": "node", // 모듈 전략을 제안합니다

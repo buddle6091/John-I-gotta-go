@@ -1,9 +1,6 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import dotenv from "dotenv"; // make sure to hide api encoding code
-import apiRequest from "type";
-import apiResponse from "type";
-//import moduleA from "./module/searchModule"
 
 const store = createStore({
   /* store the data */
@@ -196,6 +193,7 @@ const store = createStore({
                         } */
         });
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.error("Error", err);
         throw err;
       }

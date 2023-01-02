@@ -5,7 +5,7 @@
   "description": "## Project setup ``` npm install ```",
   "author": "buddle6091",
   "scripts": {
-    "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve --port 3000",
     "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
@@ -80,7 +80,9 @@
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
-    "rules": {}
+    "rules": {
+      "no-console": "off"
+    }
   },
   "browserslist": [
     "> 1%",
