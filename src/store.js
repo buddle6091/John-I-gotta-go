@@ -2,6 +2,8 @@ import { createStore } from "vuex";
 import axios from "axios";
 import dotenv from "dotenv"; // make sure to hide api encoding code
 
+dotenv.config();
+
 const store = createStore({
   /* store the data */
   state: () => ({
@@ -120,13 +122,15 @@ const store = createStore({
     async fetchInfo({ state, commit }) {
       try {
         dotenv.config();
-        const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY;
+        //const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY;
         this.state.depPlandTime =
           +[state.picked_from.getFullYear()] +
           +[("0" + (state.picked_from.getMonth() + 1)).slice(-2)] +
           +[("0" + state.picked_from.getDate()).slice(-2)];
         /* use heroku for allow cors */
-        const url = `https://john-i-gotta-go.herokuapp.com/http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${state.depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`;
+        /* const url = `https://john-i-gotta-go.herokuapp.com/http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${state.depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`; */
+        const url =
+          "https://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=eixV3mOlRoqUyi%2BK9P6%2BS3BQMBXCroFM31lGc%2BOSp80JFNv7B8%2FiCEV49OSfF2bchwh5N7z50Sw8OQFWCkZbDg%3D%3D&pageNo=1&numOfRows=10&_type=json&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=20201201&airlineId=AAR";
         state.exMonth = state.picked_from.getMonth() + 1;
         state.exDate = state.picked_from.getDate();
 
