@@ -130,7 +130,7 @@ const store = createStore({
         /* use heroku for allow cors */
         /* const url = `https://john-i-gotta-go.herokuapp.com/http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${state.depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`; */
         const url =
-          "https://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=eixV3mOlRoqUyi%2BK9P6%2BS3BQMBXCroFM31lGc%2BOSp80JFNv7B8%2FiCEV49OSfF2bchwh5N7z50Sw8OQFWCkZbDg%3D%3D&pageNo=1&numOfRows=10&_type=json&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=20201201&airlineId=AAR";
+          "https://john-i-gotta-go.herokuapp.com/https://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=eixV3mOlRoqUyi%2BK9P6%2BS3BQMBXCroFM31lGc%2BOSp80JFNv7B8%2FiCEV49OSfF2bchwh5N7z50Sw8OQFWCkZbDg%3D%3D&pageNo=1&numOfRows=10&_type=json&depAirportId=NAARKJJ&arrAirportId=NAARKPC&depPlandTime=20201201&airlineId=AAR";
         state.exMonth = state.picked_from.getMonth() + 1;
         state.exDate = state.picked_from.getDate();
 
