@@ -1,28 +1,28 @@
 // vue.config.js
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-    publicPath: '',
-    outputDir: path.resolve(__dirname, "./dist/"),
-    assetsDir: "./assets/",
-    css: {
-        loaderOptions: {
-            sass: {
-                additionalData: `
+  publicPath: "",
+  outputDir: path.resolve(__dirname, "./dist/"),
+  assetsDir: "./assets/",
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `
                 @import "./src/UI/scss/_variable.scss";
                 @import "@/UI/scss/_mixins.scss";
-                `
-            }
-        }
+                `,
+      },
     },
-    configureWebpack: {
-        entry: "./src/main.ts",
-        /* 밖에다 해야 인식됨 */
-        /* output: {
+  },
+  configureWebpack: {
+    entry: "./src/main.js",
+    /* 밖에다 해야 인식됨 */
+    /* output: {
             path: path.resolve(__dirname, "./dist"),
             publicPath: '/dist/',
         } */
-        /* module: {
+    /* module: {
             rules: [
               {
                 test: /\.css$/,
@@ -46,10 +46,10 @@ module.exports = {
               },
             ],
           }, */
-    },
-    devServer:{
-        // 현재는 https://john-i-gotta-go.herokuapp.com/ 라는 프록시 서버 생성
- /*        proxy: {
+  },
+  devServer: {
+    // 현재는 https://john-i-gotta-go.herokuapp.com/ 라는 프록시 서버 생성
+    /*        proxy: {
             '/' : {
                  "target": 'http://apis.data.go.kr',
                  "pathRewrite": {'^/': ''},
@@ -57,5 +57,5 @@ module.exports = {
                  "secure": false 
              }  
         } */
-    },
-}
+  },
+};
