@@ -132,7 +132,7 @@ const store = createStore({
         [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] +
         [("0" + state.picked_from.getDate()).slice(-2)];
       /* use heroku for allow cors */
-      const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${this.state.pageNo}&_type=json`;
+      const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${state.pageNo}&_type=json`;
       state.exMonth = state.picked_from.getMonth() + 1;
       state.exDate = state.picked_from.getDate();
 
@@ -173,6 +173,10 @@ const store = createStore({
               }
             );
 
+            commit("updateState", {
+              /* copy for push array */
+              tickets: [...item],
+            });
             // eslint-disable-next-line no-console
             console.log(
               res,
@@ -182,10 +186,6 @@ const store = createStore({
             );
             // eslint-disable-next-line no-console
             console.log(item, depPlandTime, state.exDate);
-            commit("updateState", {
-              /* copy for push array */
-              tickets: [...item],
-            });
             resolve(res);
             // eslint-disable-next-line no-console
             console.log(
@@ -193,15 +193,8 @@ const store = createStore({
               state.arrAirportId,
               depPlandTime,
               state.exMonth,
-              state.exTime,
-              this.state.loading
+              state.exTime
             );
-            // eslint-disable-next-line no-console
-            console.log(state.exMonth);
-
-            /*  if(res.data.response.resultMsg){
-                            reject(res.data.response.resultMsg)
-                        } */
           })
           .catch((err) => {
             reject(err.message);
@@ -219,9 +212,6 @@ const store = createStore({
         /* figure out only data (data -> response -> body -> item) */
       });
     },
-    /* 실질적으로 버튼을 누르면 항공권의 초기 정보를 넘기는 버튼
-        -> 20개단위로 처음에 보여주고, 여기서 스크롤을 더 내리면 그 다음 pageNo로 넘어가서 20개씩 산출*/
-    /* async 문에서는 try & catch */
   },
 });
 
