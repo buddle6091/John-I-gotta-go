@@ -127,5 +127,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## version
 ~~ver 1.0.0 (05.28) https://buddle6091.github.io/~~ </br>
-ver 1.0.2 (available) : 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다. </br> Github-page에서 netlify로 배포 페이지를 변경하였습니다.</br>
-ver 1.1 - 스켈레톤 UI, Ifinite Scroll 적용 예정
+~~ver 1.0.2 (06.05) : 자체 heroku proxy server 도입으로 cors allow 앱 없이 원활한 검색이 가능합니다. </br> Github-page에서 netlify로 배포 페이지를 변경하였습니다.</br> -> (22.12) TAGO API 측의 허용으로 Proxy 서버 경유 없어도 CORS 발생이 하지 않습니다
+ver 1.1.0 (08.03) - 스켈레톤 UI, 반응형 UI 적용. (도중 높이 설정에 따른 이미지 잘림이 보여 수정 예정입니다.)</br>
