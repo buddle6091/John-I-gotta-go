@@ -252,11 +252,8 @@
 import Button from "../UI/UI/neumorphism/button/Button.vue";
 import ToggleButton from "../UI/UI/neumorphism/toggle-button/ToggleButton.vue";
 import Datepicker from "vue3-datepicker";
-//import { ref } from 'vue'
-//import axios from 'axios'
 import { mapState, mapGetters, mapActions } from "vuex";
 import { defineComponent, ref } from "vue";
-//import { search } from '../type'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date());
 // eslint-disable-next-line no-unused-vars
@@ -277,7 +274,6 @@ export default defineComponent({
   data() {
     return {
       inactiveHeight: "15rem",
-      //activeHeight: '35rem',
       picked_from: new Date(),
       picked_to: "",
       toggle: false,
