@@ -152,7 +152,7 @@
                   width: '7.5em',
                   height: 'auto',
                   margin: 'auto',
-                  marginTop: '-0.7rem',
+                  marginTop: '1.1rem',
                 }"
                 v-if="ticket.airlineNm == '대한항공'" />
               <img

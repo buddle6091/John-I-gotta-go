@@ -88,7 +88,7 @@ const store = createStore({
       });
       try {
         const res = await dispatch("fetchInfo");
-        const totalCount = res.data.reponse.body.totalCount;
+        const totalCount = res.data.response.body.totalCount;
 
         if (totalCount == 0) {
           commit("updateState", {
@@ -113,9 +113,9 @@ const store = createStore({
           }
         } else alert("there is no result.."); */
       } catch (message) {
-        /* commit("updateState", {
+        commit("updateState", {
           tickets: [],
-        }); */
+        });
         console.log(message);
       }
     },
