@@ -65,7 +65,9 @@ const store = createStore({
       return state.airport_arr;
     },
   },
+
   /* mutations can modify state`s data only / state.data (=this.data) */
+
   mutations: {
     /* find parameter */
     updateState(state, payload) {
@@ -86,20 +88,19 @@ const store = createStore({
       });
       try {
         const res = await dispatch("fetchInfo");
-        const totalCount = res.data.reponse.body.totalCount;
+        const totalCount = res.data.response.body.totalCount;
 
-        if (this.totalCount == 0) {
+        if (totalCount == 0) {
           commit("updateState", {
             noTicket: true,
           });
         }
-        // eslint-disable-next-line no-console
 
         /*  const total = parseInt(totalCount, 10) // trans to the decimal system */
-        const pageLength = Math.ceil(totalCount / 20);
+        /*  const pageLength = Math.ceil(totalCount / 20); */
 
         /* additional 추후에 무한 로딩 넣기 */
-        if (pageLength > 1) {
+        /* if (pageLength > 1) {
           for (let pageNo = 2; pageNo <= pageLength; pageNo += 1) {
             const res = await dispatch("fetchInfo")({
               pageNo: pageNo,
@@ -107,107 +108,110 @@ const store = createStore({
             const { item } = res.data.response.body.items.item;
             commit("updateState", {
               tickets: [...item],
+              loading: false,
             });
           }
-        } else alert("there is no result..");
+        } else alert("there is no result.."); */
       } catch (message) {
         commit("updateState", {
           tickets: [],
         });
+        console.log(message);
       }
     },
+
     /* 다른 페이지도 부를 수 있게 하는 함수 */
     /* actions 인자 context (state, mutations, getters), payload (request element) */
     /* fetchInfo 에서 에러를 잡고 사실상 에러없는 결과물은 searchInfo */
-    async fetchInfo({ state, commit }) {
-      try {
-        dotenv.config();
-        //const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY;
-        this.state.depPlandTime =
-          +[state.picked_from.getFullYear()] +
-          [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] +
-          [("0" + state.picked_from.getDate()).slice(-2)];
-        /* use heroku for allow cors ( ~ 2021) 
-        공공데이터 자체에서 cors를 해결해줌 (2021.12)*/
-        const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=eixV3mOlRoqUyi%2BK9P6%2BS3BQMBXCroFM31lGc%2BOSp80JFNv7B8%2FiCEV49OSfF2bchwh5N7z50Sw8OQFWCkZbDg%3D%3D&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${state.depPlandTime}&numOfRows=30&pageNo=${this.state.pageNo}&_type=json`;
-        state.exMonth = state.picked_from.getMonth() + 1;
-        state.exDate = state.picked_from.getDate();
+    fetchInfo({ state, commit }) {
+      //처음에 기본값은 디스플레이상의 기본값이라 서치 눌러도 값이 넘어가지 않음
+      // 빌드 버전 업로드 전에 dotenv axios 문제해결 되면 api 키 가리기
+      dotenv.config();
+      const FLIGHT_API_KEY = process.env.VUE_APP_API_KEY;
+      const depPlandTime =
+        [state.picked_from.getFullYear()] +
+        [("0" + (state.picked_from.getMonth() + 1)).slice(-2)] +
+        [("0" + state.picked_from.getDate()).slice(-2)];
+      /* use heroku for allow cors */
+      const url = `http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getFlightOpratInfoList?serviceKey=${FLIGHT_API_KEY}&depAirportId=${state.depAirportId}&arrAirportId=${state.arrAirportId}&depPlandTime=${depPlandTime}&numOfRows=300&pageNo=${state.pageNo}&_type=json`;
+      state.exMonth = state.picked_from.getMonth() + 1;
+      state.exDate = state.picked_from.getDate();
 
-        axios.get(url).then((res) => {
-          /* 하위 단위까지 모.두 경로를 써줘야됨 */
-          const item = res.data.response.body.items.item;
-          this.state.totalCount = res.data.response.body.totalCount;
-          if (this.state.totalCount < 1) return this.state.noTicket;
+      return new Promise((resolve, reject) => {
+        // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
+        axios
+          .get(url)
+          .then((res) => {
+            /* 하위 단위까지 모.두 경로를 써줘야됨 */
+            const item = res.data.response.body.items.item;
+            this.state.totalCount = res.data.response.body.totalCount;
+            if (this.state.totalCount < 1) return this.state.noTicket;
 
-          this.state.depTime = res.data.response.body.items.item.forEach(
-            (obj) => {
-              /* 보간법을 이용하면 function 가능 (object에 간섭을 안하므로 가능) */
-              obj.depTime = `${obj.depPlandTime}`.slice(-4, -2);
-              /* Object.values : make every Object to Array */
-              return Object.values(obj);
-            }
-          );
-          this.state.depMin = res.data.response.body.items.item.forEach(
-            (obj) => {
-              obj.depMin = `${obj.depPlandTime}`.slice(-2);
-              return Object.values(obj);
-            }
-          );
-          this.state.arrTime = res.data.response.body.items.item.forEach(
-            (obj) => {
-              obj.arrTime = `${obj.arrPlandTime}`.slice(-4, -2);
-              return Object.values(obj);
-            }
-          );
-          this.state.arrMin = res.data.response.body.items.item.forEach(
-            (obj) => {
-              obj.arrMin = `${obj.arrPlandTime}`.slice(-2);
-              return Object.values(obj);
-            }
-          );
+            this.state.depTime = res.data.response.body.items.item.forEach(
+              (obj) => {
+                /* 보간법을 이용하면 function 가능 (object에 간섭을 안하므로 가능) */
+                obj.depTime = `${obj.depPlandTime}`.slice(-4, -2);
+                /* Object.values : make every Object to Array */
+                return Object.values(obj);
+              }
+            );
+            this.state.depMin = res.data.response.body.items.item.forEach(
+              (obj) => {
+                obj.depMin = `${obj.depPlandTime}`.slice(-2);
+                return Object.values(obj);
+              }
+            );
+            this.state.arrTime = res.data.response.body.items.item.forEach(
+              (obj) => {
+                obj.arrTime = `${obj.arrPlandTime}`.slice(-4, -2);
+                return Object.values(obj);
+              }
+            );
+            this.state.arrMin = res.data.response.body.items.item.forEach(
+              (obj) => {
+                obj.arrMin = `${obj.arrPlandTime}`.slice(-2);
+                return Object.values(obj);
+              }
+            );
 
-          // eslint-disable-next-line no-console
-          console.log(
-            res,
-            this.state.loading,
-            this.state.totalCount,
-            this.state.noTicket
-          );
-          // eslint-disable-next-line no-console
-          console.log(item, state.depPlandTime, state.exDate);
-          commit("updateState", {
-            /* copy for push array */
-            tickets: [...item],
+            commit("updateState", {
+              /* copy for push array */
+              tickets: [...item],
+            });
+            // eslint-disable-next-line no-console
+            console.log(
+              res,
+              this.state.loading,
+              this.state.totalCount,
+              this.state.noTicket
+            );
+            // eslint-disable-next-line no-console
+            console.log(item, depPlandTime, state.exDate);
+            resolve(res);
+            // eslint-disable-next-line no-console
+            console.log(
+              state.depAirportId,
+              state.arrAirportId,
+              depPlandTime,
+              state.exMonth,
+              state.exTime
+            );
+          })
+          .catch((err) => {
+            reject(err.message);
+          })
+          .finally(() => {
+            commit("updateState", {
+              loading: false,
+            });
           });
-          // eslint-disable-next-line no-console
-          console.log(
-            state.depAirportId,
-            state.arrAirportId,
-            state.depPlandTime,
-            state.exMonth,
-            state.exTime,
-            this.state.loading
-          );
-          // eslint-disable-next-line no-console
-          console.log(state.exMonth);
 
-          /*  if(res.data.response.resultMsg){
-                            reject(res.data.response.resultMsg)
-                        } */
-        });
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error("Error", err);
-        throw err;
-      }
+        /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
 
-      // requset element : depAirportId, arrAirportId, depPlandTime // chose certain airline : &airlineId=AAR
-
-      /* declare the object from api call for using array (follow their own upper root, !camelCase!) */
-
-      // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
-      /* handle success */
-      /* figure out only data (data -> response -> body -> item) */
+        // 구조분해 -> payload ...  여기서 의문점은 다른 컴포넌트에서 쓰일 정보를 store에서 말고 다른 컴포넌트에서 가져와 payload 로 객체분해를 꼬옥 해야될까..?
+        /* handle success */
+        /* figure out only data (data -> response -> body -> item) */
+      });
     },
   },
 });

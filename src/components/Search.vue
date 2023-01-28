@@ -85,9 +85,13 @@
         </span>
       </div>
       <!--search Destination-->
-      <div class="set" style="zindex: 30">
+      <div class="set">
         <span class="material-icons"> date_range </span>
-        <div class="dateBox">
+        <div
+          class="dateBox"
+          :style="{
+            zIndex: '10',
+          }">
           <i class="material-icons">flight_takeoff</i>
           <datepicker
             class="picker"
@@ -95,9 +99,13 @@
             placeholder="Depart Date"
             :weekStartsOn="0"
             :lower-limit="new Date()"
-            :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }" />
+            :style="{
+              width: '6rem',
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              zIndex: '30',
+            }" />
         </div>
-        <div class="dateBox" style="zindex: -1">
+        <div class="dateBox">
           <i class="material-icons">flight_land</i>
           <div v-if="toggle">
             <datepicker
@@ -105,13 +113,12 @@
               v-model="$store.state.picked_from"
               placeholder="Depart Date"
               :weekStartsOn="0"
-              :lower-limit="new Date()"
-              :style="{ width: '6rem', backgroundColor: 'rgba(0, 0, 0, 0)' }" />
+              :lower-limit="new Date()" />
           </div>
         </div>
       </div>
       <!-- passengers -->
-      <div class="set">
+      <div class="set" :style="{ zIndex: '-10' }">
         <span class="material-icons">people</span>
         <ul class="block">
           <li class="block-radio passengers">
@@ -184,7 +191,7 @@
         </ul>
       </div>
       <!--class-->
-      <div class="set">
+      <div class="set" :style="{ zIndex: '-10' }">
         <span class="material-icons">flight_class</span>
         <ul class="block">
           <li class="block-radio class">
@@ -240,7 +247,7 @@
       </div>
       <Button
         @click="[searchTicket(), unActive()]"
-        :style="{ marginTop: '2.5em' }"
+        :style="{ marginTop: '2.5em', zIndex: '-10' }"
         :class="{ 'isnot-active': $store.state.isActive }">
         Search
       </Button>
@@ -252,12 +259,8 @@
 import Button from "../UI/UI/neumorphism/button/Button.vue";
 import ToggleButton from "../UI/UI/neumorphism/toggle-button/ToggleButton.vue";
 import Datepicker from "vue3-datepicker";
-
-//import { ref } from 'vue'
-//import axios from 'axios'
 import { mapState, mapGetters, mapActions } from "vuex";
 import { defineComponent, ref } from "vue";
-//import { search } from '../type'
 // eslint-disable-next-line no-unused-vars
 const picked = ref(new Date());
 // eslint-disable-next-line no-unused-vars
@@ -278,7 +281,6 @@ export default defineComponent({
   data() {
     return {
       inactiveHeight: "15rem",
-      //activeHeight: '35rem',
       picked_from: new Date(),
       picked_to: "",
       toggle: false,
@@ -607,7 +609,6 @@ html {
       flex-direction: row;
       //flex-wrap: nowrap;
       position: relative;
-      z-index: -5;
 
       span[class="material-icons"] {
         font-size: 30px;
