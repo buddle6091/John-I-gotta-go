@@ -90,17 +90,17 @@ const store = createStore({
         const res = await dispatch("fetchInfo");
         const totalCount = res.data.reponse.body.totalCount;
 
-        if (this.totalCount == 0) {
+        if (totalCount == 0) {
           commit("updateState", {
             noTicket: true,
           });
         }
 
         /*  const total = parseInt(totalCount, 10) // trans to the decimal system */
-        const pageLength = Math.ceil(totalCount / 20);
+        /*  const pageLength = Math.ceil(totalCount / 20); */
 
         /* additional 추후에 무한 로딩 넣기 */
-        if (pageLength > 1) {
+        /* if (pageLength > 1) {
           for (let pageNo = 2; pageNo <= pageLength; pageNo += 1) {
             const res = await dispatch("fetchInfo")({
               pageNo: pageNo,
@@ -111,11 +111,12 @@ const store = createStore({
               loading: false,
             });
           }
-        } else alert("there is no result..");
+        } else alert("there is no result.."); */
       } catch (message) {
-        commit("updateState", {
+        /* commit("updateState", {
           tickets: [],
-        });
+        }); */
+        console.log(message);
       }
     },
 
