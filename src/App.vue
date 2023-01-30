@@ -34,7 +34,7 @@ export default defineComponent({
 
 .App {
   font-family: sans-serif;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background: $base;
   padding-top: 1rem;
