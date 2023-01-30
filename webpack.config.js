@@ -8,7 +8,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, "public"), // __dirname = node js real directory
+    path: path.resolve(__dirname, "dist"), // __dirname = node js real directory
     filename: "main.js",
     clean: true, // clean the output directory before emit.
   },
