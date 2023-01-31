@@ -12,6 +12,14 @@
 
 </br>
 
+# Service Link
+</br>
+
+ > Click this! 👉 [https://johnigottago.netlify.app/](https://johnigottago.netlify.app/)
+
+
+</br>
+
 # UI / UX Design
 > "_One of the hottest design trends of 2020 is “Neumorphism” (soft UI). We can see a lot of designers with their version of Neumorphic User Interface(UI) on dribbble._"
 > > 명암과 반사의 특성들을 적절히 사용한 neumorphism 기법을 적용했습니다. </br>
@@ -61,13 +69,6 @@
 </br>
 </br>
 
-## How to run the service except installed
-</br>
-
- > Click this! 👉 [https://johnigottago.netlify.app/](https://johnigottago.netlify.app/)
-
-
-</br>
 
 ## Project setup
 ```
